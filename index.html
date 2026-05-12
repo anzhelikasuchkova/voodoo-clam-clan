@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voodoo Clam Clan 🦪 · New Orleans · Oct 3–6</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080608;
+  --pearl: #f0ece4;
+  --pearl-dim: rgba(240,236,228,0.55);
+  --pearl-faint: rgba(240,236,228,0.12);
+  --teal: #5ecfcf;
+  --teal-dim: rgba(94,207,207,0.2);
+  --teal-faint: rgba(94,207,207,0.07);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201,168,76,0.25);
+  --pink: #D4537E;
+  --pink-dim: rgba(212,83,126,0.15);
+  --border: rgba(240,236,228,0.1);
+  --border-teal: rgba(94,207,207,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--pearl);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* SHIMMER OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(94,207,207,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 90%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 10%, rgba(212,83,126,0.04) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+  background: rgba(8,6,8,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--teal); }
+
+@media(max-width:640px){
+  .nav-links { display: none; }
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 80px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-shimmer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(94,207,207,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Pearl particle dots */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(240,236,228,0.15) 1px, transparent 1px),
+    radial-gradient(circle, rgba(94,207,207,0.1) 1px, transparent 1px);
+  background-size: 60px 60px, 90px 90px;
+  background-position: 0 0, 30px 30px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.2s;
+}
+
+.hero-clam {
+  font-size: clamp(60px, 12vw, 120px);
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+  filter: drop-shadow(0 0 40px rgba(94,207,207,0.3));
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(28px, 6vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.5s;
+}
+
+.hero-title .line-voodoo { color: var(--pearl); }
+.hero-title .line-clam {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--pearl) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title .line-clan { color: var(--pearl-dim); }
+
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(16px, 2.5vw, 22px);
+  font-style: italic;
+  color: var(--pearl-dim);
+  margin-top: 8px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.65s;
+}
+
+.hero-dates {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.8s;
+}
+
+.date-chip {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  border: 0.5px solid var(--border-teal);
+  border-radius: 40px;
+  padding: 8px 20px;
+  background: var(--teal-faint);
+}
+
+/* SECTIONS */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 96px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section + section {
+  border-top: 0.5px solid var(--border);
+}
+
+.section-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(22px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 40px;
+}
+
+/* ITINERARY */
+.nights { display: flex; flex-direction: column; gap: 24px; }
+
+.night-card {
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.night-card:hover { border-color: var(--border-teal); }
+
+.night-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border-bottom: 0.5px solid var(--border);
+  cursor: pointer;
+  user-select: none;
+}
+
+.night-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--teal);
+  opacity: 0.3;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+}
+
+.night-meta { flex: 1; }
+
+.night-date {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  margin-bottom: 4px;
+}
+
+.night-name {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--pearl);
+}
+
+.night-emoji { font-size: 22px; flex-shrink: 0; }
+
+.night-body {
+  padding: 20px 24px;
+  display: none;
+}
+
+.night-body.open { display: block; }
+
+.outfit-strip {
+  background: var(--teal-faint);
+  border: 0.5px solid var(--border-teal);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: var(--pearl-dim);
+  line-height: 1.6;
+}
+
+.outfit-strip strong { color: var(--teal); font-weight: 500; }
+
+.event-list { display: flex; flex-direction: column; gap: 10px; }
+
+.event-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+
+.event-time {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--pearl-dim);
+  white-space: nowrap;
+  padding-top: 2px;
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  margin-top: 6px;
+  opacity: 0.6;
+}
+
+.event-text { color: rgba(240,236,228,0.75); line-height: 1.5; }
+.event-text strong { color: var(--pearl); font-weight: 500; }
+
+.book-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(212,83,126,0.15);
+  color: var(--pink);
+  border: 0.5px solid rgba(212,83,126,0.3);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* LOOKS */
+.looks-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media(max-width:580px){ .looks-grid { grid-template-columns: 1fr; } }
+
+.look-card {
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  background: var(--pearl-faint);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.look-card:hover { border-color: var(--border-teal); background: var(--teal-faint); }
+
+.look-card.kassie {
+  grid-column: 1/-1;
+  border-color: rgba(212,83,126,0.3);
+  background: var(--pink-dim);
+}
+
+.look-night {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+
+.look-card.kassie .look-night { color: var(--pink); }
+
+.look-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.look-items { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+.look-items li {
+  font-size: 12px;
+  color: var(--pearl-dim);
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.look-items li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(240,236,228,0.2);
+  font-size: 10px;
+}
+
+.kassie-note {
+  background: rgba(212,83,126,0.08);
+  border: 0.5px solid rgba(212,83,126,0.25);
+  border-left: 3px solid var(--pink);
+  border-radius: 0 12px 12px 0;
+  padding: 14px 18px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--pearl-dim);
+  line-height: 1.7;
+}
+
+.kassie-note .kn-title {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 6px;
+}
+
+/* BUDGET EMBED */
+.budget-wrap {
+  background: var(--pearl-faint);
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
+/* FORM SECTION */
+.form-card {
+  background: var(--teal-faint);
+  border: 0.5px solid var(--border-teal);
+  border-radius: 16px;
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.form-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--pearl-dim);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.form-btn {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  border: none;
+  border-radius: 40px;
+  padding: 16px 40px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.form-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+.form-checklist {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 32px;
+  text-align: left;
+}
+
+@media(max-width:500px){ .form-checklist { grid-template-columns: 1fr; } }
+
+.form-checklist li {
+  font-size: 12px;
+  color: var(--pearl-dim);
+  padding-left: 18px;
+  position: relative;
+}
+
+.form-checklist li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-size: 9px;
+  top: 3px;
+}
+
+/* KASSIE GOAL TRACKER */
+.goal-card {
+  border: 0.5px solid rgba(212,83,126,0.3);
+  border-radius: 16px;
+  padding: 28px 24px;
+  background: var(--pink-dim);
+}
+
+.goal-title {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 20px;
+}
+
+.goal-items { display: flex; flex-direction: column; gap: 14px; }
+
+.goal-item {}
+.goal-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.goal-item-name { font-size: 13px; font-weight: 500; color: var(--pearl); }
+.goal-item-amounts { font-size: 11px; color: var(--pearl-dim); }
+
+.goal-bar {
+  height: 6px;
+  background: rgba(212,83,126,0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.goal-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pink), #e87fab);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.goal-total {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 0.5px solid rgba(212,83,126,0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goal-total-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.goal-total-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--pearl);
+}
+
+.goal-total-sub { font-size: 11px; color: var(--pearl-dim); margin-top: 2px; text-align: right; }
+
+/* RULES */
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+@media(max-width:560px){ .rules-grid { grid-template-columns: 1fr; } }
+
+.rule {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 16px;
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--pearl-faint);
+}
+
+.rule-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(94,207,207,0.25);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.rule-text { font-size: 12px; color: var(--pearl-dim); line-height: 1.6; padding-top: 4px; }
+.rule-text strong { color: var(--pearl); font-weight: 500; display: block; margin-bottom: 2px; }
+
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 24px 80px;
+  border-top: 0.5px solid var(--border);
+}
+
+footer .f-clam { font-size: 40px; margin-bottom: 12px; filter: drop-shadow(0 0 20px rgba(94,207,207,0.4)); }
+footer .f-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 18px;
+  background: linear-gradient(135deg, var(--teal), var(--pearl), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
+
+/* BOOKING SECTION */
+.booking-list { display: flex; flex-direction: column; gap: 10px; }
+
+.booking-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 18px;
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--pearl-faint);
+}
+
+.booking-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: rgba(94,207,207,0.3);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 24px;
+}
+
+.booking-body { flex: 1; }
+.booking-name { font-size: 13px; font-weight: 500; color: var(--pearl); margin-bottom: 2px; }
+.booking-detail { font-size: 11px; color: var(--pearl-dim); line-height: 1.5; }
+
+.urgent { border-color: rgba(212,83,126,0.35); background: var(--pink-dim); }
+.urgent .booking-num { color: rgba(212,83,126,0.4); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* BUDGET SECTION STYLES (inlined from tracker) */
+.b-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.25rem;align-items:center}
+.b-cg{display:flex;align-items:center;gap:8px;background:rgba(240,236,228,0.06);border:0.5px solid rgba(240,236,228,0.12);border-radius:8px;padding:7px 12px}
+.b-cl{font-size:12px;color:var(--pearl-dim)}
+.b-cv{font-size:14px;font-weight:500;color:var(--pearl);min-width:20px;text-align:center}
+.b-cb{background:none;border:0.5px solid rgba(240,236,228,0.2);border-radius:5px;width:24px;height:24px;cursor:pointer;font-size:15px;color:var(--pearl);display:flex;align-items:center;justify-content:center}
+.b-cb:hover{background:rgba(240,236,228,0.08)}
+.b-hero{background:rgba(94,207,207,0.07);border:0.5px solid rgba(94,207,207,0.2);border-radius:14px;padding:18px 22px;margin-bottom:1.25rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.b-hl{font-size:10px;color:rgba(240,236,228,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.b-hv{font-size:38px;font-weight:500;color:var(--pearl);line-height:1}
+.b-hs{font-size:10px;color:rgba(240,236,228,0.35);margin-top:5px}
+.b-hr{display:flex;flex-direction:column;gap:5px;align-items:flex-end}
+.b-hc{font-size:11px;color:var(--pearl-dim)}
+.b-hc span{font-weight:500;color:var(--pearl)}
+.b-fl{display:flex;align-items:center;gap:10px;background:rgba(240,236,228,0.04);border:0.5px solid rgba(240,236,228,0.1);border-radius:8px;padding:10px 14px;margin-bottom:1.25rem}
+.b-fll{font-size:12px;color:var(--pearl-dim);flex:1}
+.b-fln{font-size:10px;color:rgba(240,236,228,0.3);margin-top:1px}
+.b-fi{width:72px;font-size:14px;font-weight:500;border:0.5px solid rgba(240,236,228,0.2);border-radius:8px;padding:4px 8px;background:rgba(240,236,228,0.06);color:var(--pearl);text-align:right}
+.b-st{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,236,228,0.35);margin:1.25rem 0 .5rem}
+.b-items{display:flex;flex-direction:column;gap:5px}
+.b-li{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:0.5px solid rgba(240,236,228,0.1);border-radius:10px;background:rgba(240,236,228,0.03);transition:border-color .15s,background .15s}
+.b-li.dim{opacity:.4}
+.b-li.lit{border-color:rgba(94,207,207,0.4);background:rgba(94,207,207,0.07)}
+.b-li.lit .b-ln-name{color:var(--teal)}
+.b-li input[type=checkbox]{flex-shrink:0;margin-top:2px;cursor:pointer;accent-color:var(--teal)}
+.b-ln{flex:1;min-width:0}
+.b-ln-name{font-size:13px;color:var(--pearl);line-height:1.3;font-weight:500}
+.b-ln-note{font-size:11px;color:rgba(240,236,228,0.4);margin-top:2px;line-height:1.4}
+.b-tag{font-size:10px;font-weight:500;padding:2px 7px;border-radius:10px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.b-tg{background:rgba(94,207,207,0.15);color:var(--teal)}
+.b-tk{background:rgba(212,83,126,0.15);color:var(--pink)}
+.b-tu{background:rgba(201,168,76,0.15);color:var(--gold)}
+.b-lr{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0}
+.b-lc{font-size:13px;font-weight:500;color:var(--pearl);white-space:nowrap}
+.b-lp{font-size:10px;color:rgba(240,236,228,0.35);white-space:nowrap}
+.b-block{border:0.5px solid rgba(240,236,228,0.1);border-radius:10px;background:rgba(240,236,228,0.03);overflow:hidden;margin-bottom:5px}
+.b-row{display:flex;align-items:flex-start;justify-content:space-between;padding:8px 12px;cursor:pointer;border-bottom:0.5px solid rgba(240,236,228,0.07);transition:background .12s;gap:8px}
+.b-row:last-child{border-bottom:none}
+.b-row:hover{background:rgba(240,236,228,0.05)}
+.b-row.on{background:rgba(94,207,207,0.08);border-left:3px solid var(--teal)}
+.b-row.gag.on{background:rgba(212,83,126,0.08);border-left:3px solid var(--pink)}
+.b-row.gag{opacity:.55}
+.b-row-lbl{font-size:12px;font-weight:500;color:var(--pearl);line-height:1.3}
+.b-row-note{font-size:11px;color:rgba(240,236,228,0.4);margin-top:1px;line-height:1.4}
+.b-row-price{font-size:12px;font-weight:500;color:rgba(240,236,228,0.5);white-space:nowrap;margin-top:1px;flex-shrink:0}
+.b-mrow{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;cursor:pointer;border-bottom:0.5px solid rgba(240,236,228,0.07);transition:background .12s}
+.b-mrow:last-child{border-bottom:none}
+.b-mrow:hover{background:rgba(240,236,228,0.05)}
+.b-mrow.on{background:rgba(94,207,207,0.08);border-left:3px solid var(--teal)}
+.b-mck{width:14px;height:14px;border:1.5px solid rgba(240,236,228,0.2);border-radius:3px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--black)}
+.b-mrow.on .b-mck{background:var(--teal);border-color:var(--teal)}
+.b-mbody{flex:1;min-width:0}
+.b-conflict{font-size:11px;color:#c99a2a;background:rgba(201,168,76,0.1);border-radius:8px;padding:7px 12px;margin-top:4px;border:0.5px solid rgba(201,168,76,0.25)}
+.b-kli{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:0.5px solid rgba(240,236,228,0.1);border-radius:10px;background:rgba(240,236,228,0.03);cursor:pointer;transition:border-color .15s,background .15s}
+.b-kli.on{border-color:rgba(212,83,126,0.4);background:rgba(212,83,126,0.08)}
+.b-kli.on .b-ln-name{color:var(--pink)}
+.b-kck{width:16px;height:16px;border:1.5px solid rgba(240,236,228,0.2);border-radius:3px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--black);user-select:none}
+.b-kli.on .b-kck{background:var(--pink);border-color:var(--pink)}
+.b-krow{display:flex;align-items:center;gap:6px;margin-top:7px;flex-wrap:wrap}
+.b-klbl{font-size:11px;color:rgba(240,236,228,0.4)}
+.b-ksym{font-size:13px;color:rgba(240,236,228,0.4)}
+.b-kinp{width:68px;font-size:13px;font-weight:500;border:0.5px solid rgba(240,236,228,0.2);border-radius:8px;padding:3px 7px;background:rgba(240,236,228,0.06);color:var(--pearl);text-align:right;accent-color:var(--pink)}
+.b-kpp{font-size:11px;color:rgba(240,236,228,0.4)}
+.b-kbtn{font-size:10px;font-weight:500;padding:3px 8px;border:0.5px solid rgba(240,236,228,0.2);border-radius:10px;cursor:pointer;background:none;color:rgba(240,236,228,0.5);white-space:nowrap}
+.b-kbtn:hover{background:rgba(240,236,228,0.07)}
+.b-kbtn.active{background:rgba(212,83,126,0.15);border-color:rgba(212,83,126,0.4);color:var(--pink)}
+.b-div{font-size:11px;font-weight:500;color:rgba(240,236,228,0.4);padding:4px 0 2px;border-bottom:0.5px solid rgba(240,236,228,0.08);margin:1.25rem 0 .5rem}
+.b-ref{border:0.5px solid rgba(240,236,228,0.1);border-radius:10px;background:rgba(240,236,228,0.03);overflow:hidden}
+.b-rrow{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:12px;border-bottom:0.5px solid rgba(240,236,228,0.07)}
+.b-rrow:last-child{border-bottom:none}
+.b-rl{color:rgba(240,236,228,0.5)}
+.b-rv{color:rgba(240,236,228,0.3);font-style:italic}
+.b-notebox{margin-top:1rem;background:rgba(240,236,228,0.04);border-radius:10px;padding:10px 14px;font-size:12px;color:rgba(240,236,228,0.4);line-height:1.6}
+.b-notebox strong{color:rgba(240,236,228,0.7);font-weight:500}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">🦪 VCC</a>
+  <ul class="nav-links">
+    <li><a href="#itinerary">Itinerary</a></li>
+    <li><a href="#looks">The Looks</a></li>
+    <li><a href="#budget">Budget</a></li>
+    <li><a href="#kassie">For Kassie</a></li>
+    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#form">The Form</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero" class="hero">
+  <div class="hero-shimmer"></div>
+  <div class="hero-eyebrow">New Orleans · October 3–6, 2026</div>
+  <div class="hero-clam">🦪</div>
+  <div class="hero-title">
+    <div class="line-voodoo">Voodoo</div>
+    <div class="line-clam">Clam Clan</div>
+  </div>
+  <div class="hero-sub">Kassie's Bachelorette · Four Nights · Four Rituals</div>
+  <div class="hero-dates">
+    <div class="date-chip">Sat · The Convoy 🕶️</div>
+    <div class="date-chip">Sun · The Shells 🦪</div>
+    <div class="date-chip">Mon · The Coven 🔮</div>
+    <div class="date-chip">Tue · The Uncursing 🌊</div>
+  </div>
+</div>
+
+<!-- ITINERARY -->
+<section id="itinerary">
+  <div class="section-eyebrow">The Plan</div>
+  <div class="section-title">Four Nights,<br>Four Rituals</div>
+  <div class="nights">
+
+    <!-- Night 1 -->
+    <div class="night-card">
+      <div class="night-header" onclick="toggleNight(this)">
+        <div class="night-num">01</div>
+        <div class="night-meta">
+          <div class="night-date">Saturday, October 3</div>
+          <div class="night-name">The Convoy 🕶️</div>
+        </div>
+        <div class="night-emoji">▾</div>
+      </div>
+      <div class="night-body open">
+        <div class="outfit-strip">
+          <strong>Kassie:</strong> White flowy dress · pearl accessories · black sunglasses &nbsp;|&nbsp;
+          <strong>Clan:</strong> All black everything · pearl jewelry · black sunglasses
+        </div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-time">3:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Check in</strong> · 2012 Oretha Castle Haley Blvd · settle in · welcome drinks</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">Evening</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>French Quarter</strong> · bar crawl + street food in our Voodoo Clam Clan tees · oysters at Felix's · go-cups · Pat O'Brien's · meet the boys</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">Late</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>The Rabbit Hole</strong> · OCH Blvd · dance bar til 4am · 8 min walk home</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Night 2 -->
+    <div class="night-card">
+      <div class="night-header" onclick="toggleNight(this)">
+        <div class="night-num">02</div>
+        <div class="night-meta">
+          <div class="night-date">Sunday, October 4</div>
+          <div class="night-name">The Shells 🦪✨</div>
+        </div>
+        <div class="night-emoji">▾</div>
+      </div>
+      <div class="night-body">
+        <div class="outfit-strip">
+          <strong>Kassie:</strong> Iridescent pearl wrap dress &nbsp;|&nbsp;
+          <strong>Clan:</strong> Full glam · each girl picks her sequin color · boas · glitter · big hair
+        </div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-time">1:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Drag Brunch</strong> · The Country Club · Bywater · longest-running drag brunch in NOLA <span class="book-badge">Book Now</span></div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">~3:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Pool time</strong> · back to the Airbnb · go-cups · recharge · boas in the pool moment</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">6:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Re-glam + pregame</strong> · hype playlist · group photos · designate Kassie's hype captain</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">8:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Dinner</strong> · TBD by vote</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">10:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Clubs</strong> · Oz on Bourbon + Café Lafitte in Exile · no cover · Uber from Airbnb ~12 min</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Night 3 -->
+    <div class="night-card">
+      <div class="night-header" onclick="toggleNight(this)">
+        <div class="night-num">03</div>
+        <div class="night-meta">
+          <div class="night-date">Monday, October 5</div>
+          <div class="night-name">The Coven 🔮</div>
+        </div>
+        <div class="night-emoji">▾</div>
+      </div>
+      <div class="night-body">
+        <div class="outfit-strip">
+          <strong>Kassie:</strong> Deep emerald or plum boho maxi · goddess energy &nbsp;|&nbsp;
+          <strong>Clan:</strong> Flowing dark fabrics · jewel tones · crystals · layered jewelry
+        </div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-time">Morning</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Activity TBD by vote</strong> · Swamp tour + gator feeding / Tea Room tarot / French Market / Spa</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">Afternoon</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>French Market</strong> · voodoo dolls · crystals · spell candles · Coven souvenirs</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">5:30 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Farewell dinner</strong> · TBD by vote · French Quarter area <span class="book-badge">Book Now</span></div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">8:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Ghost, Crime, Voodoo & Vampire Tour</strong> · VIP HELLVISION · French Quarter · 1hr 45min <span class="book-badge">Book on Viator</span></div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">10:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Nightcap</strong> · Bayou Bar or Frenchmen Street · closing ritual</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Night 4 -->
+    <div class="night-card">
+      <div class="night-header" onclick="toggleNight(this)">
+        <div class="night-num">04</div>
+        <div class="night-meta">
+          <div class="night-date">Tuesday, October 6</div>
+          <div class="night-name">The Uncursing 🌊</div>
+        </div>
+        <div class="night-emoji">▾</div>
+      </div>
+      <div class="night-body">
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-time">Morning</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Slow morning</strong> · last look at the mural · pack the curses</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">11:00 am</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Checkout</strong> · Voodoo Clam Clan disperses · cursed hearts · pearl necklaces · Kassie absolutely glowing</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">2:20 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Southwest flight home</strong> · direct · arrives 4:20pm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOOKS -->
+<section id="looks">
+  <div class="section-eyebrow">Dress Code</div>
+  <div class="section-title">The Looks</div>
+
+  <div class="looks-grid">
+    <div class="look-card kassie">
+      <div class="look-night">✦ For Kassie — every night</div>
+      <div class="look-title">She's always the most beautiful woman in the room</div>
+      <ul class="look-items">
+        <li>Night 1: White flowy dress · pearl accessories · black sunglasses</li>
+        <li>Night 2: Iridescent or pearl wrap dress · scallop detail if possible</li>
+        <li>Night 3: Deep emerald or plum boho maxi · goddess silhouette · crystals</li>
+        <li>Every silhouette is chosen intentionally: wrap, off-shoulder, flowy — effortlessly beautiful</li>
+      </ul>
+    </div>
+
+    <div class="look-card">
+      <div class="look-night">Saturday · Night 1</div>
+      <div class="look-title">The Convoy 🕶️</div>
+      <ul class="look-items">
+        <li>All black — any silhouette, your choice</li>
+        <li>Black sunglasses — mandatory for the group photo</li>
+        <li>Pearl jewelry — the common thread</li>
+        <li>Dark nails: black, plum, or burgundy</li>
+      </ul>
+    </div>
+
+    <div class="look-card">
+      <div class="look-night">Sunday · Night 2</div>
+      <div class="look-title">The Shells 🦪✨</div>
+      <ul class="look-items">
+        <li>Daytime: Voodoo Clam Clan tee (styled your way)</li>
+        <li>Night: sequins or iridescent — YOUR color</li>
+        <li>Teal, pink, silver, lilac, gold, coral, mint — all fair game</li>
+        <li>Boas, glitter, rhinestones, big hair — more is more</li>
+      </ul>
+    </div>
+
+    <div class="look-card">
+      <div class="look-night">Monday · Night 3</div>
+      <div class="look-title">The Coven 🔮</div>
+      <ul class="look-items">
+        <li>Flowing dark fabrics — maxi skirts, wrap dresses, lace</li>
+        <li>Jewel tones: deep purple, forest green, burgundy, midnight blue, rust</li>
+        <li>Layered jewelry: crystals, moonstone, evil eye</li>
+        <li>Boots encouraged — suede or leather</li>
+        <li>Morning: practical Coven (you WILL be on a boat/walking a lot)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="kassie-note">
+    <div class="kn-title">✦ Clan Rule — Non-Negotiable</div>
+    Kassie goes first — every mirror, every photo, every compliment. Hype is mandatory and unprompted. Zero body talk, zero. Not even about yourself. She has had two babies in three years and she is showing up as the most radiant version of herself this weekend. Your job is to make sure she knows it every single moment.
+  </div>
+</section>
+
+<!-- BUDGET -->
+<section id="budget">
+  <div class="section-eyebrow">The Numbers</div>
+  <div class="section-title">Budget Calculator</div>
+  <div class="budget-wrap">
+    <div id="budget-app"></div>
+  </div>
+</section>
+
+<!-- KASSIE GOAL -->
+<section id="kassie">
+  <div class="section-eyebrow">For the Bride</div>
+  <div class="section-title">Kassie's Covered ♡</div>
+  <div class="goal-card">
+    <div class="goal-title">✦ Contribution Goal Tracker</div>
+    <div class="goal-items" id="goal-items"></div>
+    <div class="goal-total">
+      <div>
+        <div class="goal-total-label">Total pledged</div>
+        <div class="goal-total-sub" id="goal-sub">of $— goal</div>
+      </div>
+      <div style="text-align:right">
+        <div class="goal-total-val" id="goal-total-val">$0</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-eyebrow">Do This Now</div>
+  <div class="section-title">Book It Before<br>Someone Else Does</div>
+  <div class="booking-list">
+    <div class="booking-item urgent">
+      <div class="booking-num">1</div>
+      <div class="booking-body">
+        <div class="booking-name">Drag Brunch — The Country Club</div>
+        <div class="booking-detail">Sunday Oct 4 · 1pm seating · call (504) 832-1930 · fills months out · groups need to call directly</div>
+      </div>
+    </div>
+    <div class="booking-item urgent">
+      <div class="booking-num">2</div>
+      <div class="booking-body">
+        <div class="booking-name">Ghost, Crime, Voodoo & Vampire Tour — VIP HELLVISION</div>
+        <div class="booking-detail">Monday Oct 5 · 8pm · book at Viator.com · select October 5 date · $44pp · 6,843 reviews</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-num">3</div>
+      <div class="booking-body">
+        <div class="booking-name">Airboat Swamp Tour + Gator Feeding</div>
+        <div class="booking-detail">Monday Oct 5 · morning · Viator.com · Large Airboat Drive Out $67pp · book 4–6 weeks out</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-num">4</div>
+      <div class="booking-body">
+        <div class="booking-name">Monday Dinner (pending vote)</div>
+        <div class="booking-detail">Muriel's Jackson Square (504) 568-1885 · OR · Café Amelie · call for group of 8–10 · mention bachelorette</div>
+      </div>
+    </div>
+    <div class="booking-item">
+      <div class="booking-num">5</div>
+      <div class="booking-body">
+        <div class="booking-name">Voodoo Clam Clan Custom Tees</div>
+        <div class="booking-detail">Order from Etsy or local printer · 6–8 weeks out minimum · collect sizes from Google Form first</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RULES -->
+<section id="rules">
+  <div class="section-eyebrow">The Code</div>
+  <div class="section-title">Clan Rules</div>
+  <div class="rules-grid">
+    <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie goes first</strong>Every mirror, every photo op, every compliment — her name is called first.</div></div>
+    <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is mandatory</strong>Designate a hype captain each night. Unsolicited compliments, constant reinforcement.</div></div>
+    <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No body talk</strong>Zero. Not even about your own body. Good vibes only, all weekend.</div></div>
+    <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Everyone gets photographed</strong>Rotate who's behind the camera. Every member of the Clan goes home with good photos.</div></div>
+    <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
+    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The theme always wins</strong>Unsure if your outfit fits? Go darker, add a crystal, add a pearl. It fits.</div></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section id="form">
+  <div class="section-eyebrow">Your Turn</div>
+  <div class="section-title">Fill Out the Form</div>
+  <div class="form-card">
+    <p>Tell us your sizes, votes, drink preferences, and anything<br>the MOH needs to know. Takes 5 minutes.<br>Do it before you forget.</p>
+    <a href="#" class="form-btn">Open the Planning Form →</a>
+    <ul class="form-checklist">
+      <li>T-shirt size for your Voodoo Clam Clan tee</li>
+      <li>Airbnb — are you in?</li>
+      <li>Activity votes (swamp tour, morning activity)</li>
+      <li>Dinner votes for each night</li>
+      <li>Drink preferences + allergies</li>
+      <li>Favorite drunk snack</li>
+      <li>Kassie contribution pledge</li>
+      <li>Anything the MOH should know</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-clam">🦪</div>
+  <div class="f-title">Voodoo Clam Clan</div>
+  <p>New Orleans · October 3–6, 2026 · For Kassie 🖤</p>
+</footer>
+
+<script>
+// Night accordion
+function toggleNight(header) {
+  var body = header.nextElementSibling;
+  var emoji = header.querySelector('.night-emoji');
+  if (body.classList.contains('open')) {
+    body.classList.remove('open');
+    emoji.textContent = '▾';
+  } else {
+    body.classList.add('open');
+    emoji.textContent = '▴';
+  }
+}
+
+// ── BUDGET TRACKER ──────────────────────────────────────────
+var ng = 9;
+var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
+var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
+
+var fixedItems = [
+  { name:"Airbnb — 2012 Oretha Castle Haley Blvd", note:"$3,066 total · 4 nights · private pool · confirm by July", total:3066, on:true },
+  { name:"Voodoo Clam Clan custom tees", note:"~$25/person · order 6–8 weeks out · worn Saturday + Sunday morning", pp:25, on:true },
+  { name:"Group sunglasses", note:"Heart or oversized sunnies · ~$8 each", total:75, on:true },
+  { name:"Snacks & Drinks — whole weekend", note:"Charcuterie, spirits, mixers, go-cups, water, fuel & electrolytes", total:200, on:true },
+];
+
+var satD = [
+  { lbl:"French Quarter bar crawl + street food", note:"Voodoo Clam Clan tees · oysters at Felix's · go-cups · Pat O'Brien's · meet the boys", pp:35, gag:false },
+  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Dickie Brennan's Bourbon House or Crescent City Cigar · est. $60–80pp", pp:70, gag:false },
+  { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call", pp:100, gag:false },
+  { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, gag:true },
+];
+var satSel = 0;
+
+var sunM = [
+  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Longest-running drag brunch in NOLA · est. $65pp all-in · must book ahead · +$14pp Uber", pp:65, uber:14 },
+  { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · massage + facial packages · ~$80–120pp · book well ahead", pp:100, uber:0 },
+  { lbl:"Free pool day — stay home", note:"Sleep in · recover · backyard vibes · no judgment", pp:0, uber:0 },
+];
+var sunMSel = 0;
+
+var sunL = [
+  { lbl:"Turkey & Wolf — Magazine St", note:"Iconic funky sandwiches · ~$25pp · walkable", pp:25 },
+  { lbl:"Willa Jean — CBD", note:"Bakery-forward · ~$35pp · short Uber", pp:35 },
+  { lbl:"DoorDash at the Airbnb", note:"Decompress at home · ~$22pp", pp:22 },
+];
+var sunLSel = 0;
+
+var sunD = [
+  { lbl:"Juan's Flying Burrito — Magazine St", note:"Creole taqueria · tacos, margs · ~$20pp · walkable · open Sundays", pp:20 },
+  { lbl:"Peche Seafood Grill — Warehouse District", note:"James Beard winner · wood-fired Gulf seafood · ~$60pp · open Sundays", pp:60 },
+  { lbl:"Cochon — Warehouse District", note:"Michelin Bib Gourmand Cajun · ~$62pp · open Sundays", pp:62 },
+  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb", pp:70 },
+];
+var sunDSel = 0;
+
+var clubs = [
+  { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:12, on:true },
+  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:true },
+  { lbl:"Uber home from French Quarter", note:"~12–18 each way · est. $16pp split across group", pp:16, on:true },
+];
+
+var monActs = [
+  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · $67pp + $10pp Uber = $77pp all-in · departs Westwego HWY 90", pp:77, uberKey:"swamp", on:true },
+  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · Uber shared w/ French Market if both selected (~$15pp)", pp:35, uberKey:"fq", on:false },
+  { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · budget $20–50pp purchases · Uber shared w/ Tea Room (~$15pp)", pp:0, uberKey:"fq", on:false },
+  { lbl:"Spa morning — Belladonna Day Spa, Magazine St", note:"~$60–90pp · walking distance · dry sauna included", pp:75, uberKey:"walk", on:false },
+];
+
+var monD = [
+  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course + drinks/tip ~$95pp · steps from ghost tour · book now", pp:95 },
+  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · ~$65pp · French Quarter · call ahead for group", pp:65 },
+  { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole · ~$65pp · 10 min Uber to ghost tour", pp:65 },
+];
+var monDSel = 0;
+
+var ghostSel = 0;
+var ghostOpts = [
+  { lbl:"Ghost, Crime, Voodoo & Vampire Tour — VIP HELLVISION", note:"8pm French Quarter · $44pp + $16pp Uber = $60pp · book Viator Oct 5", pp:60 },
+  { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
+];
+
+var nightSel = 0;
+var nightOpts = [
+  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz · drinks est. $20–30pp", pp:25, uber:0 },
+  { lbl:"Frenchmen Street bar hop", note:"Live jazz, no cover · +$16pp Uber round trip · drinks est. $25–40pp", pp:30, uber:16 },
+  { lbl:"Head home — call it a night", note:"Checkout is 11am Tuesday", pp:0, uber:0 },
+];
+
+var kassItems = [
+  { name:"Kassie's Airbnb share", note:"Full share is $341", total:341, mode:"share", amount:0, on:false },
+  { name:"Kassie's ghost tour ticket", note:"Full ticket $44", total:44, mode:"share", amount:0, on:false },
+  { name:"Kassie's flight", note:"Her Southwest ticket ~$327", total:327, mode:"custom", amount:0, on:false },
+  { name:"Kassie's morning activity", note:"Brunch or spa · full cost ~$65–100", total:82, mode:"share", amount:0, on:false },
+  { name:"Kassie's dinner — one night", note:"Full cost ~$65–95", total:80, mode:"share", amount:0, on:false },
+  { name:"Kassie's bridal sash + extras", note:"MOH buys · full cost ~$55", total:55, mode:"share", amount:0, on:false },
+];
+
+function el(tag, cls, txt) {
+  var e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (txt !== undefined) e.textContent = txt;
+  return e;
+}
+
+function mkLeft(lbl, note) {
+  var d = el("div");
+  d.appendChild(el("div","b-row-lbl",lbl));
+  d.appendChild(el("div","b-row-note",note));
+  return d;
+}
+
+function makeSelector(opts, getSel, cb) {
+  var w = el("div","b-block");
+  opts.forEach(function(o,i){
+    var r = el("div","b-row"+(getSel()===i?" on":"")+(o.gag?" gag":""));
+    r.appendChild(mkLeft((o.gag&&getSel()===i?"😬 ":"")+o.lbl, o.note));
+    r.appendChild(el("div","b-row-price",fmtPP(o.pp)));
+    r.addEventListener("click",function(){ cb(i); renderBudget(); });
+    w.appendChild(r);
+  });
+  return w;
+}
+
+function renderBudget() {
+  var app = document.getElementById("budget-app");
+  if (!app) return;
+  app.innerHTML = "";
+
+  var shared = 0;
+  var kassieTotal = 0;
+
+  // Controls
+  var ctrl = el("div","b-ctrl");
+  var cg = el("div","b-cg");
+  cg.appendChild(el("span","b-cl","Paying girls"));
+  var bm = el("button","b-cb","−"); bm.onclick=function(){ ng=Math.max(6,Math.min(14,ng-1)); document.getElementById("b-gc").textContent=ng; renderBudget(); };
+  var gcspan = el("span","b-cv",""); gcspan.id="b-gc"; gcspan.textContent=ng;
+  var bp = el("button","b-cb","+"); bp.onclick=function(){ ng=Math.max(6,Math.min(14,ng+1)); document.getElementById("b-gc").textContent=ng; renderBudget(); };
+  cg.appendChild(bm); cg.appendChild(gcspan); cg.appendChild(bp);
+  ctrl.appendChild(cg);
+  var hint = el("div","b-cg"); hint.style.fontSize="11px"; hint.style.color="rgba(240,236,228,0.3)"; hint.textContent="Click to select · uncheck to not participate";
+  ctrl.appendChild(hint);
+  app.appendChild(ctrl);
+
+  // Hero total placeholder — fill after calc
+  var heroDiv = el("div","b-hero"); heroDiv.id="b-hero-div"; app.appendChild(heroDiv);
+
+  // Flight
+  var flRow = el("div","b-fl");
+  var flLeft = el("div"); flLeft.className="b-fll";
+  var flLbl = el("div","b-fll","Flight cost per person — edit if different");
+  var flNote = el("div","b-fln","Southwest direct · Oct 3 11:10am / Oct 6 2:20pm return");
+  flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
+  var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
+  flRight.appendChild(el("span","b-ksym","$"));
+  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=327; flInp.min=0; flInp.max=2000;
+  flInp.addEventListener("input",function(){ renderBudget(); });
+  flRight.appendChild(flInp);
+  flRow.appendChild(flLeft); flRow.appendChild(flRight);
+  app.appendChild(flRow);
+
+  // Fixed
+  app.appendChild(el("div","b-st","Fixed costs — uncheck to not participate"));
+  var fixedList = el("div","b-items"); app.appendChild(fixedList);
+  fixedItems.forEach(function(item,i){
+    var tot = item.total||(item.pp*ng);
+    var pp = tot/ng;
+    if(item.on) shared+=pp;
+    var d = el("div","b-li"+(item.on?" lit":" dim"));
+    var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
+    cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
+    var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
+    var tag = el("span","b-tag b-tg","split");
+    var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
+    d.appendChild(cb); d.appendChild(ln); d.appendChild(tag); d.appendChild(lr);
+    fixedList.appendChild(d);
+  });
+
+  // Sat
+  app.appendChild(el("div","b-div","Saturday · The Convoy"));
+  app.appendChild(el("div","b-st","Dinner — select one"));
+  shared += satD[satSel].pp;
+  var sdEl = el("div"); app.appendChild(sdEl);
+  sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
+
+  // Sun
+  app.appendChild(el("div","b-div","Sunday · The Shells"));
+  app.appendChild(el("div","b-st","Morning activity — select one"));
+  var smO=sunM[sunMSel]; shared+=smO.pp+(smO.uber||0);
+  var smEl=el("div"); app.appendChild(smEl);
+  smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
+  app.appendChild(el("div","b-st","Lunch — select one"));
+  shared+=sunL[sunLSel].pp;
+  var slEl=el("div"); app.appendChild(slEl);
+  slEl.appendChild(makeSelector(sunL,function(){return sunLSel;},function(i){sunLSel=i;}));
+  app.appendChild(el("div","b-st","Dinner — select one"));
+  shared+=sunD[sunDSel].pp;
+  var sdnEl=el("div"); app.appendChild(sdnEl);
+  sdnEl.appendChild(makeSelector(sunD,function(){return sunDSel;},function(i){sunDSel=i;}));
+
+  // Clubs
+  app.appendChild(el("div","b-st","Sunday night — clubs (optional)"));
+  var cw=el("div","b-block"); app.appendChild(cw);
+  clubs.forEach(function(c,i){
+    if(c.on) shared+=c.pp;
+    var r=el("div","b-mrow"+(c.on?" on":""));
+    var mc=el("div","b-mck",c.on?"✓":"");
+    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); mb.appendChild(el("div","b-row-note",c.note));
+    var mp=el("div","b-row-price",c.pp===0?"Free":fmt(c.pp)+"/pp");
+    r.appendChild(mc); r.appendChild(mb); r.appendChild(mp);
+    r.addEventListener("click",function(){ clubs[i].on=!clubs[i].on; renderBudget(); });
+    cw.appendChild(r);
+  });
+
+  // Mon
+  app.appendChild(el("div","b-div","Monday · The Coven"));
+  app.appendChild(el("div","b-st","Morning + afternoon — check all that apply"));
+  var mw=el("div","b-block"); app.appendChild(mw);
+  var fqUsed=false,swampOn=false,spaOn=false;
+  monActs.forEach(function(o,i){
+    if(o.on){ shared+=o.pp; if(o.uberKey==="fq"&&!fqUsed){shared+=15;fqUsed=true;} if(o.uberKey==="swamp")swampOn=true; if(o.uberKey==="walk")spaOn=true; }
+    var r=el("div","b-mrow"+(o.on?" on":""));
+    var mc=el("div","b-mck",o.on?"✓":"");
+    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",o.lbl)); mb.appendChild(el("div","b-row-note",o.note));
+    var mp=el("div","b-row-price",fmtPP(o.pp));
+    r.appendChild(mc); r.appendChild(mb); r.appendChild(mp);
+    r.addEventListener("click",function(){ monActs[i].on=!monActs[i].on; renderBudget(); });
+    mw.appendChild(r);
+  });
+  if(swampOn&&spaOn){ var cfl=el("div","b-conflict","Heads up — swamp tour and spa morning may be hard to fit on the same day."); cfl.style.marginTop="4px"; app.appendChild(cfl); }
+
+  app.appendChild(el("div","b-st","Dinner — select one"));
+  shared+=monD[monDSel].pp;
+  var mdEl=el("div"); app.appendChild(mdEl);
+  mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
+
+  app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
+  shared+=ghostOpts[ghostSel].pp;
+  var gEl=el("div"); app.appendChild(gEl);
+  gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
+
+  app.appendChild(el("div","b-st","Nightcap (optional)"));
+  var nO=nightOpts[nightSel]; shared+=nO.pp+(nO.uber||0);
+  var nEl=el("div"); app.appendChild(nEl);
+  nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
+
+  // Kassie
+  app.appendChild(el("div","b-st","Kassie's expenses — click to contribute"));
+  var kl=el("div","b-items"); app.appendChild(kl);
+  kassItems.forEach(function(item,i){
+    var amt=parseFloat(item.amount)||0;
+    var ppEach=amt/ng;
+    if(item.on){shared+=ppEach;kassieTotal+=ppEach;}
+    var d=el("div","b-kli"+(item.on?" on":""));
+    var kck=el("div","b-kck",item.on?"✓":"");
+    var ln=el("div","b-ln");
+    var nm=el("div","b-ln-name",item.name); nm.style.cursor="pointer";
+    var nt=el("div","b-ln-note",item.note+" · Total: "+fmt(item.total));
+    ln.appendChild(nm); ln.appendChild(nt);
+    if(item.on){
+      var kr=el("div","b-krow");
+      var shareAmt=Math.round(item.total/ng);
+      var sBtn=el("button","b-kbtn"+(item.mode==="share"?" active":""),"1/"+ng+" share = "+fmt(shareAmt));
+      sBtn.addEventListener("click",function(e){e.stopPropagation();kassItems[i].mode="share";kassItems[i].amount=shareAmt;renderBudget();});
+      var sym=el("span","b-ksym","$");
+      var inp=document.createElement("input"); inp.className="b-kinp"; inp.type="number"; inp.min=0; inp.max=9999; inp.step=5;
+      inp.value=item.mode==="custom"?(amt||""):""; inp.placeholder=item.mode==="share"?"":("custom");
+      if(item.mode==="share") inp.style.opacity="0.4";
+      var kpp=el("span","b-kpp","= "+fmt(ppEach)+"/person");
+      inp.addEventListener("click",function(e){e.stopPropagation();kassItems[i].mode="custom";renderBudget();});
+      inp.addEventListener("input",function(e){e.stopPropagation();kassItems[i].mode="custom";kassItems[i].amount=parseFloat(e.target.value)||0;kpp.textContent="= "+fmt(kassItems[i].amount/ng)+"/person";});
+      inp.addEventListener("change",function(e){e.stopPropagation();renderBudget();});
+      kr.appendChild(sBtn); kr.appendChild(sym); kr.appendChild(inp); kr.appendChild(kpp);
+      ln.appendChild(kr);
+    }
+    var tag=el("span","b-tag b-tk","Kassie");
+    var lr=el("div","b-lr");
+    lr.appendChild(el("div","b-lc",item.on?fmt(amt):fmt(item.total)+" total"));
+    lr.appendChild(el("div","b-lp",item.on?(ppEach>0?"+"+fmt(ppEach)+"/person":"set amount"):"click to contribute"));
+    d.appendChild(kck); d.appendChild(ln); d.appendChild(tag); d.appendChild(lr);
+    function doToggle(e){ if(e.target.tagName==="INPUT"||e.target.tagName==="BUTTON")return; e.stopPropagation(); kassItems[i].on=!kassItems[i].on; if(kassItems[i].on&&kassItems[i].amount===0){kassItems[i].mode="share";kassItems[i].amount=Math.round(kassItems[i].total/ng);} renderBudget(); }
+    d.addEventListener("click",doToggle);
+    kl.appendChild(d);
+  });
+
+  // Ref
+  app.appendChild(el("div","b-st","Not included in total — personal reference"));
+  var ref=el("div","b-ref"); app.appendChild(ref);
+  [["Bar tabs / drinks each night","$50–100/night"],["Outfits — all 3 themed nights","$80–300 est."],["Tips — performers, tour guides","$20–40"],["Souvenirs, crystals, voodoo dolls","$20–60"]].forEach(function(r){
+    var row=el("div","b-rrow"); row.appendChild(el("div","b-rl",r[0])); row.appendChild(el("div","b-rv",r[1])); ref.appendChild(row);
+  });
+
+  var nb=el("div","b-notebox"); nb.innerHTML="<strong>Airbnb note:</strong> $3,066 ÷ "+ng+" = "+fmt(3066/ng)+"/person. Girls confirm by July. If 3+ drop, alternative explored.<br><br><strong>Collecting:</strong> Venmo or Zelle to MOH before the trip.";
+  app.appendChild(nb);
+
+  // Fill hero
+  var flight=parseInt(document.getElementById("b-flight")?document.getElementById("b-flight").value:327)||327;
+  var total=shared+flight;
+  var hd=document.getElementById("b-hero-div");
+  if(hd){
+    hd.innerHTML='<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(shared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flight)+'</span></div><div class="b-hc">Kassie contributions <span>'+(kassieTotal>0?"+"+fmt(kassieTotal):"none selected")+'</span></div></div>';
+  }
+
+  // Update Kassie goal tracker
+  renderGoal();
+}
+
+// ── KASSIE GOAL TRACKER ──────────────────────────────────────
+var goalDefs = [
+  { name:"Airbnb share", total:341 },
+  { name:"Ghost tour ticket", total:44 },
+  { name:"Flight contribution", total:327 },
+  { name:"Morning activity", total:82 },
+  { name:"Dinner — one night", total:80 },
+  { name:"Bridal sash + extras", total:55 },
+];
+
+function renderGoal() {
+  var totalGoal = 0;
+  var totalPledged = 0;
+  goalDefs.forEach(function(g,i){
+    totalGoal += g.total;
+  });
+
+  var gi = document.getElementById("goal-items");
+  if (!gi) return;
+  gi.innerHTML = "";
+
+  kassItems.forEach(function(item,i){
+    var pledged = item.on ? (parseFloat(item.amount)||0) : 0;
+    totalPledged += pledged;
+    var pct = Math.min(100, goalDefs[i] ? Math.round(pledged/goalDefs[i].total*100) : 0);
+
+    var row = el("div","goal-item");
+    var hdr = el("div","goal-item-header");
+    hdr.appendChild(el("div","goal-item-name",item.name));
+    hdr.appendChild(el("div","goal-item-amounts",(pledged>0?fmt(pledged)+" pledged":"not pledged")+" of "+fmt(goalDefs[i]?goalDefs[i].total:0)));
+    var bar = el("div","goal-bar");
+    var fill = el("div","goal-fill"); fill.style.width=pct+"%";
+    bar.appendChild(fill);
+    row.appendChild(hdr); row.appendChild(bar);
+    gi.appendChild(row);
+  });
+
+  var totalPct = Math.min(100, Math.round(totalPledged/totalGoal*100));
+  var tv = document.getElementById("goal-total-val");
+  var ts = document.getElementById("goal-sub");
+  if(tv) tv.textContent = fmt(totalPledged);
+  if(ts) ts.textContent = "of "+fmt(totalGoal)+" goal ("+totalPct+"% covered)";
+}
+
+// Init
+renderBudget();
+renderGoal();
+</script>
+</body>
+</html>
