@@ -739,6 +739,54 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 .b-rv{color:rgba(240,236,228,0.3);font-style:italic}
 .b-notebox{margin-top:1rem;background:rgba(240,236,228,0.04);border-radius:10px;padding:10px 14px;font-size:12px;color:rgba(240,236,228,0.4);line-height:1.6}
 .b-notebox strong{color:rgba(240,236,228,0.7);font-weight:500}
+
+/* PAY YOUR SHARE */
+.pay-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--pearl-dim); margin-bottom:32px; line-height:1.7; }
+.pay-primary { display:flex; align-items:center; gap:20px; padding:24px 28px; border:0.5px solid rgba(94,207,207,0.4); border-radius:16px; background:var(--teal-faint); text-decoration:none; color:var(--pearl); margin-bottom:16px; transition:border-color 0.2s,background 0.2s,transform 0.15s; }
+.pay-primary:hover { border-color:var(--teal); background:rgba(94,207,207,0.12); transform:translateY(-2px); }
+.pay-primary .pay-icon { font-size:36px; flex-shrink:0; }
+.pay-primary .pay-name { font-family:'Cinzel',serif; font-size:15px; letter-spacing:0.1em; color:var(--teal); margin-bottom:4px; }
+.pay-primary .pay-detail { font-size:12px; color:var(--pearl-dim); }
+.pay-primary .pay-action { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-top:8px; }
+.pay-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+@media(max-width:500px){ .pay-row { grid-template-columns:1fr; } }
+.pay-card { display:flex; flex-direction:column; gap:4px; padding:18px 20px; border:0.5px solid var(--border); border-radius:14px; background:var(--pearl-faint); text-decoration:none; color:var(--pearl); transition:border-color 0.2s,background 0.2s,transform 0.15s; }
+.pay-card:hover { border-color:var(--border-teal); background:var(--teal-faint); transform:translateY(-2px); }
+.pay-card .pay-icon { font-size:22px; margin-bottom:4px; }
+.pay-card .pay-name { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.1em; color:var(--pearl); }
+.pay-card .pay-detail { font-size:11px; color:var(--pearl-dim); }
+.pay-card .pay-action { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); margin-top:6px; }
+.pay-note { font-size:11px; color:rgba(240,236,228,0.3); text-align:center; line-height:1.7; }
+
+/* PHOTO ALBUM */
+.album-card { background:var(--pearl-faint); border:0.5px solid var(--border); border-radius:16px; padding:48px 32px; text-align:center; transition:border-color 0.2s; }
+.album-card:hover { border-color:var(--border-teal); }
+.album-icon { font-size:52px; margin-bottom:16px; filter:drop-shadow(0 0 20px rgba(94,207,207,0.3)); }
+.album-card p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
+.album-note { margin-top:20px; font-size:12px; color:rgba(240,236,228,0.28); line-height:1.6; font-style:italic; }
+
+/* INSPO BOARD */
+.inspo-card { background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; padding:48px 32px; text-align:center; transition:border-color 0.2s; }
+.inspo-card:hover { border-color:var(--pink); }
+.inspo-icon { font-size:52px; margin-bottom:16px; }
+.inspo-card p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
+.inspo-btn { background:var(--pink) !important; color:var(--pearl) !important; }
+.inspo-note { margin-top:20px; font-size:12px; color:rgba(240,236,228,0.28); line-height:1.6; font-style:italic; }
+
+/* PLAYLIST */
+.playlist-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
+.playlist-note { margin-top:16px; font-size:12px; color:rgba(240,236,228,0.3); text-align:center; }
+
+/* STICKY MUSIC PLAYER */
+.sticky-player { position:fixed; bottom:24px; right:24px; z-index:200; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
+.sp-pill { display:flex; align-items:center; gap:10px; background:rgba(8,6,8,0.92); border:0.5px solid var(--border-teal); border-radius:40px; padding:10px 18px 10px 14px; cursor:pointer; backdrop-filter:blur(12px); color:var(--pearl); transition:border-color 0.2s,background 0.2s; }
+.sp-pill:hover { border-color:var(--teal); }
+.sp-note { color:var(--teal); font-size:16px; animation:notePulse 2s ease-in-out infinite; }
+@keyframes notePulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+.sp-label { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--pearl-dim); }
+.sp-arrow { font-size:9px; color:var(--teal); transition:transform 0.2s; }
+.sp-embed { width:300px; overflow:hidden; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.6); display:none; }
+.sp-embed.open { display:block; }
 </style>
 </head>
 <body>
@@ -752,6 +800,8 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
     <li><a href="#budget">Budget</a></li>
     <li><a href="#kassie">For Kassie</a></li>
     <li><a href="#booking">Book Now</a></li>
+    <li><a href="#pay">Pay</a></li>
+    <li><a href="#playlist">Playlist</a></li>
     <li><a href="#form">The Form</a></li>
   </ul>
 </nav>
@@ -1102,6 +1152,69 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   </div>
 </section>
 
+<!-- PAY YOUR SHARE -->
+<section id="pay">
+  <div class="section-eyebrow">Split the Cost</div>
+  <div class="section-title">Pay Your Share</div>
+  <p class="pay-intro">Use the budget calculator above to find your number, then send it here.<br>Include your name in the note. Kassie's covered by the Clan.</p>
+  <a href="https://www.paypal.com/pool/9p7uOMnbRC?sr=wccr" class="pay-primary" target="_blank" rel="noopener">
+    <div class="pay-icon">💰</div>
+    <div>
+      <div class="pay-name">PayPal Pool — Voodoo Clam Clan Fund</div>
+      <div class="pay-detail">Recommended · everyone contributes to one shared pot · tracks the total</div>
+      <div class="pay-action">Contribute to Pool →</div>
+    </div>
+  </a>
+  <div class="pay-row">
+    <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-card" target="_blank" rel="noopener">
+      <div class="pay-icon">📱</div>
+      <div class="pay-name">Venmo</div>
+      <div class="pay-detail">@anzhelikasuchkova · Apple Pay &amp; Google Pay work here too</div>
+      <div class="pay-action">Open Venmo →</div>
+    </a>
+    <a href="https://paypal.me/AnzhelikaSuchkova" class="pay-card" target="_blank" rel="noopener">
+      <div class="pay-icon">🔵</div>
+      <div class="pay-name">PayPal.me</div>
+      <div class="pay-detail">paypal.me/AnzhelikaSuchkova · direct payment</div>
+      <div class="pay-action">Send via PayPal →</div>
+    </a>
+  </div>
+  <p class="pay-note">Questions about your share? Text the MOH. Don't ghost the group chat.</p>
+</section>
+
+<!-- PHOTO ALBUM -->
+<section id="album">
+  <div class="section-eyebrow">The Archives</div>
+  <div class="section-title">Photo Album</div>
+  <div class="album-card">
+    <div class="album-icon">📸</div>
+    <p>Drop your photos, videos, and candids here as we go.<br>Everyone can upload — just needs a Google account.</p>
+    <a href="https://drive.google.com/drive/folders/1z4sNEXFJjPG7du2rk1j56uYTLGcXpKIf?usp=sharing" class="form-btn" target="_blank" rel="noopener">Open the Album →</a>
+    <div class="album-note">The good ones, the chaotic ones, the ones Kassie doesn't know were taken yet.</div>
+  </div>
+</section>
+
+<!-- INSPO BOARD -->
+<section id="inspo">
+  <div class="section-eyebrow">The Vision</div>
+  <div class="section-title">Inspo Board</div>
+  <div class="inspo-card">
+    <div class="inspo-icon">📌</div>
+    <p>Outfits, accessories, vibes, and décor.<br>Everything that goes into four nights of ritual glamour in New Orleans.</p>
+    <a href="https://pin.it/3T1L8vTab" class="form-btn inspo-btn" target="_blank" rel="noopener">Open Pinterest Board →</a>
+    <div class="inspo-note">Save anything that feels dark, bayou, iridescent, or like it belongs to the Clan.</div>
+  </div>
+</section>
+
+<!-- PLAYLIST -->
+<section id="playlist">
+  <div class="section-eyebrow">The Soundtrack</div>
+  <div class="section-title">Weekend Playlist</div>
+  <p class="playlist-intro">This is ours — add your songs. The only rule is it has to slap.</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="f-clam">🦪</div>
@@ -1109,7 +1222,26 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   <p>New Orleans · October 3–6, 2026 · For Kassie 🖤</p>
 </footer>
 
+<!-- STICKY MUSIC PLAYER -->
+<div class="sticky-player">
+  <div id="sp-embed" class="sp-embed">
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6W9rbkBueZQrwuzO24GHZ2?utm_source=generator&theme=0" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  <button class="sp-pill" onclick="togglePlayer()">
+    <span class="sp-note">♪</span>
+    <span class="sp-label">The Weekend Song</span>
+    <span class="sp-arrow" id="sp-arrow">▴</span>
+  </button>
+</div>
+
 <script>
+function togglePlayer() {
+  var embed = document.getElementById('sp-embed');
+  var arrow = document.getElementById('sp-arrow');
+  var open = embed.classList.toggle('open');
+  arrow.textContent = open ? '▾' : '▴';
+}
+
 // Night accordion
 function toggleNight(header) {
   var body = header.nextElementSibling;
