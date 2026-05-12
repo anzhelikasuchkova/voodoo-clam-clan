@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voodoo Clam Clan 🦪 · Planning Form</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080608;
+  --pearl: #f0ece4;
+  --pearl-dim: rgba(240,236,228,0.55);
+  --pearl-faint: rgba(240,236,228,0.12);
+  --teal: #5ecfcf;
+  --teal-dim: rgba(94,207,207,0.2);
+  --teal-faint: rgba(94,207,207,0.07);
+  --gold: #c9a84c;
+  --pink: #D4537E;
+  --pink-dim: rgba(212,83,126,0.15);
+  --border: rgba(240,236,228,0.1);
+  --border-teal: rgba(94,207,207,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--pearl);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(94,207,207,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 90%, rgba(201,168,76,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 10%, rgba(212,83,126,0.04) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 24px 96px;
+}
+
+/* HEADER */
+.form-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.form-header a {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 32px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.form-header a:hover { opacity: 1; }
+
+.form-clam { font-size: 52px; margin-bottom: 12px; filter: drop-shadow(0 0 30px rgba(94,207,207,0.35)); }
+
+.form-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(22px, 5vw, 36px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--teal) 0%, var(--pearl) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--pearl-dim);
+  line-height: 1.6;
+}
+
+/* FORM SECTIONS */
+.f-section {
+  margin-bottom: 40px;
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.f-section-head {
+  padding: 16px 22px;
+  background: var(--pearl-faint);
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.f-section-icon { font-size: 18px; flex-shrink: 0; }
+
+.f-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.f-section-body { padding: 22px; display: flex; flex-direction: column; gap: 20px; }
+
+/* FIELDS */
+.f-field { display: flex; flex-direction: column; gap: 7px; }
+
+.f-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+}
+
+.f-required { color: var(--pink); margin-left: 3px; }
+
+.f-note {
+  font-size: 11px;
+  color: rgba(240,236,228,0.35);
+  line-height: 1.5;
+  margin-top: -2px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea,
+select {
+  background: rgba(240,236,228,0.05);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--pearl);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  width: 100%;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--teal);
+  background: var(--teal-faint);
+}
+
+input::placeholder, textarea::placeholder { color: rgba(240,236,228,0.25); }
+
+textarea { resize: vertical; min-height: 90px; }
+
+select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235ecfcf' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+select option { background: #1a1420; color: var(--pearl); }
+
+/* RADIO / CHECKBOX CARDS */
+.f-options { display: flex; flex-direction: column; gap: 8px; }
+
+.f-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.f-opt:hover { border-color: var(--border-teal); background: var(--teal-faint); }
+
+.f-opt input[type="radio"],
+.f-opt input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--teal);
+  cursor: pointer;
+}
+
+.f-opt-body { flex: 1; }
+.f-opt-lbl { font-size: 13px; font-weight: 500; color: var(--pearl); line-height: 1.3; }
+.f-opt-note { font-size: 11px; color: rgba(240,236,228,0.4); margin-top: 2px; line-height: 1.4; }
+
+/* HYPE SLIDER */
+.hype-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--teal) 0%, var(--gold) 100%);
+  outline: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--teal);
+  cursor: pointer;
+  border: 2px solid var(--black);
+  box-shadow: 0 0 8px rgba(94,207,207,0.5);
+}
+
+.hype-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: rgba(240,236,228,0.3);
+  letter-spacing: 0.1em;
+}
+
+.hype-val {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--teal);
+}
+
+/* KASSIE SECTION */
+.kassie-intro {
+  font-size: 12px;
+  color: var(--pearl-dim);
+  line-height: 1.6;
+  padding: 12px 16px;
+  background: rgba(212,83,126,0.08);
+  border: 0.5px solid rgba(212,83,126,0.2);
+  border-radius: 10px;
+}
+
+.f-kopt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.f-kopt:hover { border-color: rgba(212,83,126,0.4); background: var(--pink-dim); }
+
+.f-kopt input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+  flex-shrink: 0;
+  accent-color: var(--pink);
+  cursor: pointer;
+}
+
+.f-kopt .f-opt-lbl { color: var(--pearl); }
+.f-kopt .f-opt-note { color: rgba(240,236,228,0.4); }
+
+/* SUBMIT */
+.f-submit-wrap { text-align: center; margin-top: 48px; }
+
+.f-submit {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  border: none;
+  border-radius: 40px;
+  padding: 18px 52px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  display: inline-block;
+}
+
+.f-submit:hover { opacity: 0.85; transform: translateY(-2px); }
+
+.f-submit-note {
+  margin-top: 14px;
+  font-size: 11px;
+  color: rgba(240,236,228,0.3);
+}
+
+/* SUCCESS STATE */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 80px 24px;
+}
+
+.success-screen.show { display: block; }
+.form-wrap.hidden { display: none; }
+
+.success-clam { font-size: 64px; margin-bottom: 20px; filter: drop-shadow(0 0 30px rgba(94,207,207,0.4)); }
+
+.success-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(20px, 4vw, 30px);
+  margin-bottom: 16px;
+  color: var(--pearl);
+}
+
+.success-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--pearl-dim);
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.back-btn {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  border: 0.5px solid var(--border-teal);
+  border-radius: 40px;
+  padding: 12px 28px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover { background: var(--teal-faint); }
+
+@media(max-width: 480px) {
+  .page { padding: 40px 16px 80px; }
+  .f-section-body { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <div><a href="/" target="_self">← Back to voodooclam.netlify.app</a></div>
+    <div class="form-clam">🦪</div>
+    <div class="form-title">Voodoo Clam Clan<br>Planning Form</div>
+    <p class="form-sub">New Orleans · Oct 3–6, 2026 · Takes 5 minutes.<br>Do it before you forget you're going.</p>
+  </div>
+
+  <!-- SUCCESS SCREEN -->
+  <div class="success-screen" id="success">
+    <div class="success-clam">🦪</div>
+    <div class="success-title">You're in the Clan.</div>
+    <p class="success-sub">The MOH has your answers.<br>Pack something dark and iridescent.<br>New Orleans doesn't know what's coming.</p>
+    <a href="/" class="back-btn">← Back to the site</a>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-wrap" id="form-wrap">
+  <form name="vcc-planning" method="POST" data-netlify="true" id="vcc-form">
+    <input type="hidden" name="form-name" value="vcc-planning">
+
+    <!-- ABOUT YOU -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">👤</div>
+        <div class="f-section-label">About You</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label" for="name">Your Name <span class="f-required">*</span></label>
+          <input type="text" id="name" name="name" placeholder="First and last" required>
+        </div>
+        <div class="f-field">
+          <label class="f-label" for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="So the group chat actually reaches you">
+        </div>
+      </div>
+    </div>
+
+    <!-- THE TEE -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">👕</div>
+        <div class="f-section-label">The Voodoo Clam Clan Tee</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label" for="tshirt">T-Shirt Size <span class="f-required">*</span></label>
+          <p class="f-note">Worn Saturday night (bar crawl with the boys) + Sunday morning. Unisex sizing — size up if between.</p>
+          <select id="tshirt" name="tshirt" required>
+            <option value="" disabled selected>Select your size</option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="2XL">2XL</option>
+            <option value="3XL">3XL</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- AIRBNB -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🏠</div>
+        <div class="f-section-label">The Airbnb</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Are you staying at the Airbnb? <span class="f-required">*</span></label>
+          <p class="f-note">2012 Oretha Castle Haley Blvd · private pool · ~$341/person for 4 nights. Please answer by July — if 3+ girls drop, we find an alternative.</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="airbnb" value="Yes — I'm in" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Yes — I'm in</div>
+                <div class="f-opt-note">I'll pay my share before the trip</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="airbnb" value="Not sure yet">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Not sure yet</div>
+                <div class="f-opt-note">I'll confirm by July</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="airbnb" value="No — I'll find my own accommodation">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">No — I'll find my own accommodation</div>
+                <div class="f-opt-note">Still coming to events, just not staying there</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY NIGHT DINNER -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🕶️</div>
+        <div class="f-section-label">Saturday Night · The Convoy</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Saturday Dinner / Night Out <span class="f-required">*</span></label>
+          <p class="f-note">The boys join this night (~20 people total). What do you want to do?</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="sat_dinner" value="French Quarter bar crawl + street food" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">French Quarter bar crawl + street food</div>
+                <div class="f-opt-note">In our Voodoo Clam Clan tees · oysters at Felix's · go-cups · meet the boys · ~$35pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sat_dinner" value="Sit-down dinner then bourbon/cigar bar">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Sit-down dinner then bourbon or cigar bar</div>
+                <div class="f-opt-note">Dickie Brennan's Bourbon House or Crescent City Cigar · ~$70pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sat_dinner" value="Arnaud's">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Arnaud's — white tablecloth French Quarter classic</div>
+                <div class="f-opt-note">Full sit-down · old-school NOLA · ~$100pp · would need advance reservation</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUNDAY MORNING -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🦪</div>
+        <div class="f-section-label">Sunday Morning · The Shells</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Sunday Morning Activity <span class="f-required">*</span></label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="sun_morning" value="Drag Brunch — The Country Club (1pm)" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Drag Brunch — The Country Club (1pm)</div>
+                <div class="f-opt-note">Longest-running drag brunch in NOLA · ~$65pp all-in · must book ahead · +$14pp Uber</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_morning" value="Spa day — Spa Isbell, Magazine St">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Spa day — Spa Isbell, Magazine St</div>
+                <div class="f-opt-note">Walking distance · massage + facial packages · ~$100pp · book ahead</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_morning" value="Free pool day — stay home">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Free pool day — stay at the Airbnb</div>
+                <div class="f-opt-note">Sleep in · recover · backyard vibes · no judgment</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label">Sunday Lunch <span class="f-required">*</span></label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="sun_lunch" value="Turkey & Wolf — Magazine St" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Turkey &amp; Wolf — Magazine St</div>
+                <div class="f-opt-note">Iconic funky sandwiches · ~$25pp · walkable</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_lunch" value="Willa Jean — CBD">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Willa Jean — CBD</div>
+                <div class="f-opt-note">Bakery-forward · ~$35pp · short Uber</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_lunch" value="DoorDash at the Airbnb">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">DoorDash at the Airbnb</div>
+                <div class="f-opt-note">Decompress at home · ~$22pp</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label">Sunday Dinner <span class="f-required">*</span></label>
+          <p class="f-note">Rank your top choice.</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="sun_dinner" value="Juan's Flying Burrito — Magazine St" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Juan's Flying Burrito — Magazine St</div>
+                <div class="f-opt-note">Creole taqueria · tacos, margs · ~$20pp · walkable</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_dinner" value="Peche Seafood Grill — Warehouse District">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Pêche Seafood Grill — Warehouse District</div>
+                <div class="f-opt-note">James Beard winner · wood-fired Gulf seafood · ~$60pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_dinner" value="Cochon — Warehouse District">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Cochon — Warehouse District</div>
+                <div class="f-opt-note">Michelin Bib Gourmand Cajun · ~$62pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sun_dinner" value="Gris-Gris — Magazine St">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Gris-Gris — Magazine St</div>
+                <div class="f-opt-note">Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MONDAY -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🔮</div>
+        <div class="f-section-label">Monday · The Coven</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Monday Morning — check all you'd want to do</label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="checkbox" name="mon_morning" value="Airboat swamp tour + gator feeding">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Airboat swamp tour + gator marshmallow feeding</div>
+                <div class="f-opt-note">~90 min · $67pp + ~$10 Uber = $77pp all-in · departs Westwego</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="mon_morning" value="Bottom of the Cup Tea Room — tarot + tea">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Bottom of the Cup Tea Room — tarot + tea</div>
+                <div class="f-opt-note">French Quarter · ~$35pp · Uber shared with French Market if both selected</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="mon_morning" value="French Market + crystal/voodoo shopping">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">French Market + crystal/voodoo shopping</div>
+                <div class="f-opt-note">Free to browse · budget $20–50pp for purchases · shares Uber with Tea Room</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="mon_morning" value="Belladonna Day Spa — Magazine St">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Belladonna Day Spa — Magazine St</div>
+                <div class="f-opt-note">~$75pp · walking distance · dry sauna included</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label">Monday Dinner <span class="f-required">*</span></label>
+          <p class="f-note">Ghost tour starts 8pm — dinner before it.</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="mon_dinner" value="Muriel's Jackson Square" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Muriel's Jackson Square — haunted restaurant</div>
+                <div class="f-opt-note">3-course + drinks/tip ~$95pp · steps from ghost tour · most atmospheric</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="mon_dinner" value="Cafe Amelie — candlelit courtyard">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Café Amélie — candlelit courtyard</div>
+                <div class="f-opt-note">Boho-coven perfection · ~$65pp · French Quarter · call ahead for group</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="mon_dinner" value="Compere Lapin — Warehouse District">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Compère Lapin — Warehouse District</div>
+                <div class="f-opt-note">Michelin recognized · Caribbean Creole · ~$65pp · 10 min Uber to ghost tour</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label">Ghost Tour — VIP HELLVISION <span class="f-required">*</span></label>
+          <p class="f-note">Ghost, Crime, Voodoo &amp; Vampire Tour · 8pm French Quarter · $44pp + Uber</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="ghost_tour" value="Yes — I'm in for the ghost tour" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Yes — I'm in</div>
+                <div class="f-opt-note">$60pp all-in with Uber · already being booked on Viator</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="ghost_tour" value="No — I'll skip the ghost tour">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">No — I'll skip</div>
+                <div class="f-opt-note">No judgment, but the ghost tour is going to be incredible</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label">Monday Nightcap <span class="f-required">*</span></label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="mon_nightcap" value="Bayou Bar — Pontchartrain Hotel" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Bayou Bar — Pontchartrain Hotel</div>
+                <div class="f-opt-note">7 min walk · dark, live jazz · drinks ~$20–30pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="mon_nightcap" value="Frenchmen Street bar hop">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Frenchmen Street bar hop</div>
+                <div class="f-opt-note">Live jazz, no cover · +$16pp Uber round trip</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="mon_nightcap" value="Head home after ghost tour">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Head home — call it a night</div>
+                <div class="f-opt-note">Checkout is 11am Tuesday</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRINKS + FOOD -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🥂</div>
+        <div class="f-section-label">Drinks + Food</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Drink preferences — check all that apply</label>
+          <div class="f-options">
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Wine"><div class="f-opt-body"><div class="f-opt-lbl">Wine</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Cocktails / mixed drinks"><div class="f-opt-body"><div class="f-opt-lbl">Cocktails / mixed drinks</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Champagne / Prosecco"><div class="f-opt-body"><div class="f-opt-lbl">Champagne / Prosecco</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Beer / seltzers"><div class="f-opt-body"><div class="f-opt-lbl">Beer / seltzers</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Tequila"><div class="f-opt-body"><div class="f-opt-lbl">Tequila</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Whiskey / bourbon"><div class="f-opt-body"><div class="f-opt-lbl">Whiskey / bourbon</div></div></label>
+            <label class="f-opt"><input type="checkbox" name="drinks" value="Non-drinker / mocktails only"><div class="f-opt-body"><div class="f-opt-lbl">Non-drinker / mocktails only</div></div></label>
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label" for="allergies">Food Allergies or Dietary Restrictions</label>
+          <input type="text" id="allergies" name="allergies" placeholder="None, or list them here">
+        </div>
+
+        <div class="f-field">
+          <label class="f-label" for="drunk_snack">Favorite drunk snack <span class="f-required">*</span></label>
+          <p class="f-note">This is important. The Airbnb snack situation depends on this answer.</p>
+          <input type="text" id="drunk_snack" name="drunk_snack" placeholder="Be specific. Be honest." required>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOR KASSIE -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">🖤</div>
+        <div class="f-section-label">For Kassie</div>
+      </div>
+      <div class="f-section-body">
+        <p class="kassie-intro">The Clan covers Kassie's costs. Check the expenses you're willing to contribute to — the budget calculator on the main site shows exact amounts per person.</p>
+        <div class="f-options">
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's Airbnb share (~$38/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's Airbnb share</div>
+              <div class="f-opt-note">~$38/person split 9 ways</div>
+            </div>
+          </label>
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's ghost tour ticket (~$5/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's ghost tour ticket</div>
+              <div class="f-opt-note">~$5/person</div>
+            </div>
+          </label>
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's flight contribution (~$36/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's flight contribution</div>
+              <div class="f-opt-note">~$36/person</div>
+            </div>
+          </label>
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's morning activity (~$9/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's morning activity</div>
+              <div class="f-opt-note">~$9/person</div>
+            </div>
+          </label>
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's dinner one night (~$9/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's dinner — one night</div>
+              <div class="f-opt-note">~$9/person</div>
+            </div>
+          </label>
+          <label class="f-kopt">
+            <input type="checkbox" name="kassie_contrib" value="Kassie's bridal sash + extras (~$6/person)">
+            <div class="f-opt-body">
+              <div class="f-opt-lbl">Kassie's bridal sash + extras</div>
+              <div class="f-opt-note">~$6/person</div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- HYPE + NOTES -->
+    <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">✨</div>
+        <div class="f-section-label">Final Questions</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label" for="moh_note">Anything the MOH should know?</label>
+          <p class="f-note">Room preferences, concerns, allergies not mentioned, drama to avoid, secrets to keep.</p>
+          <textarea id="moh_note" name="moh_note" placeholder="Optional but appreciated..."></textarea>
+        </div>
+
+        <div class="f-field">
+          <label class="f-label" for="hype">Hype level going into this weekend <span class="f-required">*</span></label>
+          <div class="hype-wrap">
+            <div class="hype-val" id="hype-val">8</div>
+            <input type="range" id="hype" name="hype" min="1" max="10" value="8"
+              oninput="document.getElementById('hype-val').textContent = this.value">
+            <div class="hype-labels"><span>1 — I need convincing</span><span>10 — I was born for this</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="f-submit-wrap">
+      <button type="submit" class="f-submit">Submit to the Clan →</button>
+      <p class="f-submit-note">Your answers go straight to the MOH. No spam, no accounts needed.</p>
+    </div>
+
+  </form>
+  </div><!-- /form-wrap -->
+
+</div><!-- /page -->
+
+<script>
+document.getElementById('vcc-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form = this;
+  var data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString()
+  })
+  .then(function() {
+    document.getElementById('form-wrap').classList.add('hidden');
+    document.getElementById('success').classList.add('show');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  })
+  .catch(function(err) {
+    alert('Something went wrong — please try again or text the MOH directly.');
+    console.error(err);
+  });
+});
+</script>
+</body>
+</html>
