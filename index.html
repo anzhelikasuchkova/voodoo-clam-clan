@@ -740,6 +740,45 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 .b-notebox{margin-top:1rem;background:rgba(240,236,228,0.04);border-radius:10px;padding:10px 14px;font-size:12px;color:rgba(240,236,228,0.4);line-height:1.6}
 .b-notebox strong{color:rgba(240,236,228,0.7);font-weight:500}
 
+/* LOOKS + INSPO (redesigned with photos) */
+.look-night-block { margin-bottom:24px; border:0.5px solid var(--border); border-radius:16px; overflow:hidden; transition:border-color 0.2s; }
+.look-night-block:hover { border-color:var(--border-teal); }
+.look-night-hd { display:flex; align-items:center; gap:20px; padding:20px 24px; background:var(--pearl-faint); border-bottom:0.5px solid var(--border); }
+.look-night-num2 { font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:var(--teal); opacity:0.3; line-height:1; flex-shrink:0; }
+.look-night-date2 { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pearl-dim); margin-bottom:4px; }
+.look-night-title2 { font-family:'Cinzel',serif; font-size:18px; font-weight:500; color:var(--pearl); }
+.look-night-bd { padding:20px 24px 24px; }
+.look-brief { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
+@media(max-width:560px){ .look-brief { grid-template-columns:1fr; } }
+.look-person { padding:14px 16px; border-radius:10px; }
+.lp-kassie { background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); }
+.lp-clan { background:var(--teal-faint); border:0.5px solid var(--border-teal); }
+.look-person-lbl { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+.lp-kassie .look-person-lbl { color:var(--pink); }
+.lp-clan .look-person-lbl { color:var(--teal); }
+.look-person ul { list-style:none; display:flex; flex-direction:column; gap:4px; }
+.look-person ul li { font-size:12px; color:var(--pearl-dim); padding-left:12px; position:relative; line-height:1.4; }
+.look-person ul li::before { content:'—'; position:absolute; left:0; color:rgba(240,236,228,0.2); font-size:10px; }
+.look-photos { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+.look-photos img { width:100%; height:320px; object-fit:cover; border-radius:10px; display:block; transition:transform 0.3s; cursor:zoom-in; }
+.look-photos img:hover { transform:scale(1.02); }
+@media(max-width:560px){ .look-photos { grid-template-columns:1fr 1fr; } .look-photos img { height:200px; } }
+.looks-pinterest { margin-top:24px; text-align:center; }
+.looks-pinterest a { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pink); text-decoration:none; border:0.5px solid rgba(212,83,126,0.3); border-radius:40px; padding:10px 24px; display:inline-block; transition:background 0.2s; }
+.looks-pinterest a:hover { background:var(--pink-dim); }
+
+/* KASSIE COLLECTED BAR */
+.collected-wrap { margin-bottom:24px; padding:18px 20px; background:rgba(212,83,126,0.08); border:0.5px solid rgba(212,83,126,0.25); border-radius:12px; }
+.collected-label { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--pink); margin-bottom:10px; }
+.collected-amounts { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+.collected-val { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:500; color:var(--pearl); }
+.collected-goal-lbl { font-size:11px; color:var(--pearl-dim); }
+.collected-bar { height:6px; background:rgba(212,83,126,0.15); border-radius:3px; overflow:hidden; margin-bottom:8px; }
+.collected-fill { height:100%; background:linear-gradient(90deg,var(--pink),#e87fab); border-radius:3px; }
+.collected-note { font-size:11px; color:rgba(240,236,228,0.3); }
+.kassie-pool-btn { display:inline-block; margin-top:20px; font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pearl); background:var(--pink); border-radius:40px; padding:12px 28px; text-decoration:none; transition:opacity 0.2s; }
+.kassie-pool-btn:hover { opacity:0.85; }
+
 /* PAY YOUR SHARE */
 .pay-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--pearl-dim); margin-bottom:32px; line-height:1.7; }
 .pay-primary { display:flex; align-items:center; gap:20px; padding:24px 28px; border:0.5px solid rgba(94,207,207,0.4); border-radius:16px; background:var(--teal-faint); text-decoration:none; color:var(--pearl); margin-bottom:16px; transition:border-color 0.2s,background 0.2s,transform 0.15s; }
@@ -796,13 +835,13 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   <a href="#hero" class="nav-logo">🦪 VCC</a>
   <ul class="nav-links">
     <li><a href="#itinerary">Itinerary</a></li>
-    <li><a href="#looks">The Looks</a></li>
     <li><a href="#budget">Budget</a></li>
-    <li><a href="#kassie">For Kassie</a></li>
-    <li><a href="#booking">Book Now</a></li>
-    <li><a href="#pay">Pay</a></li>
-    <li><a href="#playlist">Playlist</a></li>
     <li><a href="#form">The Form</a></li>
+    <li><a href="#pay">Pay</a></li>
+    <li><a href="#kassie">For Kassie</a></li>
+    <li><a href="#looks">The Looks</a></li>
+    <li><a href="#playlist">Playlist</a></li>
+    <li><a href="#album">Album</a></li>
   </ul>
 </nav>
 
@@ -828,6 +867,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 <section id="itinerary">
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Four Nights,<br>Four Rituals</div>
+
   <div class="nights">
 
     <!-- Night 1 -->
@@ -989,63 +1029,6 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   </div>
 </section>
 
-<!-- LOOKS -->
-<section id="looks">
-  <div class="section-eyebrow">Dress Code</div>
-  <div class="section-title">The Looks</div>
-
-  <div class="looks-grid">
-    <div class="look-card kassie">
-      <div class="look-night">✦ For Kassie — every night</div>
-      <div class="look-title">She's always the most beautiful woman in the room</div>
-      <ul class="look-items">
-        <li>Night 1: White flowy dress · pearl accessories · black sunglasses</li>
-        <li>Night 2: Iridescent or pearl wrap dress · scallop detail if possible</li>
-        <li>Night 3: Deep emerald or plum boho maxi · goddess silhouette · crystals</li>
-        <li>Every silhouette is chosen intentionally: wrap, off-shoulder, flowy — effortlessly beautiful</li>
-      </ul>
-    </div>
-
-    <div class="look-card">
-      <div class="look-night">Saturday · Night 1</div>
-      <div class="look-title">The Convoy 🕶️</div>
-      <ul class="look-items">
-        <li>All black — any silhouette, your choice</li>
-        <li>Black sunglasses — mandatory for the group photo</li>
-        <li>Pearl jewelry — the common thread</li>
-        <li>Dark nails: black, plum, or burgundy</li>
-      </ul>
-    </div>
-
-    <div class="look-card">
-      <div class="look-night">Sunday · Night 2</div>
-      <div class="look-title">The Shells 🦪✨</div>
-      <ul class="look-items">
-        <li>Daytime: Voodoo Clam Clan tee (styled your way)</li>
-        <li>Night: sequins or iridescent — YOUR color</li>
-        <li>Teal, pink, silver, lilac, gold, coral, mint — all fair game</li>
-        <li>Boas, glitter, rhinestones, big hair — more is more</li>
-      </ul>
-    </div>
-
-    <div class="look-card">
-      <div class="look-night">Monday · Night 3</div>
-      <div class="look-title">The Coven 🔮</div>
-      <ul class="look-items">
-        <li>Flowing dark fabrics — maxi skirts, wrap dresses, lace</li>
-        <li>Jewel tones: deep purple, forest green, burgundy, midnight blue, rust</li>
-        <li>Layered jewelry: crystals, moonstone, evil eye</li>
-        <li>Boots encouraged — suede or leather</li>
-        <li>Morning: practical Coven (you WILL be on a boat/walking a lot)</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="kassie-note">
-    <div class="kn-title">✦ Clan Rule — Non-Negotiable</div>
-    Kassie goes first — every mirror, every photo, every compliment. Hype is mandatory and unprompted. Zero body talk, zero. Not even about yourself. She has had two babies in three years and she is showing up as the most radiant version of herself this weekend. Your job is to make sure she knows it every single moment.
-  </div>
-</section>
 
 <!-- BUDGET -->
 <section id="budget">
@@ -1056,81 +1039,6 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   </div>
 </section>
 
-<!-- KASSIE GOAL -->
-<section id="kassie">
-  <div class="section-eyebrow">For the Bride</div>
-  <div class="section-title">Kassie's Covered ♡</div>
-  <div class="goal-card">
-    <div class="goal-title">✦ Contribution Goal Tracker</div>
-    <div class="goal-items" id="goal-items"></div>
-    <div class="goal-total">
-      <div>
-        <div class="goal-total-label">Total pledged</div>
-        <div class="goal-total-sub" id="goal-sub">of $— goal</div>
-      </div>
-      <div style="text-align:right">
-        <div class="goal-total-val" id="goal-total-val">$0</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BOOKING -->
-<section id="booking">
-  <div class="section-eyebrow">Do This Now</div>
-  <div class="section-title">Book It Before<br>Someone Else Does</div>
-  <div class="booking-list">
-    <div class="booking-item urgent">
-      <div class="booking-num">1</div>
-      <div class="booking-body">
-        <div class="booking-name">Drag Brunch — The Country Club</div>
-        <div class="booking-detail">Sunday Oct 4 · 1pm seating · call (504) 832-1930 · fills months out · groups need to call directly</div>
-      </div>
-    </div>
-    <div class="booking-item urgent">
-      <div class="booking-num">2</div>
-      <div class="booking-body">
-        <div class="booking-name">Ghost, Crime, Voodoo & Vampire Tour — VIP HELLVISION</div>
-        <div class="booking-detail">Monday Oct 5 · 8pm · book at Viator.com · select October 5 date · $44pp · 6,843 reviews</div>
-      </div>
-    </div>
-    <div class="booking-item">
-      <div class="booking-num">3</div>
-      <div class="booking-body">
-        <div class="booking-name">Airboat Swamp Tour + Gator Feeding</div>
-        <div class="booking-detail">Monday Oct 5 · morning · Viator.com · Large Airboat Drive Out $67pp · book 4–6 weeks out</div>
-      </div>
-    </div>
-    <div class="booking-item">
-      <div class="booking-num">4</div>
-      <div class="booking-body">
-        <div class="booking-name">Monday Dinner (pending vote)</div>
-        <div class="booking-detail">Muriel's Jackson Square (504) 568-1885 · OR · Café Amelie · call for group of 8–10 · mention bachelorette</div>
-      </div>
-    </div>
-    <div class="booking-item">
-      <div class="booking-num">5</div>
-      <div class="booking-body">
-        <div class="booking-name">Voodoo Clam Clan Custom Tees</div>
-        <div class="booking-detail">Order from Etsy or local printer · 6–8 weeks out minimum · collect sizes from Google Form first</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RULES -->
-<section id="rules">
-  <div class="section-eyebrow">The Code</div>
-  <div class="section-title">Clan Rules</div>
-  <div class="rules-grid">
-    <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie goes first</strong>Every mirror, every photo op, every compliment — her name is called first.</div></div>
-    <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is mandatory</strong>Designate a hype captain each night. Unsolicited compliments, constant reinforcement.</div></div>
-    <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No body talk</strong>Zero. Not even about your own body. Good vibes only, all weekend.</div></div>
-    <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Everyone gets photographed</strong>Rotate who's behind the camera. Every member of the Clan goes home with good photos.</div></div>
-    <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
-    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The theme always wins</strong>Unsure if your outfit fits? Go darker, add a crystal, add a pearl. It fits.</div></div>
-  </div>
-</section>
 
 <!-- FORM -->
 <section id="form">
@@ -1151,6 +1059,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
     </ul>
   </div>
 </section>
+
 
 <!-- PAY YOUR SHARE -->
 <section id="pay">
@@ -1182,6 +1091,175 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   <p class="pay-note">Questions about your share? Text the MOH. Don't ghost the group chat.</p>
 </section>
 
+
+<!-- KASSIE GOAL -->
+<section id="kassie">
+  <div class="section-eyebrow">For the Bride</div>
+  <div class="section-title">Kassie’s Covered ♡</div>
+  <div class="goal-card">
+    <!-- UPDATE: change $0 to actual collected total, change 0% to match -->
+    <div class="collected-wrap">
+      <div class="collected-label">❖ Collected via PayPal Pool</div>
+      <div class="collected-amounts">
+        <div class="collected-val">$0</div>
+        <div class="collected-goal-lbl">of $929 goal</div>
+      </div>
+      <div class="collected-bar"><div class="collected-fill" style="width:0%"></div></div>
+      <div class="collected-note">Updated by the MOH · check PayPal Pool for the live total</div>
+    </div>
+    <div class="goal-title">❖ Pledges from Budget Calculator</div>
+    <div class="goal-items" id="goal-items"></div>
+    <div class="goal-total">
+      <div>
+        <div class="goal-total-label">Total pledged</div>
+        <div class="goal-total-sub" id="goal-sub">of $— goal</div>
+      </div>
+      <div style="text-align:right">
+        <div class="goal-total-val" id="goal-total-val">$0</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:20px;">
+      <a href="https://www.paypal.com/pool/9p7uOMnbRC?sr=wccr" class="kassie-pool-btn" target="_blank" rel="noopener">See the PayPal Pool →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOOKS + INSPO -->
+<section id="looks">
+  <div class="section-eyebrow">Dress Code &amp; Inspo</div>
+  <div class="section-title">The Looks</div>
+
+  <!-- Night 1 -->
+  <div class="look-night-block">
+    <div class="look-night-hd">
+      <div class="look-night-num2">01</div>
+      <div>
+        <div class="look-night-date2">Saturday, October 3</div>
+        <div class="look-night-title2">The Convoy 🕶️</div>
+      </div>
+    </div>
+    <div class="look-night-bd">
+      <div class="look-brief">
+        <div class="look-person lp-kassie">
+          <div class="look-person-lbl">❖ Kassie</div>
+          <ul>
+            <li>White flowy dress</li>
+            <li>Pearl accessories</li>
+            <li>Black sunglasses — she leads the convoy</li>
+          </ul>
+        </div>
+        <div class="look-person lp-clan">
+          <div class="look-person-lbl">❖ Clan</div>
+          <ul>
+            <li>All black everything — any silhouette</li>
+            <li>Pearl jewelry — the common thread</li>
+            <li>Black sunglasses — mandatory for the group photo</li>
+            <li>Dark nails: black, plum, or burgundy</li>
+          </ul>
+        </div>
+      </div>
+      <div class="look-photos">
+        <img src="assets/images/night1-convoy/night1-1.jpg" alt="The Convoy inspo">
+        <img src="assets/images/night1-convoy/night1-2.jpg" alt="The Convoy inspo">
+        <img src="assets/images/night1-convoy/night1-3.jpg" alt="The Convoy inspo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Night 2 -->
+  <div class="look-night-block">
+    <div class="look-night-hd">
+      <div class="look-night-num2">02</div>
+      <div>
+        <div class="look-night-date2">Sunday, October 4</div>
+        <div class="look-night-title2">The Shells 🦪✨</div>
+      </div>
+    </div>
+    <div class="look-night-bd">
+      <div class="look-brief">
+        <div class="look-person lp-kassie">
+          <div class="look-person-lbl">❖ Kassie</div>
+          <ul>
+            <li>Iridescent or pearl wrap dress</li>
+            <li>Scallop detail if possible</li>
+            <li>The pearl to everyone’s sequin</li>
+          </ul>
+        </div>
+        <div class="look-person lp-clan">
+          <div class="look-person-lbl">❖ Clan</div>
+          <ul>
+            <li>Sequins or iridescent — YOUR color</li>
+            <li>Teal, pink, silver, lilac, gold, coral, mint — all fair game</li>
+            <li>Boas, glitter, rhinestones, big hair</li>
+            <li>More is more. This is the only rule.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="look-photos">
+        <img src="assets/images/night2-shells/night2-1.jpg" alt="The Shells inspo">
+        <img src="assets/images/night2-shells/night2-2.jpg" alt="The Shells glam inspo">
+        <img src="assets/images/night2-shells/night2-3.jpg" alt="The Shells inspo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Night 3 -->
+  <div class="look-night-block">
+    <div class="look-night-hd">
+      <div class="look-night-num2">03</div>
+      <div>
+        <div class="look-night-date2">Monday, October 5</div>
+        <div class="look-night-title2">The Coven 🔮</div>
+      </div>
+    </div>
+    <div class="look-night-bd">
+      <div class="look-brief">
+        <div class="look-person lp-kassie">
+          <div class="look-person-lbl">❖ Kassie</div>
+          <ul>
+            <li>Deep emerald or plum boho maxi</li>
+            <li>Goddess silhouette — flowing, wrap, off-shoulder</li>
+            <li>Crystals, layered necklaces, rings on every finger</li>
+          </ul>
+        </div>
+        <div class="look-person lp-clan">
+          <div class="look-person-lbl">❖ Clan</div>
+          <ul>
+            <li>Flowing dark fabrics — maxi, wrap, lace</li>
+            <li>Jewel tones: emerald, plum, burgundy, midnight blue, rust</li>
+            <li>Crystals, moonstone, evil eye jewelry</li>
+            <li>Boots encouraged — suede or leather</li>
+          </ul>
+        </div>
+      </div>
+      <div class="look-photos">
+        <img src="assets/images/night3-coven/night3-1.jpg" alt="The Coven inspo">
+        <img src="assets/images/night3-coven/night3-2.jpg" alt="The Coven boho inspo">
+        <img src="assets/images/night3-coven/night3-3.jpg" alt="The Coven glam inspo">
+      </div>
+    </div>
+  </div>
+
+  <div class="kassie-note">
+    <div class="kn-title">❖ Clan Rule — Non-Negotiable</div>
+    Kassie goes first — every mirror, every photo, every compliment. Hype is mandatory and unprompted. Zero body talk, zero. Not even about yourself. She has had two babies in three years and she is showing up as the most radiant version of herself this weekend. Your job is to make sure she knows it every single moment.
+  </div>
+
+  <div class="looks-pinterest">
+    <a href="https://pin.it/3T1L8vTab" target="_blank" rel="noopener">More inspo on Pinterest →</a>
+  </div>
+</section>
+
+<!-- PLAYLIST -->
+<section id="playlist">
+  <div class="section-eyebrow">The Soundtrack</div>
+  <div class="section-title">Weekend Playlist</div>
+  <p class="playlist-intro">This is ours — add your songs. The only rule is it has to slap.</p>
+  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
+</section>
+
+
 <!-- PHOTO ALBUM -->
 <section id="album">
   <div class="section-eyebrow">The Archives</div>
@@ -1194,26 +1272,21 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   </div>
 </section>
 
-<!-- INSPO BOARD -->
-<section id="inspo">
-  <div class="section-eyebrow">The Vision</div>
-  <div class="section-title">Inspo Board</div>
-  <div class="inspo-card">
-    <div class="inspo-icon">📌</div>
-    <p>Outfits, accessories, vibes, and décor.<br>Everything that goes into four nights of ritual glamour in New Orleans.</p>
-    <a href="https://pin.it/3T1L8vTab" class="form-btn inspo-btn" target="_blank" rel="noopener">Open Pinterest Board →</a>
-    <div class="inspo-note">Save anything that feels dark, bayou, iridescent, or like it belongs to the Clan.</div>
+
+<!-- RULES -->
+<section id="rules">
+  <div class="section-eyebrow">The Code</div>
+  <div class="section-title">Clan Rules</div>
+  <div class="rules-grid">
+    <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie goes first</strong>Every mirror, every photo op, every compliment — her name is called first.</div></div>
+    <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is mandatory</strong>Designate a hype captain each night. Unsolicited compliments, constant reinforcement.</div></div>
+    <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No body talk</strong>Zero. Not even about your own body. Good vibes only, all weekend.</div></div>
+    <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Everyone gets photographed</strong>Rotate who's behind the camera. Every member of the Clan goes home with good photos.</div></div>
+    <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
+    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The theme always wins</strong>Unsure if your outfit fits? Go darker, add a crystal, add a pearl. It fits.</div></div>
   </div>
 </section>
 
-<!-- PLAYLIST -->
-<section id="playlist">
-  <div class="section-eyebrow">The Soundtrack</div>
-  <div class="section-title">Weekend Playlist</div>
-  <p class="playlist-intro">This is ours — add your songs. The only rule is it has to slap.</p>
-  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
-</section>
 
 <!-- FOOTER -->
 <footer>
