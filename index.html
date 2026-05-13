@@ -1385,9 +1385,8 @@ function renderBudget() {
     var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
     cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
     var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
-    var tag = el("span","b-tag b-tg","split");
     var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
-    d.appendChild(cb); d.appendChild(ln); d.appendChild(tag); d.appendChild(lr);
+    d.appendChild(cb); d.appendChild(ln); d.appendChild(lr);
     fixedList.appendChild(d);
   });
 
