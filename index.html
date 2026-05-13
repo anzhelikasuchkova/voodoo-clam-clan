@@ -819,7 +819,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .sp-pill:hover { border-color:var(--teal); }
 .sp-note { color:var(--teal); font-size:16px; animation:notePulse 2s ease-in-out infinite; }
 @keyframes notePulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-.sp-label { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--pearl-dim); }
+.sp-label { display:flex; flex-direction:column; gap:1px; }
+.sp-title { font-family:'Inter','Helvetica Neue',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.01em; color:var(--pearl); line-height:1.2; }
+.sp-artist { font-family:'Inter','Helvetica Neue',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.02em; color:var(--pearl-dim); line-height:1.2; }
 .sp-arrow { font-size:11px; color:var(--teal); transition:transform 0.2s; }
 .sp-embed { width:300px; overflow:hidden; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.6); display:none; }
 .sp-embed.open { display:block; }
@@ -1146,9 +1148,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         <ul>
           <li>Slip dresses, lace, velvet — boho layering encouraged</li>
           <li>Colors: deep red, forest green, plum, rust, dusty pink, cream, or black</li>
-          <li>Layer it: lace cami under a velvet slip · sheer blouse over a maxi skirt</li>
+          <li>Layer it: lace cami under a velvet slip · sheer blouse over a maxi skirt — matte and flowing</li>
           <li>Strong eye, bold lip — the magic is in how you carry it</li>
-          <li>If you’re unsure: go richer, go more layered, add a crystal. Matte and flowing, not sleek, not shiny</li>
+          <li>If you’re unsure: go richer, go more layered, add a crystal.</li>
         </ul>
       </div>
       <div class="look-photos">
@@ -1226,11 +1228,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <!-- STICKY MUSIC PLAYER -->
 <div class="sticky-player">
   <div id="sp-embed" class="sp-embed">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6W9rbkBueZQrwuzO24GHZ2?utm_source=generator&theme=0" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6qFjrb6ZLRQJhMnAGpj0iM?utm_source=generator&theme=0&autoplay=1" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   </div>
   <button class="sp-pill" onclick="togglePlayer()">
     <span class="sp-note">♪</span>
-    <span class="sp-label">The Weekend Song</span>
+    <span class="sp-label"><span class="sp-title">WHERE IS MY HUSBAND!</span><span class="sp-artist">RAYE</span></span>
     <span class="sp-arrow" id="sp-arrow">▴</span>
   </button>
 </div>
