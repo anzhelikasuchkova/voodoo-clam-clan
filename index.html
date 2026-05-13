@@ -403,6 +403,47 @@ section + section {
   font-size: 10px;
 }
 
+.section-subhead {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--pearl-dim);
+  margin-top: -4px;
+  margin-bottom: 28px;
+}
+
+.look-buzz {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--teal);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.look-vibe {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--pearl-dim);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.look-night-note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: rgba(240,236,228,0.03);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--pearl-dim);
+  line-height: 1.6;
+}
+
 .kassie-note {
   background: rgba(212,83,126,0.08);
   border: 0.5px solid rgba(212,83,126,0.25);
@@ -600,6 +641,10 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 .b-hc{font-size:11px;color:var(--pearl-dim)}
 .b-hc span{font-weight:500;color:var(--pearl)}
 .b-fl{display:flex;align-items:center;gap:10px;background:rgba(240,236,228,0.04);border:0.5px solid rgba(240,236,228,0.1);border-radius:8px;padding:10px 14px;margin-bottom:1.25rem}
+.b-ps{background:rgba(240,236,228,0.04);border:0.5px solid rgba(240,236,228,0.1);border-radius:8px;padding:10px 14px;margin-bottom:1.25rem}
+.b-ps-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.b-ps-val{font-size:14px;font-weight:500;color:var(--pearl)}
+.b-slider{width:100%;cursor:pointer;accent-color:var(--teal);height:4px}
 .b-fll{font-size:12px;color:var(--pearl-dim);flex:1}
 .b-fln{font-size:10px;color:rgba(240,236,228,0.3);margin-top:1px}
 .b-fi{width:72px;font-size:14px;font-weight:500;border:0.5px solid rgba(240,236,228,0.2);border-radius:8px;padding:4px 8px;background:rgba(240,236,228,0.06);color:var(--pearl);text-align:right}
@@ -775,7 +820,8 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 
 <!-- ITINERARY -->
 <section id="itinerary">
-  <div class="section-title">The Plan</div>
+  <div class="section-eyebrow">The Plan</div>
+  <div class="section-title">Itinerary</div>
 
   <div class="nights">
 
@@ -791,7 +837,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       </div>
       <div class="night-body open">
         <div class="outfit-strip">
-          <strong>Dresscode:</strong> <strong>Kassie</strong> - White Voodoo Clam Clan tee · pearl sunglasses &nbsp;|&nbsp; <strong>Clan</strong> - Black Voodoo Clam Clan tees · all black everything else · black sunglasses
+          <strong>Dresscode:</strong> <strong>Kassie</strong> - all white · pearl sunglasses &nbsp;|&nbsp; <strong>Clan</strong> - all black · black sunglasses
         </div>
         <div class="event-list">
           <div class="event-item">
@@ -869,7 +915,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       </div>
       <div class="night-body">
         <div class="outfit-strip">
-          <strong>Dresscode:</strong> Velvet · lace · jewel tones and earthy richness · pendant jewelry · boots · think Practical Magic meets The Love Witch
+          <strong>Dresscode:</strong> Velvet · lace · layers · jewel tones and earthy richness · pendant jewelry
         </div>
         <div class="event-list">
           <div class="event-item">
@@ -960,7 +1006,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
     <div class="pay-icon">📱</div>
     <div>
       <div class="pay-name">Venmo</div>
-      <div class="pay-detail">Use the budget calculator above to find your number, then send it here · @anzhelikasuchkova · Apple Pay &amp; Google Pay work here too</div>
+      <div class="pay-detail">Use the budget calculator above to find your number, then send it here · @anzhelikasuchkova</div>
       <div class="pay-action">Open Venmo →</div>
     </div>
   </a>
@@ -981,6 +1027,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 <section id="looks">
   <div class="section-eyebrow">Dress Code &amp; Inspo</div>
   <div class="section-title">The Looks</div>
+  <div class="section-subhead">Three nights, three identities.</div>
 
   <!-- Night 1 -->
   <div class="look-night-block">
@@ -992,24 +1039,14 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       </div>
     </div>
     <div class="look-night-bd">
-      <div class="look-brief">
-        <div class="look-person lp-kassie">
-          <div class="look-person-lbl">❖ Kassie</div>
-          <ul>
-            <li>White flowy dress</li>
-            <li>Pearl accessories</li>
-            <li>Black sunglasses — she leads the convoy</li>
-          </ul>
-        </div>
-        <div class="look-person lp-clan">
-          <div class="look-person-lbl">❖ Clan</div>
-          <ul>
-            <li>All black everything — any silhouette</li>
-            <li>Pearl jewelry — the common thread</li>
-            <li>Black sunglasses — mandatory for the group photo</li>
-            <li>Dark nails: black, plum, or burgundy</li>
-          </ul>
-        </div>
+      <div class="look-buzz">All black everything · pearl jewelry · black sunglasses · dark nails · Kassie in white</div>
+      <div class="look-person lp-clan">
+        <ul>
+          <li>All black — any silhouette, your choice</li>
+          <li>Black sunglasses — mandatory for the group photo</li>
+          <li>Dark nails: black, plum, or burgundy — if you want to commit</li>
+          <li>Black for the bar crawl — Kassie in white, Clan in black · styled your way</li>
+        </ul>
       </div>
       <div class="look-photos">
         <img src="assets/images/night1-convoy/night1-1.jpg" alt="The Convoy inspo">
@@ -1029,24 +1066,16 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       </div>
     </div>
     <div class="look-night-bd">
-      <div class="look-brief">
-        <div class="look-person lp-kassie">
-          <div class="look-person-lbl">❖ Kassie</div>
-          <ul>
-            <li>Iridescent or pearl wrap dress</li>
-            <li>Scallop detail if possible</li>
-            <li>The pearl to everyone’s sequin</li>
-          </ul>
-        </div>
-        <div class="look-person lp-clan">
-          <div class="look-person-lbl">❖ Clan</div>
-          <ul>
-            <li>Sequins or iridescent — YOUR color</li>
-            <li>Teal, pink, silver, lilac, gold, coral, mint — all fair game</li>
-            <li>Boas, glitter, rhinestones, big hair</li>
-            <li>More is more. This is the only rule.</li>
-          </ul>
-        </div>
+      <div class="look-vibe"><em>Electric. Iridescent. More is more.</em></div>
+      <div class="look-buzz">Full glam · big hair · each girl picks her sequin color (no white, silver, pearl, or cream — that’s Kassie’s) · boas · glitter · dramatic eye</div>
+      <div class="look-person lp-clan">
+        <ul>
+          <li>Daytime: Voodoo Clam Clan tee for drag brunch and pool · styled your way</li>
+          <li>Night: Sequins or iridescent — YOUR color</li>
+          <li>Teal, pink, lilac, gold, coral, mint — every color welcome</li>
+          <li>Boas, glitter, rhinestones, big hair — makeup is part of the outfit</li>
+          <li>More is more. This is the only rule.</li>
+        </ul>
       </div>
       <div class="look-photos">
         <img src="assets/images/night2-shells/night2-1.jpg" alt="The Shells inspo">
@@ -1066,24 +1095,16 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       </div>
     </div>
     <div class="look-night-bd">
-      <div class="look-brief">
-        <div class="look-person lp-kassie">
-          <div class="look-person-lbl">❖ Kassie</div>
-          <ul>
-            <li>Deep emerald or plum boho maxi</li>
-            <li>Goddess silhouette — flowing, wrap, off-shoulder</li>
-            <li>Crystals, layered necklaces, rings on every finger</li>
-          </ul>
-        </div>
-        <div class="look-person lp-clan">
-          <div class="look-person-lbl">❖ Clan</div>
-          <ul>
-            <li>Flowing dark fabrics — maxi, wrap, lace</li>
-            <li>Jewel tones: emerald, plum, burgundy, midnight blue, rust</li>
-            <li>Crystals, moonstone, evil eye jewelry</li>
-            <li>Boots encouraged — suede or leather</li>
-          </ul>
-        </div>
+      <div class="look-vibe"><em>Practical Magic meets The Love Witch. Think Stevie Nicks, not Halloween.</em></div>
+      <div class="look-buzz">Flowing maxis · velvet · lace · jewel tones and earthy richness · pendant jewelry · rings stacked · boots or heeled sandals · bold lip</div>
+      <div class="look-person lp-clan">
+        <ul>
+          <li>Slip dresses, lace, velvet — boho layering encouraged</li>
+          <li>Colors: deep red, forest green, plum, rust, dusty pink, cream, or black</li>
+          <li>Layer it: lace cami under a velvet slip · sheer blouse over a maxi skirt</li>
+          <li>Strong eye, bold lip — the magic is in how you carry it</li>
+          <li>If you’re unsure: go richer, go more layered, add a crystal. Matte and flowing, not sleek, not shiny</li>
+        </ul>
       </div>
       <div class="look-photos">
         <img src="assets/images/night3-coven/night3-1.jpg" alt="The Coven inspo">
@@ -1091,11 +1112,6 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
         <img src="assets/images/night3-coven/night3-3.jpg" alt="The Coven glam inspo">
       </div>
     </div>
-  </div>
-
-  <div class="kassie-note">
-    <div class="kn-title">❖ Clan Rule — Non-Negotiable</div>
-    Kassie goes first — every mirror, every photo, every compliment. Hype is mandatory and unprompted. Zero body talk, zero. Not even about yourself. She has had two babies in three years and she is showing up as the most radiant version of herself this weekend. Your job is to make sure she knows it every single moment.
   </div>
 
   <div class="looks-pinterest">
@@ -1107,7 +1123,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 <section id="playlist">
   <div class="section-eyebrow">The Soundtrack</div>
   <div class="section-title">Weekend Playlist</div>
-  <p class="playlist-intro">This is ours — add your songs. The only rule is it has to slap.</p>
+  <p class="playlist-intro">Add your songs. The only rule is it has to slap.</p>
   <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
 </section>
@@ -1129,7 +1145,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 <!-- RULES -->
 <section id="rules">
   <div class="section-eyebrow">The Code</div>
-  <div class="section-title">Clan Rules</div>
+  <div class="section-title">Clan Code</div>
   <div class="rules-grid">
     <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie goes first</strong>Every mirror, every photo op, every compliment — her name is called first.</div></div>
     <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is mandatory</strong>Designate a hype captain each night. Unsolicited compliments, constant reinforcement.</div></div>
@@ -1183,6 +1199,16 @@ function toggleNight(header) {
 
 // ── BUDGET TRACKER ──────────────────────────────────────────
 var ng = 9;
+var flightCost = 327;
+var lastShared = 0;
+var personalSpend = 200;
+
+function updateHero() {
+  var hd = document.getElementById("b-hero-div");
+  if (!hd) return;
+  var total = lastShared + flightCost + personalSpend;
+  hd.innerHTML = '<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(lastShared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flightCost)+'</span></div><div class="b-hc">Personal est. <span>'+fmt(personalSpend)+'</span></div></div>';
+}
 var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
 var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
 
@@ -1199,21 +1225,21 @@ var satD = [
   { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call", pp:100, gag:false },
   { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, gag:true },
 ];
-var satSel = -1;
+var satSel = 0;
 
 var sunM = [
   { lbl:"Drag Brunch — The Country Club (1pm)", note:"Longest-running drag brunch in NOLA · est. $65pp all-in · must book ahead · +$14pp Uber", pp:65, uber:14 },
   { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · massage + facial packages · ~$80–120pp · book well ahead", pp:100, uber:0 },
   { lbl:"Free pool day — stay home", note:"Sleep in · recover · backyard vibes · no judgment", pp:0, uber:0 },
 ];
-var sunMSel = -1;
+var sunMSel = 0;
 
 var sunL = [
   { lbl:"Turkey & Wolf — Magazine St", note:"Iconic funky sandwiches · ~$25pp · walkable", pp:25 },
   { lbl:"Willa Jean — CBD", note:"Bakery-forward · ~$35pp · short Uber", pp:35 },
   { lbl:"DoorDash at the Airbnb", note:"Decompress at home · ~$22pp", pp:22 },
 ];
-var sunLSel = -1;
+var sunLSel = 0;
 
 var sunD = [
   { lbl:"Juan's Flying Burrito — Magazine St", note:"Creole taqueria · tacos, margs · ~$20pp · walkable · open Sundays", pp:20 },
@@ -1221,7 +1247,7 @@ var sunD = [
   { lbl:"Cochon — Warehouse District", note:"Michelin Bib Gourmand Cajun · ~$62pp · open Sundays", pp:62 },
   { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb", pp:70 },
 ];
-var sunDSel = -1;
+var sunDSel = 1;
 
 var clubs = [
   { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:12, on:true },
@@ -1241,15 +1267,15 @@ var monD = [
   { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · ~$65pp · French Quarter · call ahead for group", pp:65 },
   { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole · ~$65pp · 10 min Uber to ghost tour", pp:65 },
 ];
-var monDSel = -1;
+var monDSel = 1;
 
-var ghostSel = -1;
+var ghostSel = 0;
 var ghostOpts = [
   { lbl:"Ghost, Crime, Voodoo & Vampire Tour — VIP HELLVISION", note:"8pm French Quarter · $44pp + $16pp Uber = $60pp · book Viator Oct 5", pp:60 },
   { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
 ];
 
-var nightSel = -1;
+var nightSel = 0;
 var nightOpts = [
   { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz · drinks est. $20–30pp", pp:25, uber:0 },
   { lbl:"Frenchmen Street bar hop", note:"Live jazz, no cover · +$16pp Uber round trip · drinks est. $25–40pp", pp:30, uber:16 },
@@ -1314,8 +1340,8 @@ function renderBudget() {
   flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
   var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
   flRight.appendChild(el("span","b-ksym","$"));
-  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=327; flInp.min=0; flInp.max=2000;
-  flInp.addEventListener("input",function(){ renderBudget(); });
+  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=flightCost; flInp.min=0; flInp.max=2000;
+  flInp.addEventListener("input",function(){ flightCost=parseInt(this.value)||0; updateHero(); });
   flRight.appendChild(flInp);
   flRow.appendChild(flLeft); flRow.appendChild(flRight);
   app.appendChild(flRow);
@@ -1405,8 +1431,24 @@ function renderBudget() {
   var nEl=el("div"); app.appendChild(nEl);
   nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
 
+  // Personal spend slider
+  app.appendChild(el("div","b-st","Personal spending estimate"));
+  var psBox = el("div","b-ps");
+  var psTop = el("div","b-ps-top");
+  var psLeft = el("div");
+  psLeft.appendChild(el("div","b-fll","Bar tabs · outfits · tips · souvenirs"));
+  psLeft.appendChild(el("div","b-fln","Drag to estimate — not split with the group"));
+  var psVal = el("div","b-ps-val", fmt(personalSpend));
+  psTop.appendChild(psLeft); psTop.appendChild(psVal);
+  psBox.appendChild(psTop);
+  var psSlider = document.createElement("input");
+  psSlider.type="range"; psSlider.className="b-slider"; psSlider.min=0; psSlider.max=700; psSlider.step=25; psSlider.value=personalSpend;
+  psSlider.addEventListener("input",function(){ personalSpend=parseInt(this.value); psVal.textContent=fmt(personalSpend); updateHero(); });
+  psBox.appendChild(psSlider);
+  app.appendChild(psBox);
+
   // Ref
-  app.appendChild(el("div","b-st","Not included in total — personal reference"));
+  app.appendChild(el("div","b-st","Personal spending breakdown — for reference"));
   var ref=el("div","b-ref"); app.appendChild(ref);
   [["Bar tabs / drinks each night","$50–100/night"],["Outfits — all 3 themed nights","$80–300 est."],["Tips — performers, tour guides","$20–40"],["Souvenirs, crystals, voodoo dolls","$20–60"]].forEach(function(r){
     var row=el("div","b-rrow"); row.appendChild(el("div","b-rl",r[0])); row.appendChild(el("div","b-rv",r[1])); ref.appendChild(row);
@@ -1416,12 +1458,8 @@ function renderBudget() {
   app.appendChild(nb);
 
   // Fill hero
-  var flight=parseInt(document.getElementById("b-flight")?document.getElementById("b-flight").value:327)||327;
-  var total=shared+flight;
-  var hd=document.getElementById("b-hero-div");
-  if(hd){
-    hd.innerHTML='<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(shared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flight)+'</span></div></div>';
-  }
+  lastShared = shared;
+  updateHero();
 
 }
 
