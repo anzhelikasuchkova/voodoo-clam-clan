@@ -713,7 +713,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .b-kbtn{font-size:12px;font-weight:500;padding:3px 8px;border:0.5px solid rgba(240,236,228,0.2);border-radius:10px;cursor:pointer;background:none;color:rgba(240,236,228,0.5);white-space:nowrap}
 .b-kbtn:hover{background:rgba(240,236,228,0.07)}
 .b-kbtn.active{background:rgba(212,83,126,0.15);border-color:rgba(212,83,126,0.4);color:var(--pink)}
-.b-div{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);padding:8px 0 6px;border-bottom:0.5px solid rgba(94,207,207,0.2);margin:1.75rem 0 .75rem;display:flex;justify-content:space-between;align-items:center}
+.b-div{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);padding:8px 0 6px;border-bottom:0.5px solid rgba(94,207,207,0.2);margin:1.75rem 0 .75rem}
 .b-ref{border:0.5px solid rgba(240,236,228,0.1);border-radius:10px;background:rgba(240,236,228,0.03);overflow:hidden}
 .b-rrow{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:13px;border-bottom:0.5px solid rgba(240,236,228,0.07)}
 .b-rrow:last-child{border-bottom:none}
@@ -1463,14 +1463,14 @@ function renderBudget() {
   });
 
   // Sat
-  var sdiv=document.createElement('div'); sdiv.className='b-div'; sdiv.innerHTML='Saturday · The Convoy<span style="font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em;flex-shrink:0">Oct 3</span>'; app.appendChild(sdiv);
+  var sdiv=document.createElement('div'); sdiv.className='b-div'; sdiv.textContent='Saturday · The Convoy · Oct 3'; app.appendChild(sdiv);
   app.appendChild(el("div","b-st","Dinner — select one"));
   if(satSel>=0){ foodCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
   var sdEl = el("div"); app.appendChild(sdEl);
   sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
 
   // Sun
-  var sudiv=document.createElement('div'); sudiv.className='b-div'; sudiv.innerHTML='Sunday · The Shells<span style="font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em;flex-shrink:0">Oct 4</span>'; app.appendChild(sudiv);
+  var sudiv=document.createElement('div'); sudiv.className='b-div'; sudiv.textContent='Sunday · The Shells · Oct 4'; app.appendChild(sudiv);
   app.appendChild(el("div","b-st","Morning activity — select one"));
   if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
@@ -1499,7 +1499,7 @@ function renderBudget() {
   });
 
   // Mon
-  var mdiv=document.createElement('div'); mdiv.className='b-div'; mdiv.innerHTML='Monday · The Coven<span style="font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em;flex-shrink:0">Oct 5</span>'; app.appendChild(mdiv);
+  var mdiv=document.createElement('div'); mdiv.className='b-div'; mdiv.textContent='Monday · The Coven · Oct 5'; app.appendChild(mdiv);
   app.appendChild(el("div","b-st","Morning + afternoon — check all that apply"));
   var mw=el("div","b-block"); app.appendChild(mw);
   var fqUsed=false,swampOn=false,spaOn=false;
