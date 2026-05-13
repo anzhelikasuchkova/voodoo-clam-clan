@@ -1249,7 +1249,7 @@ var satD = [
 var satSel = 0;
 
 var sunM = [
-  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Longest-running drag brunch in NOLA · est. $65pp all-in · must book ahead · +$14pp Uber", pp:65, uber:14 },
+  { lbl:"Drag Brunch — The Country Club (1pm)", note:"$25pp prepaid · book via OpenTable · tip not included · +$14pp Uber", pp:25, uber:14 },
   { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · massage + facial packages · ~$80–120pp · book well ahead", pp:100, uber:0 },
   { lbl:"Free pool day — stay home", note:"Sleep in · recover · backyard vibes · no judgment", pp:0, uber:0 },
 ];
@@ -1401,7 +1401,7 @@ function renderBudget() {
   // Sun
   app.appendChild(el("div","b-div","Sunday · The Shells"));
   app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
+  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
   app.appendChild(el("div","b-st","Lunch — select one"));
@@ -1434,8 +1434,8 @@ function renderBudget() {
   var fqUsed=false,swampOn=false,spaOn=false;
   monActs.forEach(function(o,i){
     if(o.on){
-      if(i===0){ actCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
-      else if(i===1){ actCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      if(i===0){ sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
+      else if(i===1){ sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===3){ actCosts+=o.pp; spaOn=true; }
     }
@@ -1455,7 +1455,7 @@ function renderBudget() {
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
   app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
-  if(ghostSel===0) actCosts+=ghostOpts[0].pp;
+  if(ghostSel===0) sharedCosts+=ghostOpts[0].pp;
   var gEl=el("div"); app.appendChild(gEl);
   gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
   var muw=el("div","b-block"); app.appendChild(muw);
