@@ -1201,6 +1201,7 @@ function toggleNight(header) {
 var ng = 9;
 var flightCost = 327;
 var lastSharedCosts = 0;
+var lastFixedCosts = 0;
 var lastFoodCosts = 0;
 var lastActCosts = 0;
 var lastUberCosts = 0;
@@ -1209,7 +1210,7 @@ var personalSpend = 200;
 function updateHero() {
   var hd = document.getElementById("b-hero-div");
   if (!hd) return;
-  var total = lastSharedCosts + lastFoodCosts + lastActCosts + lastUberCosts + flightCost + personalSpend;
+  var total = lastFixedCosts + lastFoodCosts + lastActCosts + lastUberCosts + flightCost + personalSpend;
   hd.innerHTML =
     '<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">' +
       '<div style="flex:1;min-width:130px">' +
@@ -1340,6 +1341,7 @@ function renderBudget() {
   app.innerHTML = "";
 
   var sharedCosts = 0;
+  var fixedCosts = 0;
   var foodCosts = 0;
   var actCosts = 0;
   var uberCosts = 0;
@@ -1380,7 +1382,7 @@ function renderBudget() {
   fixedItems.forEach(function(item,i){
     var tot = item.total||(item.pp*ng);
     var pp = tot/ng;
-    if(item.on) sharedCosts+=pp;
+    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
     var d = el("div","b-li"+(item.on?" lit":" dim"));
     var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
     cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
@@ -1400,7 +1402,7 @@ function renderBudget() {
   // Sun
   app.appendChild(el("div","b-div","Sunday · The Shells"));
   app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
+  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
   app.appendChild(el("div","b-st","Lunch — select one"));
@@ -1433,8 +1435,8 @@ function renderBudget() {
   var fqUsed=false,swampOn=false,spaOn=false;
   monActs.forEach(function(o,i){
     if(o.on){
-      if(i===0){ sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
-      else if(i===1){ sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      if(i===0){ actCosts+=o.pp; sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
+      else if(i===1){ actCosts+=o.pp; sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===3){ actCosts+=o.pp; spaOn=true; }
     }
@@ -1454,7 +1456,7 @@ function renderBudget() {
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
   app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
-  if(ghostSel===0) sharedCosts+=ghostOpts[0].pp;
+  if(ghostSel===0){ actCosts+=ghostOpts[0].pp; sharedCosts+=ghostOpts[0].pp; }
   var gEl=el("div"); app.appendChild(gEl);
   gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
   var muw=el("div","b-block"); app.appendChild(muw);
@@ -1501,6 +1503,7 @@ function renderBudget() {
 
   // Fill hero
   lastSharedCosts = sharedCosts;
+  lastFixedCosts = fixedCosts;
   lastFoodCosts = foodCosts;
   lastActCosts = actCosts;
   lastUberCosts = uberCosts;
