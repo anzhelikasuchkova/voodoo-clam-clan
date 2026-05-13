@@ -1401,7 +1401,7 @@ function renderBudget() {
   // Sun
   app.appendChild(el("div","b-div","Sunday · The Shells"));
   app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
+  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
   app.appendChild(el("div","b-st","Lunch — select one"));
