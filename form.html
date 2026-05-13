@@ -356,8 +356,7 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- FORM -->
   <div class="form-wrap" id="form-wrap">
-  <form name="vcc-planning" method="POST" data-netlify="true" id="vcc-form">
-    <input type="hidden" name="form-name" value="vcc-planning">
+  <form action="https://formspree.io/f/mqenjdwa" method="POST" id="vcc-form">
 
     <!-- ABOUT YOU -->
     <div class="f-section">
@@ -761,15 +760,19 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
   var form = this;
   var data = new FormData(form);
 
-  fetch('/', {
+  fetch('https://formspree.io/f/mqenjdwa', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString()
+    body: data,
+    headers: { 'Accept': 'application/json' }
   })
-  .then(function() {
-    document.getElementById('form-wrap').classList.add('hidden');
-    document.getElementById('success').classList.add('show');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  .then(function(res) {
+    if (res.ok) {
+      document.getElementById('form-wrap').classList.add('hidden');
+      document.getElementById('success').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      alert('Something went wrong — please try again or text the MOH directly.');
+    }
   })
   .catch(function(err) {
     alert('Something went wrong — please try again or text the MOH directly.');
