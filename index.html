@@ -633,7 +633,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 .b-cv{font-size:14px;font-weight:500;color:var(--pearl);min-width:20px;text-align:center}
 .b-cb{background:none;border:0.5px solid rgba(240,236,228,0.2);border-radius:5px;width:24px;height:24px;cursor:pointer;font-size:15px;color:var(--pearl);display:flex;align-items:center;justify-content:center}
 .b-cb:hover{background:rgba(240,236,228,0.08)}
-.b-hero{background:rgba(94,207,207,0.07);border:0.5px solid rgba(94,207,207,0.2);border-radius:14px;padding:18px 22px;margin-bottom:1.25rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.b-hero{background:rgba(8,6,8,0.9);border:0.5px solid rgba(94,207,207,0.2);border-radius:14px;padding:18px 22px;margin-bottom:1.25rem;display:flex;flex-direction:column;gap:14px;position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,0.5)}
 .b-hl{font-size:10px;color:rgba(240,236,228,0.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
 .b-hv{font-size:38px;font-weight:500;color:var(--pearl);line-height:1}
 .b-hs{font-size:10px;color:rgba(240,236,228,0.35);margin-top:5px}
@@ -1200,14 +1200,33 @@ function toggleNight(header) {
 // ── BUDGET TRACKER ──────────────────────────────────────────
 var ng = 9;
 var flightCost = 327;
-var lastShared = 0;
+var lastSharedCosts = 0;
+var lastPersonalCosts = 0;
+var lastUberCosts = 0;
 var personalSpend = 200;
 
 function updateHero() {
   var hd = document.getElementById("b-hero-div");
   if (!hd) return;
-  var total = lastShared + flightCost + personalSpend;
-  hd.innerHTML = '<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(lastShared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flightCost)+'</span></div><div class="b-hc">Personal est. <span>'+fmt(personalSpend)+'</span></div></div>';
+  var total = lastSharedCosts + lastPersonalCosts + lastUberCosts + flightCost + personalSpend;
+  hd.innerHTML =
+    '<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">' +
+      '<div style="flex:1;min-width:130px">' +
+        '<div class="b-hl">Estimated total per person</div>' +
+        '<div class="b-hv">' + fmt(total) + '</div>' +
+        '<div class="b-hs">your full picture</div>' +
+      '</div>' +
+      '<div style="flex:1;min-width:130px;border-left:1px solid rgba(212,83,126,0.25);padding-left:20px">' +
+        '<div class="b-hl">Shared costs</div>' +
+        '<div class="b-hv">' + fmt(lastSharedCosts) + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px">' +
+      '<div class="b-hc">Flights <span>' + fmt(flightCost) + '</span></div>' +
+      '<div class="b-hc">Food &amp; activities <span>' + fmt(lastPersonalCosts) + '</span></div>' +
+      '<div class="b-hc">Ubers <span>' + fmt(lastUberCosts) + '</span></div>' +
+      '<div class="b-hc">Personal est. <span>' + fmt(personalSpend) + '</span></div>' +
+    '</div>';
 }
 var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
 var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
@@ -1220,10 +1239,10 @@ var fixedItems = [
 ];
 
 var satD = [
-  { lbl:"French Quarter bar crawl + street food", note:"Voodoo Clam Clan tees · oysters at Felix's · go-cups · Pat O'Brien's · meet the boys", pp:35, gag:false },
-  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Dickie Brennan's Bourbon House or Crescent City Cigar · est. $60–80pp", pp:70, gag:false },
-  { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call", pp:100, gag:false },
-  { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, gag:true },
+  { lbl:"French Quarter bar crawl + street food", note:"Voodoo Clam Clan tees · oysters at Felix's · go-cups · Pat O'Brien's · meet the boys · +$10pp Uber round trip (split 4)", pp:35, uber:10, gag:false },
+  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Dickie Brennan's Bourbon House or Crescent City Cigar · est. $60–80pp · +$10pp Uber round trip (split 4)", pp:70, uber:10, gag:false },
+  { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call · +$10pp Uber round trip (split 4)", pp:100, uber:10, gag:false },
+  { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, uber:0, gag:true },
 ];
 var satSel = 0;
 
@@ -1235,24 +1254,24 @@ var sunM = [
 var sunMSel = 0;
 
 var sunL = [
-  { lbl:"Turkey & Wolf — Magazine St", note:"Iconic funky sandwiches · ~$25pp · walkable", pp:25 },
-  { lbl:"Willa Jean — CBD", note:"Bakery-forward · ~$35pp · short Uber", pp:35 },
-  { lbl:"DoorDash at the Airbnb", note:"Decompress at home · ~$22pp", pp:22 },
+  { lbl:"Turkey & Wolf — Magazine St", note:"Iconic funky sandwiches · ~$25pp · walkable", pp:25, uber:0 },
+  { lbl:"Willa Jean — CBD", note:"Bakery-forward · ~$35pp · +$8pp Uber round trip (split 4)", pp:35, uber:8 },
+  { lbl:"DoorDash at the Airbnb", note:"Decompress at home · ~$22pp", pp:22, uber:0 },
 ];
 var sunLSel = 0;
 
 var sunD = [
-  { lbl:"Juan's Flying Burrito — Magazine St", note:"Creole taqueria · tacos, margs · ~$20pp · walkable · open Sundays", pp:20 },
-  { lbl:"Peche Seafood Grill — Warehouse District", note:"James Beard winner · wood-fired Gulf seafood · ~$60pp · open Sundays", pp:60 },
-  { lbl:"Cochon — Warehouse District", note:"Michelin Bib Gourmand Cajun · ~$62pp · open Sundays", pp:62 },
-  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb", pp:70 },
+  { lbl:"Juan's Flying Burrito — Magazine St", note:"Creole taqueria · tacos, margs · ~$20pp · walkable", pp:20, uber:0 },
+  { lbl:"Peche Seafood Grill — Warehouse District", note:"James Beard winner · wood-fired Gulf seafood · ~$60pp · +$8pp Uber round trip (split 4)", pp:60, uber:8 },
+  { lbl:"Cochon — Warehouse District", note:"Michelin Bib Gourmand Cajun · ~$62pp · +$8pp Uber round trip (split 4)", pp:62, uber:8 },
+  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb", pp:70, uber:0 },
 ];
 var sunDSel = 1;
 
 var clubs = [
-  { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:12, on:true },
-  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:true },
-  { lbl:"Uber home from French Quarter", note:"~12–18 each way · est. $16pp split across group", pp:16, on:true },
+  { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:12, on:false },
+  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:false },
+  { lbl:"Uber home from French Quarter", note:"~12–18 each way · est. $16pp split across group", pp:16, on:false, isUber:true },
 ];
 
 var monActs = [
@@ -1263,9 +1282,9 @@ var monActs = [
 ];
 
 var monD = [
-  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course + drinks/tip ~$95pp · steps from ghost tour · book now", pp:95 },
-  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · ~$65pp · French Quarter · call ahead for group", pp:65 },
-  { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole · ~$65pp · 10 min Uber to ghost tour", pp:65 },
+  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course + drinks/tip ~$95pp · steps from ghost tour · book now · +$5pp Uber one way (split 4, ghost tour Uber covers return)", pp:95, uber:5 },
+  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · ~$65pp · French Quarter · call ahead for group · +$5pp Uber one way (split 4, ghost tour Uber covers return)", pp:65, uber:5 },
+  { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole · ~$65pp · +$8pp Uber round trip (split 4)", pp:65, uber:8 },
 ];
 var monDSel = 1;
 
@@ -1314,7 +1333,9 @@ function renderBudget() {
   if (!app) return;
   app.innerHTML = "";
 
-  var shared = 0;
+  var sharedCosts = 0;
+  var personalCosts = 0;
+  var uberCosts = 0;
 
   // Controls
   var ctrl = el("div","b-ctrl");
@@ -1352,7 +1373,7 @@ function renderBudget() {
   fixedItems.forEach(function(item,i){
     var tot = item.total||(item.pp*ng);
     var pp = tot/ng;
-    if(item.on) shared+=pp;
+    if(item.on) sharedCosts+=pp;
     var d = el("div","b-li"+(item.on?" lit":" dim"));
     var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
     cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
@@ -1366,22 +1387,22 @@ function renderBudget() {
   // Sat
   app.appendChild(el("div","b-div","Saturday · The Convoy"));
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(satSel>=0) shared += satD[satSel].pp;
+  if(satSel>=0){ personalCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
   var sdEl = el("div"); app.appendChild(sdEl);
   sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
 
   // Sun
   app.appendChild(el("div","b-div","Sunday · The Shells"));
   app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; shared+=smO.pp+(smO.uber||0); }
+  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { personalCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
   app.appendChild(el("div","b-st","Lunch — select one"));
-  if(sunLSel>=0) shared+=sunL[sunLSel].pp;
+  if(sunLSel>=0){ personalCosts+=sunL[sunLSel].pp; uberCosts+=(sunL[sunLSel].uber||0); }
   var slEl=el("div"); app.appendChild(slEl);
   slEl.appendChild(makeSelector(sunL,function(){return sunLSel;},function(i){sunLSel=i;}));
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(sunDSel>=0) shared+=sunD[sunDSel].pp;
+  if(sunDSel>=0){ personalCosts+=sunD[sunDSel].pp; uberCosts+=(sunD[sunDSel].uber||0); }
   var sdnEl=el("div"); app.appendChild(sdnEl);
   sdnEl.appendChild(makeSelector(sunD,function(){return sunDSel;},function(i){sunDSel=i;}));
 
@@ -1389,7 +1410,7 @@ function renderBudget() {
   app.appendChild(el("div","b-st","Sunday night — clubs (optional)"));
   var cw=el("div","b-block"); app.appendChild(cw);
   clubs.forEach(function(c,i){
-    if(c.on) shared+=c.pp;
+    if(c.on){ if(c.isUber) uberCosts+=c.pp; else personalCosts+=c.pp; }
     var r=el("div","b-mrow"+(c.on?" on":""));
     var mc=el("div","b-mck",c.on?"✓":"");
     var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); mb.appendChild(el("div","b-row-note",c.note));
@@ -1405,7 +1426,12 @@ function renderBudget() {
   var mw=el("div","b-block"); app.appendChild(mw);
   var fqUsed=false,swampOn=false,spaOn=false;
   monActs.forEach(function(o,i){
-    if(o.on){ shared+=o.pp; if(o.uberKey==="fq"&&!fqUsed){shared+=15;fqUsed=true;} if(o.uberKey==="swamp")swampOn=true; if(o.uberKey==="walk")spaOn=true; }
+    if(o.on){
+      if(i===0){ sharedCosts+=o.pp; swampOn=true; }
+      else if(i===1){ sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      else if(i===3){ personalCosts+=o.pp; spaOn=true; }
+    }
     var r=el("div","b-mrow"+(o.on?" on":""));
     var mc=el("div","b-mck",o.on?"✓":"");
     var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",o.lbl)); mb.appendChild(el("div","b-row-note",o.note));
@@ -1417,17 +1443,17 @@ function renderBudget() {
   if(swampOn&&spaOn){ var cfl=el("div","b-conflict","Heads up — swamp tour and spa morning may be hard to fit on the same day."); cfl.style.marginTop="4px"; app.appendChild(cfl); }
 
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(monDSel>=0) shared+=monD[monDSel].pp;
+  if(monDSel>=0){ personalCosts+=monD[monDSel].pp; uberCosts+=(monD[monDSel].uber||0); }
   var mdEl=el("div"); app.appendChild(mdEl);
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
   app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
-  if(ghostSel>=0) shared+=ghostOpts[ghostSel].pp;
+  if(ghostSel===0) sharedCosts+=ghostOpts[0].pp;
   var gEl=el("div"); app.appendChild(gEl);
   gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
 
   app.appendChild(el("div","b-st","Nightcap (optional)"));
-  if(nightSel>=0){ var nO=nightOpts[nightSel]; shared+=nO.pp+(nO.uber||0); }
+  if(nightSel>=0){ var nO=nightOpts[nightSel]; personalCosts+=nO.pp; uberCosts+=(nO.uber||0); }
   var nEl=el("div"); app.appendChild(nEl);
   nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
 
@@ -1458,7 +1484,9 @@ function renderBudget() {
   app.appendChild(nb);
 
   // Fill hero
-  lastShared = shared;
+  lastSharedCosts = sharedCosts;
+  lastPersonalCosts = personalCosts;
+  lastUberCosts = uberCosts;
   updateHero();
 
 }
