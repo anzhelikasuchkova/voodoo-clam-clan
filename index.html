@@ -1310,6 +1310,7 @@ var fixedItems = [
   { name:"Voodoo Clam Clan custom tees", note:"$30/person · worn Sunday morning", pp:30, on:true },
   { name:"Group sunglasses", note:"Heart or oversized sunnies · ~$8 each", total:75, on:true },
   { name:"Snacks & Drinks — whole weekend", note:"Charcuterie, spirits, mixers, go-cups, water, fuel & electrolytes", total:200, on:true },
+  { name:"Airport Uber — to + from MSY", note:"~$35/car each way · split 3–4 per car · est. $20pp round trip", pp:20, on:true, isUber:true },
 ];
 
 var satD = [
@@ -1452,7 +1453,7 @@ function renderBudget() {
   fixedItems.forEach(function(item,i){
     var tot = item.total||(item.pp*ng);
     var pp = tot/ng;
-    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
+    if(item.on){ if(item.isUber){ uberCosts+=pp; } else { sharedCosts+=pp; fixedCosts+=pp; } }
     var d = el("div","b-li"+(item.on?" lit":" dim"));
     var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
     cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
