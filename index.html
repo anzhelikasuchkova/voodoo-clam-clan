@@ -1310,7 +1310,6 @@ var fixedItems = [
   { name:"Voodoo Clam Clan custom tees", note:"$30/person · worn Sunday morning", pp:30, on:true },
   { name:"Group sunglasses", note:"Heart or oversized sunnies · ~$8 each", total:75, on:true },
   { name:"Snacks & Drinks — whole weekend", note:"Charcuterie, spirits, mixers, go-cups, water, fuel & electrolytes", total:200, on:true },
-  { name:"Airport Uber — to + from MSY", note:"~$35/car each way · split 3–4 per car · est. $20pp round trip", pp:20, on:true, isUber:true },
 ];
 
 var satD = [
@@ -1377,6 +1376,13 @@ var nightOpts = [
   { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz · drinks est. $20–30pp", pp:25, uber:0 },
   { lbl:"Frenchmen Street bar hop", note:"Live jazz, no cover · +$8pp Uber round trip (split 4) · drinks est. $25–40pp", pp:30, uber:8 },
   { lbl:"Head home — call it a night", note:"Checkout is 11am Tuesday", pp:0, uber:0 },
+];
+
+var tueLSel = -1;
+var tueL = [
+  { lbl:"Café Du Monde — beignets + café au lait", note:"Iconic last morning · French Quarter · ~$15pp · short Uber", pp:15 },
+  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic New Orleans breakfast diner · walkable · ~$18pp", pp:18 },
+  { lbl:"DoorDash before checkout", note:"Eat in, decompress, pack · ~$20pp", pp:20 },
 ];
 
 
@@ -1453,7 +1459,7 @@ function renderBudget() {
   fixedItems.forEach(function(item,i){
     var tot = item.total||(item.pp*ng);
     var pp = tot/ng;
-    if(item.on){ if(item.isUber){ uberCosts+=pp; } else { sharedCosts+=pp; fixedCosts+=pp; } }
+    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
     var d = el("div","b-li"+(item.on?" lit":" dim"));
     var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
     cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
@@ -1463,7 +1469,18 @@ function renderBudget() {
     fixedList.appendChild(d);
   });
 
-  // Sat
+  // Sat arrival
+  var saDiv=document.createElement('div'); saDiv.className='b-div'; saDiv.textContent='Saturday · Arrival · Oct 3'; app.appendChild(saDiv);
+  app.appendChild(el("div","b-st","Getting here"));
+  uberCosts+=10;
+  var saBlock=el("div","b-block"); app.appendChild(saBlock);
+  var saRow=el("div","b-mrow on"); saRow.style.cursor="default";
+  var saMb=el("div","b-mbody"); saMb.appendChild(el("div","b-row-lbl","Uber from MSY to the Airbnb")); saMb.appendChild(el("div","b-row-note","~$35/car · split 3–4 per car"));
+  saRow.appendChild(saMb); saRow.appendChild(el("div","b-row-price","~$10/pp")); saBlock.appendChild(saRow);
+  var saNote=el("div","b-notebox","Welcome party · snacks & pregame at the Airbnb — covered in fixed costs above");
+  app.appendChild(saNote);
+
+  // Sat night
   var sdiv=document.createElement('div'); sdiv.className='b-div'; sdiv.textContent='Saturday · The Convoy · Oct 3'; app.appendChild(sdiv);
   app.appendChild(el("div","b-st","Dinner — select one"));
   if(satSel>=0){ foodCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
@@ -1545,6 +1562,19 @@ function renderBudget() {
   if(nightSel>=0){ var nO=nightOpts[nightSel]; foodCosts+=nO.pp; uberCosts+=(nO.uber||0); }
   var nEl=el("div"); app.appendChild(nEl);
   nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
+
+  // Tue checkout
+  var tueDDiv=document.createElement('div'); tueDDiv.className='b-div'; tueDDiv.textContent='Tuesday · Checkout · Oct 6'; app.appendChild(tueDDiv);
+  app.appendChild(el("div","b-st","Last meal — select one"));
+  if(tueLSel>=0){ foodCosts+=tueL[tueLSel].pp; }
+  var tueLEl=el("div"); app.appendChild(tueLEl);
+  tueLEl.appendChild(makeSelector(tueL,function(){return tueLSel;},function(i){tueLSel=i;}));
+  app.appendChild(el("div","b-st","Getting to the airport"));
+  uberCosts+=10;
+  var tuUBlock=el("div","b-block"); app.appendChild(tuUBlock);
+  var tuURow=el("div","b-mrow on"); tuURow.style.cursor="default";
+  var tuUMb=el("div","b-mbody"); tuUMb.appendChild(el("div","b-row-lbl","Uber to MSY — departure")); tuUMb.appendChild(el("div","b-row-note","~$35/car · split 3–4 · Southwest 2:20pm return"));
+  tuURow.appendChild(tuUMb); tuURow.appendChild(el("div","b-row-price","~$10/pp")); tuUBlock.appendChild(tuURow);
 
   // Personal spend slider
   app.appendChild(el("div","b-st","Personal spending estimate"));
