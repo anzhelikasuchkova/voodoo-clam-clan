@@ -1274,13 +1274,13 @@ var sunDSel = 1;
 var clubs = [
   { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:20, on:false },
   { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:false },
-  { lbl:"Uber home from French Quarter", note:"~$16 per car · $4pp (split 4)", pp:4, on:false, isUber:true },
+  { lbl:"Uber home from French Quarter", note:"~$20 per car · $5pp (split 4)", pp:5, on:false, isUber:true },
 ];
 
 var monActs = [
   { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · $67pp · +$10pp Uber round trip (split 4) · departs Westwego HWY 90", pp:67, uber:10, uberKey:"swamp", on:true },
-  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · Uber shared w/ French Market if both selected (~$15pp)", pp:35, uberKey:"fq", on:false },
-  { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · budget $20–50pp purchases · Uber shared w/ Tea Room (~$15pp)", pp:0, uberKey:"fq", on:false },
+  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · +$5pp Uber (split 4 · shared w/ French Market if both)", pp:35, uberKey:"fq", on:false },
+  { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · budget $20–50pp purchases · +$5pp Uber (split 4 · shared w/ Tea Room)", pp:0, uberKey:"fq", on:false },
   { lbl:"Spa morning — Belladonna Day Spa, Magazine St", note:"~$60–90pp · walking distance · dry sauna included", pp:75, uberKey:"walk", on:false },
 ];
 
@@ -1436,8 +1436,8 @@ function renderBudget() {
   monActs.forEach(function(o,i){
     if(o.on){
       if(i===0){ actCosts+=o.pp; sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
-      else if(i===1){ actCosts+=o.pp; sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
-      else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      else if(i===1){ actCosts+=o.pp; sharedCosts+=o.pp; if(!fqUsed){uberCosts+=5;fqUsed=true;} }
+      else if(i===2){ if(!fqUsed){uberCosts+=5;fqUsed=true;} }
       else if(i===3){ actCosts+=o.pp; spaOn=true; }
     }
     var r=el("div","b-mrow"+(o.on?" on":""));
