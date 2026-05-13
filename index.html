@@ -506,75 +506,6 @@ section + section {
   top: 3px;
 }
 
-/* KASSIE GOAL TRACKER */
-.goal-card {
-  border: 0.5px solid rgba(212,83,126,0.3);
-  border-radius: 16px;
-  padding: 28px 24px;
-  background: var(--pink-dim);
-}
-
-.goal-title {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--pink);
-  margin-bottom: 20px;
-}
-
-.goal-items { display: flex; flex-direction: column; gap: 14px; }
-
-.goal-item {}
-.goal-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 6px;
-}
-
-.goal-item-name { font-size: 13px; font-weight: 500; color: var(--pearl); }
-.goal-item-amounts { font-size: 11px; color: var(--pearl-dim); }
-
-.goal-bar {
-  height: 6px;
-  background: rgba(212,83,126,0.15);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.goal-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--pink), #e87fab);
-  border-radius: 3px;
-  transition: width 0.6s ease;
-}
-
-.goal-total {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 0.5px solid rgba(212,83,126,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.goal-total-label {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--pink);
-}
-
-.goal-total-val {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--pearl);
-}
-
-.goal-total-sub { font-size: 11px; color: var(--pearl-dim); margin-top: 2px; text-align: right; }
 
 /* RULES */
 .rules-grid {
@@ -836,10 +767,10 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   <ul class="nav-links">
     <li><a href="#itinerary">Itinerary</a></li>
     <li><a href="#budget">Budget</a></li>
-    <li><a href="#form">The Form</a></li>
+    <li><a href="#form">Form</a></li>
     <li><a href="#pay">Pay</a></li>
-    <li><a href="#kassie">For Kassie</a></li>
-    <li><a href="#looks">The Looks</a></li>
+
+    <li><a href="#looks">Looks</a></li>
     <li><a href="#playlist">Playlist</a></li>
     <li><a href="#album">Album</a></li>
   </ul>
@@ -859,7 +790,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
     <div class="date-chip">Sat · The Convoy 🕶️</div>
     <div class="date-chip">Sun · The Shells 🦪</div>
     <div class="date-chip">Mon · The Coven 🔮</div>
-    <div class="date-chip">Tue · The Uncursing 🌊</div>
+    <div class="date-chip">Tue · The After 🌊</div>
   </div>
 </div>
 
@@ -1001,7 +932,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
         <div class="night-num">04</div>
         <div class="night-meta">
           <div class="night-date">Tuesday, October 6</div>
-          <div class="night-name">The Uncursing 🌊</div>
+          <div class="night-name">The After 🌊</div>
         </div>
         <div class="night-emoji">▾</div>
       </div>
@@ -1054,7 +985,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
       <li>Dinner votes for each night</li>
       <li>Drink preferences + allergies</li>
       <li>Favorite drunk snack</li>
-      <li>Kassie contribution pledge</li>
+
       <li>Anything the MOH should know</li>
     </ul>
   </div>
@@ -1092,37 +1023,6 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 </section>
 
 
-<!-- KASSIE GOAL -->
-<section id="kassie">
-  <div class="section-eyebrow">For the Bride</div>
-  <div class="section-title">Kassie’s Covered ♡</div>
-  <div class="goal-card">
-    <!-- UPDATE: change $0 to actual collected total, change 0% to match -->
-    <div class="collected-wrap">
-      <div class="collected-label">❖ Collected via PayPal Pool</div>
-      <div class="collected-amounts">
-        <div class="collected-val">$0</div>
-        <div class="collected-goal-lbl">of $929 goal</div>
-      </div>
-      <div class="collected-bar"><div class="collected-fill" style="width:0%"></div></div>
-      <div class="collected-note">Updated by the MOH · check PayPal Pool for the live total</div>
-    </div>
-    <div class="goal-title">❖ Pledges from Budget Calculator</div>
-    <div class="goal-items" id="goal-items"></div>
-    <div class="goal-total">
-      <div>
-        <div class="goal-total-label">Total pledged</div>
-        <div class="goal-total-sub" id="goal-sub">of $— goal</div>
-      </div>
-      <div style="text-align:right">
-        <div class="goal-total-val" id="goal-total-val">$0</div>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://www.paypal.com/pool/9p7uOMnbRC?sr=wccr" class="kassie-pool-btn" target="_blank" rel="noopener">See the PayPal Pool →</a>
-    </div>
-  </div>
-</section>
 
 <!-- LOOKS + INSPO -->
 <section id="looks">
@@ -1403,14 +1303,6 @@ var nightOpts = [
   { lbl:"Head home — call it a night", note:"Checkout is 11am Tuesday", pp:0, uber:0 },
 ];
 
-var kassItems = [
-  { name:"Kassie's Airbnb share", note:"Full share is $341", total:341, mode:"share", amount:0, on:false },
-  { name:"Kassie's ghost tour ticket", note:"Full ticket $44", total:44, mode:"share", amount:0, on:false },
-  { name:"Kassie's flight", note:"Her Southwest ticket ~$327", total:327, mode:"custom", amount:0, on:false },
-  { name:"Kassie's morning activity", note:"Brunch or spa · full cost ~$65–100", total:82, mode:"share", amount:0, on:false },
-  { name:"Kassie's dinner — one night", note:"Full cost ~$65–95", total:80, mode:"share", amount:0, on:false },
-  { name:"Kassie's bridal sash + extras", note:"MOH buys · full cost ~$55", total:55, mode:"share", amount:0, on:false },
-];
 
 function el(tag, cls, txt) {
   var e = document.createElement(tag);
@@ -1444,7 +1336,6 @@ function renderBudget() {
   app.innerHTML = "";
 
   var shared = 0;
-  var kassieTotal = 0;
 
   // Controls
   var ctrl = el("div","b-ctrl");
@@ -1561,45 +1452,6 @@ function renderBudget() {
   var nEl=el("div"); app.appendChild(nEl);
   nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
 
-  // Kassie
-  app.appendChild(el("div","b-st","Kassie's expenses — click to contribute"));
-  var kl=el("div","b-items"); app.appendChild(kl);
-  kassItems.forEach(function(item,i){
-    var amt=parseFloat(item.amount)||0;
-    var ppEach=amt/ng;
-    if(item.on){shared+=ppEach;kassieTotal+=ppEach;}
-    var d=el("div","b-kli"+(item.on?" on":""));
-    var kck=el("div","b-kck",item.on?"✓":"");
-    var ln=el("div","b-ln");
-    var nm=el("div","b-ln-name",item.name); nm.style.cursor="pointer";
-    var nt=el("div","b-ln-note",item.note+" · Total: "+fmt(item.total));
-    ln.appendChild(nm); ln.appendChild(nt);
-    if(item.on){
-      var kr=el("div","b-krow");
-      var shareAmt=Math.round(item.total/ng);
-      var sBtn=el("button","b-kbtn"+(item.mode==="share"?" active":""),"1/"+ng+" share = "+fmt(shareAmt));
-      sBtn.addEventListener("click",function(e){e.stopPropagation();kassItems[i].mode="share";kassItems[i].amount=shareAmt;renderBudget();});
-      var sym=el("span","b-ksym","$");
-      var inp=document.createElement("input"); inp.className="b-kinp"; inp.type="number"; inp.min=0; inp.max=9999; inp.step=5;
-      inp.value=item.mode==="custom"?(amt||""):""; inp.placeholder=item.mode==="share"?"":("custom");
-      if(item.mode==="share") inp.style.opacity="0.4";
-      var kpp=el("span","b-kpp","= "+fmt(ppEach)+"/person");
-      inp.addEventListener("click",function(e){e.stopPropagation();kassItems[i].mode="custom";renderBudget();});
-      inp.addEventListener("input",function(e){e.stopPropagation();kassItems[i].mode="custom";kassItems[i].amount=parseFloat(e.target.value)||0;kpp.textContent="= "+fmt(kassItems[i].amount/ng)+"/person";});
-      inp.addEventListener("change",function(e){e.stopPropagation();renderBudget();});
-      kr.appendChild(sBtn); kr.appendChild(sym); kr.appendChild(inp); kr.appendChild(kpp);
-      ln.appendChild(kr);
-    }
-    var tag=el("span","b-tag b-tk","Kassie");
-    var lr=el("div","b-lr");
-    lr.appendChild(el("div","b-lc",item.on?fmt(amt):fmt(item.total)+" total"));
-    lr.appendChild(el("div","b-lp",item.on?(ppEach>0?"+"+fmt(ppEach)+"/person":"set amount"):"click to contribute"));
-    d.appendChild(kck); d.appendChild(ln); d.appendChild(tag); d.appendChild(lr);
-    function doToggle(e){ if(e.target.tagName==="INPUT"||e.target.tagName==="BUTTON")return; e.stopPropagation(); kassItems[i].on=!kassItems[i].on; if(kassItems[i].on&&kassItems[i].amount===0){kassItems[i].mode="share";kassItems[i].amount=Math.round(kassItems[i].total/ng);} renderBudget(); }
-    d.addEventListener("click",doToggle);
-    kl.appendChild(d);
-  });
-
   // Ref
   app.appendChild(el("div","b-st","Not included in total — personal reference"));
   var ref=el("div","b-ref"); app.appendChild(ref);
@@ -1607,7 +1459,7 @@ function renderBudget() {
     var row=el("div","b-rrow"); row.appendChild(el("div","b-rl",r[0])); row.appendChild(el("div","b-rv",r[1])); ref.appendChild(row);
   });
 
-  var nb=el("div","b-notebox"); nb.innerHTML="<strong>Airbnb note:</strong> $3,066 ÷ "+ng+" = "+fmt(3066/ng)+"/person. Girls confirm by July. If 3+ drop, alternative explored.<br><br><strong>Collecting:</strong> Venmo or Zelle to MOH before the trip.";
+  var nb=el("div","b-notebox"); nb.innerHTML="<strong>Airbnb note:</strong> $3,066 ÷ "+ng+" = "+fmt(3066/ng)+"/person. Girls confirm by July. If 3+ drop, alternative explored.<br><br><strong>Collecting:</strong> Send your share via the Pay Your Share section below before the trip.";
   app.appendChild(nb);
 
   // Fill hero
@@ -1615,60 +1467,13 @@ function renderBudget() {
   var total=shared+flight;
   var hd=document.getElementById("b-hero-div");
   if(hd){
-    hd.innerHTML='<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(shared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flight)+'</span></div><div class="b-hc">Kassie contributions <span>'+(kassieTotal>0?"+"+fmt(kassieTotal):"none selected")+'</span></div></div>';
+    hd.innerHTML='<div><div class="b-hl">Estimated cost per person</div><div class="b-hv">'+fmt(total)+'</div><div class="b-hs">split '+ng+' ways · includes flights + Ubers</div></div><div class="b-hr"><div class="b-hc">Shared costs <span>'+fmt(shared)+'</span></div><div class="b-hc">Flights <span>'+fmt(flight)+'</span></div></div>';
   }
 
-  // Update Kassie goal tracker
-  renderGoal();
-}
-
-// ── KASSIE GOAL TRACKER ──────────────────────────────────────
-var goalDefs = [
-  { name:"Airbnb share", total:341 },
-  { name:"Ghost tour ticket", total:44 },
-  { name:"Flight contribution", total:327 },
-  { name:"Morning activity", total:82 },
-  { name:"Dinner — one night", total:80 },
-  { name:"Bridal sash + extras", total:55 },
-];
-
-function renderGoal() {
-  var totalGoal = 0;
-  var totalPledged = 0;
-  goalDefs.forEach(function(g,i){
-    totalGoal += g.total;
-  });
-
-  var gi = document.getElementById("goal-items");
-  if (!gi) return;
-  gi.innerHTML = "";
-
-  kassItems.forEach(function(item,i){
-    var pledged = item.on ? (parseFloat(item.amount)||0) : 0;
-    totalPledged += pledged;
-    var pct = Math.min(100, goalDefs[i] ? Math.round(pledged/goalDefs[i].total*100) : 0);
-
-    var row = el("div","goal-item");
-    var hdr = el("div","goal-item-header");
-    hdr.appendChild(el("div","goal-item-name",item.name));
-    hdr.appendChild(el("div","goal-item-amounts",(pledged>0?fmt(pledged)+" pledged":"not pledged")+" of "+fmt(goalDefs[i]?goalDefs[i].total:0)));
-    var bar = el("div","goal-bar");
-    var fill = el("div","goal-fill"); fill.style.width=pct+"%";
-    bar.appendChild(fill);
-    row.appendChild(hdr); row.appendChild(bar);
-    gi.appendChild(row);
-  });
-
-  var totalPct = Math.min(100, Math.round(totalPledged/totalGoal*100));
-  var tv = document.getElementById("goal-total-val");
-  var ts = document.getElementById("goal-sub");
-  if(tv) tv.textContent = fmt(totalPledged);
-  if(ts) ts.textContent = "of "+fmt(totalGoal)+" goal ("+totalPct+"% covered)";
 }
 
 // Init
 renderBudget();
-renderGoal();
 </script>
 </body>
 </html>
