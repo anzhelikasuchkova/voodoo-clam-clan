@@ -1275,7 +1275,7 @@ var clubs = [
   { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:20, on:false },
   { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:false },
   { lbl:"Uber to French Quarter — for clubs", note:"~$20/car from Warehouse District · ~$5pp (split 4)", pp:5, on:false, isUber:true },
-  { lbl:"Uber home from French Quarter", note:"~$20 per car · $5pp (split 4)", pp:5, on:false, isUber:true },
+  { lbl:"Uber home from French Quarter", note:"~$20 /car · $5pp (split 4)", pp:5, on:false, isUber:true },
 ];
 
 var monActs = [
@@ -1299,7 +1299,7 @@ var ghostOpts = [
 ];
 
 var monUbers = [
-  { lbl:"Uber home from French Quarter", note:"~$16 per car · $4pp (split 4)", pp:4, on:true, isUber:true },
+  { lbl:"Uber home from French Quarter", note:"~$16 /car · $4pp (split 4)", pp:4, on:true, isUber:true },
 ];
 
 var nightSel = 0;
@@ -1350,7 +1350,7 @@ function renderBudget() {
   // Controls
   var ctrl = el("div","b-ctrl");
   var cg = el("div","b-cg");
-  cg.appendChild(el("span","b-cl","Paying girls"));
+  cg.appendChild(el("span","b-cl","Clan size"));
   var bm = el("button","b-cb","−"); bm.onclick=function(){ ng=Math.max(6,Math.min(14,ng-1)); document.getElementById("b-gc").textContent=ng; renderBudget(); };
   var gcspan = el("span","b-cv",""); gcspan.id="b-gc"; gcspan.textContent=ng;
   var bp = el("button","b-cb","+"); bp.onclick=function(){ ng=Math.max(6,Math.min(14,ng+1)); document.getElementById("b-gc").textContent=ng; renderBudget(); };
