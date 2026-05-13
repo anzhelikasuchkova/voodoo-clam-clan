@@ -50,31 +50,20 @@ body::before {
 
 /* NAV */
 nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 32px;
-  height: 56px;
-  background: rgba(8,6,8,0.88);
-  backdrop-filter: blur(12px);
-  border-bottom: 0.5px solid var(--border);
-}
-
-.nav-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 13px;
-  letter-spacing: 0.15em;
-  color: var(--teal);
-  text-decoration: none;
+  justify-content: center;
+  margin-top: 36px;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-links {
   display: flex;
   gap: 28px;
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .nav-links a {
@@ -90,7 +79,7 @@ nav {
 .nav-links a:hover { color: var(--teal); }
 
 @media(max-width:640px){
-  .nav-links { display: none; }
+  .nav-links { gap: 16px; }
 }
 
 /* HERO */
@@ -761,21 +750,6 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#hero" class="nav-logo">🦪 VCC</a>
-  <ul class="nav-links">
-    <li><a href="#itinerary">Itinerary</a></li>
-    <li><a href="#budget">Budget</a></li>
-    <li><a href="#form">Form</a></li>
-    <li><a href="#pay">Pay</a></li>
-
-    <li><a href="#looks">Looks</a></li>
-    <li><a href="#playlist">Playlist</a></li>
-    <li><a href="#album">Album</a></li>
-  </ul>
-</nav>
-
 <!-- HERO -->
 <div id="hero" class="hero">
   <div class="hero-shimmer"></div>
@@ -786,6 +760,17 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
     <div class="line-clam">Clam Clan</div>
   </div>
   <div class="hero-sub">Kassie's Bachelorette · Get out of your shell</div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#itinerary">Itinerary</a></li>
+      <li><a href="#budget">Budget</a></li>
+      <li><a href="#form">Form</a></li>
+      <li><a href="#pay">Pay</a></li>
+      <li><a href="#looks">Looks</a></li>
+      <li><a href="#playlist">Playlist</a></li>
+      <li><a href="#album">Album</a></li>
+    </ul>
+  </nav>
 </div>
 
 <!-- ITINERARY -->
@@ -936,7 +921,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">11:00 am</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Checkout</strong> · saddle your brooms and skedaddle, witches · Kassie absolutely glowing</div>
+            <div class="event-text"><strong>Checkout</strong> · saddle your brooms and skedaddle, witches</div>
           </div>
         </div>
       </div>
