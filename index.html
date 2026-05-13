@@ -1201,14 +1201,15 @@ function toggleNight(header) {
 var ng = 9;
 var flightCost = 327;
 var lastSharedCosts = 0;
-var lastPersonalCosts = 0;
+var lastFoodCosts = 0;
+var lastActCosts = 0;
 var lastUberCosts = 0;
 var personalSpend = 200;
 
 function updateHero() {
   var hd = document.getElementById("b-hero-div");
   if (!hd) return;
-  var total = lastSharedCosts + lastPersonalCosts + lastUberCosts + flightCost + personalSpend;
+  var total = lastSharedCosts + lastFoodCosts + lastActCosts + lastUberCosts + flightCost + personalSpend;
   hd.innerHTML =
     '<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">' +
       '<div style="flex:1;min-width:130px">' +
@@ -1223,7 +1224,8 @@ function updateHero() {
     '</div>' +
     '<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px">' +
       '<div class="b-hc">Flights <span>' + fmt(flightCost) + '</span></div>' +
-      '<div class="b-hc">Food &amp; activities <span>' + fmt(lastPersonalCosts) + '</span></div>' +
+      '<div class="b-hc">Food <span>' + fmt(lastFoodCosts) + '</span></div>' +
+      '<div class="b-hc">Activities <span>' + fmt(lastActCosts) + '</span></div>' +
       '<div class="b-hc">Ubers <span>' + fmt(lastUberCosts) + '</span></div>' +
       '<div class="b-hc">Personal est. <span>' + fmt(personalSpend) + '</span></div>' +
     '</div>';
@@ -1338,7 +1340,8 @@ function renderBudget() {
   app.innerHTML = "";
 
   var sharedCosts = 0;
-  var personalCosts = 0;
+  var foodCosts = 0;
+  var actCosts = 0;
   var uberCosts = 0;
 
   // Controls
@@ -1391,22 +1394,22 @@ function renderBudget() {
   // Sat
   app.appendChild(el("div","b-div","Saturday · The Convoy"));
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(satSel>=0){ personalCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
+  if(satSel>=0){ foodCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
   var sdEl = el("div"); app.appendChild(sdEl);
   sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
 
   // Sun
   app.appendChild(el("div","b-div","Sunday · The Shells"));
   app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { personalCosts+=smO.pp; } }
+  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
   app.appendChild(el("div","b-st","Lunch — select one"));
-  if(sunLSel>=0){ personalCosts+=sunL[sunLSel].pp; uberCosts+=(sunL[sunLSel].uber||0); }
+  if(sunLSel>=0){ foodCosts+=sunL[sunLSel].pp; uberCosts+=(sunL[sunLSel].uber||0); }
   var slEl=el("div"); app.appendChild(slEl);
   slEl.appendChild(makeSelector(sunL,function(){return sunLSel;},function(i){sunLSel=i;}));
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(sunDSel>=0){ personalCosts+=sunD[sunDSel].pp; uberCosts+=(sunD[sunDSel].uber||0); }
+  if(sunDSel>=0){ foodCosts+=sunD[sunDSel].pp; uberCosts+=(sunD[sunDSel].uber||0); }
   var sdnEl=el("div"); app.appendChild(sdnEl);
   sdnEl.appendChild(makeSelector(sunD,function(){return sunDSel;},function(i){sunDSel=i;}));
 
@@ -1414,7 +1417,7 @@ function renderBudget() {
   app.appendChild(el("div","b-st","Sunday night — clubs (optional)"));
   var cw=el("div","b-block"); app.appendChild(cw);
   clubs.forEach(function(c,i){
-    if(c.on){ if(c.isUber) uberCosts+=c.pp; else personalCosts+=c.pp; }
+    if(c.on){ if(c.isUber) uberCosts+=c.pp; else actCosts+=c.pp; }
     var r=el("div","b-mrow"+(c.on?" on":""));
     var mc=el("div","b-mck",c.on?"✓":"");
     var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); mb.appendChild(el("div","b-row-note",c.note));
@@ -1434,7 +1437,7 @@ function renderBudget() {
       if(i===0){ sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
       else if(i===1){ sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
-      else if(i===3){ personalCosts+=o.pp; spaOn=true; }
+      else if(i===3){ actCosts+=o.pp; spaOn=true; }
     }
     var r=el("div","b-mrow"+(o.on?" on":""));
     var mc=el("div","b-mck",o.on?"✓":"");
@@ -1447,7 +1450,7 @@ function renderBudget() {
   if(swampOn&&spaOn){ var cfl=el("div","b-conflict","Heads up — swamp tour and spa morning may be hard to fit on the same day."); cfl.style.marginTop="4px"; app.appendChild(cfl); }
 
   app.appendChild(el("div","b-st","Dinner — select one"));
-  if(monDSel>=0){ personalCosts+=monD[monDSel].pp; uberCosts+=(monD[monDSel].uber||0); }
+  if(monDSel>=0){ foodCosts+=monD[monDSel].pp; uberCosts+=(monD[monDSel].uber||0); }
   var mdEl=el("div"); app.appendChild(mdEl);
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
@@ -1468,7 +1471,7 @@ function renderBudget() {
   });
 
   app.appendChild(el("div","b-st","Nightcap (optional)"));
-  if(nightSel>=0){ var nO=nightOpts[nightSel]; personalCosts+=nO.pp; uberCosts+=(nO.uber||0); }
+  if(nightSel>=0){ var nO=nightOpts[nightSel]; foodCosts+=nO.pp; uberCosts+=(nO.uber||0); }
   var nEl=el("div"); app.appendChild(nEl);
   nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
 
@@ -1500,7 +1503,8 @@ function renderBudget() {
 
   // Fill hero
   lastSharedCosts = sharedCosts;
-  lastPersonalCosts = personalCosts;
+  lastFoodCosts = foodCosts;
+  lastActCosts = actCosts;
   lastUberCosts = uberCosts;
   updateHero();
 
