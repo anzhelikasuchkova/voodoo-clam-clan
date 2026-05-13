@@ -1463,7 +1463,7 @@ function renderBudget() {
     if(c.on) uberCosts+=c.pp;
     var r=el("div","b-mrow"+(c.on?" on":""));
     var mc=el("div","b-mck",c.on?"✓":"");
-    var mb=el("div","b-mlbl",c.lbl); if(c.note){ var mn=el("div","b-mnote",c.note); mb.appendChild(mn); }
+    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); if(c.note){ mb.appendChild(el("div","b-row-note",c.note)); }
     var mp=el("div","b-row-price",fmt(c.pp)+"/pp");
     r.appendChild(mc); r.appendChild(mb); r.appendChild(mp);
     r.addEventListener("click",function(){ monUbers[i].on=!monUbers[i].on; renderBudget(); });
