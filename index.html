@@ -229,7 +229,7 @@ section + section {
 
 .section-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(22px, 4vw, 38px);
+  font-size: clamp(18px, 3vw, 28px);
   font-weight: 400;
   line-height: 1.15;
   margin-bottom: 40px;
@@ -804,6 +804,15 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .playlist-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
 .playlist-note { margin-top:16px; font-size:12px; color:rgba(240,236,228,0.3); text-align:center; }
 
+/* BOTTOM NAV */
+.bot-nav { position:fixed; bottom:0; left:0; right:0; z-index:150; background:rgba(8,6,8,0.9); backdrop-filter:blur(16px); border-top:0.5px solid rgba(94,207,207,0.15); display:flex; align-items:center; overflow-x:auto; transform:translateY(100%); transition:transform 0.35s ease; scrollbar-width:none; padding-right:210px; }
+.bot-nav::-webkit-scrollbar { display:none; }
+.bot-nav.show { transform:translateY(0); }
+.bot-nav a { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--pearl-dim); text-decoration:none; white-space:nowrap; padding:14px 16px; border-right:0.5px solid rgba(240,236,228,0.06); transition:color 0.2s,background 0.2s; flex-shrink:0; }
+.bot-nav a:hover { color:var(--teal); background:rgba(94,207,207,0.05); }
+.bot-nav a.b-top { color:var(--teal); opacity:0.7; }
+@media(max-width:640px){ .bot-nav { padding-right:120px; } .bot-nav a { padding:13px 12px; font-size:10px; } }
+
 /* STICKY MUSIC PLAYER */
 .sticky-player { position:fixed; bottom:24px; right:24px; z-index:200; display:flex; flex-direction:column; align-items:flex-end; gap:8px; }
 .sp-pill { display:flex; align-items:center; gap:10px; background:rgba(8,6,8,0.92); border:0.5px solid var(--border-teal); border-radius:40px; padding:10px 18px 10px 14px; cursor:pointer; backdrop-filter:blur(12px); color:var(--pearl); transition:border-color 0.2s,background 0.2s; }
@@ -1200,6 +1209,20 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <p>New Orleans · October 3–6, 2026 · For Kassie 🖤</p>
 </footer>
 
+<!-- BOTTOM NAV -->
+<nav class="bot-nav" id="bot-nav">
+  <a href="#hero" class="b-top">↑ Top</a>
+  <a href="#itinerary">Itinerary</a>
+  <a href="#map">Map</a>
+  <a href="#budget">Budget</a>
+  <a href="#form">Form</a>
+  <a href="#pay">Pay</a>
+  <a href="#looks">Looks</a>
+  <a href="#playlist">Playlist</a>
+  <a href="#album">Album</a>
+  <a href="#rules">Rules</a>
+</nav>
+
 <!-- STICKY MUSIC PLAYER -->
 <div class="sticky-player">
   <div id="sp-embed" class="sp-embed">
@@ -1213,6 +1236,18 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 </div>
 
 <script>
+// Bottom nav scroll reveal
+(function(){
+  var bn = document.getElementById('bot-nav');
+  var sp = document.querySelector('.sticky-player');
+  var hero = document.getElementById('hero');
+  window.addEventListener('scroll', function(){
+    var past = window.scrollY > hero.offsetHeight * 0.6;
+    bn.classList.toggle('show', past);
+    sp.style.bottom = past ? '60px' : '24px';
+  }, { passive: true });
+})();
+
 function togglePlayer() {
   var embed = document.getElementById('sp-embed');
   var arrow = document.getElementById('sp-arrow');
@@ -1430,14 +1465,14 @@ function renderBudget() {
   });
 
   // Sat
-  app.appendChild(el("div","b-div","Saturday · The Convoy"));
+  var sdiv=document.createElement('div'); sdiv.className='b-div'; sdiv.innerHTML='Saturday · The Convoy<span style="float:right;font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em">Oct 3</span>'; app.appendChild(sdiv);
   app.appendChild(el("div","b-st","Dinner — select one"));
   if(satSel>=0){ foodCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
   var sdEl = el("div"); app.appendChild(sdEl);
   sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
 
   // Sun
-  app.appendChild(el("div","b-div","Sunday · The Shells"));
+  var sudiv=document.createElement('div'); sudiv.className='b-div'; sudiv.innerHTML='Sunday · The Shells<span style="float:right;font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em">Oct 4</span>'; app.appendChild(sudiv);
   app.appendChild(el("div","b-st","Morning activity — select one"));
   if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
@@ -1466,7 +1501,7 @@ function renderBudget() {
   });
 
   // Mon
-  app.appendChild(el("div","b-div","Monday · The Coven"));
+  var mdiv=document.createElement('div'); mdiv.className='b-div'; mdiv.innerHTML='Monday · The Coven<span style="float:right;font-size:11px;opacity:0.5;font-weight:400;letter-spacing:0.1em">Oct 5</span>'; app.appendChild(mdiv);
   app.appendChild(el("div","b-st","Morning + afternoon — check all that apply"));
   var mw=el("div","b-block"); app.appendChild(mw);
   var fqUsed=false,swampOn=false,spaOn=false;
