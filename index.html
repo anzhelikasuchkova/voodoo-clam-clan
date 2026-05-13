@@ -1434,8 +1434,8 @@ function renderBudget() {
   var fqUsed=false,swampOn=false,spaOn=false;
   monActs.forEach(function(o,i){
     if(o.on){
-      if(i===0){ sharedCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
-      else if(i===1){ sharedCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
+      if(i===0){ actCosts+=o.pp; uberCosts+=(o.uber||0); swampOn=true; }
+      else if(i===1){ actCosts+=o.pp; if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===2){ if(!fqUsed){uberCosts+=15;fqUsed=true;} }
       else if(i===3){ actCosts+=o.pp; spaOn=true; }
     }
@@ -1455,7 +1455,7 @@ function renderBudget() {
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
   app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
-  if(ghostSel===0) sharedCosts+=ghostOpts[0].pp;
+  if(ghostSel===0) actCosts+=ghostOpts[0].pp;
   var gEl=el("div"); app.appendChild(gEl);
   gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
   var muw=el("div","b-block"); app.appendChild(muw);
