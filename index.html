@@ -203,6 +203,20 @@ section + section {
   border-top: 0.5px solid var(--border);
 }
 
+.map-btn {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--teal);
+  padding: 14px 40px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.map-btn:hover { opacity: 0.85; }
 .section-eyebrow {
   font-family: 'Cinzel', serif;
   font-size: 10px;
@@ -808,6 +822,7 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   <nav>
     <ul class="nav-links">
       <li><a href="#itinerary">Itinerary</a></li>
+      <li><a href="#map">Map</a></li>
       <li><a href="#budget">Budget</a></li>
       <li><a href="#form">Form</a></li>
       <li><a href="#pay">Pay</a></li>
@@ -976,6 +991,15 @@ footer p { font-size: 12px; color: rgba(240,236,228,0.3); }
   </div>
 </section>
 
+
+<!-- MAP -->
+<section id="map">
+  <div class="section-eyebrow">The City</div>
+  <div class="section-title">Our NOLA</div>
+  <div style="text-align:center;margin-top:1.5rem">
+    <a href="https://maps.app.goo.gl/HHMMSq1bn8hLd6mg9" target="_blank" rel="noopener" class="map-btn">Open Map</a>
+  </div>
+</section>
 
 <!-- BUDGET -->
 <section id="budget">
