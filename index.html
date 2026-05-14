@@ -191,6 +191,59 @@ nav {
   background: var(--teal-faint);
 }
 
+/* COUNTDOWN */
+.hero-countdown {
+  margin-top: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.95s;
+  text-align: center;
+}
+
+.countdown-label {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 12px;
+}
+
+.countdown-units {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 58px;
+  background: var(--teal-faint);
+  border: 0.5px solid var(--border-teal);
+  border-radius: 10px;
+  padding: 10px 14px 8px;
+}
+
+.countdown-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 700;
+  color: var(--pearl);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.countdown-unit-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  margin-top: 4px;
+}
+
 /* SECTIONS */
 section {
   position: relative;
@@ -851,6 +904,15 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li><a href="#album">Album</a></li>
     </ul>
   </nav>
+  <div class="hero-countdown">
+    <div class="countdown-label">Days until New Orleans</div>
+    <div class="countdown-units">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-unit-label">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-unit-label">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-unit-label">Mins</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-unit-label">Secs</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- ITINERARY -->
@@ -1256,6 +1318,27 @@ function togglePlayer() {
   var open = embed.classList.toggle('open');
   arrow.textContent = open ? '▾' : '▴';
 }
+
+// Countdown to Oct 3 2026 3pm CT
+(function(){
+  var target = new Date('2026-10-03T15:00:00-05:00').getTime();
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    var now = Date.now();
+    var diff = target - now;
+    if(diff <= 0){ diff = 0; }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent  = d;
+    document.getElementById('cd-hours').textContent = pad(h);
+    document.getElementById('cd-mins').textContent  = pad(m);
+    document.getElementById('cd-secs').textContent  = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 // Night accordion
 function toggleNight(header) {
