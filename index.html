@@ -86,13 +86,13 @@ nav {
 /* HERO */
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 64px 24px 48px;
+  padding: 48px 24px 56px;
   z-index: 1;
   overflow: hidden;
 }
@@ -131,7 +131,7 @@ nav {
 }
 
 .hero-clam {
-  font-size: clamp(60px, 12vw, 120px);
+  font-size: clamp(110px, 20vw, 200px);
   line-height: 1;
   margin-bottom: 20px;
   opacity: 0;
@@ -141,7 +141,7 @@ nav {
 
 .hero-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(28px, 6vw, 64px);
+  font-size: clamp(40px, 9vw, 96px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.02em;
@@ -210,7 +210,7 @@ nav {
 
 .countdown-units {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -219,16 +219,16 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 58px;
+  min-width: 90px;
   background: var(--teal-faint);
   border: 0.5px solid var(--border-teal);
-  border-radius: 10px;
-  padding: 10px 14px 8px;
+  border-radius: 14px;
+  padding: 18px 20px 14px;
 }
 
 .countdown-num {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(20px, 4vw, 32px);
+  font-size: clamp(36px, 6vw, 56px);
   font-weight: 700;
   color: var(--pearl);
   line-height: 1;
@@ -237,11 +237,11 @@ nav {
 
 .countdown-unit-label {
   font-family: 'Cinzel', serif;
-  font-size: 9px;
-  letter-spacing: 0.25em;
+  font-size: 10px;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--pearl-dim);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* SECTIONS */
@@ -1179,7 +1179,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="look-buzz">Full glam · big hair · each girl picks her sequin color (no white, silver, pearl, or cream — that’s Kassie’s) · boas · glitter · dramatic eye</div>
       <div class="look-person lp-clan">
         <ul>
-          <li>Daytime: Voodoo Clam Clan tee for drag brunch and pool · styled your way</li>
+          <li>Daytime: styled your way</li>
           <li>Night: Sequins or iridescent — YOUR color</li>
           <li>Teal, pink, lilac, gold, coral, mint — every color welcome</li>
           <li>Boas, glitter, rhinestones, big hair — makeup is part of the outfit</li>
@@ -1392,13 +1392,13 @@ var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
 
 var fixedItems = [
   { name:"Airbnb — 2012 Oretha Castle Haley Blvd", note:"$3,066 total · 4 nights · private pool · confirm by July", total:3066, on:true },
-  { name:"Voodoo Clam Clan custom tees", note:"$30/person · worn Sunday morning", pp:30, on:true },
+  { name:"Voodoo Clam Clan custom tees", note:"$30/person", pp:30, on:true },
   { name:"Group sunglasses", note:"Heart or oversized sunnies · ~$8 each", total:75, on:true },
   { name:"Snacks & Drinks — whole weekend", note:"Charcuterie, spirits, mixers, go-cups, water, fuel & electrolytes", total:400, on:true },
 ];
 
 var satD = [
-  { lbl:"French Quarter bar crawl + street food", note:"Voodoo Clam Clan tees · oysters at Felix's · go-cups · Pat O'Brien's · meet the boys · +$10pp Uber round trip (split 4)", pp:35, uber:10, gag:false },
+  { lbl:"French Quarter bar crawl + street food", note:"Meet the boys · oysters at Felix's · Pat O'Brien's · +$10pp Uber round trip (split 4)", pp:35, uber:10, gag:false },
   { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Dickie Brennan's Bourbon House or Crescent City Cigar · est. $60–80pp · +$10pp Uber round trip (split 4)", pp:70, uber:10, gag:false },
   { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call · +$10pp Uber round trip (split 4)", pp:100, uber:10, gag:false },
   { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, uber:0, gag:true },
