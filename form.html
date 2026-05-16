@@ -332,6 +332,130 @@ input[type="range"]::-webkit-slider-thumb {
   .page { padding: 40px 16px 80px; }
   .f-section-body { padding: 16px; }
 }
+
+/* MOH SUMMARY PANEL */
+.moh-summary {
+  margin-bottom: 40px;
+  border: 0.5px solid var(--border-teal);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--teal-faint);
+}
+
+.moh-summary-header {
+  padding: 16px 22px;
+  background: rgba(94,207,207,0.12);
+  border-bottom: 0.5px solid var(--border-teal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.moh-summary-title {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.moh-summary-total {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 20px;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+.moh-summary-body {
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.moh-lines {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.moh-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 7px 0;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.moh-line:last-child { border-bottom: none; }
+
+.moh-line-name { font-size: 14px; color: var(--pearl); }
+
+.moh-line-amount {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  color: var(--teal);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.moh-line-tbd {
+  font-size: 10px;
+  color: var(--gold);
+  margin-left: 3px;
+}
+
+.moh-summary-note {
+  font-size: 12px;
+  color: rgba(240,236,228,0.45);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.moh-summary-hint {
+  font-size: 13px;
+  color: rgba(240,236,228,0.4);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.moh-summary-venmo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 2px;
+}
+
+.moh-venmo-label {
+  font-size: 13px;
+  color: var(--pearl-dim);
+}
+
+.moh-venmo-btn {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  border-radius: 40px;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  white-space: nowrap;
+}
+
+.moh-venmo-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+@media(max-width: 480px) {
+  .moh-summary-venmo { flex-direction: column; align-items: flex-start; }
+  .moh-summary-body { padding: 16px; }
+}
 </style>
 </head>
 <body>
@@ -430,7 +554,7 @@ input[type="range"]::-webkit-slider-thumb {
           <p class="f-note">2012 Oretha Castle Haley Blvd · private pool · ~$341/person for 4 nights. Please answer by July — if 3+ girls drop, we find an alternative.</p>
           <div class="f-options">
             <label class="f-opt">
-              <input type="radio" name="airbnb" value="Yes — I'm in" required>
+              <input type="radio" name="airbnb" id="airbnb-yes" value="Yes — I'm in" required>
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Yes — I'm in</div>
                 <div class="f-opt-note">I'll pay my share before the trip</div>
@@ -503,7 +627,7 @@ input[type="range"]::-webkit-slider-thumb {
           <label class="f-label">Sunday Morning Activity <span class="f-required">*</span></label>
           <div class="f-options">
             <label class="f-opt">
-              <input type="radio" name="sun_morning" value="Drag Brunch — The Country Club (1pm)" required>
+              <input type="radio" name="sun_morning" id="sunday-drag-brunch" value="Drag Brunch — The Country Club (1pm)" required>
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Drag Brunch — The Country Club (1pm)</div>
                 <div class="f-opt-note">Longest-running drag brunch in NOLA · ~$65pp all-in · must book ahead · +$14pp Uber</div>
@@ -594,14 +718,14 @@ input[type="range"]::-webkit-slider-thumb {
           <label class="f-label">Monday Morning — check all you'd want to do</label>
           <div class="f-options">
             <label class="f-opt">
-              <input type="checkbox" name="mon_morning" value="Airboat swamp tour + gator feeding">
+              <input type="checkbox" name="mon_morning" id="monday-swamp" value="Airboat swamp tour + gator feeding">
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Airboat swamp tour + gator marshmallow feeding</div>
                 <div class="f-opt-note">~90 min · $67pp + ~$10 Uber = $77pp all-in · departs Westwego</div>
               </div>
             </label>
             <label class="f-opt">
-              <input type="checkbox" name="mon_morning" value="Bottom of the Cup Tea Room — tarot + tea">
+              <input type="checkbox" name="mon_morning" id="monday-tearoom" value="Bottom of the Cup Tea Room — tarot + tea">
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Bottom of the Cup Tea Room — tarot + tea</div>
                 <div class="f-opt-note">French Quarter · ~$35pp · Uber shared with French Market if both selected</div>
@@ -650,7 +774,7 @@ input[type="range"]::-webkit-slider-thumb {
           <p class="f-note">Ghost, Crime, Voodoo &amp; Vampire Tour · 8pm French Quarter · $44pp + Uber</p>
           <div class="f-options">
             <label class="f-opt">
-              <input type="radio" name="ghost_tour" value="Yes — I'm in for the ghost tour" required>
+              <input type="radio" name="ghost_tour" id="ghost-tour-yes" value="Yes — I'm in for the ghost tour" required>
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Yes — I'm in</div>
                 <div class="f-opt-note">$60pp all-in with Uber · already being booked on Viator</div>
@@ -745,6 +869,50 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
     </div>
 
+    <!-- MOH SUMMARY PANEL -->
+    <div class="moh-summary" id="moh-summary">
+      <div class="moh-summary-header">
+        <span class="moh-summary-title">✦ What you owe the MOH</span>
+        <span class="moh-summary-total" id="summary-total">$25</span>
+      </div>
+      <div class="moh-summary-body">
+        <ul class="moh-lines">
+          <li class="moh-line">
+            <span class="moh-line-name">Custom tee</span>
+            <span class="moh-line-amount">$25</span>
+          </li>
+          <li class="moh-line" id="line-airbnb" hidden>
+            <span class="moh-line-name">Airbnb share</span>
+            <span class="moh-line-amount">$341</span>
+          </li>
+          <li class="moh-line" id="line-drag" hidden>
+            <span class="moh-line-name">Drag Brunch</span>
+            <span class="moh-line-amount">$79</span>
+          </li>
+          <li class="moh-line" id="line-ghost" hidden>
+            <span class="moh-line-name">Ghost Tour</span>
+            <span class="moh-line-amount">$60</span>
+          </li>
+          <li class="moh-line" id="line-swamp" hidden>
+            <span class="moh-line-name">Swamp Tour</span>
+            <span class="moh-line-amount">$77</span>
+          </li>
+          <li class="moh-line" id="line-tea" hidden>
+            <span class="moh-line-name">Tea Room (Adaire Room)</span>
+            <span class="moh-line-amount">$35 <span class="moh-line-tbd">⚠️ est.</span></span>
+          </li>
+        </ul>
+        <p class="moh-summary-note" id="summary-hint">More items will appear as you make selections above.</p>
+        <p class="moh-summary-note" id="summary-airbnb-pending" hidden>Airbnb not included — confirm by July to lock your spot.</p>
+        <p class="moh-summary-note" id="summary-spa-note" hidden>Spa Isbell: book directly in advance — not pre-paid by MOH.</p>
+        <p class="moh-summary-note" id="summary-tea-note" hidden>⚠️ Tea Room pricing is an estimate — MOH will confirm Adaire Room quote before the trip.</p>
+        <div class="moh-summary-venmo">
+          <span class="moh-venmo-label">Send to @anzhelikasuchkova on Venmo</span>
+          <a href="https://venmo.com/u/anzhelikasuchkova" target="_blank" rel="noopener" class="moh-venmo-btn">Pay on Venmo →</a>
+        </div>
+      </div>
+    </div>
+
     <!-- SUBMIT -->
     <div class="f-submit-wrap">
       <button type="submit" class="f-submit">Submit to the Clan →</button>
@@ -781,6 +949,64 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
     console.error(err);
   });
 });
+</script>
+
+<script>
+// MOH Summary Panel
+// Update TEA_ROOM_PP once quote is confirmed from events@bottomofthecup.com / 504-875-5900
+var TEA_ROOM_PP = 35;
+
+function updateSummary() {
+  var airbnbYes    = document.getElementById('airbnb-yes');
+  var airbnbMaybe  = document.querySelector('input[name="airbnb"][value="Not sure yet"]');
+  var dragBrunch   = document.getElementById('sunday-drag-brunch');
+  var spaDay       = document.querySelector('input[name="sun_morning"][value="Spa day — Spa Isbell, Magazine St"]');
+  var ghostTour    = document.getElementById('ghost-tour-yes');
+  var swampTour    = document.getElementById('monday-swamp');
+  var teaRoom      = document.getElementById('monday-tearoom');
+
+  var showAirbnb        = airbnbYes   && airbnbYes.checked;
+  var showAirbnbPending = airbnbMaybe && airbnbMaybe.checked;
+  var showDrag          = dragBrunch  && dragBrunch.checked;
+  var showSpa           = spaDay      && spaDay.checked;
+  var showGhost         = ghostTour   && ghostTour.checked;
+  var showSwamp         = swampTour   && swampTour.checked;
+  var showTea           = teaRoom     && teaRoom.checked;
+
+  var total = 25;
+  if (showAirbnb) total += 341;
+  if (showDrag)   total += 79;
+  if (showGhost)  total += 60;
+  if (showSwamp)  total += 77;
+  if (showTea)    total += TEA_ROOM_PP;
+
+  document.getElementById('line-airbnb').hidden        = !showAirbnb;
+  document.getElementById('line-drag').hidden          = !showDrag;
+  document.getElementById('line-ghost').hidden         = !showGhost;
+  document.getElementById('line-swamp').hidden         = !showSwamp;
+  document.getElementById('line-tea').hidden           = !showTea;
+
+  document.getElementById('summary-total').textContent = '$' + total;
+
+  var hasExtras = showAirbnb || showDrag || showGhost || showSwamp || showTea;
+  document.getElementById('summary-hint').hidden           = hasExtras;
+  document.getElementById('summary-airbnb-pending').hidden = !showAirbnbPending;
+  document.getElementById('summary-spa-note').hidden       = !showSpa;
+  document.getElementById('summary-tea-note').hidden       = !showTea;
+}
+
+// Listen to all groups that affect the summary (covers deselection too)
+['airbnb', 'sun_morning', 'ghost_tour'].forEach(function(name) {
+  document.querySelectorAll('input[name="' + name + '"]').forEach(function(el) {
+    el.addEventListener('change', updateSummary);
+  });
+});
+['monday-swamp', 'monday-tearoom'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('change', updateSummary);
+});
+
+updateSummary();
 </script>
 </body>
 </html>
