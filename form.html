@@ -784,8 +784,57 @@ input[type="range"]::-webkit-slider-thumb {
 </div><!-- /page -->
 
 <script>
+var VCC_RADIO_FIELDS = ['sat_dinner','sun_morning','sun_lunch','sun_dinner','mon_dinner','ghost_tour','mon_nightcap'];
+
+function vccSaveToStorage() {
+  try {
+    var form = document.getElementById('vcc-form');
+    var data = {};
+    VCC_RADIO_FIELDS.forEach(function(name) {
+      var checked = null;
+      form.querySelectorAll('input[name="'+name+'"]').forEach(function(el) {
+        if (el.checked) checked = el.value;
+      });
+      data[name] = checked;
+    });
+    var monChecked = [];
+    form.querySelectorAll('input[name="mon_morning"]:checked').forEach(function(el) {
+      monChecked.push(el.value);
+    });
+    data.mon_morning = monChecked;
+    localStorage.setItem('vccFormSelections', JSON.stringify(data));
+  } catch(e) {}
+}
+
+(function vccRestoreForm() {
+  try {
+    var raw = localStorage.getItem('vccFormSelections');
+    if (!raw) return;
+    var data = JSON.parse(raw);
+    if (typeof data !== 'object' || data === null) return;
+    var form = document.getElementById('vcc-form');
+    VCC_RADIO_FIELDS.forEach(function(name) {
+      if (!data[name]) return;
+      form.querySelectorAll('input[name="'+name+'"]').forEach(function(el) {
+        el.checked = (el.value === data[name]);
+      });
+    });
+    if (Array.isArray(data.mon_morning)) {
+      form.querySelectorAll('input[name="mon_morning"]').forEach(function(el) {
+        el.checked = data.mon_morning.indexOf(el.value) !== -1;
+      });
+    }
+  } catch(e) {}
+})();
+
+document.getElementById('vcc-form').addEventListener('change', function(e) {
+  var relevant = VCC_RADIO_FIELDS.concat(['mon_morning']);
+  if (relevant.indexOf(e.target.name) !== -1) vccSaveToStorage();
+});
+
 document.getElementById('vcc-form').addEventListener('submit', function(e) {
   e.preventDefault();
+  vccSaveToStorage();
   var form = this;
   var data = new FormData(form);
 

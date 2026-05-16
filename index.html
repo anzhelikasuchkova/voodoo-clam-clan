@@ -983,7 +983,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">Evening</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>French Quarter</strong> · meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's</div>
+            <div class="event-text" id="itin-sat-evening"><strong>French Quarter</strong> · meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's</div>
           </div>
           <div class="event-item">
             <div class="event-time">Late</div>
@@ -1012,7 +1012,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">1:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Drag Brunch</strong> · The Country Club · Bywater · longest-running drag brunch in NOLA</div>
+            <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · The Country Club · Bywater · longest-running drag brunch in NOLA</div>
           </div>
           <div class="event-item">
             <div class="event-time">~3:00 pm</div>
@@ -1027,7 +1027,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">7:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Dinner</strong> · TBD by vote</div>
+            <div class="event-text" id="itin-sun-dinner"><strong>Dinner</strong> · TBD by vote</div>
           </div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
@@ -1056,7 +1056,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">Morning</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Activity TBD by vote</strong> · Swamp tour + gator feeding / Tea Room tarot / Spa</div>
+            <div class="event-text" id="itin-mon-morning"><strong>Activity TBD by vote</strong> · Swamp tour + gator feeding / Tea Room tarot / Spa</div>
           </div>
           <div class="event-item">
             <div class="event-time">Afternoon</div>
@@ -1066,7 +1066,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">5:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Farewell dinner</strong> · TBD by vote · French Quarter area</div>
+            <div class="event-text" id="itin-mon-dinner"><strong>Farewell dinner</strong> · TBD by vote · French Quarter area</div>
           </div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
@@ -1076,7 +1076,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Nightcap</strong> · Bayou Bar or Frenchmen Street</div>
+            <div class="event-text" id="itin-mon-nightcap"><strong>Nightcap</strong> · Bayou Bar or Frenchmen Street</div>
           </div>
         </div>
       </div>
@@ -1710,10 +1710,101 @@ function renderBudget() {
   lastActCosts = actCosts;
   lastUberCosts = uberCosts;
   updateHero();
+  updateItinerary();
 
 }
 
+function loadFormSelections() {
+  try {
+    var raw = localStorage.getItem('vccFormSelections');
+    if (!raw) return;
+    var d = JSON.parse(raw);
+    if (typeof d !== 'object' || d === null) return;
+
+    var satMap   = {"French Quarter bar crawl + street food":0,"Sit-down dinner then bourbon/cigar bar":1,"Arnaud's":2};
+    var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Spa day — Spa Isbell, Magazine St":1,"Free pool day — stay home":2};
+    var sunLMap  = {"Turkey & Wolf — Magazine St":0,"Willa Jean — CBD":1,"DoorDash at the Airbnb":2};
+    var sunDMap  = {"The Rum House — Magazine St":0,"Peche Seafood Grill — Warehouse District":1,"Gris-Gris — Magazine St":2};
+    var monDMap  = {"Muriel's Jackson Square":0,"Cafe Amelie — candlelit courtyard":1,"Compere Lapin — Warehouse District":2};
+    var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1};
+    var nightMap = {"Bayou Bar — Pontchartrain Hotel":0,"Frenchmen Street bar hop":1,"Head home after ghost tour":2};
+    var monActMap= {"Airboat swamp tour + gator feeding":0,"Bottom of the Cup Tea Room — tarot + tea":1,"French Market + crystal/voodoo shopping":2};
+
+    if (d.sat_dinner   != null && satMap[d.sat_dinner]    !== undefined) satSel  = satMap[d.sat_dinner];
+    if (d.sun_morning  != null && sunMMap[d.sun_morning]  !== undefined) sunMSel = sunMMap[d.sun_morning];
+    if (d.sun_lunch    != null && sunLMap[d.sun_lunch]    !== undefined) sunLSel = sunLMap[d.sun_lunch];
+    if (d.sun_dinner   != null && sunDMap[d.sun_dinner]   !== undefined) sunDSel = sunDMap[d.sun_dinner];
+    if (d.mon_dinner   != null && monDMap[d.mon_dinner]   !== undefined) monDSel = monDMap[d.mon_dinner];
+    if (d.ghost_tour   != null && ghostMap[d.ghost_tour]  !== undefined) ghostSel= ghostMap[d.ghost_tour];
+    if (d.mon_nightcap != null && nightMap[d.mon_nightcap]!== undefined) nightSel= nightMap[d.mon_nightcap];
+
+    if (Array.isArray(d.mon_morning)) {
+      monActs[0].on = false; monActs[1].on = false; monActs[2].on = false;
+      d.mon_morning.forEach(function(val) {
+        var idx = monActMap[val];
+        if (idx !== undefined) monActs[idx].on = true;
+      });
+    }
+  } catch(e) {}
+}
+
+function updateItinerary() {
+  function setNode(id, strong, sub) {
+    var e = document.getElementById(id);
+    if (!e) return;
+    e.innerHTML = '<strong>' + strong + '</strong> · ' + sub;
+  }
+
+  var satTexts = [
+    { s:"French Quarter",  b:"meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's" },
+    { s:"Dinner",          b:"sit-down dinner · then Bourbon House or Crescent City Cigar bar" },
+    { s:"Arnaud's",        b:"white tablecloth French Quarter dinner with The Boys · reserve ahead" }
+  ];
+  var sunMTexts = [
+    { s:"Drag Brunch", b:"The Country Club · Bywater · longest-running drag brunch in NOLA" },
+    { s:"Spa Day",     b:"Spa Isbell · Magazine St · massage + facial packages · walkable" },
+    { s:"Pool Day",    b:"sleep in · recover · Airbnb backyard · no judgment" }
+  ];
+  var sunDTexts = [
+    { s:"Dinner", b:"The Rum House · Magazine St · Caribbean-Mexican · outdoor patio · walkable" },
+    { s:"Dinner", b:"Pêche Seafood Grill · Warehouse District · James Beard winner · wood-fired Gulf seafood" },
+    { s:"Dinner", b:"Gris-Gris · Magazine St · upscale Southern Creole" }
+  ];
+  var monDTexts = [
+    { s:"Farewell dinner", b:"Muriel's Jackson Square · haunted restaurant · French Quarter" },
+    { s:"Farewell dinner", b:"Café Amélie · candlelit courtyard · French Quarter" },
+    { s:"Farewell dinner", b:"Compère Lapin · Warehouse District · Caribbean Creole" }
+  ];
+  var nightTexts = [
+    { s:"Nightcap",      b:"Bayou Bar · Pontchartrain Hotel · 7 min walk · live jazz" },
+    { s:"Nightcap",      b:"Frenchmen Street bar hop · live jazz · no cover" },
+    { s:"Heading home",  b:"checkout is 11am Tuesday · goodnight witches" }
+  ];
+
+  if (satSel >= 0 && satSel < satTexts.length)   setNode('itin-sat-evening',  satTexts[satSel].s,   satTexts[satSel].b);
+  if (sunMSel >= 0 && sunMSel < sunMTexts.length) setNode('itin-sun-morning',  sunMTexts[sunMSel].s, sunMTexts[sunMSel].b);
+  if (sunDSel >= 0 && sunDSel < sunDTexts.length) setNode('itin-sun-dinner',   sunDTexts[sunDSel].s, sunDTexts[sunDSel].b);
+  if (monDSel >= 0 && monDSel < monDTexts.length) setNode('itin-mon-dinner',   monDTexts[monDSel].s, monDTexts[monDSel].b);
+  if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b);
+
+  (function() {
+    var parts = [];
+    if (monActs[0].on) parts.push('Airboat swamp tour + gator feeding');
+    if (monActs[1].on) parts.push('Tarot + tea · Bottom of the Cup Tea Room');
+    if (monActs[2].on) parts.push('French Market + crystal/voodoo shopping');
+    var e = document.getElementById('itin-mon-morning');
+    if (!e) return;
+    if (parts.length === 0) {
+      e.innerHTML = '<strong>Activity TBD</strong> · vote results pending';
+    } else {
+      e.innerHTML = '<strong>Morning activities</strong> · ' + parts.join(' · ');
+    }
+  })();
+}
+
 // Init
+loadFormSelections();
+updateItinerary();
 renderBudget();
 
 // Lightbox
