@@ -512,18 +512,37 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
       <div class="f-section-body">
         <div class="f-field">
-          <label class="f-label" for="tshirt">T-Shirt Size <span class="f-required">*</span></label>
-
-          <select id="tshirt" name="tshirt" required>
-            <option value="" disabled selected>Select your size</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="2XL">2XL</option>
-            <option value="3XL">3XL</option>
-          </select>
+          <label class="f-label">Do you want a Voodoo Clam Clan tee? <span class="f-required">*</span></label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="tshirt_optin" id="tshirt-yes" value="yes" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Yes — I want one</div>
+                <div class="f-opt-note">$30 · pre-paid through MOH</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="tshirt_optin" id="tshirt-no" value="no">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">No — I'll pass</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div id="tshirt-size-wrap" hidden>
+          <div class="f-field">
+            <label class="f-label" for="tshirt">T-Shirt Size <span class="f-required">*</span></label>
+            <select id="tshirt" name="tshirt">
+              <option value="" disabled selected>Select your size</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="2XL">2XL</option>
+              <option value="3XL">3XL</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -574,6 +593,28 @@ input[type="range"]::-webkit-slider-thumb {
                 <div class="f-opt-note">Still coming to events, just not staying there</div>
               </div>
             </label>
+          </div>
+          <div id="airbnb-drinks-section" hidden style="margin-top: 14px;">
+            <div class="f-field">
+              <label class="f-label">Shared drinks &amp; snacks — whole weekend <span class="f-required">*</span></label>
+              <p class="f-note">Charcuterie, spirits, mixers, go-cups, water, fuel &amp; electrolytes — ~$30/pp for the full trip.</p>
+              <div class="f-options">
+                <label class="f-opt">
+                  <input type="radio" name="airbnb_drinks" id="airbnb-drinks-yes" value="yes">
+                  <div class="f-opt-body">
+                    <div class="f-opt-lbl">Yes — I'm in for shared snacks &amp; drinks</div>
+                    <div class="f-opt-note">$30 · pre-paid through MOH</div>
+                  </div>
+                </label>
+                <label class="f-opt">
+                  <input type="radio" name="airbnb_drinks" value="no">
+                  <div class="f-opt-body">
+                    <div class="f-opt-lbl">No — I'll get my own refreshments</div>
+                    <div class="f-opt-note">You're responsible for your own snacks &amp; drinks for the trip</div>
+                  </div>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -873,17 +914,21 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="moh-summary" id="moh-summary">
       <div class="moh-summary-header">
         <span class="moh-summary-title">✦ What you owe the MOH</span>
-        <span class="moh-summary-total" id="summary-total">$25</span>
+        <span class="moh-summary-total" id="summary-total">$0</span>
       </div>
       <div class="moh-summary-body">
         <ul class="moh-lines">
-          <li class="moh-line">
+          <li class="moh-line" id="line-tee" hidden>
             <span class="moh-line-name">Custom tee</span>
-            <span class="moh-line-amount">$25</span>
+            <span class="moh-line-amount">$30</span>
           </li>
           <li class="moh-line" id="line-airbnb" hidden>
             <span class="moh-line-name">Airbnb share</span>
             <span class="moh-line-amount">$341</span>
+          </li>
+          <li class="moh-line" id="line-drinks" hidden>
+            <span class="moh-line-name">Drinks &amp; snacks — weekend</span>
+            <span class="moh-line-amount">$30</span>
           </li>
           <li class="moh-line" id="line-drag" hidden>
             <span class="moh-line-name">Drag Brunch</span>
@@ -954,33 +999,43 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
 <script>
 // MOH Summary Panel
 // Update TEA_ROOM_PP once quote is confirmed from events@bottomofthecup.com / 504-875-5900
+var TEE_PP      = 30;
+var DRINKS_PP   = 30;
 var TEA_ROOM_PP = 35;
 
 function updateSummary() {
+  var tshirtYes    = document.getElementById('tshirt-yes');
   var airbnbYes    = document.getElementById('airbnb-yes');
   var airbnbMaybe  = document.querySelector('input[name="airbnb"][value="Not sure yet"]');
+  var drinksYes    = document.getElementById('airbnb-drinks-yes');
   var dragBrunch   = document.getElementById('sunday-drag-brunch');
   var spaDay       = document.querySelector('input[name="sun_morning"][value="Spa day — Spa Isbell, Magazine St"]');
   var ghostTour    = document.getElementById('ghost-tour-yes');
   var swampTour    = document.getElementById('monday-swamp');
   var teaRoom      = document.getElementById('monday-tearoom');
 
+  var showTee           = tshirtYes   && tshirtYes.checked;
   var showAirbnb        = airbnbYes   && airbnbYes.checked;
   var showAirbnbPending = airbnbMaybe && airbnbMaybe.checked;
+  var showDrinks        = drinksYes   && drinksYes.checked;
   var showDrag          = dragBrunch  && dragBrunch.checked;
   var showSpa           = spaDay      && spaDay.checked;
   var showGhost         = ghostTour   && ghostTour.checked;
   var showSwamp         = swampTour   && swampTour.checked;
   var showTea           = teaRoom     && teaRoom.checked;
 
-  var total = 25;
+  var total = 0;
+  if (showTee)    total += TEE_PP;
   if (showAirbnb) total += 341;
+  if (showDrinks) total += DRINKS_PP;
   if (showDrag)   total += 79;
   if (showGhost)  total += 60;
   if (showSwamp)  total += 77;
   if (showTea)    total += TEA_ROOM_PP;
 
+  document.getElementById('line-tee').hidden           = !showTee;
   document.getElementById('line-airbnb').hidden        = !showAirbnb;
+  document.getElementById('line-drinks').hidden        = !showDrinks;
   document.getElementById('line-drag').hidden          = !showDrag;
   document.getElementById('line-ghost').hidden         = !showGhost;
   document.getElementById('line-swamp').hidden         = !showSwamp;
@@ -988,15 +1043,31 @@ function updateSummary() {
 
   document.getElementById('summary-total').textContent = '$' + total;
 
-  var hasExtras = showAirbnb || showDrag || showGhost || showSwamp || showTea;
-  document.getElementById('summary-hint').hidden           = hasExtras;
+  var hasAny = showTee || showAirbnb || showDrinks || showDrag || showGhost || showSwamp || showTea;
+  document.getElementById('summary-hint').hidden           = hasAny;
   document.getElementById('summary-airbnb-pending').hidden = !showAirbnbPending;
   document.getElementById('summary-spa-note').hidden       = !showSpa;
   document.getElementById('summary-tea-note').hidden       = !showTea;
+
+  // Show/hide drinks sub-section; clear choice when airbnb is de-selected
+  var drinksSection = document.getElementById('airbnb-drinks-section');
+  drinksSection.hidden = !showAirbnb;
+  if (!showAirbnb) {
+    document.querySelectorAll('input[name="airbnb_drinks"]').forEach(function(el) {
+      el.checked = false;
+    });
+  }
+
+  // Show/hide size selector; toggle required
+  var sizeWrap   = document.getElementById('tshirt-size-wrap');
+  var sizeSelect = document.getElementById('tshirt');
+  sizeWrap.hidden    = !showTee;
+  sizeSelect.required = showTee;
+  if (!showTee) sizeSelect.value = '';
 }
 
 // Listen to all groups that affect the summary (covers deselection too)
-['airbnb', 'sun_morning', 'ghost_tour'].forEach(function(name) {
+['airbnb', 'sun_morning', 'ghost_tour', 'tshirt_optin', 'airbnb_drinks'].forEach(function(name) {
   document.querySelectorAll('input[name="' + name + '"]').forEach(function(el) {
     el.addEventListener('change', updateSummary);
   });
