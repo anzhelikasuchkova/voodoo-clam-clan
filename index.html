@@ -218,7 +218,7 @@ nav {
 
 /* COUNTDOWN */
 .hero-countdown {
-  margin-top: 28px;
+  margin-top: 16px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.95s;
   text-align: center;
@@ -244,16 +244,16 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 90px;
+  min-width: 72px;
   background: var(--teal-faint);
   border: 0.5px solid var(--border-teal);
   border-radius: 14px;
-  padding: 18px 20px 14px;
+  padding: 12px 14px 10px;
 }
 
 .countdown-num {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(36px, 6vw, 56px);
+  font-size: clamp(26px, 6vw, 44px);
   font-weight: 700;
   color: var(--pearl);
   line-height: 1;
@@ -892,7 +892,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 @media(max-width:640px){ .bot-nav { flex-wrap:wrap; overflow-x:visible; } .bot-nav a { flex:1 0 20%; padding:11px 4px; font-size:8.5px; letter-spacing:0.1em; text-align:center; white-space:nowrap; } .bot-nav a:nth-child(5n) { border-right:none; } .bot-nav a:nth-child(-n+5) { border-bottom:0.5px solid rgba(240,236,228,0.06); } }
 
 /* STICKY MUSIC PLAYER */
-.sticky-player { position:fixed; top:24px; right:24px; z-index:200; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:8px; }
+.sticky-player { position:absolute; top:24px; right:24px; z-index:200; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:8px; }
 .sp-pill { display:flex; align-items:center; gap:10px; background:rgba(8,6,8,0.92); border:0.5px solid var(--border-teal); border-radius:40px; padding:10px 18px 10px 14px; cursor:pointer; backdrop-filter:blur(12px); color:var(--pearl); transition:border-color 0.2s,background 0.2s; }
 .sp-pill:hover { border-color:var(--teal); }
 .sp-note { color:var(--teal); font-size:16px; animation:notePulse 2s ease-in-out infinite; }
@@ -938,6 +938,17 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-unit-label">Mins</span></div>
       <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-unit-label">Secs</span></div>
     </div>
+  </div>
+  <!-- STICKY MUSIC PLAYER -->
+  <div class="sticky-player">
+    <div id="sp-embed" class="sp-embed">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6qFjrb6ZLRQJhMnAGpj0iM?utm_source=generator&theme=0&autoplay=1" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+    <button class="sp-pill" onclick="togglePlayer()">
+      <span class="sp-note">♪</span>
+      <span class="sp-label"><span class="sp-title">WHERE IS MY HUSBAND!</span><span class="sp-artist">RAYE</span></span>
+      <span class="sp-arrow" id="sp-arrow">▴</span>
+    </button>
   </div>
 </div>
 
@@ -1312,17 +1323,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <a href="#pay">Pay</a>
 </nav>
 
-<!-- STICKY MUSIC PLAYER -->
-<div class="sticky-player">
-  <div id="sp-embed" class="sp-embed">
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6qFjrb6ZLRQJhMnAGpj0iM?utm_source=generator&theme=0&autoplay=1" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-  </div>
-  <button class="sp-pill" onclick="togglePlayer()">
-    <span class="sp-note">♪</span>
-    <span class="sp-label"><span class="sp-title">WHERE IS MY HUSBAND!</span><span class="sp-artist">RAYE</span></span>
-    <span class="sp-arrow" id="sp-arrow">▴</span>
-  </button>
-</div>
 
 <script>
 // Bottom nav scroll reveal
