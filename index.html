@@ -888,7 +888,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .bot-nav a { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--pearl-dim); text-decoration:none; white-space:nowrap; padding:14px 14px; border-right:0.5px solid rgba(240,236,228,0.06); transition:color 0.2s,background 0.2s; flex-shrink:0; }
 .bot-nav a:hover { color:var(--teal); background:rgba(94,207,207,0.05); }
 .bot-nav a.b-top { color:var(--teal); opacity:0.7; }
-@media(max-width:640px){ .bot-nav a { padding:13px 10px; font-size:10px; } }
+@media(max-width:640px){ .bot-nav { flex-wrap:wrap; overflow-x:visible; } .bot-nav a { flex:1 0 20%; padding:11px 4px; font-size:8.5px; letter-spacing:0.1em; text-align:center; white-space:nowrap; } .bot-nav a:nth-child(5n) { border-right:none; } .bot-nav a:nth-child(-n+5) { border-bottom:0.5px solid rgba(240,236,228,0.06); } }
 
 /* STICKY MUSIC PLAYER */
 .sticky-player { position:fixed; top:24px; right:24px; z-index:200; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:8px; }
