@@ -332,6 +332,19 @@ input[type="range"]::-webkit-slider-thumb {
   .page { padding: 40px 16px 80px; }
   .f-section-body { padding: 16px; }
 }
+
+/* PAY YOUR SHARE */
+.pay-section { margin-top: 48px; border: 0.5px solid var(--border); border-radius: 16px; overflow: hidden; }
+.pay-section-head { padding: 16px 22px; background: var(--pearl-faint); border-bottom: 0.5px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.pay-section-body { padding: 22px; display: flex; flex-direction: column; gap: 0; }
+.pay-section-intro { font-size: 13px; color: var(--pearl-dim); margin-bottom: 20px; line-height: 1.6; }
+.pay-primary { display:flex; align-items:center; gap:20px; padding:24px 28px; border:0.5px solid rgba(94,207,207,0.4); border-radius:16px; background:var(--teal-faint); text-decoration:none; color:var(--pearl); margin-bottom:16px; transition:border-color 0.2s,background 0.2s,transform 0.15s; }
+.pay-primary:hover { border-color:var(--teal); background:rgba(94,207,207,0.12); transform:translateY(-2px); }
+.pay-primary .pay-icon { font-size:36px; flex-shrink:0; }
+.pay-primary .pay-name { font-family:'Cinzel',serif; font-size:15px; letter-spacing:0.1em; color:var(--teal); margin-bottom:4px; }
+.pay-primary .pay-detail { font-size:12px; color:var(--pearl-dim); }
+.pay-primary .pay-action { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-top:8px; }
+.pay-note { font-size:13px; color:rgba(240,236,228,0.3); text-align:center; line-height:1.7; }
 </style>
 </head>
 <body>
@@ -753,6 +766,34 @@ input[type="range"]::-webkit-slider-thumb {
 
   </form>
   </div><!-- /form-wrap -->
+
+  <!-- PAY YOUR SHARE -->
+  <div class="pay-section">
+    <div class="pay-section-head">
+      <div class="f-section-icon">💸</div>
+      <div class="f-section-label">Pay Your Share</div>
+    </div>
+    <div class="pay-section-body">
+      <p class="pay-section-intro">Use the budget calculator on the main site to find your number, then send it here.</p>
+      <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-primary" target="_blank" rel="noopener">
+        <div class="pay-icon">📱</div>
+        <div>
+          <div class="pay-name">Venmo</div>
+          <div class="pay-detail">@anzhelikasuchkova · include your name in the note</div>
+          <div class="pay-action">Open Venmo →</div>
+        </div>
+      </a>
+      <a href="https://www.paypal.com/pool/9p7uOMnbRC?sr=wccr" class="pay-primary" target="_blank" rel="noopener">
+        <div class="pay-icon">💰</div>
+        <div>
+          <div class="pay-name">PayPal Pool — Voodoo Clam Clan Fund</div>
+          <div class="pay-detail">Contribute to the bride's weekend fund · include your name in the note</div>
+          <div class="pay-action">Contribute to Pool →</div>
+        </div>
+      </a>
+      <p class="pay-note">Questions about your share? Text the MOH. Don't ghost the group chat.</p>
+    </div>
+  </div>
 
 </div><!-- /page -->
 
