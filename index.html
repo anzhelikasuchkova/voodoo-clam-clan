@@ -98,8 +98,8 @@ nav {
     padding: 6px 10px;
     text-align: center;
   }
-  /* Force line break after Playlist → row 1 centers 4 items, row 2 centers 5 items */
-  .nav-links li:nth-child(4) { margin-right: 100vw; }
+  /* Invisible zero-height break forces row 2 to start at Album, each row independently centered */
+  .nav-br { width: 100%; height: 0; margin: 0; padding: 0; list-style: none; }
 }
 
 /* HERO */
@@ -1031,6 +1031,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li><a href="#map">Map</a></li>
       <li><a href="#looks">Looks</a></li>
       <li><a href="#playlist">Playlist</a></li>
+      <li class="nav-br" aria-hidden="true"></li>
       <li><a href="#album">Album</a></li>
       <li><a href="#rules">Rules</a></li>
       <li><a href="#form">Form</a></li>
