@@ -85,7 +85,18 @@ nav {
 .nav-links a:hover { color: var(--teal); border-color: rgba(94,207,207,0.5); background: rgba(94,207,207,0.08); }
 
 @media(max-width:640px){
-  .nav-links { gap: 16px; }
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 6px;
+    justify-content: center;
+  }
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 6px 9px;
+    text-align: center;
+  }
 }
 
 /* HERO */
