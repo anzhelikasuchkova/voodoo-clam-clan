@@ -469,6 +469,31 @@ input[type="range"]::-webkit-slider-thumb {
   .moh-summary-venmo { flex-direction: column; align-items: flex-start; }
   .moh-summary-body { padding: 16px; }
 }
+
+.form-phase-3 { display: none; }
+/* .form-phase-3-hide has no default CSS — visible in Phase 1, hidden by JS in Phase 3 */
+
+.kassie-stamp {
+  display: inline-block;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--teal);
+  border: none;
+  border-radius: 3px;
+  padding: 3px 9px;
+  margin-left: 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+  transform: rotate(-2deg);
+  box-shadow: 1px 1px 0 rgba(94,207,207,0.4);
+}
+
+#drinks-pref-section { display: flex; flex-direction: column; gap: 16px; margin-top: 16px; }
+[hidden] { display: none !important; }
 </style>
 </head>
 <body>
@@ -567,22 +592,32 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="f-section-label">The Airbnb</div>
       </div>
       <div class="f-section-body">
+        <div style="border:0.5px solid var(--border-teal);border-radius:14px;padding:18px 20px;background:var(--teal-faint);margin-bottom:4px;">
+          <div class="f-section-label" style="margin-bottom:10px;">2012 Oretha Castle Haley Blvd · New Orleans, LA 70113</div>
+          <p class="f-note" style="margin-bottom:10px;">Oct 3 check-in 3pm → Oct 6 checkout 11am · 4 nights</p>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;border-top:0.5px solid var(--border-teal);padding-top:10px;">
+            <span class="f-note">$3,066 total</span>
+            <span style="font-family:'Cinzel',serif;font-size:22px;letter-spacing:0.04em;color:var(--pearl);">$341 <span style="font-size:12px;color:var(--pearl-dim);font-weight:400;letter-spacing:0.1em;">/ person</span></span>
+          </div>
+        </div>
+        <div style="border:0.5px solid rgba(201,168,76,0.35);border-radius:14px;padding:14px 18px;background:rgba(201,168,76,0.06);margin-bottom:4px;">
+          <div style="font-size:13px;color:var(--gold);line-height:1.7;">⚠ Subject to change — if 2 or more people drop, we'll need to find different accommodations. Depending on the outcome, there may be a partial refund or a request for additional funds.</div>
+        </div>
         <div class="f-field">
           <label class="f-label">Are you staying at the Airbnb? <span class="f-required">*</span></label>
-          <p class="f-note">2012 Oretha Castle Haley Blvd · private pool · ~$341/person for 4 nights. Please answer by July — if 3+ girls drop, we find an alternative.</p>
           <div class="f-options">
             <label class="f-opt">
               <input type="radio" name="airbnb" id="airbnb-yes" value="Yes — I'm in" required>
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Yes — I'm in</div>
-                <div class="f-opt-note">I'll pay my share before the trip</div>
+                <div class="f-opt-note">I'll pay my share by July 1st, 2026</div>
               </div>
             </label>
             <label class="f-opt">
               <input type="radio" name="airbnb" value="Not sure yet">
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Not sure yet</div>
-                <div class="f-opt-note">I'll confirm by July</div>
+                <div class="f-opt-note">Please confirm by July 1st, 2026</div>
               </div>
             </label>
             <label class="f-opt">
@@ -613,14 +648,157 @@ input[type="range"]::-webkit-slider-thumb {
                   </div>
                 </label>
               </div>
+              <div id="drinks-pref-section" hidden>
+                <div class="f-field">
+                  <label class="f-label">Drink preferences — check all that apply</label>
+                  <div class="f-options">
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Wine"><div class="f-opt-body"><div class="f-opt-lbl">Wine</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Cocktails / mixed drinks"><div class="f-opt-body"><div class="f-opt-lbl">Cocktails / mixed drinks</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Champagne / Prosecco"><div class="f-opt-body"><div class="f-opt-lbl">Champagne / Prosecco</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Beer / seltzers"><div class="f-opt-body"><div class="f-opt-lbl">Beer / seltzers</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Tequila"><div class="f-opt-body"><div class="f-opt-lbl">Tequila</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Whiskey / bourbon"><div class="f-opt-body"><div class="f-opt-lbl">Whiskey / bourbon</div></div></label>
+                    <label class="f-opt"><input type="checkbox" name="drinks" value="Non-drinker / mocktails only"><div class="f-opt-body"><div class="f-opt-lbl">Non-drinker / mocktails only</div></div></label>
+                  </div>
+                </div>
+                <div class="f-field">
+                  <label class="f-label">Food allergies or dietary restrictions</label>
+                  <input type="text" name="allergies" placeholder="None, or list them here">
+                </div>
+                <div class="f-field">
+                  <label class="f-label">Favorite drunk snack <span class="f-required">*</span></label>
+                  <p class="f-note">This is important. The Airbnb snack situation depends on this answer.</p>
+                  <input type="text" name="drunk_snack" placeholder="Be specific. Be honest." required>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SATURDAY NIGHT DINNER -->
+    <!-- ACTIVITIES (Phase 1 only — hidden in Phase 3 when per-night vote sections reveal) -->
+    <div class="f-section form-phase-3-hide">
+      <div class="f-section-head">
+        <div class="f-section-icon">🦪</div>
+        <div class="f-section-label">Activities</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">What sounds good? Pick everything that appeals.</label>
+          <p class="f-note">We'll build the schedule around the top votes once everyone's answered.</p>
+          <div style="border:0.5px solid rgba(201,168,76,0.35);border-radius:12px;padding:14px 18px;background:rgba(201,168,76,0.06);margin-top:4px;">
+            <div style="font-size:13px;color:var(--gold);line-height:1.7;">⚠ A few of these require advance booking or a small deposit. If something needs to be paid ahead of time, the MOH will send a Venmo request — no surprises, no pressure.</div>
+          </div>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="checkbox" name="act_drag_brunch" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Drag Brunch — The Country Club
+                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
+                </div>
+                <div class="f-opt-note">Longest-running drag brunch in NOLA · ~$65pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_tea_room" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Private tea leaf reading — Bottom of the Cup
+                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
+                </div>
+                <div class="f-opt-note">French Quarter · private group reading · ~$35pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_ghost_walking" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Ghost Tour — VIP HELLVISION (walking tour)
+                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
+                </div>
+                <div class="f-opt-note">French Quarter · 8pm · 1hr 45min · ~$44pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_spotted_cat" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Live jazz — Spotted Cat Music Club
+                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
+                </div>
+                <div class="f-opt-note">Best jazz on Frenchmen St · no cover</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_swamp" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Airboat swamp tour + gator feeding</div>
+                <div class="f-opt-note">~90 min · departs Westwego · ~$67pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_ghost_crawl" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Ghost bar crawl (alternative to walking tour)</div>
+                <div class="f-opt-note">Pick one ghost tour format only · ~$30pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_spa" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Spa morning — Spa Isbell or Belladonna</div>
+                <div class="f-opt-note">Magazine St · walking distance · ~$75–100pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_burlesque" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Burlesque show</div>
+                <div class="f-opt-note">Classic New Orleans entertainment · ~$20–35pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="checkbox" name="act_no_pref" value="yes">
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">No preference — I'm down for anything</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIBE CHECK -->
     <div class="f-section">
+      <div class="f-section-head">
+        <div class="f-section-icon">✨</div>
+        <div class="f-section-label">Vibe Check</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Help us get the energy right <span class="f-required">*</span></label>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="vibe" value="Go hard — every night, full send" required>
+              <div class="f-opt-body"><div class="f-opt-lbl">Go hard — every night, full send</div></div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="vibe" value="Mix it up — one big night, one chill night">
+              <div class="f-opt-body"><div class="f-opt-lbl">Mix it up — one big night, one chill night</div></div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="vibe" value="Keep it manageable — good food, good company, no 4am nights">
+              <div class="f-opt-body"><div class="f-opt-lbl">Keep it manageable — good food, good company, no 4am nights</div></div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="vibe" value="I'll follow whatever the group decides">
+              <div class="f-opt-body"><div class="f-opt-lbl">I'll follow whatever the group decides</div></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SATURDAY NIGHT DINNER -->
+    <div class="f-section form-phase-3">
       <div class="f-section-head">
         <div class="f-section-icon">🕶️</div>
         <div class="f-section-label">Saturday Night · The Convoy</div>
@@ -657,7 +835,7 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
 
     <!-- SUNDAY MORNING -->
-    <div class="f-section">
+    <div class="f-section form-phase-3">
       <div class="f-section-head">
         <div class="f-section-icon">🦪</div>
         <div class="f-section-label">Sunday Morning · The Shells</div>
@@ -748,7 +926,7 @@ input[type="range"]::-webkit-slider-thumb {
     </div>
 
     <!-- MONDAY -->
-    <div class="f-section">
+    <div class="f-section form-phase-3">
       <div class="f-section-head">
         <div class="f-section-icon">🔮</div>
         <div class="f-section-label">Monday · The Coven</div>
@@ -859,8 +1037,8 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
     </div>
 
-    <!-- DRINKS + FOOD -->
-    <div class="f-section">
+    <!-- DRINKS + FOOD (Phase 3 — preferences moved inline under airbnb opt-in) -->
+    <div class="f-section form-phase-3">
       <div class="f-section-head">
         <div class="f-section-icon">🥂</div>
         <div class="f-section-label">Drinks + Food</div>
@@ -912,36 +1090,36 @@ input[type="range"]::-webkit-slider-thumb {
     <!-- MOH SUMMARY PANEL -->
     <div class="moh-summary" id="moh-summary">
       <div class="moh-summary-header">
-        <span class="moh-summary-title">✦ What you owe the MOH</span>
+        <span class="moh-summary-title">✦ What you owe the HBIC</span>
         <span class="moh-summary-total" id="summary-total">$0</span>
       </div>
       <div class="moh-summary-body">
         <ul class="moh-lines">
-          <li class="moh-line" id="line-tee" hidden>
-            <span class="moh-line-name">Custom tee</span>
-            <span class="moh-line-amount">$30</span>
-          </li>
           <li class="moh-line" id="line-airbnb" hidden>
             <span class="moh-line-name">Airbnb share</span>
             <span class="moh-line-amount">$341</span>
+          </li>
+          <li class="moh-line" id="line-tee" hidden>
+            <span class="moh-line-name">Custom tee</span>
+            <span class="moh-line-amount">$30</span>
           </li>
           <li class="moh-line" id="line-drinks" hidden>
             <span class="moh-line-name">Drinks &amp; snacks — weekend</span>
             <span class="moh-line-amount">$30</span>
           </li>
-          <li class="moh-line" id="line-drag" hidden>
+          <li class="moh-line form-phase-3" id="line-drag" hidden>
             <span class="moh-line-name">Drag Brunch</span>
             <span class="moh-line-amount">$79</span>
           </li>
-          <li class="moh-line" id="line-ghost" hidden>
+          <li class="moh-line form-phase-3" id="line-ghost" hidden>
             <span class="moh-line-name">Ghost Tour</span>
             <span class="moh-line-amount">$60</span>
           </li>
-          <li class="moh-line" id="line-swamp" hidden>
+          <li class="moh-line form-phase-3" id="line-swamp" hidden>
             <span class="moh-line-name">Swamp Tour</span>
             <span class="moh-line-amount">$77</span>
           </li>
-          <li class="moh-line" id="line-tea" hidden>
+          <li class="moh-line form-phase-3" id="line-tea" hidden>
             <span class="moh-line-name">Tea Room (Adaire Room)</span>
             <span class="moh-line-amount">$35 <span class="moh-line-tbd">⚠️ est.</span></span>
           </li>
@@ -953,6 +1131,25 @@ input[type="range"]::-webkit-slider-thumb {
         <div class="moh-summary-venmo">
           <span class="moh-venmo-label">Send to @anzhelikasuchkova on Venmo</span>
           <a href="https://venmo.com/u/anzhelikasuchkova" target="_blank" rel="noopener" class="moh-venmo-btn">Pay on Venmo →</a>
+        </div>
+        <div style="border-top:0.5px solid rgba(240,236,228,0.1);margin-top:16px;padding-top:16px;">
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--pearl-dim);margin-bottom:12px;">Full Weekend Estimate</div>
+          <div style="font-size:12px;color:var(--pearl-dim);font-style:italic;margin-bottom:8px;">For your own planning — not collected by MOH</div>
+          <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Flights (Southwest direct)</span><span style="color:var(--pearl-dim);">~$327</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Dinners — 3 nights</span><span style="color:var(--pearl-dim);">~$90–285</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Drinks &amp; going out</span><span style="color:var(--pearl-dim);">~$60–200</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Activities (ghost tour, spa, etc.)</span><span style="color:var(--pearl-dim);">~$44–175</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Outfits (3 themed nights)</span><span style="color:var(--pearl-dim);">~$80–300</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Tips, souvenirs, extras</span><span style="color:var(--pearl-dim);">~$40–100</span></div>
+            <div style="display:flex;justify-content:space-between;border-top:0.5px solid rgba(240,236,228,0.1);padding-top:8px;margin-top:4px;">
+              <span style="color:var(--pearl);font-weight:500;">Full weekend</span>
+              <span style="color:var(--pearl);font-weight:500;">~$700–1,400</span>
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:11px;color:var(--gold);font-style:italic;">
+            The full interactive budget calculator unlocks once votes are in.
+          </div>
         </div>
       </div>
     </div>
@@ -966,37 +1163,21 @@ input[type="range"]::-webkit-slider-thumb {
   </form>
   </div><!-- /form-wrap -->
 
-  <!-- PAY YOUR SHARE -->
-  <div class="pay-section">
-    <div class="pay-section-head">
-      <div class="f-section-icon">💸</div>
-      <div class="f-section-label">Pay Your Share</div>
-    </div>
-    <div class="pay-section-body">
-      <p class="pay-section-intro">Use the budget calculator on the main site to find your number, then send it here.</p>
-      <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-primary" target="_blank" rel="noopener">
-        <div class="pay-icon">📱</div>
-        <div>
-          <div class="pay-name">Venmo</div>
-          <div class="pay-detail">@anzhelikasuchkova · include your name in the note</div>
-          <div class="pay-action">Open Venmo →</div>
-        </div>
-      </a>
-      <a href="https://www.paypal.com/pool/9p7uOMnbRC?sr=wccr" class="pay-primary" target="_blank" rel="noopener">
-        <div class="pay-icon">💰</div>
-        <div>
-          <div class="pay-name">PayPal Pool — Voodoo Clam Clan Fund</div>
-          <div class="pay-detail">Contribute to the bride's weekend fund · include your name in the note</div>
-          <div class="pay-action">Contribute to Pool →</div>
-        </div>
-      </a>
-      <p class="pay-note">Questions about your share? Text the MOH. Don't ghost the group chat.</p>
-    </div>
-  </div>
 
 </div><!-- /page -->
 
 <script>
+var FORM_PHASE = 1; // 1 = Phase 1 · 3 = full site
+
+if (FORM_PHASE >= 3) {
+  document.querySelectorAll('.form-phase-3').forEach(function(el) {
+    el.classList.remove('form-phase-3');
+  });
+  document.querySelectorAll('.form-phase-3-hide').forEach(function(el) {
+    el.style.display = 'none';
+  });
+}
+
 var VCC_RADIO_FIELDS = ['sat_dinner','sun_morning','sun_lunch','sun_dinner','mon_dinner','ghost_tour','mon_nightcap'];
 
 function vccSaveToStorage() {
@@ -1133,6 +1314,10 @@ function updateSummary() {
       el.checked = false;
     });
   }
+
+  // Show/hide drink preferences when they opt in to shared snacks
+  var drinksPrefSection = document.getElementById('drinks-pref-section');
+  if (drinksPrefSection) drinksPrefSection.hidden = !showDrinks;
 
   // Show/hide size selector; toggle required
   var sizeWrap   = document.getElementById('tshirt-size-wrap');
