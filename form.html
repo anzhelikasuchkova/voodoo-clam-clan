@@ -677,7 +677,7 @@ input[type="range"]::-webkit-slider-thumb {
                 <div class="f-field">
                   <label class="f-label">Favorite drunk snack <span class="f-required">*</span></label>
                   <p class="f-note">This is important. The Airbnb snack situation depends on this answer.</p>
-                  <input type="text" name="drunk_snack" placeholder="Be specific. Be honest." required>
+                  <input type="text" name="drunk_snack" placeholder="Be specific. Be honest.">
                 </div>
               </div>
             </div>
@@ -1184,6 +1184,11 @@ if (FORM_PHASE >= 3) {
   });
   document.querySelectorAll('.form-phase-3-hide').forEach(function(el) {
     el.style.display = 'none';
+  });
+} else {
+  // Disable all inputs in hidden Phase 3 sections so required validation doesn't block submission
+  document.querySelectorAll('.form-phase-3 input, .form-phase-3 select, .form-phase-3 textarea').forEach(function(el) {
+    el.disabled = true;
   });
 }
 
