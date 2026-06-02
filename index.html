@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voodoo Clam Clan 🦪 · New Orleans · Oct 3–6</title>
+<link rel="icon" type="image/png" href="assets/images/clam_logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -58,6 +59,8 @@ nav {
   position: relative;
   z-index: 2;
 }
+
+#hero nav { margin-top: 116px; }
 
 .nav-links {
   display: flex;
@@ -150,6 +153,8 @@ nav {
   margin-bottom: 32px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.2s;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow-name {
@@ -169,18 +174,28 @@ nav {
 
 .hero-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(32px, 7vw, 72px);
+  font-size: clamp(28px, 6vw, 60px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.02em;
-  margin-bottom: 16px;
+  margin-top: -62px;
+  margin-bottom: 26px;
+  left: 5px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.5s;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 12px rgba(8,6,8,1)) drop-shadow(0 0 30px rgba(8,6,8,1)) drop-shadow(0 0 60px rgba(8,6,8,0.9));
 }
 
-.hero-title .line-voodoo { color: var(--pearl); }
+.hero-title .line-voodoo {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--pearl) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 .hero-title .line-clam {
-  background: linear-gradient(135deg, var(--teal) 0%, var(--pearl) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--pearl) 0%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -204,9 +219,12 @@ nav {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--teal);
+  margin-top: 90px;
   margin-bottom: 36px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.75s;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-dates {
@@ -893,6 +911,30 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .inspo-btn { background:var(--pink) !important; color:var(--pearl) !important; }
 .inspo-note { margin-top:20px; font-size:12px; color:rgba(240,236,228,0.28); line-height:1.6; font-style:italic; }
 
+/* CLAM LOGO */
+.hero-clam-logo {
+  position: relative;
+  z-index: 0;
+  width: clamp(425px, 81vw, 725px);
+  margin-top: -84px;
+  margin-bottom: -300px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+  filter: invert(1) sepia(0.25) saturate(1.2) drop-shadow(0 0 60px rgba(94,207,207,0.3));
+  mix-blend-mode: screen;
+  pointer-events: none;
+  display: block;
+}
+.footer-clam-logo {
+  width: 52px;
+  filter: invert(1) sepia(0.25) saturate(1.2) drop-shadow(0 0 20px rgba(94,207,207,0.4));
+  mix-blend-mode: screen;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* PLAYLIST */
 .playlist-intro { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:17px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
 .playlist-note { margin-top:16px; font-size:12px; color:rgba(240,236,228,0.3); text-align:center; }
@@ -1055,12 +1097,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <div id="hero" class="hero">
   <div class="hero-shimmer"></div>
   <div class="hero-eyebrow"><span class="eyebrow-name">Kassie's Bachelorette</span><br>New Orleans · October 3–6, 2026</div>
-  <div class="hero-clam">🦪</div>
+  <img src="assets/images/clam_logo.png" alt="Voodoo Clam Clan" class="hero-clam-logo">
   <div class="hero-title">
     <div class="line-voodoo">Voodoo</div>
     <div class="line-clam">Clam Clan</div>
   </div>
-  <div class="hero-tagline">Get out of your shell</div>
   <nav>
     <ul class="nav-links">
       <li class="phase-3-only"><a href="#itinerary">Itinerary</a></li>
@@ -1410,7 +1451,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">Your Turn</div>
   <div class="section-title">Fill Out the Form</div>
   <div class="form-card">
-    <p>Five minutes of your time. Airbnb answer, t-shirt size, and activity votes — all in one place. The MOH needs this by July 1.</p>
+    <p>Five minutes of your time. Airbnb answer, t-shirt size, and activity votes — all in one place.</p>
     <a href="form.html" target="_blank" class="form-btn">Open the Form →</a>
   </div>
 </section>
@@ -1477,15 +1518,15 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     </div>
   </a>
   <p class="pay-kassie-soft" style="font-size:13px;color:var(--teal);font-family:'Cinzel',serif;letter-spacing:0.2em;text-transform:uppercase;opacity:1;">Feeling generous? Anything extra goes toward covering Kassie's share — her Airbnb, her flight, and weekend activities. ♡</p>
-  <p class="pay-note">Questions about your share? Text the MOH. Don't ghost the group chat.</p>
+  <p class="pay-note">Questions about your share? Text Grace. Don't ghost the group chat.</p>
 </section>
 
 
 <!-- FOOTER -->
 <footer>
-  <div class="f-clam">🦪</div>
+  <img src="assets/images/clam_logo.png" alt="" class="footer-clam-logo">
   <div class="f-title">Voodoo Clam Clan</div>
-  <p>New Orleans · October 3–6, 2026 · For Kassie 🖤</p>
+  <p>New Orleans · October 3–6, 2026</p>
 </footer>
 
 <!-- BOTTOM NAV -->

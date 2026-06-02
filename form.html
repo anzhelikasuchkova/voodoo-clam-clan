@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voodoo Clam Clan 🦪 · Planning Form</title>
+<link rel="icon" type="image/png" href="assets/images/clam_logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -74,7 +75,15 @@ body::before {
 }
 .form-header a:hover { opacity: 1; }
 
-.form-clam { font-size: 52px; margin-bottom: 12px; filter: drop-shadow(0 0 30px rgba(94,207,207,0.35)); }
+.form-clam-logo {
+  width: 80px;
+  filter: invert(1) sepia(0.25) saturate(1.2) drop-shadow(0 0 30px rgba(94,207,207,0.35));
+  mix-blend-mode: screen;
+  margin-bottom: 12px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .form-title {
   font-family: 'Cinzel Decorative', serif;
@@ -503,16 +512,16 @@ input[type="range"]::-webkit-slider-thumb {
   <!-- HEADER -->
   <div class="form-header">
     <div><a href="index.html" target="_self">← Back to the site</a></div>
-    <div class="form-clam">🦪</div>
+    <img src="assets/images/clam_logo.png" alt="Voodoo Clam Clan" class="form-clam-logo">
     <div class="form-title">Voodoo Clam Clan<br>Planning Form</div>
     <p class="form-sub">New Orleans · Oct 3–6, 2026 · Takes 5 minutes.<br>Do it before you forget you're going.</p>
   </div>
 
   <!-- SUCCESS SCREEN -->
   <div class="success-screen" id="success">
-    <div class="success-clam">🦪</div>
+    <img src="assets/images/clam_logo.png" alt="" class="form-clam-logo" style="width:80px;margin-bottom:20px;">
     <div class="success-title">You're in the Clan.</div>
-    <p class="success-sub">The MOH has your answers.<br>Pack something dark and iridescent.<br>New Orleans doesn't know what's coming.</p>
+    <p class="success-sub">We've got your answers.<br>Pack something dark and iridescent.<br>New Orleans doesn't know what's coming.</p>
     <a href="/" class="back-btn">← Back to the site</a>
   </div>
 
@@ -556,7 +565,7 @@ input[type="range"]::-webkit-slider-thumb {
               <input type="radio" name="tshirt_optin" id="tshirt-yes" value="yes" required>
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Yes — I want one</div>
-                <div class="f-opt-note">$30 · pre-paid through MOH</div>
+                <div class="f-opt-note">$30 · pre-paid</div>
               </div>
             </label>
             <label class="f-opt">
@@ -637,7 +646,7 @@ input[type="range"]::-webkit-slider-thumb {
                   <input type="radio" name="airbnb_drinks" id="airbnb-drinks-yes" value="yes">
                   <div class="f-opt-body">
                     <div class="f-opt-lbl">Yes — I'm in for shared snacks &amp; drinks</div>
-                    <div class="f-opt-note">$30 · pre-paid through MOH</div>
+                    <div class="f-opt-note">$30 · pre-paid</div>
                   </div>
                 </label>
                 <label class="f-opt">
@@ -688,7 +697,7 @@ input[type="range"]::-webkit-slider-thumb {
           <label class="f-label">What sounds good? Pick everything that appeals.</label>
           <p class="f-note">We'll build the schedule around the top votes once everyone's answered.</p>
           <div style="border:0.5px solid rgba(201,168,76,0.35);border-radius:12px;padding:14px 18px;background:rgba(201,168,76,0.06);margin-top:4px;">
-            <div style="font-size:13px;color:var(--gold);line-height:1.7;">⚠ A few of these require advance booking or a small deposit. If something needs to be paid ahead of time, the MOH will send a Venmo request — no surprises, no pressure.</div>
+            <div style="font-size:13px;color:var(--gold);line-height:1.7;">⚠ A few of these require advance booking or a small deposit. If something needs to be paid ahead of time, we'll send a Venmo request — no surprises, no pressure.</div>
           </div>
           <div class="f-options">
             <label class="f-opt">
@@ -712,9 +721,7 @@ input[type="range"]::-webkit-slider-thumb {
             <label class="f-opt">
               <input type="checkbox" name="act_ghost_walking" value="yes">
               <div class="f-opt-body">
-                <div class="f-opt-lbl">Ghost Tour — VIP HELLVISION (walking tour)
-                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
-                </div>
+                <div class="f-opt-lbl">Ghost Tour (walking tour)</div>
                 <div class="f-opt-note">French Quarter · 8pm · 1hr 45min · ~$44pp</div>
               </div>
             </label>
@@ -737,8 +744,10 @@ input[type="range"]::-webkit-slider-thumb {
             <label class="f-opt">
               <input type="checkbox" name="act_ghost_crawl" value="yes">
               <div class="f-opt-body">
-                <div class="f-opt-lbl">Ghost bar crawl (alternative to walking tour)</div>
-                <div class="f-opt-note">Pick one ghost tour format only · ~$30pp</div>
+                <div class="f-opt-lbl">Ghost bar crawl
+                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
+                </div>
+                <div class="f-opt-note">~$30pp</div>
               </div>
             </label>
             <label class="f-opt">
@@ -1079,7 +1088,7 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
       <div class="f-section-body">
         <div class="f-field">
-          <label class="f-label" for="moh_note">Anything the MOH should know?</label>
+          <label class="f-label" for="moh_note">Anything we should know?</label>
           <p class="f-note">Room preferences, concerns, allergies not mentioned, drama to avoid, secrets to keep.</p>
           <textarea id="moh_note" name="moh_note" placeholder="Optional but appreciated..."></textarea>
         </div>
@@ -1090,7 +1099,7 @@ input[type="range"]::-webkit-slider-thumb {
     <!-- MOH SUMMARY PANEL -->
     <div class="moh-summary" id="moh-summary">
       <div class="moh-summary-header">
-        <span class="moh-summary-title">✦ What you owe the HBIC</span>
+        <span class="moh-summary-title">✦ What you owe</span>
         <span class="moh-summary-total" id="summary-total">$0</span>
       </div>
       <div class="moh-summary-body">
@@ -1126,17 +1135,17 @@ input[type="range"]::-webkit-slider-thumb {
         </ul>
         <p class="moh-summary-note" id="summary-hint">More items will appear as you make selections above.</p>
         <p class="moh-summary-note" id="summary-airbnb-pending" hidden>Airbnb not included — confirm by July to lock your spot.</p>
-        <p class="moh-summary-note" id="summary-spa-note" hidden>Spa Isbell: book directly in advance — not pre-paid by MOH.</p>
-        <p class="moh-summary-note" id="summary-tea-note" hidden>⚠️ Tea Room pricing is an estimate — MOH will confirm Adaire Room quote before the trip.</p>
+        <p class="moh-summary-note" id="summary-spa-note" hidden>Spa Isbell: book directly in advance — not a group pre-pay.</p>
+        <p class="moh-summary-note" id="summary-tea-note" hidden>⚠️ Tea Room pricing is an estimate — we'll confirm the Adaire Room quote before the trip.</p>
         <div class="moh-summary-venmo">
           <span class="moh-venmo-label">Send to @anzhelikasuchkova on Venmo</span>
           <a href="https://venmo.com/u/anzhelikasuchkova" target="_blank" rel="noopener" class="moh-venmo-btn">Pay on Venmo →</a>
         </div>
         <div style="border-top:0.5px solid rgba(240,236,228,0.1);margin-top:16px;padding-top:16px;">
           <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--pearl-dim);margin-bottom:12px;">Full Weekend Estimate</div>
-          <div style="font-size:12px;color:var(--pearl-dim);font-style:italic;margin-bottom:8px;">For your own planning — not collected by MOH</div>
+          <div style="font-size:12px;color:var(--pearl-dim);font-style:italic;margin-bottom:8px;">For your own planning — not collected here</div>
           <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
-            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Flights (Southwest direct)</span><span style="color:var(--pearl-dim);">~$327</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Flights (United · COS–MSY · 1 stop IAH)</span><span style="color:var(--pearl-dim);">~$328</span></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Dinners — 3 nights</span><span style="color:var(--pearl-dim);">~$90–285</span></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Drinks &amp; going out</span><span style="color:var(--pearl-dim);">~$60–200</span></div>
             <div style="display:flex;justify-content:space-between;"><span style="color:var(--pearl-dim);">Activities (ghost tour, spa, etc.)</span><span style="color:var(--pearl-dim);">~$44–175</span></div>
@@ -1157,7 +1166,7 @@ input[type="range"]::-webkit-slider-thumb {
     <!-- SUBMIT -->
     <div class="f-submit-wrap">
       <button type="submit" class="f-submit">Submit to the Clan →</button>
-      <p class="f-submit-note">Your answers go straight to the MOH. No spam, no accounts needed.</p>
+      <p class="f-submit-note">No spam, no accounts needed.</p>
     </div>
 
   </form>
@@ -1243,11 +1252,11 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
       document.getElementById('success').classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      alert('Something went wrong — please try again or text the MOH directly.');
+      alert('Something went wrong — please try again or text us directly.');
     }
   })
   .catch(function(err) {
-    alert('Something went wrong — please try again or text the MOH directly.');
+    alert('Something went wrong — please try again or text us directly.');
     console.error(err);
   });
 });
