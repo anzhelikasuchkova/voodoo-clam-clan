@@ -469,6 +469,22 @@ section + section {
 .event-text a { color: var(--teal); text-decoration: none; border-bottom: 1px dotted rgba(94,207,207,0.5); transition: border-color 0.2s; }
 .event-text a:hover { border-bottom-color: var(--teal); }
 
+/* ITINERARY PICKS (inline choices with quiet prices) */
+.price-chip { font-size:11px; color:rgba(240,236,228,0.38); border:0.5px solid rgba(240,236,228,0.14); padding:1px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; white-space:nowrap; }
+.pick-toggle { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(94,207,207,0.6); cursor:pointer; margin-left:10px; border:0.5px solid rgba(94,207,207,0.25); border-radius:10px; padding:1px 8px; white-space:nowrap; user-select:none; }
+.pick-toggle:hover { color:var(--teal); border-color:rgba(94,207,207,0.5); }
+.pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; }
+.pick.open { display:block; }
+@media(max-width:640px){ .pick { margin-left:0; } }
+.pick-row { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:8px 12px; font-size:12.5px; color:var(--pearl-dim); cursor:pointer; border-bottom:0.5px solid rgba(240,236,228,0.06); transition:background 0.12s; }
+.pick-row:last-child { border-bottom:none; }
+.pick-row:hover { background:rgba(240,236,228,0.04); }
+.pick-row.on { background:rgba(94,207,207,0.08); color:var(--pearl); border-left:2px solid var(--teal); }
+.pick-note { font-size:11px; color:rgba(240,236,228,0.35); margin-top:1px; }
+.pick-price { color:rgba(240,236,228,0.4); font-size:12px; white-space:nowrap; flex-shrink:0; }
+.itin-estimate { margin-top:24px; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--pearl-dim); line-height:1.7; }
+.itin-estimate strong { color:var(--teal); font-weight:500; font-style:normal; }
+
 .book-badge {
   display: inline-block;
   font-size: 11px;
@@ -1165,7 +1181,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li class="phase-3-only"><a href="#looks">Looks</a></li>
       <li class="nav-br" aria-hidden="true"></li>
       <li class="phase-3-only"><a href="#album">Album</a></li>
-      <li class="phase-3-only"><a href="#budget">Budget</a></li>
       <li class="phase-3-only"><a href="#rules">Rules</a></li>
       <li><a href="#pay">Pay</a></li>
       <li><a href="#playlist">Playlist</a></li>
@@ -1278,6 +1293,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-dot"></div>
             <div class="event-text" id="itin-sat-evening"><strong>French Quarter</strong> · meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's</div>
           </div>
+          <div class="pick" id="pick-sat"></div>
           <div class="event-item">
             <div class="event-time">Late</div>
             <div class="event-dot"></div>
@@ -1312,6 +1328,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-dot"></div>
             <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · <a href="https://thecountryclubneworleans.com/menus/drag-brunch/" target="_blank" rel="noopener">The Country Club</a> · Bywater</div>
           </div>
+          <div class="pick" id="pick-sunm"></div>
           <div class="event-item">
             <div class="event-time">~3:00 pm</div>
             <div class="event-dot"></div>
@@ -1322,16 +1339,19 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-dot"></div>
             <div class="event-text" id="itin-sun-dinner"><strong>Dinner</strong> · early seating — curtain call is at 8</div>
           </div>
+          <div class="pick" id="pick-sund"></div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
             <div class="event-text" id="itin-sun-show"><strong>Show — optional</strong> · Hunk-O-Mania or burlesque</div>
           </div>
+          <div class="pick" id="pick-show"></div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Clubs</strong> · Oz on Bourbon + Café Lafitte in Exile · literally across the street from the show</div>
+            <div class="event-text" id="itin-sun-clubs"><strong>Clubs</strong> · Bourbon St · pick your poison</div>
           </div>
+          <div class="pick" id="pick-clubs"></div>
         </div>
       </div>
     </div>
@@ -1361,21 +1381,25 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-dot"></div>
             <div class="event-text" id="itin-mon-morning"><strong>Tarot + tea</strong> · Bottom of the Cup Tea Room · French Market stroll</div>
           </div>
+          <div class="pick" id="pick-monacts"></div>
           <div class="event-item">
             <div class="event-time">6:00 pm</div>
             <div class="event-dot"></div>
             <div class="event-text" id="itin-mon-dinner"><strong>Farewell dinner</strong> · TBD by vote · French Quarter area</div>
           </div>
+          <div class="pick" id="pick-mond"></div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Ghost Bar Crawl</strong> · French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie's pick</div>
+            <div class="event-text" id="itin-mon-ghost"><strong>Ghost Bar Crawl</strong> · French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie's pick</div>
           </div>
+          <div class="pick" id="pick-ghost"></div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
             <div class="event-dot"></div>
             <div class="event-text" id="itin-mon-nightcap"><strong>Nightcap</strong> · Bayou Bar or Frenchmen Street</div>
           </div>
+          <div class="pick" id="pick-night"></div>
         </div>
       </div>
     </div>
@@ -1398,6 +1422,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-text"><strong>Slow morning</strong> · pack up the potions · leave no hex behind</div>
           </div>
           <div class="event-item">
+            <div class="event-time">9:30 am</div>
+            <div class="event-dot"></div>
+            <div class="event-text" id="itin-tue-bfast"><strong>Last bites — optional</strong> · Café Du Monde or Slim Goodies</div>
+          </div>
+          <div class="pick" id="pick-tue"></div>
+          <div class="event-item">
             <div class="event-time">11:00 am</div>
             <div class="event-dot"></div>
             <div class="event-text"><strong>Checkout</strong> · saddle your brooms and skedaddle, witches</div>
@@ -1417,6 +1447,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     </div>
 
   </div>
+  <div class="itin-estimate" id="itin-estimate"></div>
 </section>
 
 
@@ -1587,16 +1618,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 </section>
 
 
-<!-- BUDGET -->
-<section id="budget" class="phase-3-only">
-  <div class="section-eyebrow">The Numbers</div>
-  <div class="section-title">Budget Calculator</div>
-  <div class="budget-wrap">
-    <div id="budget-app"></div>
-  </div>
-</section>
-
-
 <!-- RULES -->
 <section id="rules" class="phase-3-only">
   <div class="section-eyebrow">The Code</div>
@@ -1646,7 +1667,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <a href="#looks" class="phase-3-only">Looks</a>
   <a href="#pack" class="phase-3-only">Pack</a>
   <a href="#album" class="phase-3-only">Album</a>
-  <a href="#budget" class="phase-3-only">Budget</a>
   <a href="#rules" class="phase-3-only">Rules</a>
   <a href="#pay">Pay</a>
   <a href="#playlist">Playlist</a>
@@ -1713,47 +1733,8 @@ function toggleNight(header) {
   }
 }
 
-// ── BUDGET TRACKER ──────────────────────────────────────────
-var ng = 9;
-var flightCost = 327;
-var lastSharedCosts = 0;
-var lastFixedCosts = 0;
-var lastFoodCosts = 0;
-var lastActCosts = 0;
-var lastUberCosts = 0;
-var personalSpend = 200;
-
-function updateHero() {
-  var hd = document.getElementById("b-hero-div");
-  if (!hd) return;
-  var total = lastFixedCosts + lastFoodCosts + lastActCosts + lastUberCosts + flightCost + personalSpend;
-  hd.innerHTML =
-    '<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">' +
-      '<div style="flex:1;min-width:130px">' +
-        '<div class="b-hl">Estimated total per person</div>' +
-        '<div class="b-hv">' + fmt(total) + '</div>' +
-        '<div class="b-hs">your full picture</div>' +
-      '</div>' +
-      '<div style="flex:1;min-width:130px;border-left:1px solid rgba(212,83,126,0.25);padding-left:20px">' +
-        '<div class="b-hl">Shared costs</div>' +
-        '<div class="b-hv">' + fmt(lastSharedCosts) + '</div>' +
-      '</div>' +
-    '</div>' +
-    '<div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px">' +
-      '<div class="b-hc">Flights <span>' + fmt(flightCost) + '</span></div>' +
-      '<div class="b-hc">Food <span>' + fmt(lastFoodCosts) + '</span></div>' +
-      '<div class="b-hc">Activities <span>' + fmt(lastActCosts) + '</span></div>' +
-      '<div class="b-hc">Ubers <span>' + fmt(lastUberCosts) + '</span></div>' +
-      '<div class="b-hc">Personal est. <span>' + fmt(personalSpend) + '</span></div>' +
-    '</div>';
-}
+// ── ITINERARY PICKS (prices woven in, big stuff already paid) ──
 var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
-var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
-
-var fixedItems = [
-  { name:"Airbnb — 2012 Oretha Castle Haley Blvd", note:"4 nights · private pool", total:3066, on:true },
-  { name:"Custom Tees", note:"Everyone gets one", pp:30, on:true },
-];
 
 var satD = [
   { lbl:"French Quarter bar crawl + street food", note:"Meet the boys · oysters at Felix's · Pat O'Brien's", pp:35, uber:10, gag:false },
@@ -1775,12 +1756,16 @@ var sunD = [
 ];
 var sunDSel = 1;
 
-var clubs = [
-  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St (8pm)", note:"~$40pp · bride free with 5 paid tickets", pp:40, on:false },
-  { lbl:"Women's burlesque — Fleur de Tease or Bustout Burlesque", note:"Toulouse Theater / House of Blues · check their calendars for upcoming events · ~$35pp", pp:35, on:false },
+var showOpts = [
+  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St", note:"Bride free with 5 paid tickets", pp:40, on:false },
+  { lbl:"Women's burlesque — Fleur de Tease / Bustout Burlesque", note:"Toulouse Theater / House of Blues · check their calendars for upcoming events", pp:35, on:false },
+];
+
+var clubOpts = [
   { lbl:"Oz New Orleans — 800 Bourbon St", note:"Drag shows · dance floor · Bourbon St balcony", pp:20, on:false },
-  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover · institution since 1961", pp:20, on:false },
-  { lbl:"Uber — French Quarter round trip", note:"", pp:10, on:false, isUber:true },
+  { lbl:"The Beach on Bourbon — 227 Bourbon St", note:"DJ dance floor · top 40 & throwbacks", pp:20, on:false },
+  { lbl:"Razzoo Bar & Patio — 511 Bourbon St", note:"Dance floor · daiquiris", pp:15, on:false },
+  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover", pp:20, on:false },
 ];
 
 var monActs = [
@@ -1799,10 +1784,6 @@ var ghostSel = 0;
 var ghostOpts = [
   { lbl:"Ghost bar crawl — French Quarter", note:"8pm · voted 9 of 9 · Kassie's pick", pp:30 },
   { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
-];
-
-var monUbers = [
-  { lbl:"Uber home from French Quarter", note:"", pp:4, on:true, isUber:true },
 ];
 
 var nightSel = 0;
@@ -1826,215 +1807,72 @@ function el(tag, cls, txt) {
   return e;
 }
 
-function mkLeft(lbl, note) {
-  var d = el("div");
-  d.appendChild(el("div","b-row-lbl",lbl));
-  d.appendChild(el("div","b-row-note",note));
-  return d;
+// One pick block: rows with quiet prices. Single-select (getSel/setSel) or multi (opts[].on).
+function mkPick(containerId, opts, isMulti, getSel, setSel) {
+  var c = document.getElementById(containerId);
+  if (!c) return;
+  c.innerHTML = "";
+  opts.forEach(function(o, i) {
+    var on = isMulti ? o.on : (getSel() === i);
+    var r = el("div", "pick-row" + (on ? " on" : ""));
+    var left = el("div");
+    left.appendChild(el("div", "", o.lbl));
+    if (o.note) left.appendChild(el("div", "pick-note", o.note));
+    var p = el("div", "pick-price", o.pp > 0 ? "~" + fmt(o.pp) : "free");
+    r.appendChild(left); r.appendChild(p);
+    r.addEventListener("click", function() {
+      if (isMulti) { o.on = !o.on; }
+      else { setSel(getSel() === i ? -1 : i); }
+      renderPicks();
+    });
+    c.appendChild(r);
+  });
 }
 
-function makeSelector(opts, getSel, cb) {
-  var w = el("div","b-block");
-  opts.forEach(function(o,i){
-    var r = el("div","b-row"+(getSel()===i?" on":"")+(o.gag?" gag":""));
-    r.appendChild(mkLeft((o.gag&&getSel()===i?"😬 ":"")+o.lbl, o.note));
-    r.appendChild(el("div","b-row-price",fmtPP(o.pp)));
-    r.addEventListener("click",function(){ cb(getSel()===i ? -1 : i); renderBudget(); });
-    w.appendChild(r);
-  });
-  return w;
-}
-
-function renderBudget() {
-  var app = document.getElementById("budget-app");
-  if (!app) return;
-  app.innerHTML = "";
-
-  var sharedCosts = 0;
-  var fixedCosts = 0;
-  var foodCosts = 0;
-  var actCosts = 0;
-  var uberCosts = 0;
-
-  // Controls
-  var ctrl = el("div","b-ctrl");
-  var cg = el("div","b-cg");
-  cg.appendChild(el("span","b-cl","Clan size"));
-  cg.appendChild(el("span","b-cv","9"));
-  ctrl.appendChild(cg);
-  var hint = el("div","b-cg"); hint.style.fontSize="11px"; hint.style.color="rgba(240,236,228,0.3)"; hint.textContent="Click to select · uncheck to not participate";
-  ctrl.appendChild(hint);
-  app.appendChild(ctrl);
-
-  // Hero total placeholder — fill after calc
-  var heroDiv = el("div","b-hero"); heroDiv.id="b-hero-div"; app.appendChild(heroDiv);
-
-  // Sat arrival
-  var saDiv=document.createElement('div'); saDiv.className='b-div'; saDiv.textContent='Saturday · Arrival · Oct 3'; app.appendChild(saDiv);
-  app.appendChild(el("div","b-st","Getting here"));
-  uberCosts+=10;
-  var saBlock=el("div","b-block"); app.appendChild(saBlock);
-  var saRow=el("div","b-mrow on"); saRow.style.cursor="default";
-  var saMb=el("div","b-mbody"); saMb.appendChild(el("div","b-row-lbl","Uber from MSY to the Airbnb")); saMb.appendChild(el("div","b-row-note","~$35/car"));
-  saRow.appendChild(saMb); saRow.appendChild(el("div","b-row-price","~$10/pp")); saBlock.appendChild(saRow);
-  var saNote=el("div","b-notebox","Welcome party · snacks & pregame at the Airbnb");
-  app.appendChild(saNote);
-
-  // Sat night
-  var sdiv=document.createElement('div'); sdiv.className='b-div'; sdiv.textContent='Saturday · The Convoy · Oct 3'; app.appendChild(sdiv);
-  app.appendChild(el("div","b-st","Dinner — select one"));
-  if(satSel>=0){ foodCosts+=satD[satSel].pp; uberCosts+=(satD[satSel].uber||0); }
-  var sdEl = el("div"); app.appendChild(sdEl);
-  sdEl.appendChild(makeSelector(satD,function(){return satSel;},function(i){satSel=i;}));
-
-  // Sun
-  var sudiv=document.createElement('div'); sudiv.className='b-div'; sudiv.textContent='Sunday · The Shells · Oct 4'; app.appendChild(sudiv);
-  app.appendChild(el("div","b-st","Morning activity — select one"));
-  if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
-  var smEl=el("div"); app.appendChild(smEl);
-  smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
-  app.appendChild(el("div","b-st","Dinner — select one"));
-  if(sunDSel>=0){ foodCosts+=sunD[sunDSel].pp; uberCosts+=(sunD[sunDSel].uber||0); }
-  var sdnEl=el("div"); app.appendChild(sdnEl);
-  sdnEl.appendChild(makeSelector(sunD,function(){return sunDSel;},function(i){sunDSel=i;}));
-
-  // Clubs
-  app.appendChild(el("div","b-st","Sunday night — show + clubs"));
-  var cw=el("div","b-block"); app.appendChild(cw);
-  clubs.forEach(function(c,i){
-    if(c.on){ if(c.isUber) uberCosts+=c.pp; else actCosts+=c.pp; }
-    var r=el("div","b-mrow"+(c.on?" on":""));
-    var mc=el("div","b-mck",c.on?"✓":"");
-    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); mb.appendChild(el("div","b-row-note",c.note));
-    var mp=el("div","b-row-price",c.pp===0?"Free":fmt(c.pp)+"/pp");
-    r.appendChild(mc); r.appendChild(mb); r.appendChild(mp);
-    r.addEventListener("click",function(){ clubs[i].on=!clubs[i].on; renderBudget(); });
-    cw.appendChild(r);
-  });
-
-  // Mon
-  var mdiv=document.createElement('div'); mdiv.className='b-div'; mdiv.textContent='Monday · The Coven · Oct 5'; app.appendChild(mdiv);
-  app.appendChild(el("div","b-st","Morning + afternoon — check all that apply"));
-  var mw=el("div","b-block"); app.appendChild(mw);
-  var swampOn=false,spaOn=false;
-  monActs.forEach(function(o,i){
-    if(o.on){
-      actCosts+=o.pp; sharedCosts+=o.pp; uberCosts+=(o.uber||0);
-      if(i===0) swampOn=true;
-    }
-    var r=el("div","b-mrow"+(o.on?" on":""));
-    var mc=el("div","b-mck",o.on?"✓":"");
-    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",o.lbl)); mb.appendChild(el("div","b-row-note",o.note));
-    var mp=el("div","b-row-price",fmtPP(o.pp));
-    r.appendChild(mc); r.appendChild(mb); r.appendChild(mp);
-    r.addEventListener("click",function(){ monActs[i].on=!monActs[i].on; renderBudget(); });
-    mw.appendChild(r);
-  });
-  if(swampOn&&spaOn){ var cfl=el("div","b-conflict","Heads up — swamp tour and spa morning may be hard to fit on the same day."); cfl.style.marginTop="4px"; app.appendChild(cfl); }
-
-  app.appendChild(el("div","b-st","Dinner — select one"));
-  if(monDSel>=0){ foodCosts+=monD[monDSel].pp; uberCosts+=(monD[monDSel].uber||0); }
-  var mdEl=el("div"); app.appendChild(mdEl);
-  mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
-
-  app.appendChild(el("div","b-st","Evening — ghost bar crawl"));
-  if(ghostSel===0){ actCosts+=ghostOpts[0].pp; sharedCosts+=ghostOpts[0].pp; }
-  var gEl=el("div"); app.appendChild(gEl);
-  gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
-  var muw=el("div","b-block"); app.appendChild(muw);
-  monUbers.forEach(function(c,i){
-    if(c.on) uberCosts+=c.pp;
-    var r=el("div","b-mrow"+(c.on?" on":""));
-    var mb=el("div","b-mbody"); mb.appendChild(el("div","b-row-lbl",c.lbl)); if(c.note){ mb.appendChild(el("div","b-row-note",c.note)); }
-    var mp=el("div","b-row-price",fmt(c.pp)+"/pp");
-    r.appendChild(mb); r.appendChild(mp);
-    r.addEventListener("click",function(){ monUbers[i].on=!monUbers[i].on; renderBudget(); });
-    muw.appendChild(r);
-  });
-
-  app.appendChild(el("div","b-st","Nightcap (optional)"));
-  if(nightSel>=0){ var nO=nightOpts[nightSel]; foodCosts+=nO.pp; uberCosts+=(nO.uber||0); }
-  var nEl=el("div"); app.appendChild(nEl);
-  nEl.appendChild(makeSelector(nightOpts,function(){return nightSel;},function(i){nightSel=i;}));
-
-  // Tue checkout
-  var tueDDiv=document.createElement('div'); tueDDiv.className='b-div'; tueDDiv.textContent='Tuesday · Checkout · Oct 6'; app.appendChild(tueDDiv);
-  app.appendChild(el("div","b-st","Last meal — select one"));
-  if(tueLSel>=0){ foodCosts+=tueL[tueLSel].pp; }
-  var tueLEl=el("div"); app.appendChild(tueLEl);
-  tueLEl.appendChild(makeSelector(tueL,function(){return tueLSel;},function(i){tueLSel=i;}));
-  app.appendChild(el("div","b-st","Getting to the airport"));
-  uberCosts+=10;
-  var tuUBlock=el("div","b-block"); app.appendChild(tuUBlock);
-  var tuURow=el("div","b-mrow on"); tuURow.style.cursor="default";
-  var tuUMb=el("div","b-mbody"); tuUMb.appendChild(el("div","b-row-lbl","Uber to MSY — departure")); tuUMb.appendChild(el("div","b-row-note","~$35/car · Southwest 2:30pm return"));
-  tuURow.appendChild(tuUMb); tuURow.appendChild(el("div","b-row-price","~$10/pp")); tuUBlock.appendChild(tuURow);
-
-  // Personal spend slider
-  app.appendChild(el("div","b-st","Personal spending estimate"));
-  var psBox = el("div","b-ps");
-  var psTop = el("div","b-ps-top");
-  var psLeft = el("div");
-  psLeft.appendChild(el("div","b-fll","Bar tabs · outfits · tips · souvenirs"));
-  psLeft.appendChild(el("div","b-fln","Drag to estimate"));
-  var psVal = el("div","b-ps-val", fmt(personalSpend));
-  psTop.appendChild(psLeft); psTop.appendChild(psVal);
-  psBox.appendChild(psTop);
-  var psSlider = document.createElement("input");
-  psSlider.type="range"; psSlider.className="b-slider"; psSlider.min=0; psSlider.max=700; psSlider.step=25; psSlider.value=personalSpend;
-  psSlider.addEventListener("input",function(){ personalSpend=parseInt(this.value); psVal.textContent=fmt(personalSpend); updateHero(); });
-  psBox.appendChild(psSlider);
-  app.appendChild(psBox);
-
-  // Ref
-  app.appendChild(el("div","b-st","Personal spending breakdown — for reference"));
-  var ref=el("div","b-ref"); app.appendChild(ref);
-  [["Bar tabs / drinks each night","$50–100/night"],["Outfits — all 3 themed nights","$80–300 est."],["Tips — performers, tour guides","$20–40"],["Souvenirs, crystals, voodoo dolls","$20–60"]].forEach(function(r){
-    var row=el("div","b-rrow"); row.appendChild(el("div","b-rl",r[0])); row.appendChild(el("div","b-rv",r[1])); ref.appendChild(row);
-  });
-
-  // Locked-in costs — Airbnb, flights, fixed items (already paid / committed)
-  var lkDiv=document.createElement('div'); lkDiv.className='b-div'; lkDiv.textContent='Locked In · Airbnb, Flights & Fixed'; app.appendChild(lkDiv);
-
-  // Flight
-  var flRow = el("div","b-fl");
-  var flLeft = el("div"); flLeft.className="b-fll";
-  var flLbl = el("div","b-fll","Flight cost per person — edit if different");
-  var flNote = el("div","b-fln","Southwest nonstop · Oct 3 12:05pm out / Oct 6 2:30pm back");
-  flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
-  var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
-  flRight.appendChild(el("span","b-ksym","$"));
-  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=flightCost; flInp.min=0; flInp.max=2000;
-  flInp.addEventListener("input",function(){ flightCost=parseInt(this.value)||0; updateHero(); });
-  flRight.appendChild(flInp);
-  flRow.appendChild(flLeft); flRow.appendChild(flRight);
-  app.appendChild(flRow);
-
-  // Fixed — all paid, informational only
-  app.appendChild(el("div","b-st","Already paid — everyone's in"));
-  var fixedList = el("div","b-items"); app.appendChild(fixedList);
-  fixedItems.forEach(function(item){
-    var tot = item.total||(item.pp*ng);
-    var pp = tot/ng;
-    sharedCosts+=pp; fixedCosts+=pp;
-    var d = el("div","b-li lit");
-    var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
-    var tag = el("div","b-tag b-tg","Paid ✓");
-    var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
-    d.appendChild(tag); d.appendChild(ln); d.appendChild(lr);
-    fixedList.appendChild(d);
-  });
-
-  // Fill hero
-  lastSharedCosts = sharedCosts;
-  lastFixedCosts = fixedCosts;
-  lastFoodCosts = foodCosts;
-  lastActCosts = actCosts;
-  lastUberCosts = uberCosts;
-  updateHero();
+// Render every pick group + refresh itinerary text and the quiet estimate line
+function renderPicks() {
+  mkPick("pick-sat",     satD,      false, function(){return satSel;},  function(i){satSel=i;});
+  mkPick("pick-sunm",    sunM,      false, function(){return sunMSel;}, function(i){sunMSel=i;});
+  mkPick("pick-sund",    sunD,      false, function(){return sunDSel;}, function(i){sunDSel=i;});
+  mkPick("pick-show",    showOpts,  true);
+  mkPick("pick-clubs",   clubOpts,  true);
+  mkPick("pick-monacts", monActs,   true);
+  mkPick("pick-mond",    monD,      false, function(){return monDSel;}, function(i){monDSel=i;});
+  mkPick("pick-ghost",   ghostOpts, false, function(){return ghostSel;},function(i){ghostSel=i;});
+  mkPick("pick-night",   nightOpts, false, function(){return nightSel;},function(i){nightSel=i;});
+  mkPick("pick-tue",     tueL,      false, function(){return tueLSel;}, function(i){tueLSel=i;});
   updateItinerary();
-
+  renderEstimate();
 }
+
+function renderEstimate() {
+  var e = document.getElementById("itin-estimate");
+  if (!e) return;
+  var ground = 0, uber = 20; // airport Ubers there + back
+  if (satSel  >= 0) { ground += satD[satSel].pp;   uber += satD[satSel].uber  || 0; }
+  if (sunMSel >= 0) { ground += sunM[sunMSel].pp;  uber += sunM[sunMSel].uber || 0; }
+  if (sunDSel >= 0) { ground += sunD[sunDSel].pp;  uber += sunD[sunDSel].uber || 0; }
+  var nightOut = false;
+  showOpts.forEach(function(o){ if (o.on) { ground += o.pp; nightOut = true; } });
+  clubOpts.forEach(function(o){ if (o.on) { ground += o.pp; nightOut = true; } });
+  if (nightOut) uber += 10;
+  monActs.forEach(function(o){ if (o.on) { ground += o.pp; uber += o.uber || 0; } });
+  if (monDSel >= 0) { ground += monD[monDSel].pp;  uber += monD[monDSel].uber || 0; }
+  if (ghostSel === 0) { ground += ghostOpts[0].pp; uber += 4; }
+  if (nightSel >= 0) { ground += nightOpts[nightSel].pp; uber += nightOpts[nightSel].uber || 0; }
+  if (tueLSel >= 0) { ground += tueL[tueLSel].pp; }
+  e.innerHTML = 'Your picks come to about <strong>' + fmt(ground) + '</strong> on the ground, plus ~' + fmt(uber) +
+    ' in shared Ubers and whatever the bars take from you.<br>The big stuff — the house, flights, tees & snacks — is already paid. ✓';
+}
+
+// Expand/collapse the option lists from the little "options" tags
+document.addEventListener("click", function(ev) {
+  var t = ev.target;
+  if (t && t.classList && t.classList.contains("pick-toggle")) {
+    var p = document.getElementById(t.getAttribute("data-pick"));
+    if (p) p.classList.toggle("open");
+  }
+});
 
 function loadFormSelections() {
   try {
@@ -2069,10 +1907,12 @@ function loadFormSelections() {
 }
 
 function updateItinerary() {
-  function setNode(id, strong, sub) {
+  function chip(pp) { return pp > 0 ? ' <span class="price-chip">~' + fmt(pp) + '</span>' : ''; }
+  function tog(pickId) { return ' <span class="pick-toggle" data-pick="' + pickId + '">options</span>'; }
+  function setNode(id, strong, sub, pp, pickId) {
     var e = document.getElementById(id);
     if (!e) return;
-    e.innerHTML = '<strong>' + strong + '</strong> · ' + sub;
+    e.innerHTML = '<strong>' + strong + '</strong> · ' + sub + chip(pp || 0) + (pickId ? tog(pickId) : '');
   }
 
   var satTexts = [
@@ -2100,44 +1940,61 @@ function updateItinerary() {
     { s:"Heading home",  b:"checkout is 11am Tuesday · goodnight witches" }
   ];
 
-  if (satSel >= 0 && satSel < satTexts.length)   setNode('itin-sat-evening',  satTexts[satSel].s,   satTexts[satSel].b);
-  if (sunMSel >= 0 && sunMSel < sunMTexts.length) setNode('itin-sun-morning',  sunMTexts[sunMSel].s, sunMTexts[sunMSel].b);
-  if (sunDSel >= 0 && sunDSel < sunDTexts.length) setNode('itin-sun-dinner',   sunDTexts[sunDSel].s, sunDTexts[sunDSel].b);
-  if (monDSel >= 0 && monDSel < monDTexts.length) setNode('itin-mon-dinner',   monDTexts[monDSel].s, monDTexts[monDSel].b);
-  if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b);
+  if (satSel >= 0 && satSel < satTexts.length)   setNode('itin-sat-evening',  satTexts[satSel].s,   satTexts[satSel].b,   satD[satSel].pp,  'pick-sat');
+  else setNode('itin-sat-evening', 'Evening — your call', 'pick an option', 0, 'pick-sat');
+  if (sunMSel >= 0 && sunMSel < sunMTexts.length) setNode('itin-sun-morning',  sunMTexts[sunMSel].s, sunMTexts[sunMSel].b, sunM[sunMSel].pp, 'pick-sunm');
+  else setNode('itin-sun-morning', 'Morning — your call', 'pick an option', 0, 'pick-sunm');
+  if (sunDSel >= 0 && sunDSel < sunDTexts.length) setNode('itin-sun-dinner',   sunDTexts[sunDSel].s, sunDTexts[sunDSel].b, sunD[sunDSel].pp, 'pick-sund');
+  else setNode('itin-sun-dinner', 'Dinner — your call', 'pick an option', 0, 'pick-sund');
+  if (monDSel >= 0 && monDSel < monDTexts.length) setNode('itin-mon-dinner',   monDTexts[monDSel].s, monDTexts[monDSel].b, monD[monDSel].pp, 'pick-mond');
+  else setNode('itin-mon-dinner', 'Farewell dinner — your call', 'pick an option', 0, 'pick-mond');
+  if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b, nightOpts[nightSel].pp, 'pick-night');
+  else setNode('itin-mon-nightcap', 'Nightcap — optional', 'Bayou Bar or Frenchmen Street', 0, 'pick-night');
 
+  // Monday morning — multi
   (function() {
-    var parts = [];
-    if (monActs[0].on) parts.push('Airboat swamp tour + gator feeding');
-    if (monActs[1].on) parts.push('Tarot + tea · <a href="https://www.bottomofthecup.com/" target="_blank" rel="noopener">Bottom of the Cup Tea Room</a> · French Market stroll');
-    var e = document.getElementById('itin-mon-morning');
-    if (!e) return;
-    if (parts.length === 0) {
-      e.innerHTML = '<strong>Free morning</strong>';
-    } else {
-      e.innerHTML = '<strong>Morning</strong> · ' + parts.join(' · ');
-    }
+    var parts = [], pp = 0;
+    if (monActs[0].on) { parts.push('Airboat swamp tour + gator feeding'); pp += monActs[0].pp; }
+    if (monActs[1].on) { parts.push('Tarot + tea · <a href="https://www.bottomofthecup.com/" target="_blank" rel="noopener">Bottom of the Cup Tea Room</a> · French Market stroll'); pp += monActs[1].pp; }
+    if (parts.length === 0) setNode('itin-mon-morning', 'Free morning', 'or pick something', 0, 'pick-monacts');
+    else setNode('itin-mon-morning', 'Morning', parts.join(' · '), pp, 'pick-monacts');
   })();
 
-  // Sunday show — reflects calculator picks
+  // Sunday show — multi
   (function() {
-    var e = document.getElementById('itin-sun-show');
-    if (!e) return;
-    var shows = [];
-    if (clubs[0].on) shows.push('<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania Male Revue</a> · 801 Bourbon St');
-    if (clubs[1].on) shows.push('Women’s burlesque · <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">Fleur de Tease</a> / Bustout');
-    if (shows.length) {
-      e.innerHTML = '<strong>Show</strong> · ' + shows.join(' · ');
-    } else {
-      e.innerHTML = '<strong>Show — optional</strong> · <a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania</a> or <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">burlesque</a>';
-    }
+    var parts = [], pp = 0;
+    if (showOpts[0].on) { parts.push('<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania Male Revue</a> · 801 Bourbon St'); pp += showOpts[0].pp; }
+    if (showOpts[1].on) { parts.push('Women’s burlesque · <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">Fleur de Tease</a> / Bustout'); pp += showOpts[1].pp; }
+    if (parts.length === 0) setNode('itin-sun-show', 'Show — optional', '<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania</a> or <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">burlesque</a>', 0, 'pick-show');
+    else setNode('itin-sun-show', 'Show', parts.join(' · '), pp, 'pick-show');
+  })();
+
+  // Sunday clubs — multi
+  (function() {
+    var parts = [], pp = 0;
+    clubOpts.forEach(function(o) {
+      if (o.on) { parts.push(o.lbl.split(' — ')[0]); pp += o.pp; }
+    });
+    if (parts.length === 0) setNode('itin-sun-clubs', 'Clubs', 'Bourbon St · pick your poison', 0, 'pick-clubs');
+    else setNode('itin-sun-clubs', 'Clubs', parts.join(' · '), pp, 'pick-clubs');
+  })();
+
+  // Ghost crawl — single with skip
+  (function() {
+    if (ghostSel === 0) setNode('itin-mon-ghost', 'Ghost Bar Crawl', 'French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie\'s pick', ghostOpts[0].pp, 'pick-ghost');
+    else setNode('itin-mon-ghost', 'Night off', 'skipping the crawl · recover in peace', 0, 'pick-ghost');
+  })();
+
+  // Tuesday last bites
+  (function() {
+    if (tueLSel >= 0) setNode('itin-tue-bfast', 'Last bites', tueL[tueLSel].lbl, tueL[tueLSel].pp, 'pick-tue');
+    else setNode('itin-tue-bfast', 'Last bites — optional', 'Café Du Monde or Slim Goodies', 0, 'pick-tue');
   })();
 }
 
 // Init
 loadFormSelections();
-updateItinerary();
-renderBudget();
+renderPicks();
 
 // Lightbox
 (function(){
