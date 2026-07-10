@@ -471,8 +471,8 @@ section + section {
 
 /* ITINERARY PICKS (inline choices with quiet prices) */
 .price-chip { font-size:11px; color:rgba(240,236,228,0.38); border:0.5px solid rgba(240,236,228,0.14); padding:1px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; white-space:nowrap; }
-.pick-toggle { font-family:'Cinzel',serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(94,207,207,0.6); cursor:pointer; margin-left:10px; border:0.5px solid rgba(94,207,207,0.25); border-radius:10px; padding:1px 8px; white-space:nowrap; user-select:none; }
-.pick-toggle:hover { color:var(--teal); border-color:rgba(94,207,207,0.5); }
+.pick-toggle { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); background:rgba(94,207,207,0.1); cursor:pointer; margin-left:10px; border:0.5px solid rgba(94,207,207,0.4); border-radius:12px; padding:3px 10px; white-space:nowrap; user-select:none; display:inline-block; transition:background 0.15s, border-color 0.15s; }
+.pick-toggle:hover { background:rgba(94,207,207,0.2); border-color:var(--teal); }
 .pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; }
 .pick.open { display:block; }
 @media(max-width:640px){ .pick { margin-left:0; } }
@@ -484,6 +484,14 @@ section + section {
 .pick-price { color:rgba(240,236,228,0.4); font-size:12px; white-space:nowrap; flex-shrink:0; }
 .itin-estimate { margin-top:24px; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--pearl-dim); line-height:1.7; }
 .itin-estimate strong { color:var(--teal); font-weight:500; font-style:normal; }
+.itin-ledger { max-width:440px; margin:18px auto 0; border:0.5px solid var(--border); border-radius:12px; overflow:hidden; }
+.ledger-hd { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); text-align:center; padding:9px 14px; border-bottom:0.5px solid rgba(240,236,228,0.08); background:var(--teal-faint); }
+.ledger-row { display:flex; justify-content:space-between; gap:12px; padding:7px 14px; font-size:12.5px; color:var(--pearl-dim); border-bottom:0.5px solid rgba(240,236,228,0.06); }
+.ledger-row:last-child { border-bottom:none; }
+.ledger-row .lv { color:rgba(240,236,228,0.55); white-space:nowrap; }
+.ledger-row.paid .lv::after { content:' ✓'; color:var(--teal); }
+.ledger-row.total { background:rgba(94,207,207,0.06); color:var(--pearl); font-weight:500; }
+.ledger-row.total .lv { color:var(--pearl); }
 
 .book-badge {
   display: inline-block;
@@ -1448,6 +1456,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
   </div>
   <div class="itin-estimate" id="itin-estimate"></div>
+  <div class="itin-ledger" id="itin-ledger"></div>
 </section>
 
 
@@ -1744,7 +1753,7 @@ var satSel = 0;
 
 var sunM = [
   { lbl:"Drag Brunch — The Country Club (1pm)", note:"Won the vote · $25pp prepaid · book via OpenTable", pp:25, uber:14 },
-  { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · ~$80–120pp", pp:100, uber:0 },
+  { lbl:"Spa day — The Woodhouse Spa, Canal St", note:"Massages, facials & rituals · ~$100+", pp:100, uber:8 },
   { lbl:"Free pool day — stay home", note:"Sleep in · recover · no judgment", pp:0, uber:0 },
 ];
 var sunMSel = 0;
@@ -1863,6 +1872,24 @@ function renderEstimate() {
   if (tueLSel >= 0) { ground += tueL[tueLSel].pp; }
   e.innerHTML = 'Your picks come to about <strong>' + fmt(ground) + '</strong> on the ground, plus ~' + fmt(uber) +
     ' in shared Ubers and whatever the bars take from you.<br>The big stuff — the house, flights, tees & snacks — is already paid. ✓';
+
+  // The full picture, quietly, for the record
+  var lg = document.getElementById("itin-ledger");
+  if (!lg) return;
+  var airbnb = 341, tee = 30, snacks = 44, flight = 327;
+  var total = airbnb + tee + snacks + flight + ground + uber;
+  function lrow(lbl, val, cls) {
+    return '<div class="ledger-row' + (cls ? ' ' + cls : '') + '"><div>' + lbl + '</div><div class="lv">' + val + '</div></div>';
+  }
+  lg.innerHTML =
+    '<div class="ledger-hd">The Full Picture · Per Witch</div>' +
+    lrow('Airbnb share', fmt(airbnb), 'paid') +
+    lrow('Custom tee', fmt(tee), 'paid') +
+    lrow('Snacks & drinks', fmt(snacks), 'paid') +
+    lrow('Flight', fmt(flight), 'paid') +
+    lrow('Your picks on the ground', '~' + fmt(ground)) +
+    lrow('Shared Ubers', '~' + fmt(uber)) +
+    lrow('All-in', '≈ ' + fmt(total), 'total');
 }
 
 // Expand/collapse the option lists from the little "options" tags
@@ -1870,7 +1897,10 @@ document.addEventListener("click", function(ev) {
   var t = ev.target;
   if (t && t.classList && t.classList.contains("pick-toggle")) {
     var p = document.getElementById(t.getAttribute("data-pick"));
-    if (p) p.classList.toggle("open");
+    if (p) {
+      p.classList.toggle("open");
+      t.textContent = p.classList.contains("open") ? "Hide options ▴" : "Options ▾";
+    }
   }
 });
 
@@ -1908,7 +1938,11 @@ function loadFormSelections() {
 
 function updateItinerary() {
   function chip(pp) { return pp > 0 ? ' <span class="price-chip">~' + fmt(pp) + '</span>' : ''; }
-  function tog(pickId) { return ' <span class="pick-toggle" data-pick="' + pickId + '">options</span>'; }
+  function tog(pickId) {
+    var p = document.getElementById(pickId);
+    var open = p && p.className.indexOf('open') >= 0;
+    return ' <span class="pick-toggle" data-pick="' + pickId + '">' + (open ? 'Hide options ▴' : 'Options ▾') + '</span>';
+  }
   function setNode(id, strong, sub, pp, pickId) {
     var e = document.getElementById(id);
     if (!e) return;
@@ -1921,7 +1955,7 @@ function updateItinerary() {
   ];
   var sunMTexts = [
     { s:"Drag Brunch", b:'<a href="https://thecountryclubneworleans.com/menus/drag-brunch/" target="_blank" rel="noopener">The Country Club</a> · Bywater · won the vote · spa or pool day also fair game' },
-    { s:"Spa Day",     b:"Spa Isbell · Magazine St · massage + facial packages · walkable" },
+    { s:"Spa Day",     b:'<a href="https://locations.woodhousespas.com/louisiana/new-orleans/4030-canal-st/" target="_blank" rel="noopener">The Woodhouse Spa</a> · 4030 Canal St · massages, facials & rituals' },
     { s:"Pool Day",    b:"sleep in · recover · Airbnb backyard · no judgment" }
   ];
   var sunDTexts = [
