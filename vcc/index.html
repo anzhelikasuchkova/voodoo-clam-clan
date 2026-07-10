@@ -1873,7 +1873,7 @@ function renderEstimate() {
   // The full picture, quietly, for the record
   var lg = document.getElementById("itin-ledger");
   if (!lg) return;
-  var airbnb = 341, tee = 30, snacks = 44, flight = 327;
+  var airbnb = 341, tee = 30, snacks = 30, flight = 327;
   var total = airbnb + tee + snacks + flight + ground + uber;
   function lrow(lbl, val, cls) {
     return '<div class="ledger-row' + (cls ? ' ' + cls : '') + '"><div>' + lbl + '</div><div class="lv">' + val + '</div></div>';
