@@ -1199,7 +1199,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
   <div class="stat-row">
     <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">In for the Airbnb</div></div>
-    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">Ghost tour · unanimous</div></div>
+    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">Ghost bar crawl · unanimous</div></div>
     <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Allergies · iron stomachs</div></div>
     <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Excited · verified</div></div>
   </div>
@@ -1374,7 +1374,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Ghost, Crime, Voodoo &amp; Vampire Tour</strong> · French Quarter · 1hr 45min</div>
+            <div class="event-text"><strong>Ghost Bar Crawl</strong> · French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie's pick</div>
           </div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
@@ -1803,7 +1803,7 @@ var monDSel = 1;
 
 var ghostSel = 0;
 var ghostOpts = [
-  { lbl:"Ghost, Crime, Voodoo & Vampire Tour", note:"8pm French Quarter · $44pp · book Viator Oct 5", pp:44 },
+  { lbl:"Ghost bar crawl — French Quarter", note:"8pm · ~$30pp + your drinks · voted 9 of 9 · Kassie's pick", pp:30 },
   { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
 ];
 
@@ -1953,7 +1953,7 @@ function renderBudget() {
   var mdEl=el("div"); app.appendChild(mdEl);
   mdEl.appendChild(makeSelector(monD,function(){return monDSel;},function(i){monDSel=i;}));
 
-  app.appendChild(el("div","b-st","Evening — ghost tour (optional)"));
+  app.appendChild(el("div","b-st","Evening — ghost bar crawl"));
   if(ghostSel===0){ actCosts+=ghostOpts[0].pp; sharedCosts+=ghostOpts[0].pp; }
   var gEl=el("div"); app.appendChild(gEl);
   gEl.appendChild(makeSelector(ghostOpts,function(){return ghostSel;},function(i){ghostSel=i;}));
@@ -2264,7 +2264,7 @@ renderBudget();
       type: 'bar',
       data: {
         labels: [
-          'Ghost, Crime, Voodoo & Vampire Tour 👻',
+          'Ghost Bar Crawl 🍹👻',
           'Drag Brunch 👑',
           'Burlesque Show 🪭',
           'Tea Room Tarot 🔮',
