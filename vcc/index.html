@@ -1088,6 +1088,28 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
 .phase-3-only { display: none; }
 
+/* POLL RESULTS */
+.stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+@media(max-width:640px){ .stat-row { grid-template-columns:1fr 1fr; } }
+.stat-card { border:0.5px solid var(--border-teal); background:var(--teal-faint); border-radius:14px; padding:18px 14px; text-align:center; }
+.stat-num { font-family:'Cinzel Decorative',serif; font-size:30px; color:var(--teal); line-height:1; }
+.stat-lbl { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:0.15em; text-transform:uppercase; color:var(--pearl-dim); margin-top:8px; line-height:1.5; }
+.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+@media(max-width:640px){ .chart-grid { grid-template-columns:1fr; } }
+.chart-card { border:0.5px solid var(--border); border-radius:16px; background:var(--pearl-faint); padding:20px; transition:border-color 0.2s; }
+.chart-card:hover { border-color:var(--border-teal); }
+.chart-card.wide { grid-column:1/-1; }
+.chart-title { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
+.chart-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--pearl-dim); margin-bottom:14px; }
+.chart-wrap { position:relative; height:260px; }
+.moh-quote { margin-top:24px; padding:26px 28px; background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; text-align:center; }
+.moh-quote .q-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,4vw,28px); color:var(--pearl); line-height:1.4; }
+.moh-quote .q-attr { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--pink); margin-top:10px; }
+.menu-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
+@media(max-width:500px){ .menu-list { grid-template-columns:1fr; } }
+.menu-list li { font-size:13px; color:var(--pearl-dim); padding:9px 12px 9px 32px; position:relative; border:0.5px solid var(--border); border-radius:10px; background:rgba(240,236,228,0.03); line-height:1.5; }
+.menu-list li::before { content:'🛵'; position:absolute; left:9px; top:9px; font-size:12px; }
+
 .deadline-banner {
   position: relative;
   z-index: 1;
@@ -1142,7 +1164,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li class="nav-br" aria-hidden="true"></li>
       <li class="phase-3-only"><a href="#album">Album</a></li>
       <li class="phase-3-only"><a href="#rules">Rules</a></li>
-      <li><a href="#form">Form</a></li>
       <li class="phase-3-only"><a href="#budget">Budget</a></li>
       <li><a href="#pay">Pay</a></li>
       <li><a href="#playlist">Playlist</a></li>
@@ -1170,14 +1191,70 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   </div>
 </div>
 
-<div class="deadline-banner">
-  🗓 Confirm your spot + fill out the form by <strong>July 1</strong>
-</div>
+<!-- POLL RESULTS -->
+<section id="results">
+  <div class="section-eyebrow">The Verdict</div>
+  <div class="section-title">Poll Results</div>
+  <div class="section-subhead">Polls are closed · 9 of 9 witches voted · democracy has spoken</div>
+
+  <div class="stat-row">
+    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">In for the Airbnb</div></div>
+    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">Ghost tour · unanimous</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Allergies · iron stomachs</div></div>
+    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Excited · verified</div></div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="chart-card wide">
+      <div class="chart-title">The Ballot · Activities</div>
+      <div class="chart-sub">Votes per activity. The ghosts swept the election.</div>
+      <div class="chart-wrap" style="height:320px"><canvas id="chart-acts"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">What's in Our Cups</div>
+      <div class="chart-sub">Multiple selections allowed. Tequila did the numbers.</div>
+      <div class="chart-wrap"><canvas id="chart-drinks"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Vibe Check</div>
+      <div class="chart-sub">The official energy forecast for the weekend.</div>
+      <div class="chart-wrap"><canvas id="chart-vibe"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">The Shirt Census</div>
+      <div class="chart-sub">Custom tees, sorted by the sacred sizing scroll.</div>
+      <div class="chart-wrap"><canvas id="chart-shirts"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">The 2AM DoorDash Ballot</div>
+      <div class="chart-sub">Officially requested drunk snacks. Anonymous, to protect the guilty.</div>
+      <ul class="menu-list">
+        <li>Taco Bell — the DoorDash order of honor</li>
+        <li>Chicken nuggets</li>
+        <li>Pizza rolls</li>
+        <li>Doritos</li>
+        <li>Goldfish</li>
+        <li>Potato chips</li>
+        <li>Salt &amp; vinegar Pringles</li>
+        <li>Oreos</li>
+        <li>Cheez-Its</li>
+        <li>Chocolate covered pretzels</li>
+        <li>Baja Blast 🧪</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="moh-quote">
+    <div class="q-text">“I’m so fucking excited!!!”</div>
+    <div class="q-attr">— The Bride, official statement for the record</div>
+  </div>
+</section>
 
 <!-- ITINERARY -->
 <section id="itinerary" class="phase-3-only">
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Itinerary</div>
+  <div class="section-subhead">Built on majority rule — you voted, the coven obeyed. ✦</div>
 
   <div class="nights">
 
@@ -1277,7 +1354,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">Morning</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-morning"><strong>Activity TBD by vote</strong> · Swamp tour + gator feeding / Tea Room tarot / Spa</div>
+            <div class="event-text" id="itin-mon-morning"><strong>Tarot + tea</strong> · Bottom of the Cup Tea Room · voted in by the coven</div>
           </div>
           <div class="event-item">
             <div class="event-time">Afternoon</div>
@@ -1478,17 +1555,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 </section>
 
 
-<!-- FORM -->
-<section id="form">
-  <div class="section-eyebrow">Your Turn</div>
-  <div class="section-title">Fill Out the Form</div>
-  <div class="form-card">
-    <p>Five minutes of your time. Airbnb answer, t-shirt size, and activity votes — all in one place.</p>
-    <a href="form.html" target="_blank" class="form-btn">Open the Form →</a>
-  </div>
-</section>
-
-
 <!-- PLAYLIST -->
 <section id="playlist">
   <div class="section-eyebrow">The Soundtrack</div>
@@ -1572,7 +1638,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <a href="#pack" class="phase-3-only">Pack</a>
   <a href="#album" class="phase-3-only">Album</a>
   <a href="#rules" class="phase-3-only">Rules</a>
-  <a href="#form">Form</a>
   <a href="#budget" class="phase-3-only">Budget</a>
   <a href="#pay">Pay</a>
   <a href="#playlist">Playlist</a>
@@ -1580,7 +1645,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
 
 <script>
-var PHASE = 1; // 1 = Phase 1 landing · 3 = full site
+var PHASE = 3; // 1 = Phase 1 landing · 3 = full site
 
 if (PHASE >= 3) {
   document.querySelectorAll('.phase-3-only').forEach(function(el) {
@@ -1718,8 +1783,8 @@ var clubs = [
 ];
 
 var monActs = [
-  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · $67pp · +$10pp Uber round trip (split 4) · departs Westwego HWY 90", pp:67, uber:10, uberKey:"swamp", on:true },
-  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · +$5pp Uber (split 4 · shared w/ French Market if both)", pp:35, uberKey:"fq", on:false },
+  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · $67pp · +$10pp Uber round trip (split 4) · departs Westwego HWY 90", pp:67, uber:10, uberKey:"swamp", on:false },
+  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · +$5pp Uber (split 4 · shared w/ French Market if both) · won the vote 4–3", pp:35, uberKey:"fq", on:true },
   { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · budget $20–50pp purchases · +$5pp Uber (split 4 · shared w/ Tea Room)", pp:0, uberKey:"fq", on:false },
 ];
 
@@ -1807,36 +1872,6 @@ function renderBudget() {
 
   // Hero total placeholder — fill after calc
   var heroDiv = el("div","b-hero"); heroDiv.id="b-hero-div"; app.appendChild(heroDiv);
-
-  // Flight
-  var flRow = el("div","b-fl");
-  var flLeft = el("div"); flLeft.className="b-fll";
-  var flLbl = el("div","b-fll","Flight cost per person — edit if different");
-  var flNote = el("div","b-fln","Southwest direct · Oct 3 11:10am / Oct 6 2:20pm return");
-  flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
-  var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
-  flRight.appendChild(el("span","b-ksym","$"));
-  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=flightCost; flInp.min=0; flInp.max=2000;
-  flInp.addEventListener("input",function(){ flightCost=parseInt(this.value)||0; updateHero(); });
-  flRight.appendChild(flInp);
-  flRow.appendChild(flLeft); flRow.appendChild(flRight);
-  app.appendChild(flRow);
-
-  // Fixed
-  app.appendChild(el("div","b-st","Fixed costs — uncheck to not participate"));
-  var fixedList = el("div","b-items"); app.appendChild(fixedList);
-  fixedItems.forEach(function(item,i){
-    var tot = item.total||(item.pp*ng);
-    var pp = tot/ng;
-    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
-    var d = el("div","b-li"+(item.on?" lit":" dim"));
-    var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
-    cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
-    var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
-    var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
-    d.appendChild(cb); d.appendChild(ln); d.appendChild(lr);
-    fixedList.appendChild(d);
-  });
 
   // Sat arrival
   var saDiv=document.createElement('div'); saDiv.className='b-div'; saDiv.textContent='Saturday · Arrival · Oct 3'; app.appendChild(saDiv);
@@ -1966,6 +2001,39 @@ function renderBudget() {
   var ref=el("div","b-ref"); app.appendChild(ref);
   [["Bar tabs / drinks each night","$50–100/night"],["Outfits — all 3 themed nights","$80–300 est."],["Tips — performers, tour guides","$20–40"],["Souvenirs, crystals, voodoo dolls","$20–60"]].forEach(function(r){
     var row=el("div","b-rrow"); row.appendChild(el("div","b-rl",r[0])); row.appendChild(el("div","b-rv",r[1])); ref.appendChild(row);
+  });
+
+  // Locked-in costs — Airbnb, flights, fixed items (already paid / committed)
+  var lkDiv=document.createElement('div'); lkDiv.className='b-div'; lkDiv.textContent='Locked In · Airbnb, Flights & Fixed'; app.appendChild(lkDiv);
+
+  // Flight
+  var flRow = el("div","b-fl");
+  var flLeft = el("div"); flLeft.className="b-fll";
+  var flLbl = el("div","b-fll","Flight cost per person — edit if different");
+  var flNote = el("div","b-fln","Southwest direct · Oct 3 11:10am / Oct 6 2:20pm return");
+  flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
+  var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
+  flRight.appendChild(el("span","b-ksym","$"));
+  var flInp = document.createElement("input"); flInp.className="b-fi"; flInp.type="number"; flInp.id="b-flight"; flInp.value=flightCost; flInp.min=0; flInp.max=2000;
+  flInp.addEventListener("input",function(){ flightCost=parseInt(this.value)||0; updateHero(); });
+  flRight.appendChild(flInp);
+  flRow.appendChild(flLeft); flRow.appendChild(flRight);
+  app.appendChild(flRow);
+
+  // Fixed
+  app.appendChild(el("div","b-st","Fixed costs — uncheck to not participate"));
+  var fixedList = el("div","b-items"); app.appendChild(fixedList);
+  fixedItems.forEach(function(item,i){
+    var tot = item.total||(item.pp*ng);
+    var pp = tot/ng;
+    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
+    var d = el("div","b-li"+(item.on?" lit":" dim"));
+    var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
+    cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
+    var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
+    var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
+    d.appendChild(cb); d.appendChild(ln); d.appendChild(lr);
+    fixedList.appendChild(d);
   });
 
   var nb=el("div","b-notebox"); nb.innerHTML="<strong>Airbnb note:</strong> $3,066 ÷ "+ng+" = "+fmt(3066/ng)+"/person. Girls confirm by July. If 3+ drop, alternative explored.<br><br><strong>Collecting:</strong> Send your share via the Pay Your Share section below before the trip.";
@@ -2147,6 +2215,85 @@ renderBudget();
       card.dataset.wx = 'error';
       document.getElementById('wx-label').textContent = 'Weather unavailable';
     });
+})();
+</script>
+
+<!-- POLL RESULTS CHARTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+  if (typeof Chart === 'undefined') return;
+
+  var PEARL = '#f0ece4', PEARL_DIM = 'rgba(240,236,228,0.55)', BLACK = '#080608';
+  var PALETTE = ['#5ecfcf','#c9a84c','#D4537E','#f0ece4','#3e8a8a','#8a5f7a'];
+
+  Chart.defaults.font.family = "'DM Sans', sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = PEARL_DIM;
+
+  function pie(id, labels, data) {
+    var c = document.getElementById(id);
+    if (!c) return;
+    new Chart(c, {
+      type: 'pie',
+      data: {
+        labels: labels,
+        datasets: [{ data: data, backgroundColor: PALETTE.slice(0, data.length), borderColor: BLACK, borderWidth: 2 }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, padding: 10 } },
+          tooltip: { callbacks: { label: function(ctx){ return ' ' + ctx.parsed + ' vote' + (ctx.parsed === 1 ? '' : 's'); } } }
+        }
+      }
+    });
+  }
+
+  // Activities — horizontal bar, the full ballot
+  var ac = document.getElementById('chart-acts');
+  if (ac) {
+    new Chart(ac, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Ghost, Crime, Voodoo & Vampire Tour 👻',
+          'Drag Brunch 👑',
+          'Burlesque Show 🪭',
+          'Tea Room Tarot 🔮',
+          'Spa Morning 🧖‍♀️',
+          'Swamp Tour + Gator Feeding 🐊',
+          'Spotted Cat Jazz Club 🎷',
+          'Ghost Walking Tour 🕯',
+          '“I’m down for anything” 🤷‍♀️'
+        ],
+        datasets: [{ data: [9,7,6,4,3,3,3,1,2], backgroundColor: 'rgba(94,207,207,0.55)', borderColor: '#5ecfcf', borderWidth: 1, borderRadius: 6 }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx){ return ' ' + ctx.parsed.x + ' of 9 witches'; } } } },
+        scales: {
+          x: { min: 0, max: 9, ticks: { stepSize: 1 }, grid: { color: 'rgba(240,236,228,0.07)' } },
+          y: { grid: { display: false }, ticks: { color: PEARL } }
+        }
+      }
+    });
+  }
+
+  pie('chart-drinks',
+    ['Cocktails & chaos','Tequila (naturally)','Beer & seltzers','Bubbles 🥂','Wine — one classy lady','Mocktail witch'],
+    [7,6,5,4,1,1]);
+
+  pie('chart-vibe',
+    ['One big night, one chill night','Good food, no 4am nights','Whatever the coven decides'],
+    [4,2,3]);
+
+  pie('chart-shirts',
+    ['S','M','L','XL','2XL','Opted out — mysterious'],
+    [2,1,3,1,1,1]);
 })();
 </script>
 </body>
