@@ -1318,19 +1318,24 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
             <div class="event-text"><strong>Back to the Airbnb</strong> · recharge · pool party · snacks</div>
           </div>
           <div class="event-item">
-            <div class="event-time">6:00 pm</div>
+            <div class="event-time">4:30 pm</div>
             <div class="event-dot"></div>
             <div class="event-text"><strong>Glam-Up</strong> · pregame · group photos</div>
           </div>
           <div class="event-item">
-            <div class="event-time">7:30 pm</div>
+            <div class="event-time">6:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-dinner"><strong>Dinner</strong> · TBD by vote</div>
+            <div class="event-text" id="itin-sun-dinner"><strong>Dinner</strong> · early seating — curtain call is at 8</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">8:00 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Hunk-O-Mania Male Revue</strong> · 801 Bourbon St · 2-hour show · bride gets in free · voted in by the coven <span class="book-badge">Book Ahead</span></div>
           </div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Clubs</strong> · Oz on Bourbon + Café Lafitte in Exile · Uber from Airbnb ~12 min</div>
+            <div class="event-text"><strong>Clubs</strong> · Oz on Bourbon + Café Lafitte in Exile · literally across the street from the show</div>
           </div>
         </div>
       </div>
@@ -1777,6 +1782,7 @@ var sunD = [
 var sunDSel = 1;
 
 var clubs = [
+  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St (8pm)", note:"Voted in · 6 of 9 said yes · ~$40pp GA · bride free with 5 paid tickets · Oz is directly across the street after", pp:40, on:true },
   { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:20, on:false },
   { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:false },
   { lbl:"Uber — French Quarter round trip", note:"~$20/car each way from Warehouse District · ~$10pp total (split 4)", pp:10, on:false, isUber:true },
@@ -1907,7 +1913,7 @@ function renderBudget() {
   sdnEl.appendChild(makeSelector(sunD,function(){return sunDSel;},function(i){sunDSel=i;}));
 
   // Clubs
-  app.appendChild(el("div","b-st","Sunday night — clubs (optional)"));
+  app.appendChild(el("div","b-st","Sunday night — show + clubs"));
   var cw=el("div","b-block"); app.appendChild(cw);
   clubs.forEach(function(c,i){
     if(c.on){ if(c.isUber) uberCosts+=c.pp; else actCosts+=c.pp; }
