@@ -1163,8 +1163,8 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li class="phase-3-only"><a href="#looks">Looks</a></li>
       <li class="nav-br" aria-hidden="true"></li>
       <li class="phase-3-only"><a href="#album">Album</a></li>
-      <li class="phase-3-only"><a href="#rules">Rules</a></li>
       <li class="phase-3-only"><a href="#budget">Budget</a></li>
+      <li class="phase-3-only"><a href="#rules">Rules</a></li>
       <li><a href="#pay">Pay</a></li>
       <li><a href="#playlist">Playlist</a></li>
     </ul>
@@ -1195,12 +1195,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <section id="results">
   <div class="section-eyebrow">The Verdict</div>
   <div class="section-title">Poll Results</div>
-  <div class="section-subhead">Polls are closed · 9 of 9 witches voted · democracy has spoken</div>
+  <div class="section-subhead">Polls are closed · You spoke, we listened</div>
 
   <div class="stat-row">
     <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">In for the Airbnb</div></div>
     <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">Ghost bar crawl · unanimous</div></div>
-    <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Allergies · iron stomachs</div></div>
+    <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Allergies</div></div>
     <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Excited · verified</div></div>
   </div>
 
@@ -1220,33 +1220,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="chart-sub">The official energy forecast for the weekend.</div>
       <div class="chart-wrap"><canvas id="chart-vibe"></canvas></div>
     </div>
-    <div class="chart-card">
-      <div class="chart-title">The Shirt Census</div>
-      <div class="chart-sub">Custom tees, sorted by the sacred sizing scroll.</div>
-      <div class="chart-wrap"><canvas id="chart-shirts"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">The 2AM DoorDash Ballot</div>
-      <div class="chart-sub">Officially requested drunk snacks. Anonymous, to protect the guilty.</div>
-      <ul class="menu-list">
-        <li>Taco Bell — the DoorDash order of honor</li>
-        <li>Chicken nuggets</li>
-        <li>Pizza rolls</li>
-        <li>Doritos</li>
-        <li>Goldfish</li>
-        <li>Potato chips</li>
-        <li>Salt &amp; vinegar Pringles</li>
-        <li>Oreos</li>
-        <li>Cheez-Its</li>
-        <li>Chocolate covered pretzels</li>
-        <li>Baja Blast 🧪</li>
-      </ul>
-    </div>
   </div>
 
   <div class="moh-quote">
     <div class="q-text">“I’m so fucking excited!!!”</div>
-    <div class="q-attr">— The Bride, official statement for the record</div>
+    <div class="q-attr">— The Bride</div>
   </div>
 </section>
 
@@ -1274,7 +1252,22 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         </div>
         <div class="event-list">
           <div class="event-item">
-            <div class="event-time">3:00 pm</div>
+            <div class="event-time">9:00 am</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Meet in Denver</strong> · Regency Plaza · 4643 S Ulster St #950 · mimosas, chocolate covered strawberries &amp; Bird Bakery pastries · tees handed out</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">10:15 am</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>To the airport</strong> · cars stay at Grace's · convoy in 2 cars (Grace + 1 DD) · parking $33 uncovered / $72 covered</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">12:05 pm</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Wheels up</strong> · Southwest 3419 · nonstop · lands MSY 3:35 pm</div>
+          </div>
+          <div class="event-item">
+            <div class="event-time">4:30 pm</div>
             <div class="event-dot"></div>
             <div class="event-text"><strong>Check in</strong> · 2012 Oretha Castle Haley Blvd · settle in · welcome drinks &amp; snacks</div>
           </div>
@@ -1308,6 +1301,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         </div>
         <div class="event-list">
           <div class="event-item">
+            <div class="event-time">Morning</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Breakfast at the Airbnb</strong> · on us 🥞</div>
+          </div>
+          <div class="event-item">
             <div class="event-time">1:00 pm</div>
             <div class="event-dot"></div>
             <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · The Country Club · Bywater · longest-running drag brunch in NOLA</div>
@@ -1330,7 +1328,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Hunk-O-Mania Male Revue</strong> · 801 Bourbon St · 2-hour show · bride gets in free · voted in by the coven <span class="book-badge">Book Ahead</span></div>
+            <div class="event-text" id="itin-sun-show"><strong>Show — optional</strong> · Hunk-O-Mania or burlesque · pick in the Budget Calculator</div>
           </div>
           <div class="event-item">
             <div class="event-time">10:00 pm</div>
@@ -1548,10 +1546,8 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       </div>
       <ul style="text-align:left;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--pearl-dim);line-height:1.6;">
         <li><strong style="color:var(--teal);font-weight:500;">Shoes</strong> — comfortable heels or wedges for cobblestone streets; pack flat backup sandals</li>
-        <li><strong style="color:var(--teal);font-weight:500;">Rain</strong> — small packable umbrella or single-use poncho (fits in any bag)</li>
         <li><strong style="color:var(--teal);font-weight:500;">Heat</strong> — blotting papers, mini deodorant, travel fan or cooling mist</li>
         <li><strong style="color:var(--teal);font-weight:500;">Skin</strong> — SPF 30+, sunglasses for daytime exploring</li>
-        <li><strong style="color:var(--teal);font-weight:500;">Bag</strong> — small crossbody each night: phone + lip + card + key</li>
         <li><strong style="color:var(--teal);font-weight:500;">Emergency kit (shared)</strong> — fashion tape, safety pins, blister pads, dry shampoo, spare earring backs</li>
       </ul>
       <div class="album-note" style="margin-top:16px;">Cobblestones are real. Stilettos are a choice. Choose wisely.</div>
@@ -1583,6 +1579,16 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 </section>
 
 
+<!-- BUDGET -->
+<section id="budget" class="phase-3-only">
+  <div class="section-eyebrow">The Numbers</div>
+  <div class="section-title">Budget Calculator</div>
+  <div class="budget-wrap">
+    <div id="budget-app"></div>
+  </div>
+</section>
+
+
 <!-- RULES -->
 <section id="rules" class="phase-3-only">
   <div class="section-eyebrow">The Code</div>
@@ -1594,16 +1600,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Everyone gets photographed</strong>Rotate who's behind the camera. Every member of the Clan goes home with good photos.</div></div>
     <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
     <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The theme always wins</strong>Unsure if your outfit fits? Go darker, add a crystal, add a pearl. It fits.</div></div>
-  </div>
-</section>
-
-
-<!-- BUDGET -->
-<section id="budget" class="phase-3-only">
-  <div class="section-eyebrow">The Numbers</div>
-  <div class="section-title">Budget Calculator</div>
-  <div class="budget-wrap">
-    <div id="budget-app"></div>
   </div>
 </section>
 
@@ -1642,8 +1638,8 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <a href="#looks" class="phase-3-only">Looks</a>
   <a href="#pack" class="phase-3-only">Pack</a>
   <a href="#album" class="phase-3-only">Album</a>
-  <a href="#rules" class="phase-3-only">Rules</a>
   <a href="#budget" class="phase-3-only">Budget</a>
+  <a href="#rules" class="phase-3-only">Rules</a>
   <a href="#pay">Pay</a>
   <a href="#playlist">Playlist</a>
 </nav>
@@ -1747,82 +1743,73 @@ var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
 var fmtPP = function(n){ return n === 0 ? "Free" : fmt(n) + "/pp"; };
 
 var fixedItems = [
-  { name:"Airbnb — 2012 Oretha Castle Haley Blvd", note:"$3,066 total · 4 nights · private pool · confirm by July", total:3066, on:true },
-  { name:"Custom Tees", note:"$30/person", pp:30, on:true },
-  { name:"Snacks & Drinks — whole weekend", note:"Charcuterie, spirits, mixers, go-cups, water, fuel & electrolytes", total:400, on:true },
+  { name:"Airbnb — 2012 Oretha Castle Haley Blvd", note:"4 nights · private pool", total:3066, on:true },
+  { name:"Custom Tees", note:"Everyone gets one", pp:30, on:true },
 ];
 
 var satD = [
-  { lbl:"French Quarter bar crawl + street food", note:"Meet the boys · oysters at Felix's · Pat O'Brien's · +$10pp Uber round trip (split 4)", pp:35, uber:10, gag:false },
-  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Dickie Brennan's Bourbon House or Crescent City Cigar · est. $60–80pp · +$10pp Uber round trip (split 4)", pp:70, uber:10, gag:false },
-  { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Full sit-down dinner · old-school NOLA · ~20 people with advance call · +$10pp Uber round trip (split 4)", pp:100, uber:10, gag:false },
-  { lbl:"DoorDash at the Airbnb", note:"...ok loser", pp:20, uber:0, gag:true },
+  { lbl:"French Quarter bar crawl + street food", note:"Meet the boys · oysters at Felix's · Pat O'Brien's", pp:35, uber:10, gag:false },
+  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Bourbon House or Crescent City Cigar · ~$60–80pp", pp:70, uber:10, gag:false },
+  { lbl:"Arnaud's — white tablecloth French Quarter classic", note:"Old-school NOLA · reserve ahead", pp:100, uber:10, gag:false },
 ];
 var satSel = 0;
 
 var sunM = [
-  { lbl:"Drag Brunch — The Country Club (1pm)", note:"$25pp prepaid · book via OpenTable · tip not included · +$14pp Uber", pp:25, uber:14 },
-  { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · massage + facial packages · ~$80–120pp · book well ahead", pp:100, uber:0 },
-  { lbl:"Free pool day — stay home", note:"Sleep in · recover · backyard vibes · no judgment", pp:0, uber:0 },
+  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Won the vote · $25pp prepaid · book via OpenTable", pp:25, uber:14 },
+  { lbl:"Spa day — Spa Isbell, Magazine St", note:"Walking distance · ~$80–120pp", pp:100, uber:0 },
+  { lbl:"Free pool day — stay home", note:"Sleep in · recover · no judgment", pp:0, uber:0 },
 ];
 var sunMSel = 0;
 
-var sunL = [
-  { lbl:"Turkey & Wolf — Magazine St", note:"Iconic funky sandwiches · ~$25pp · walkable", pp:25, uber:0 },
-  { lbl:"Willa Jean — CBD", note:"Bakery-forward · ~$35pp · +$8pp Uber round trip (split 4)", pp:35, uber:8 },
-  { lbl:"DoorDash at the Airbnb", note:"Decompress at home · ~$22pp", pp:22, uber:0 },
-];
-var sunLSel = 0;
-
 var sunD = [
-  { lbl:"The Rum House — Magazine St", note:"Caribbean-Mexican · tacos, jerk chicken, killer rum cocktails · ~$30pp · outdoor patio · walkable from Airbnb", pp:30, uber:0 },
-  { lbl:"Peche Seafood Grill — Warehouse District", note:"James Beard winner · wood-fired Gulf seafood · ~$60pp · +$8pp Uber round trip (split 4)", pp:60, uber:8 },
-  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · ~$70pp · 15 min walk from Airbnb", pp:70, uber:0 },
+  { lbl:"The Rum House — Magazine St", note:"Caribbean-Mexican · killer rum cocktails · walkable", pp:30, uber:0 },
+  { lbl:"Peche Seafood Grill — Warehouse District", note:"James Beard winner · wood-fired Gulf seafood", pp:60, uber:8 },
+  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · 15 min walk", pp:70, uber:0 },
 ];
 var sunDSel = 1;
 
 var clubs = [
-  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St (8pm)", note:"Voted in · 6 of 9 said yes · ~$40pp GA · bride free with 5 paid tickets · Oz is directly across the street after", pp:40, on:true },
-  { lbl:"Oz New Orleans — 800 Bourbon St", note:"No cover before 10pm · ~$5 after · drinks $9–12 · drag shows, dance floor, Bourbon St balcony", pp:20, on:false },
-  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover ever · oldest drag show in America since 1961 · buy-a-drink policy · drinks est. $15–25pp", pp:20, on:false },
-  { lbl:"Uber — French Quarter round trip", note:"~$20/car each way from Warehouse District · ~$10pp total (split 4)", pp:10, on:false, isUber:true },
+  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St (8pm)", note:"~$40pp · bride free with 5 paid tickets", pp:40, on:false },
+  { lbl:"Women's burlesque — Fleur de Tease or Bustout Burlesque", note:"Toulouse Theater / House of Blues · check dates for Oct 3–5 · ~$35pp", pp:35, on:false },
+  { lbl:"Oz New Orleans — 800 Bourbon St", note:"Drag shows · dance floor · Bourbon St balcony", pp:20, on:false },
+  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover · institution since 1961", pp:20, on:false },
+  { lbl:"Uber — French Quarter round trip", note:"", pp:10, on:false, isUber:true },
 ];
 
 var monActs = [
-  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · $67pp · +$10pp Uber round trip (split 4) · departs Westwego HWY 90", pp:67, uber:10, uberKey:"swamp", on:false },
-  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · ~$35pp · +$5pp Uber (split 4 · shared w/ French Market if both) · won the vote 4–3", pp:35, uberKey:"fq", on:true },
-  { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · budget $20–50pp purchases · +$5pp Uber (split 4 · shared w/ Tea Room)", pp:0, uberKey:"fq", on:false },
+  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · departs Westwego", pp:67, uber:10, uberKey:"swamp", on:false },
+  { lbl:"Bottom of the Cup Tea Room — tarot + tea", note:"French Quarter · won the vote 4–3", pp:35, uberKey:"fq", on:true },
+  { lbl:"French Market + crystal/voodoo shopping", note:"Free to browse · voodoo dolls & crystals", pp:0, uberKey:"fq", on:false },
 ];
 
 var monD = [
-  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course + drinks/tip ~$95pp · steps from ghost tour · book now · +$5pp Uber one way (split 4, ghost tour Uber covers return)", pp:95, uber:5 },
-  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · ~$65pp · French Quarter · call ahead for group · +$5pp Uber one way (split 4, ghost tour Uber covers return)", pp:65, uber:5 },
-  { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole · ~$65pp · +$8pp Uber round trip (split 4)", pp:65, uber:8 },
+  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course ~$95pp · steps from Jackson Square", pp:95, uber:5 },
+  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · French Quarter", pp:65, uber:5 },
+  { lbl:"Compere Lapin — Warehouse District", note:"Michelin recognized · Caribbean Creole", pp:65, uber:8 },
 ];
 var monDSel = 1;
 
 var ghostSel = 0;
 var ghostOpts = [
-  { lbl:"Ghost bar crawl — French Quarter", note:"8pm · ~$30pp + your drinks · voted 9 of 9 · Kassie's pick", pp:30 },
+  { lbl:"Ghost bar crawl — French Quarter", note:"8pm · voted 9 of 9 · Kassie's pick", pp:30 },
   { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
 ];
 
 var monUbers = [
-  { lbl:"Uber home from French Quarter", note:"~$16 /car · $4pp (split 4)", pp:4, on:true, isUber:true },
+  { lbl:"Uber home from French Quarter", note:"", pp:4, on:true, isUber:true },
 ];
 
 var nightSel = 0;
 var nightOpts = [
-  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz · drinks est. $20–30pp", pp:25, uber:0 },
-  { lbl:"Frenchmen Street bar hop", note:"Live jazz, no cover · +$8pp Uber round trip (split 4) · drinks est. $25–40pp", pp:30, uber:8 },
+  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz", pp:25, uber:0 },
+  { lbl:"Frenchmen Street bar hop", note:"Live jazz · no cover", pp:30, uber:8 },
   { lbl:"Head home — call it a night", note:"Checkout is 11am Tuesday", pp:0, uber:0 },
 ];
 
 var tueLSel = -1;
 var tueL = [
-  { lbl:"Café Du Monde — beignets + café au lait", note:"Iconic last morning · French Quarter · ~$15pp · short Uber", pp:15 },
-  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic New Orleans breakfast diner · walkable · ~$18pp", pp:18 },
-  { lbl:"DoorDash before checkout", note:"Eat in, decompress, pack · ~$20pp", pp:20 },
+  { lbl:"Café Du Monde — beignets + café au lait", note:"Iconic last morning · French Quarter", pp:15 },
+  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic NOLA breakfast diner · walkable", pp:18 },
 ];
 
 
@@ -1885,9 +1872,9 @@ function renderBudget() {
   uberCosts+=10;
   var saBlock=el("div","b-block"); app.appendChild(saBlock);
   var saRow=el("div","b-mrow on"); saRow.style.cursor="default";
-  var saMb=el("div","b-mbody"); saMb.appendChild(el("div","b-row-lbl","Uber from MSY to the Airbnb")); saMb.appendChild(el("div","b-row-note","~$35/car · split 3–4 per car"));
+  var saMb=el("div","b-mbody"); saMb.appendChild(el("div","b-row-lbl","Uber from MSY to the Airbnb")); saMb.appendChild(el("div","b-row-note","~$35/car"));
   saRow.appendChild(saMb); saRow.appendChild(el("div","b-row-price","~$10/pp")); saBlock.appendChild(saRow);
-  var saNote=el("div","b-notebox","Welcome party · snacks & pregame at the Airbnb — covered in fixed costs above");
+  var saNote=el("div","b-notebox","Welcome party · snacks & pregame at the Airbnb");
   app.appendChild(saNote);
 
   // Sat night
@@ -1903,10 +1890,6 @@ function renderBudget() {
   if(sunMSel>=0){ var smO=sunM[sunMSel]; if(sunMSel===0){ actCosts+=smO.pp; sharedCosts+=smO.pp; uberCosts+=(smO.uber||0); } else { foodCosts+=smO.pp; } }
   var smEl=el("div"); app.appendChild(smEl);
   smEl.appendChild(makeSelector(sunM,function(){return sunMSel;},function(i){sunMSel=i;}));
-  app.appendChild(el("div","b-st","Lunch — select one"));
-  if(sunLSel>=0){ foodCosts+=sunL[sunLSel].pp; uberCosts+=(sunL[sunLSel].uber||0); }
-  var slEl=el("div"); app.appendChild(slEl);
-  slEl.appendChild(makeSelector(sunL,function(){return sunLSel;},function(i){sunLSel=i;}));
   app.appendChild(el("div","b-st","Dinner — select one"));
   if(sunDSel>=0){ foodCosts+=sunD[sunDSel].pp; uberCosts+=(sunD[sunDSel].uber||0); }
   var sdnEl=el("div"); app.appendChild(sdnEl);
@@ -1983,7 +1966,7 @@ function renderBudget() {
   uberCosts+=10;
   var tuUBlock=el("div","b-block"); app.appendChild(tuUBlock);
   var tuURow=el("div","b-mrow on"); tuURow.style.cursor="default";
-  var tuUMb=el("div","b-mbody"); tuUMb.appendChild(el("div","b-row-lbl","Uber to MSY — departure")); tuUMb.appendChild(el("div","b-row-note","~$35/car · split 3–4 · Southwest 2:20pm return"));
+  var tuUMb=el("div","b-mbody"); tuUMb.appendChild(el("div","b-row-lbl","Uber to MSY — departure")); tuUMb.appendChild(el("div","b-row-note","~$35/car · Southwest 2:30pm return"));
   tuURow.appendChild(tuUMb); tuURow.appendChild(el("div","b-row-price","~$10/pp")); tuUBlock.appendChild(tuURow);
 
   // Personal spend slider
@@ -2016,7 +1999,7 @@ function renderBudget() {
   var flRow = el("div","b-fl");
   var flLeft = el("div"); flLeft.className="b-fll";
   var flLbl = el("div","b-fll","Flight cost per person — edit if different");
-  var flNote = el("div","b-fln","Southwest direct · Oct 3 11:10am / Oct 6 2:20pm return");
+  var flNote = el("div","b-fln","Southwest nonstop · Oct 3 12:05pm out / Oct 6 2:30pm back");
   flLeft.appendChild(flLbl); flLeft.appendChild(flNote);
   var flRight = el("div"); flRight.style.display="flex"; flRight.style.alignItems="center"; flRight.style.gap="4px";
   flRight.appendChild(el("span","b-ksym","$"));
@@ -2026,24 +2009,20 @@ function renderBudget() {
   flRow.appendChild(flLeft); flRow.appendChild(flRight);
   app.appendChild(flRow);
 
-  // Fixed
-  app.appendChild(el("div","b-st","Fixed costs — uncheck to not participate"));
+  // Fixed — all paid, informational only
+  app.appendChild(el("div","b-st","Already paid — everyone's in"));
   var fixedList = el("div","b-items"); app.appendChild(fixedList);
-  fixedItems.forEach(function(item,i){
+  fixedItems.forEach(function(item){
     var tot = item.total||(item.pp*ng);
     var pp = tot/ng;
-    if(item.on){ sharedCosts+=pp; fixedCosts+=pp; }
-    var d = el("div","b-li"+(item.on?" lit":" dim"));
-    var cb = document.createElement("input"); cb.type="checkbox"; cb.checked=item.on;
-    cb.addEventListener("change",function(){ fixedItems[i].on=this.checked; renderBudget(); });
+    sharedCosts+=pp; fixedCosts+=pp;
+    var d = el("div","b-li lit");
     var ln = el("div","b-ln"); ln.appendChild(el("div","b-ln-name",item.name)); ln.appendChild(el("div","b-ln-note",item.note));
+    var tag = el("div","b-tag b-tg","Paid ✓");
     var lr = el("div","b-lr"); lr.appendChild(el("div","b-lc",fmt(tot))); lr.appendChild(el("div","b-lp",fmt(pp)+"/person"));
-    d.appendChild(cb); d.appendChild(ln); d.appendChild(lr);
+    d.appendChild(tag); d.appendChild(ln); d.appendChild(lr);
     fixedList.appendChild(d);
   });
-
-  var nb=el("div","b-notebox"); nb.innerHTML="<strong>Airbnb note:</strong> $3,066 ÷ "+ng+" = "+fmt(3066/ng)+"/person. Girls confirm by July. If 3+ drop, alternative explored.<br><br><strong>Collecting:</strong> Send your share via the Pay Your Share section below before the trip.";
-  app.appendChild(nb);
 
   // Fill hero
   lastSharedCosts = sharedCosts;
@@ -2065,7 +2044,6 @@ function loadFormSelections() {
 
     var satMap   = {"French Quarter bar crawl + street food":0,"Sit-down dinner then bourbon/cigar bar":1,"Arnaud's":2};
     var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Spa day — Spa Isbell, Magazine St":1,"Free pool day — stay home":2};
-    var sunLMap  = {"Turkey & Wolf — Magazine St":0,"Willa Jean — CBD":1,"DoorDash at the Airbnb":2};
     var sunDMap  = {"The Rum House — Magazine St":0,"Peche Seafood Grill — Warehouse District":1,"Gris-Gris — Magazine St":2};
     var monDMap  = {"Muriel's Jackson Square":0,"Cafe Amelie — candlelit courtyard":1,"Compere Lapin — Warehouse District":2};
     var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1};
@@ -2074,7 +2052,6 @@ function loadFormSelections() {
 
     if (d.sat_dinner   != null && satMap[d.sat_dinner]    !== undefined) satSel  = satMap[d.sat_dinner];
     if (d.sun_morning  != null && sunMMap[d.sun_morning]  !== undefined) sunMSel = sunMMap[d.sun_morning];
-    if (d.sun_lunch    != null && sunLMap[d.sun_lunch]    !== undefined) sunLSel = sunLMap[d.sun_lunch];
     if (d.sun_dinner   != null && sunDMap[d.sun_dinner]   !== undefined) sunDSel = sunDMap[d.sun_dinner];
     if (d.mon_dinner   != null && monDMap[d.mon_dinner]   !== undefined) monDSel = monDMap[d.mon_dinner];
     if (d.ghost_tour   != null && ghostMap[d.ghost_tour]  !== undefined) ghostSel= ghostMap[d.ghost_tour];
@@ -2103,7 +2080,7 @@ function updateItinerary() {
     { s:"Arnaud's",        b:"white tablecloth French Quarter dinner with The Boys · reserve ahead" }
   ];
   var sunMTexts = [
-    { s:"Drag Brunch", b:"The Country Club · Bywater · longest-running drag brunch in NOLA" },
+    { s:"Drag Brunch", b:"The Country Club · Bywater · won the vote · spa or pool day also fair game" },
     { s:"Spa Day",     b:"Spa Isbell · Magazine St · massage + facial packages · walkable" },
     { s:"Pool Day",    b:"sleep in · recover · Airbnb backyard · no judgment" }
   ];
@@ -2137,9 +2114,23 @@ function updateItinerary() {
     var e = document.getElementById('itin-mon-morning');
     if (!e) return;
     if (parts.length === 0) {
-      e.innerHTML = '<strong>Activity TBD</strong> · vote results pending';
+      e.innerHTML = '<strong>Free morning</strong> · pick something in the Budget Calculator';
     } else {
       e.innerHTML = '<strong>Morning activities</strong> · ' + parts.join(' · ');
+    }
+  })();
+
+  // Sunday show — reflects calculator picks
+  (function() {
+    var e = document.getElementById('itin-sun-show');
+    if (!e) return;
+    var shows = [];
+    if (clubs[0].on) shows.push('Hunk-O-Mania Male Revue · 801 Bourbon St');
+    if (clubs[1].on) shows.push('Women’s burlesque · Fleur de Tease / Bustout');
+    if (shows.length) {
+      e.innerHTML = '<strong>Show</strong> · ' + shows.join(' · ');
+    } else {
+      e.innerHTML = '<strong>Show — optional</strong> · Hunk-O-Mania or burlesque · pick in the Budget Calculator';
     }
   })();
 }
@@ -2296,10 +2287,6 @@ renderBudget();
   pie('chart-vibe',
     ['One big night, one chill night','Good food, no 4am nights','Whatever the coven decides'],
     [4,2,3]);
-
-  pie('chart-shirts',
-    ['S','M','L','XL','2XL','Opted out — mysterious'],
-    [2,1,3,1,1,1]);
 })();
 </script>
 </body>
