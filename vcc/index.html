@@ -1430,7 +1430,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <!-- SEND MY PICKS -->
   <div class="pick-submit" id="pick-submit">
     <div class="ps-head">Send your picks</div>
-    <div class="ps-sub">Your picks mean we can lock reservations now and skip the last-minute scramble — for 9 people, we’ll reserve ahead and split tables if needed💜</div>
+    <div class="ps-sub">Your picks mean we can lock reservations now and skip the last-minute scramble 💜</div>
     <input type="text" id="ps-name" class="ps-input" placeholder="Your name" autocomplete="name" />
     <button type="button" id="ps-send" class="ps-btn" onclick="submitPicks()">Send →</button>
     <div class="ps-status" id="ps-status" aria-live="polite"></div>
@@ -1446,31 +1446,31 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-title">Pay Your Share</div>
 
   <div class="pay-card" id="booked">
-    <p class="pay-lead">These two are reserved! Send your share to Anzhelika — if you're skipping either one, say so in your picks so she can adjust reservations <3</p>
-    <div class="pay-row" id="pay-show-row" hidden>
-      <div><strong id="pay-show-label">Sunday Naughty Show</strong><span class="pay-row-note">Your pick · we'll book as a group once everyone's choices are in — don't send this yet</span></div>
+    <p class="pay-lead" id="pay-lead-text">These require advance booking! Please Venmo your share.</p>
+    <div class="pay-row" id="pay-drag-row">
+      <div><strong id="pay-drag-label">Drag Brunch — The Country Club · Sunday 1:00 pm</strong></div>
+      <div class="pay-amt" id="pay-drag-amt">~$25</div>
+    </div>
+    <div class="pay-row" id="pay-show-row">
+      <div><strong id="pay-show-label">Sunday Naughty Show · Sunday 8:00 pm</strong></div>
       <div class="pay-amt" id="pay-show-amt">~$40</div>
     </div>
-    <div class="pay-row">
-      <div><strong>Swamp &amp; Bayou Boat Tour</strong><span class="pay-row-note">Monday · pickup 10:15am · Homewood Suites FQ · 317 N Rampart · tour 12:15pm · no meal on board</span></div>
+    <div class="pay-row" id="pay-swamp-row">
+      <div><strong>Swamp &amp; Bayou Boat Tour · Monday 10:15 am</strong></div>
       <div class="pay-amt">~$76</div>
     </div>
-    <div class="pay-row">
-      <div><strong>Lewd Spirits Haunted Pub Crawl</strong><span class="pay-row-note">Monday 8pm · meet Unique NOLA Tours · 815 Toulouse · drinks not included</span></div>
+    <div class="pay-row" id="pay-ghost-row">
+      <div><strong>Lewd Spirits Haunted Pub Crawl · Monday 8:00 pm</strong></div>
       <div class="pay-amt">~$37</div>
     </div>
     <div class="pay-row pay-total">
-      <div>Booked total</div>
-      <div class="pay-amt">
-        <span id="pay-booked-num">~113</span>
-        <span id="pay-grand-parenthetical" hidden>(~$153 with Show when Booked)</span>
-      </div>
+      <div>Total</div>
+      <div class="pay-amt"><span id="pay-booked-num">~$153</span></div>
     </div>
-    <p class="pay-hint" id="pay-show-pending" hidden style="margin-top:0;margin-bottom:12px;opacity:0.92;">⚠️ Show tickets aren't charged until we lock the group's pick and book — Grace will tell you when to Venmo your show share.</p>
     <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-venmo" target="_blank" rel="noopener">Open Venmo →</a>
     <p class="pay-hint">Questions about your share? Text Grace. Don't ghost the group chat. 👻</p>
   </div>
-  <p class="pay-kassie-soft" style="font-size:clamp(11px,3vw,13px);color:var(--teal);font-family:'Cinzel',serif;letter-spacing:0.1em;text-transform:uppercase;opacity:1;">Feeling generous? Anything extra goes toward covering Kassie's share — her Airbnb, her flight, and weekend activities. ♡︎</p>
+  <p class="pay-kassie-soft" style="font-size:clamp(11px,3vw,13px);color:var(--teal);font-family:'Cinzel',serif;letter-spacing:0.1em;text-transform:uppercase;opacity:1;">Feeling generous? Anything extra goes toward covering Kassie's weekend activities. ♡︎</p>
 </section>
 
 
@@ -1695,7 +1695,7 @@ var satLate = [
 // Sunday breakfast — light & nearby before 1pm drag brunch in Bywater
 var sunBSel = 0;
 var sunB = [
-  { lbl:"Café Reconcile — OCH Blvd", note:"Southern · ~5 min walk · sit-down without leaving the neighborhood", pp:20, uber:0, url:GMAP+"Cafe+Reconcile+New+Orleans" , dist:"~5 min walk"},
+  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic NOLA diner · walkable neighborhood vibe · open 7am–3pm Sun", pp:18, uber:0, dist:"~8 min drive", url:GMAP+"Slim+Goodies+Diner+New+Orleans" },
   { lbl:"Lagniappe Bakehouse", note:"Pastries & coffee to go · grab and eat before we head to Bywater", pp:12, uber:6, url:GMAP+"Lagniappe+Bakehouse+New+Orleans" , dist:"~12 min drive"},
   { lbl:"Calas Cafe", note:"Creole calas (rice fritters) · quick-ish · ~12 min drive", pp:15, uber:6, url:GMAP+"Calas+Cafe+New+Orleans" , dist:"~12 min drive"},
   { lbl:"Graze at the Airbnb", note:"Coffee & snacks at the house · zero drama · save room for drag brunch", pp:0, uber:0 },
@@ -1716,8 +1716,9 @@ var sunDSel = 0;
 
 var showSel = -1;
 var showOpts = [
-  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St", note:"Requires booking ahead · send ~$40 when all picks are locked · bride free with 5 paid", pp:40, url:"https://hunkomanianola.com/", dist:"~10 min drive" },
-  { lbl:"Fleur de Tease / Bustout Burlesque", note:"Requires booking ahead · send ~$35 when all picks are locked · check their calendar for Sunday dates", pp:35, url:"https://www.fleurdetease.com/upcoming-events", dist:"~10 min drive" },
+  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St", note:"Booked as a group · bride free with 5 paid", pp:40, url:"https://hunkomanianola.com/", dist:"~10 min drive" },
+  { lbl:"Fleur de Tease / Bustout Burlesque", note:"Booked as a group · check calendar for Sunday dates", pp:40, url:"https://www.fleurdetease.com/upcoming-events", dist:"~10 min drive" },
+  { lbl:"I'm in — surprise me 🎲", note:"Happy either way · going with the group", pp:40, skip:false },
   { lbl:"Skip — No judgment either way 😉", pp:0, skip:true },
 ];
 
@@ -1733,16 +1734,15 @@ var clubOpts = [
 var sunTeaSel = 0;
 var sunTeaOpts = [
   { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops · Turkey and the Wolf (739 Jackson) for Swamp sandwiches", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive" },
+  { lbl:"Cafe Porche & Snowbar", note:"Brunch & snowballs · open Sundays · OCH Blvd", pp:18, uber:0, url:GMAP+"Cafe+Porche+Snowbar+New+Orleans", dist:"~5 min drive" },
   { lbl:"Back to the Airbnb", note:"recharge · pool party · snacks", pp:0, uber:0 },
 ];
 // Monday morning — BOOKED via Viator, prepaid to the MOH
 var monBSel = 0;
 var monB = [
   { lbl:"Café Beignet — Royal St", note:"French Quarter · on the way to swamp pickup · Homewood Suites Rampart 10:15am", pp:12, uber:8, dist:"~10 min drive", url:GMAP+"Cafe+Beignet+Royal+St+New+Orleans" },
-  { lbl:"Café Du Monde — French Quarter", note:"Iconic beignets to go · budget time for the line · then straight to pickup", pp:15, uber:8, dist:"~11 min drive", url:GMAP+"Cafe+Du+Monde+New+Orleans" },
-  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic NOLA diner · ~8 min from the house", pp:18, uber:0, dist:"~8 min drive", url:GMAP+"Slim+Goodies+Diner+New+Orleans" },
   { lbl:"Ruby Slipper Café", note:"NOLA brunch staple · get there early", pp:20, uber:8, dist:"~10 min drive", url:GMAP+"Ruby+Slipper+Cafe+New+Orleans" },
-  { lbl:"Zesty Creole Cuisine", note:"Creole breakfast · French Quarter · on the way to swamp pickup", pp:18, uber:8, dist:"~10 min drive", url:GMAP+"Zesty+Creole+Cuisine+New+Orleans" },
+  { lbl:"Avenue Cafe — St Charles Ave", note:"Coffee shop · sandwiches, pastries & juice · open 7am–2pm", pp:15, uber:0, dist:"~5 min drive", url:GMAP+"Avenue+Cafe+1907+St+Charles+New+Orleans" },
   { lbl:"DoorDash / grab-and-go", note:"Order to the Airbnb · eat before pickup · pack extra snacks & water for the swamp (no glass on the boat) · cost varies", pp:20, uber:0 },
 ];
 
@@ -1775,16 +1775,15 @@ var nightSel = -1;
 var nightOpts = [
   { lbl:"Bayou Bar — Pontchartrain Hotel", note:"Optional nightcap · dark live jazz · St Charles · ~8 min walk", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk"},
   { lbl:"Lula Restaurant Distillery — St Charles Ave", note:"Distillery cocktails · fresh hurricanes · after the crawl", pp:28, uber:0, url:GMAP+"Lula+Restaurant+Distillery+New+Orleans" , dist:"~8 min walk"},
-  { lbl:"Party at the Casa 💃💃", note:"After the crawl · at the Airbnb (home base) · drinks/snacks + decompress", pp:0, uber:0 },
-  { lbl:"Head home — call it a night", note:"Uber back · no Casa stop · lights out", pp:0, uber:0 },
+  { lbl:"Party at the Casa 💃💃", note:"at the Airbnb · drinks/snacks + decompress", pp:0, uber:0 },
 ];
 
 var tueLSel = -1;
 var tueL = [
-  { lbl:"Café Du Monde — beignets + café au lait", note:"Quick to-go · beignets in hand by ~11:45 · then Uber to MSY at 12:30", pp:15, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~11 min drive"},
-  { lbl:"Willa Jean — CBD", note:"Sit-down bakery brunch · aim to wrap by ~12:15 · Uber to MSY at 12:30", pp:22, uber:8, url:GMAP+"Willa+Jean+New+Orleans" , dist:"~10 min drive"},
-  { lbl:"Cafe Porche & Snowbar", note:"Brunch & snowballs · aim to wrap by ~12:15 · Uber to MSY at 12:30", pp:18, uber:8, url:GMAP+"Cafe+Porche+Snowbar+New+Orleans" , dist:"~15 min drive"},
-  { lbl:"Atchafalaya — Uptown", note:"Uptown Creole brunch · aim to wrap by ~12:15 · Uber to MSY at 12:30", pp:60, uber:8, url:GMAP+"Atchafalaya+Restaurant+New+Orleans" , dist:"~15 min drive"},
+  { lbl:"Café Du Monde — beignets + café au lait", note:"Quick to-go · ~30 min to MSY · leave by 11:45", pp:15, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~11 min drive"},
+  { lbl:"Willa Jean — CBD", note:"Sit-down bakery brunch · ~25 min to MSY · leave by 12:00", pp:22, uber:8, url:GMAP+"Willa+Jean+New+Orleans" , dist:"~10 min drive"},
+  { lbl:"Zesty Creole Cuisine — Canal St", note:"Creole breakfast · French Quarter · ~30 min to MSY · leave by 11:45", pp:18, uber:8, url:GMAP+"Zesty+Creole+Cuisine+New+Orleans" , dist:"~11 min drive"},
+  { lbl:"Atchafalaya — Uptown", note:"Uptown Creole brunch · ~35 min to MSY · leave by 11:40", pp:60, uber:8, url:GMAP+"Atchafalaya+Restaurant+New+Orleans" , dist:"~15 min drive"},
 ];
 
 
@@ -1854,16 +1853,16 @@ function renderPicks() {
   mkPick("pick-satd",    satD,      false, function(){return satDSel;}, function(i){satDSel=i;});
   mkPick("pick-satlate", satLate,   false, function(){return satLateSel;},function(i){satLateSel=i;});
   mkPick("pick-sunb",    sunB,      false, function(){return sunBSel;}, function(i){sunBSel=i;});
-  mkPick("pick-sunm",    sunM,      false, function(){return sunMSel;}, function(i){sunMSel=i;});
+  mkPick("pick-sunm",    sunM,      false, function(){return sunMSel;}, function(i){sunMSel=i; renderPayShare();});
   mkPick("pick-sund",    sunD,      false, function(){return sunDSel;}, function(i){sunDSel=i;});
-  mkPick("pick-show",    showOpts,  false, function(){return showSel;},  function(i){showSel=i;});
+  mkPick("pick-show",    showOpts,  false, function(){return showSel;},  function(i){showSel=i; renderPayShare();});
   mkPick("pick-clubs",   clubOpts,  false, function(){return clubSel;}, function(i){clubSel=i;});
   mkPick("pick-suntea",  sunTeaOpts, false, function(){return sunTeaSel;},function(i){sunTeaSel=i;});
   mkPick("pick-monb",     monB,       false, function(){return monBSel;},    function(i){monBSel=i;});
-  mkPick("pick-monswamp", monSwampOpts, false, function(){return monSwampSel;},function(i){monSwampSel=i;});
+  mkPick("pick-monswamp", monSwampOpts, false, function(){return monSwampSel;},function(i){monSwampSel=i; renderPayShare();});
   mkPick("pick-monlunch", monLunchOpts, false, function(){return monLunchSel;}, function(i){monLunchSel=i;});
   mkPick("pick-mond",    monD,      false, function(){return monDSel;}, function(i){monDSel=i;});
-  mkPick("pick-ghost",   ghostOpts, false, function(){return ghostSel;},function(i){ghostSel=i;});
+  mkPick("pick-ghost",   ghostOpts, false, function(){return ghostSel;},function(i){ghostSel=i; renderPayShare();});
   mkPick("pick-night",   nightOpts, false, function(){return nightSel;},function(i){nightSel=i;});
   mkPick("pick-tue",     tueL,      false, function(){return tueLSel;}, function(i){tueLSel=i;});
   updateItinerary();
@@ -1872,34 +1871,51 @@ function renderPicks() {
 }
 
 function renderPayShare() {
-  var booked = 113;
-  if (monSwampSel !== 0) booked -= 76;
-  if (ghostSel !== 0) booked -= 37;
-  var bookedNumEl = document.getElementById('pay-booked-num');
-  if (bookedNumEl) bookedNumEl.textContent = '~' + booked;
+  var SHOW_P = 40;
+  var SWAMP_P = 76;
+  var GHOST_P = 37;
+  var DRAG_P = 25;
+
+  var includeDrag = sunMSel >= 0;
+  var includeSwamp = monSwampSel >= 0; // single option: 0 or -1
+  var includeGhost = ghostSel >= 0;   // single option: 0 or -1
+
+  // We treat "Skip" as the opt-out signal. If showSel is -1 (not picked yet),
+  // the show is still considered booked; label stays generic.
+  var showSkipped = showSel >= 0 && showOpts[showSel] && showOpts[showSel].skip;
+  var includeShow = !showSkipped;
+
+  var total = 0;
+  if (includeDrag) total += DRAG_P;
+  if (includeSwamp) total += SWAMP_P;
+  if (includeGhost) total += GHOST_P;
+  if (includeShow) total += SHOW_P;
+
+  // Toggle breakdown rows so nothing shows up if it's not selected.
+  var dragRow = document.getElementById('pay-drag-row');
+  if (dragRow) dragRow.style.display = includeDrag ? '' : 'none';
+  var swampRow = document.getElementById('pay-swamp-row');
+  if (swampRow) swampRow.style.display = includeSwamp ? '' : 'none';
+  var ghostRow = document.getElementById('pay-ghost-row');
+  if (ghostRow) ghostRow.style.display = includeGhost ? '' : 'none';
 
   var showRow = document.getElementById('pay-show-row');
-  var grandPar = document.getElementById('pay-grand-parenthetical');
-  var pending = document.getElementById('pay-show-pending');
-  var showAmt = 0;
-  if (showSel >= 0 && showOpts[showSel] && !showOpts[showSel].skip) {
-    showAmt = showOpts[showSel].pp;
-    if (showRow) {
-      showRow.hidden = false;
-      var lbl = document.getElementById('pay-show-label');
-      if (lbl) lbl.textContent = showOpts[showSel].lbl.split(' — ')[0];
-      var amt = document.getElementById('pay-show-amt');
-      if (amt) amt.textContent = '~' + showAmt;
+  var lbl = document.getElementById('pay-show-label');
+  if (showRow) showRow.style.display = includeShow ? '' : 'none';
+  if (lbl) {
+    if (includeShow && showSel >= 0 && showOpts[showSel] && !showOpts[showSel].skip) {
+      lbl.textContent = showOpts[showSel].lbl.split(' — ')[0] + ' · Sunday 8:00 pm';
+    } else {
+      lbl.textContent = 'Sunday Naughty Show · Sunday 8:00 pm';
     }
-    if (pending) pending.hidden = false;
-    if (grandPar) {
-      grandPar.hidden = false;
-      grandPar.textContent = '(~$' + (booked + showAmt) + ' with Show when Booked)';
-    }
-  } else {
-    if (showRow) showRow.hidden = true;
-    if (pending) pending.hidden = true;
-    if (grandPar) grandPar.hidden = true;
+  }
+
+  var totalEl = document.getElementById('pay-booked-num');
+  if (totalEl) totalEl.textContent = total > 0 ? '~$' + total : '—';
+
+  var leadEl = document.getElementById('pay-lead-text');
+  if (leadEl) {
+    leadEl.textContent = total > 0 ? 'These require advance booking! Please Venmo your share.' : 'No fun for you!';
   }
 }
 
@@ -1951,7 +1967,7 @@ function loadFormSelections() {
     var sunDMap = {"The Rum House — Magazine St":0, "Peche Seafood Grill — Warehouse District":1, "Gris-Gris — Magazine St":2};
     var monDMap  = {"Cafe Amelie — candlelit courtyard":0,"Cane and Table — French Quarter":1,"The Court of Two Sisters — Royal St":2,"Muriel's Jackson Square":2,"Compere Lapin — Warehouse District":1};
     var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1};
-    var nightMap = {"Bayou Bar — Pontchartrain Hotel":0,"Lula Restaurant Distillery — St Charles Ave":1,"Party at the Casa 💃💃":2,"Head home — call it a night":3,"Frenchmen Street bar hop":0,"Head home after ghost tour":3};
+    var nightMap = {"Bayou Bar — Pontchartrain Hotel":0,"Lula Restaurant Distillery — St Charles Ave":1,"Party at the Casa 💃💃":2,"Head home — call it a night":2,"Frenchmen Street bar hop":0,"Head home after ghost tour":2};
     var satLateMap = {
       "Tropical Isle's Bayou Club — Bourbon St": 0,
       "Pirate's Alley Cafe": 1,
@@ -1988,14 +2004,15 @@ function updateItinerary() {
   function setNode(id, strong, sub, pp, pickId) {
     var e = document.getElementById(id);
     if (!e) return;
-    e.innerHTML = '<strong>' + strong + '</strong> · ' + sub + chip(pp || 0) + (pickId ? tog(pickId) : '');
+    var dotSub = sub ? (' · ' + sub) : '';
+    e.innerHTML = '<strong>' + strong + '</strong>' + dotSub + chip(pp || 0) + (pickId ? tog(pickId) : '');
   }
 
   // Links land on the place itself — photos, hours, reviews
   function gl(name, q) { return '<a href="' + GMAP + q + '" target="_blank" rel="noopener">' + name + '</a>'; }
   var gs = gl;
   var sunBTexts = [
-    { s:"Breakfast", b:gl('Café Reconcile', 'Cafe+Reconcile+New+Orleans') + ' · OCH Blvd · walkable from the house' },
+    { s:"Breakfast", b:gl('Slim Goodies Diner', 'Slim+Goodies+Diner+New+Orleans') + ' · Magazine St · classic NOLA diner' },
     { s:"Breakfast", b:gl('Lagniappe Bakehouse', 'Lagniappe+Bakehouse+New+Orleans') + ' · pastries & coffee to go' },
     { s:"Breakfast", b:gl('Calas Cafe', 'Calas+Cafe+New+Orleans') + ' · Creole calas · ~12 min drive' },
     { s:"Breakfast at the Airbnb", b:'graze at the house · coffee & snacks · save room for drag brunch' }
@@ -2016,8 +2033,7 @@ function updateItinerary() {
   var nightTexts = [
     { s:"Nightcap", b:gl("Bayou Bar", "Bayou+Bar+Pontchartrain+Hotel+New+Orleans") + " · Pontchartrain Hotel · live jazz" },
     { s:"Nightcap", b:gl("Lula Restaurant Distillery", "Lula+Restaurant+Distillery+New+Orleans") + " · St Charles · distillery cocktails" },
-    { s:"Party at the Casa 💃💃", b:"after the crawl · at the Airbnb (home base) · drinks/snacks + decompress" },
-    { s:"Heading home", b:"Uber back · no Casa stop · lights out" }
+    { s:"Party at the Casa 💃💃", b:"at the Airbnb · drinks/snacks + decompress" },
   ];
 
   // Saturday morning — burritos provided, so no price chip; just the protein pick
@@ -2043,15 +2059,15 @@ function updateItinerary() {
   else setNode('itin-sat-late', 'Late — your call', 'pick an option', 0, 'pick-satlate');
 
   if (sunBSel >= 0 && sunBSel < sunBTexts.length) setNode('itin-sun-bfast', sunBTexts[sunBSel].s, sunBTexts[sunBSel].b, sunB[sunBSel].pp, 'pick-sunb');
-  else setNode('itin-sun-bfast', 'Breakfast at the Airbnb', 'graze at the house · or pick a light bite · save room for 1pm drag brunch', 0, 'pick-sunb');
+  else setNode('itin-sun-bfast', 'Breakfast at the Airbnb - I see a DoorDash order in your future 🔮', '', 0, 'pick-sunb');
   if (sunMSel >= 0 && sunMSel < sunMTexts.length) setNode('itin-sun-morning',  sunMTexts[sunMSel].s, sunMTexts[sunMSel].b, sunM[sunMSel].pp, 'pick-sunm');
   else setNode('itin-sun-morning', 'Free afternoon', "your call · pool or explore · let's meet up later!", 0, 'pick-sunm');
   if (sunDSel >= 0 && sunDSel < sunDTexts.length) setNode('itin-sun-dinner',   sunDTexts[sunDSel].s, sunDTexts[sunDSel].b, sunD[sunDSel].pp, 'pick-sund');
   else setNode('itin-sun-dinner', 'Dinner — your call', 'pick an option', 0, 'pick-sund');
   if (monDSel >= 0 && monDSel < monDTexts.length) setNode('itin-mon-dinner',   monDTexts[monDSel].s, monDTexts[monDSel].b, monD[monDSel].pp, 'pick-mond');
-  else setNode('itin-mon-dinner', 'Farewell Creole dinner — your call', 'French Quarter · easy hop to ghost crawl · 815 Toulouse', 0, 'pick-mond');
+  else setNode('itin-mon-dinner', 'Awww, we\'ll miss you...', '', 0, 'pick-mond');
   if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b, nightOpts[nightSel].pp, 'pick-night');
-  else setNode('itin-mon-nightcap', 'After the crawl', 'Bayou Bar · Lula · Party at the Casa · or head home', 0, 'pick-night');
+  else setNode('itin-mon-nightcap', 'After the crawl', 'Bayou Bar · Lula · Party at the Casa', 0, 'pick-night');
 
   // Sunday afternoon — French Market (tap again to skip)
   (function() {
@@ -2067,14 +2083,12 @@ function updateItinerary() {
   (function() {
     var monBTexts = [
       { s:"Breakfast", b:gl("Café Beignet", "Cafe+Beignet+Royal+St+New+Orleans") + " · Royal St · on the way to swamp pickup" },
-      { s:"Breakfast", b:gl("Café Du Monde", "Cafe+Du+Monde+New+Orleans") + " · beignets to go · mind the line · 10:15 pickup" },
-      { s:"Breakfast", b:gl("Slim Goodies Diner", "Slim+Goodies+Diner+New+Orleans") + " · Magazine St · quick & close before pickup" },
       { s:"Breakfast", b:gl("Ruby Slipper Café", "Ruby+Slipper+Cafe+New+Orleans") + " · NOLA brunch staple · get there early" },
-      { s:"Breakfast", b:gl("Zesty Creole Cuisine", "Zesty+Creole+Cuisine+New+Orleans") + " · Creole breakfast · French Quarter · on the way to pickup" },
+      { s:"Breakfast", b:gl("Avenue Cafe", "Avenue+Cafe+1907+St+Charles+New+Orleans") + " · St Charles Ave · coffee, sandwiches & pastries" },
       { s:"Breakfast", b:"DoorDash / grab-and-go · eat before pickup · pack snacks & water for the swamp · cost varies" }
     ];
     if (monBSel >= 0 && monBSel < monBTexts.length) setNode('itin-mon-bfast', monBTexts[monBSel].s, monBTexts[monBSel].b, monB[monBSel].pp, 'pick-monb');
-    else setNode('itin-mon-bfast', 'Breakfast — your call', '8am bite before pickup · swamp lunch is the Prep line below', 0, 'pick-monb');
+    else setNode('itin-mon-bfast', 'Breakfast — your call', '8am bite before pickup', 0, 'pick-monb');
   })();
 
   /* Monday — swamp lunch prep (optional, usually Sun PM grab)
@@ -2107,9 +2121,10 @@ function updateItinerary() {
   // Sunday show — pick one
   (function() {
     var showTexts = [
-      { s:"Sunday Naughty Show", b:'<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania Male Revue</a> · 801 Bourbon St · requires booking ahead · send ~$40 when all picks are locked' },
-      { s:"Sunday Naughty Show", b:'<a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">Fleur de Tease / Bustout Burlesque</a> · requires booking ahead · send ~$35 when all picks are locked' },
-      { s:"Skip", b:"see you later alligator" }
+      { s:"Sunday Naughty Show", b:'<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania Male Revue</a> · 801 Bourbon St' },
+      { s:"Sunday Naughty Show", b:'<a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">Fleur de Tease / Bustout Burlesque</a> ' },
+      { s:"Sunday Naughty Show", b:"happy either way · going with the group" },
+      { s:"Skip", b:"see you later, alligator" }
     ];
     if (showSel >= 0 && showSel < showTexts.length) setNode('itin-sun-show', showTexts[showSel].s, showTexts[showSel].b, showOpts[showSel].pp, 'pick-show');
     else setNode('itin-sun-show', 'Sunday Naughty Show', 'Pick a naughty show or Skip — No judgment either way 😉', 0, 'pick-show');
@@ -2134,12 +2149,12 @@ function updateItinerary() {
   (function() {
     var tueBTexts = [
       { s:"Brunch", b:gl("Café Du Monde", "Cafe+Du+Monde+New+Orleans") + " · beignets to go · quick sendoff" },
-      { s:"Brunch", b:gl("Willa Jean", "Willa+Jean+New+Orleans") + " · sit-down bakery · wrap by ~12:15" },
-      { s:"Brunch", b:gl("Cafe Porche &amp; Snowbar", "Cafe+Porche+Snowbar+New+Orleans") + " · pastries, brunch & snowballs · last call ~12:15" },
+      { s:"Brunch", b:gl("Willa Jean", "Willa+Jean+New+Orleans") + " · sit-down bakery · leave by 12:00" },
+      { s:"Brunch", b:gl("Zesty Creole", "Zesty+Creole+Cuisine+New+Orleans") + " · Canal St · Creole breakfast · leave by 11:45" },
       { s:"Brunch", b:gl("Atchafalaya", "Atchafalaya+Restaurant+New+Orleans") + " · Uptown Creole · smooth sendoff to MSY" }
     ];
     if (tueLSel >= 0 && tueLSel < tueBTexts.length) setNode('itin-tue-bfast', tueBTexts[tueLSel].s, tueBTexts[tueLSel].b, tueL[tueLSel].pp, 'pick-tue');
-    else setNode('itin-tue-bfast', 'Brunch', 'Café Du Monde · Willa Jean · Atchafalaya · or Porche & Snowbar', 0, 'pick-tue');
+    else setNode('itin-tue-bfast', 'Brunch', 'Café Du Monde · Willa Jean · Zesty Creole · or Atchafalaya', 0, 'pick-tue');
   })();
 }
 
