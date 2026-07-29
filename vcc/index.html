@@ -342,6 +342,10 @@ section + section {
   transition: opacity 0.2s;
 }
 .map-btn:hover { opacity: 0.85; }
+.map-actions { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:1rem; }
+.map-btn-alt { background:transparent; color:var(--teal); border:0.5px solid var(--teal); }
+.map-btn-alt:hover { background:var(--teal-faint); opacity:1; }
+@media(max-width:520px){ .map-actions .map-btn { padding:13px 22px; font-size:12px; } }
 .section-eyebrow {
   font-family: 'Cinzel', serif;
   font-size: 12px;
@@ -481,7 +485,31 @@ section + section {
 .pick-row:hover { background:rgba(240,236,228,0.04); }
 .pick-row.on { background:rgba(94,207,207,0.08); color:var(--pearl); border-left:2px solid var(--teal); }
 .pick-note { font-size:11px; color:rgba(240,236,228,0.35); margin-top:1px; }
+.itin-howto { line-height:1.75; max-width:640px; }
+.itin-howto strong { color:var(--pearl); font-weight:500; font-style:normal; }
+.howto-chip { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); background:rgba(94,207,207,0.1); border:0.5px solid rgba(94,207,207,0.4); border-radius:12px; padding:2px 9px; white-space:nowrap; font-style:normal; display:inline-block; vertical-align:middle; }
+.pick-dist { font-size:10.5px; color:var(--teal); opacity:0.8; margin-top:3px; letter-spacing:0.02em; }
+.pick-link { color:inherit; text-decoration:none; border-bottom:0.5px dotted rgba(94,207,207,0.55); }
+.pick-link:hover { color:var(--teal); border-bottom-color:var(--teal); }
 .pick-price { color:rgba(240,236,228,0.4); font-size:12px; white-space:nowrap; flex-shrink:0; }
+.booked{max-width:440px;margin:22px auto 0;padding:20px 22px;border:0.5px solid rgba(212,83,126,0.35);border-radius:16px;background:var(--pink-dim)}
+.bk-head{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--pink);text-align:center}
+.bk-sub{font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--pearl-dim);line-height:1.55;margin:10px 0 14px;text-align:center}
+.bk-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;font-size:13px;color:var(--pearl);border-top:0.5px solid rgba(240,236,228,0.08)}
+.bk-row .bk-note{display:block;font-size:11px;color:rgba(240,236,228,0.4);margin-top:2px}
+.bk-amt{color:var(--pink);white-space:nowrap;font-weight:500}
+.bk-pay{display:block;margin-top:14px;padding:11px 18px;border:0.5px solid var(--pink);border-radius:10px;background:rgba(212,83,126,0.14);color:var(--pearl);font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;text-decoration:none}
+.bk-pay:hover{background:rgba(212,83,126,0.26)}
+.pick-submit{margin-top:28px;padding:22px;border:.5px solid var(--border-teal);border-radius:16px;background:var(--teal-faint)}
+.ps-head{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+.ps-sub{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--pearl-dim);margin:8px 0 14px;line-height:1.5}
+.ps-input{width:100%;max-width:320px;padding:11px 14px;border:.5px solid var(--border);border-radius:10px;background:var(--black);color:var(--pearl);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:12px}
+.ps-input:focus{outline:none;border-color:var(--teal)}
+.ps-btn{display:inline-block;padding:11px 22px;border:.5px solid var(--teal);border-radius:10px;background:var(--teal-dim);color:var(--pearl);font-family:'Cinzel',serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.ps-btn:hover{background:rgba(94,207,207,.28)}
+.ps-btn:disabled{opacity:.5;cursor:default}
+.ps-status{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--teal);margin-top:12px;min-height:1em}
+.pick-submit.sent .ps-input,.pick-submit.sent .ps-btn{display:none}
 .itin-estimate { margin-top:24px; text-align:center; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--pearl-dim); line-height:1.7; }
 .itin-estimate strong { color:var(--teal); font-weight:500; font-style:normal; }
 .itin-ledger { max-width:440px; margin:18px auto 0; border:0.5px solid var(--border); border-radius:12px; overflow:hidden; }
@@ -1114,23 +1142,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
 .phase-3-only { display: none; }
 
-/* POLL RESULTS */
-.stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
-@media(max-width:640px){ .stat-row { grid-template-columns:1fr 1fr; } }
-.stat-card { border:0.5px solid var(--border-teal); background:var(--teal-faint); border-radius:14px; padding:18px 14px; text-align:center; }
-.stat-num { font-family:'Cinzel Decorative',serif; font-size:30px; color:var(--teal); line-height:1; }
-.stat-lbl { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:0.15em; text-transform:uppercase; color:var(--pearl-dim); margin-top:8px; line-height:1.5; }
-.chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-@media(max-width:640px){ .chart-grid { grid-template-columns:1fr; } }
-.chart-card { border:0.5px solid var(--border); border-radius:16px; background:var(--pearl-faint); padding:20px; transition:border-color 0.2s; }
-.chart-card:hover { border-color:var(--border-teal); }
-.chart-card.wide { grid-column:1/-1; }
-.chart-title { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:4px; }
-.chart-sub { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:14px; color:var(--pearl-dim); margin-bottom:14px; }
-.chart-wrap { position:relative; height:260px; }
-.moh-quote { margin-top:24px; padding:26px 28px; background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; text-align:center; }
+/* BRIDE'S QUOTE */
+.moh-quote { padding:26px 28px; background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; text-align:center; }
 .moh-quote .q-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,4vw,28px); color:var(--pearl); line-height:1.4; }
 .moh-quote .q-attr { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--pink); margin-top:10px; }
+
 .menu-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
 @media(max-width:500px){ .menu-list { grid-template-columns:1fr; } }
 .menu-list li { font-size:13px; color:var(--pearl-dim); padding:9px 12px 9px 32px; position:relative; border:0.5px solid var(--border); border-radius:10px; background:rgba(240,236,228,0.03); line-height:1.5; }
@@ -1188,7 +1204,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <li class="phase-3-only"><a href="#map">Map</a></li>
       <li class="phase-3-only"><a href="#looks">Looks</a></li>
       <li class="nav-br" aria-hidden="true"></li>
-      <li class="phase-3-only"><a href="#album">Album</a></li>
       <li class="phase-3-only"><a href="#rules">Rules</a></li>
       <li><a href="#pay">Pay</a></li>
       <li><a href="#playlist">Playlist</a></li>
@@ -1216,37 +1231,8 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   </div>
 </div>
 
-<!-- POLL RESULTS -->
-<section id="results">
-  <div class="section-eyebrow">The Verdict</div>
-  <div class="section-title">Poll Results</div>
-  <div class="section-subhead">Polls are closed · You spoke, we listened</div>
-
-  <div class="stat-row">
-    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">In for the Airbnb</div></div>
-    <div class="stat-card"><div class="stat-num">9/9</div><div class="stat-lbl">Ghost bar crawl · unanimous</div></div>
-    <div class="stat-card"><div class="stat-num">0</div><div class="stat-lbl">Allergies</div></div>
-    <div class="stat-card"><div class="stat-num">100%</div><div class="stat-lbl">Excited · verified</div></div>
-  </div>
-
-  <div class="chart-grid">
-    <div class="chart-card wide">
-      <div class="chart-title">The Ballot · Activities</div>
-      <div class="chart-sub">Votes per activity. The ghosts swept the election.</div>
-      <div class="chart-wrap" style="height:320px"><canvas id="chart-acts"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">What's in Our Cups</div>
-      <div class="chart-sub">Multiple selections allowed. Tequila did the numbers.</div>
-      <div class="chart-wrap"><canvas id="chart-drinks"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">Vibe Check</div>
-      <div class="chart-sub">The official energy forecast for the weekend.</div>
-      <div class="chart-wrap"><canvas id="chart-vibe"></canvas></div>
-    </div>
-  </div>
-
+<!-- BRIDE'S QUOTE -->
+<section id="bride-quote">
   <div class="moh-quote">
     <div class="q-text">“I’m so fucking excited!!!”</div>
     <div class="q-attr">— The Bride</div>
@@ -1257,7 +1243,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <section id="itinerary" class="phase-3-only">
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Itinerary</div>
-  <div class="section-subhead">Built on majority rule</div>
+  <div class="section-subhead itin-howto">
+    This is a flexible itinerary — make it yours. Tap <span class="howto-chip">Options ▾</span> under any line to switch picks, or tap your current one again to skip it. Take as much or as little as you want. The total at the bottom updates as you go. When it looks right, add your name and hit <strong>Send my picks</strong>. 🖤
+  </div>
 
   <div class="nights">
 
@@ -1276,8 +1264,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:30 am</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Meet in Denver</strong> · Regency Plaza · 4643 S Ulster St #950 · breakfast burritos provided</div>
+            <div class="event-text" id="itin-sat-bfast"><strong>Meet in Denver</strong> · Regency Plaza · 4643 S Ulster St #950 · breakfast burritos &amp; mimosas provided</div>
           </div>
+          <div class="pick" id="pick-bfast"></div>
           <div class="event-item">
             <div class="event-time">10:15 am</div>
             <div class="event-dot"></div>
@@ -1296,9 +1285,8 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">Evening</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sat-evening"><strong>French Quarter</strong> · meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's</div>
+            <div class="event-text" id="itin-sat-evening"><strong>Mambo's</strong> · French Quarter · meet The Boys · dinner + drinks · karaoke afterwards</div>
           </div>
-          <div class="pick" id="pick-sat"></div>
           <div class="event-item">
             <div class="event-time">Late</div>
             <div class="event-dot"></div>
@@ -1319,15 +1307,13 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         <div class="night-emoji">▴</div>
       </div>
       <div class="night-body open">
-        <div class="outfit-strip">
-          <strong>Dresscode:</strong> Full glam · big hair · bright colors · boas · glitter
-        </div>
         <div class="event-list">
           <div class="event-item">
-            <div class="event-time">Morning</div>
+            <div class="event-time">AM</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Breakfast at the Airbnb</strong> · on us 🥞</div>
+            <div class="event-text" id="itin-sun-bfast"><strong>Breakfast</strong> · Café Reconcile · OCH Blvd</div>
           </div>
+          <div class="pick" id="pick-sunb"></div>
           <div class="event-item">
             <div class="event-time">1:00 pm</div>
             <div class="event-dot"></div>
@@ -1335,10 +1321,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           </div>
           <div class="pick" id="pick-sunm"></div>
           <div class="event-item">
-            <div class="event-time">~3:00 pm</div>
+            <div class="event-time">PM</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Back to the Airbnb</strong> · recharge · pool party · snacks</div>
+            <div class="event-text" id="itin-sun-tea"><strong>Tarot + tea</strong> · Bottom of the Cup Tea Room · French Market stroll</div>
           </div>
+          <div class="pick" id="pick-suntea"></div>
           <div class="event-item">
             <div class="event-time">6:00 pm</div>
             <div class="event-dot"></div>
@@ -1348,7 +1335,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-show"><strong>Show — optional</strong> · Hunk-O-Mania or burlesque</div>
+            <div class="event-text" id="itin-sun-show"><strong>Show</strong> · Hunk-O-Mania or burlesque</div>
           </div>
           <div class="pick" id="pick-show"></div>
           <div class="event-item">
@@ -1372,31 +1359,33 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         <div class="night-emoji">▴</div>
       </div>
       <div class="night-body open">
-        <div class="outfit-strip">
-          <strong>Dresscode:</strong> Velvet · lace · layers · jewel tones and earthy richness · pendant jewelry
-        </div>
         <div class="event-list">
           <div class="event-item">
             <div class="event-time">9:30 am</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Breakfast in the French Quarter</strong> · <a href="https://www.cafebeignet.com/" target="_blank" rel="noopener">Café Beignet</a> · Royal St</div>
+            <div class="event-text"><strong>Breakfast in the French Quarter</strong> · <a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Beignet+Royal+St+New+Orleans" target="_blank" rel="noopener">Café Beignet</a> · Royal St · ~10 min drive</div>
           </div>
           <div class="event-item">
-            <div class="event-time">11:00 am</div>
+            <div class="event-time">AM</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-morning"><strong>Tarot + tea</strong> · Bottom of the Cup Tea Room · French Market stroll</div>
+            <div class="event-text" id="itin-mon-swamp"><strong>Airboat swamp tour</strong> · gator feeding · departs Westwego</div>
           </div>
-          <div class="pick" id="pick-monacts"></div>
+          <div class="pick" id="pick-monswamp"></div>
+          <div class="event-item">
+            <div class="event-time">PM</div>
+            <div class="event-dot"></div>
+            <div class="event-text"><strong>Back to the Airbnb</strong> · recharge · pool party · snacks</div>
+          </div>
           <div class="event-item">
             <div class="event-time">6:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-dinner"><strong>Farewell dinner</strong> · TBD by vote · French Quarter area</div>
+            <div class="event-text" id="itin-mon-dinner"><strong>Farewell dinner</strong> · TBD · French Quarter area</div>
           </div>
           <div class="pick" id="pick-mond"></div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-ghost"><strong>Ghost Bar Crawl</strong> · French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie's pick</div>
+            <div class="event-text" id="itin-mon-ghost"><strong>Ghost Bar Crawl</strong> · French Quarter · haunted bars, spirits with spirits</div>
           </div>
           <div class="pick" id="pick-ghost"></div>
           <div class="event-item">
@@ -1422,14 +1411,14 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="night-body open">
         <div class="event-list">
           <div class="event-item">
-            <div class="event-time">Morning</div>
+            <div class="event-time">AM</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Slow morning</strong> · pack up the potions · leave no hex behind</div>
+            <div class="event-text"><strong>Slow morning</strong> · leave no hex behind</div>
           </div>
           <div class="event-item">
             <div class="event-time">9:30 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-tue-bfast"><strong>Last bites — optional</strong> · Café Du Monde or Slim Goodies</div>
+            <div class="event-text" id="itin-tue-bfast"><strong>Last bites</strong> · Café Du Monde or Slim Goodies</div>
           </div>
           <div class="pick" id="pick-tue"></div>
           <div class="event-item">
@@ -1454,6 +1443,30 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   </div>
   <div class="itin-estimate" id="itin-estimate"></div>
   <div class="itin-ledger" id="itin-ledger"></div>
+
+  <!-- BOOKED & PREPAID -->
+  <div class="booked" id="booked">
+    <div class="bk-head">Booked · Send the MOH</div>
+    <div class="bk-sub">These two are reserved and already paid for up front. Send your share to Grace — and if you're skipping either one, say so below so she can adjust the booking.</div>
+    <div class="bk-row">
+      <div><strong>Airboat swamp tour</strong><span class="bk-note">Monday AM · gator feeding · departs Westwego</span></div>
+      <div class="bk-amt">~$67</div>
+    </div>
+    <div class="bk-row">
+      <div><strong>Ghost bar crawl</strong><span class="bk-note">Monday 8pm · French Quarter</span></div>
+      <div class="bk-amt">~$30</div>
+    </div>
+    <a class="bk-pay" href="https://venmo.com/u/anzhelikasuchkova" target="_blank" rel="noopener">Send it on Venmo →</a>
+  </div>
+
+  <!-- SEND MY PICKS -->
+  <div class="pick-submit" id="pick-submit">
+    <div class="ps-head">Send your picks to the MOH</div>
+    <div class="ps-sub">Changed anything above, or skipping something? Tell me what you actually want to do — especially dinners. Your name + your picks land straight in my inbox.</div>
+    <input type="text" id="ps-name" class="ps-input" placeholder="Your name" autocomplete="name" />
+    <button type="button" id="ps-send" class="ps-btn" onclick="submitPicks()">Send my picks →</button>
+    <div class="ps-status" id="ps-status" aria-live="polite"></div>
+  </div>
 </section>
 
 
@@ -1461,101 +1474,34 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <section id="map" class="phase-3-only">
   <div class="section-eyebrow">The City</div>
   <div class="section-title">Our NOLA</div>
+  <div class="section-subhead">Every spot we’re considering, saved in one place. Open it in Google Maps to star it, add your own, and get directions on the day.</div>
   <div style="margin-top:1.5rem;border-radius:12px;overflow:hidden;border:0.5px solid rgba(94,207,207,0.2)">
     <iframe src="https://www.google.com/maps/d/embed?mid=1gbZG3ilKl-06BsqTUAiz9oW0dL9evjs&ehbc=2E312F" width="100%" height="500" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
-  <div style="text-align:center;margin-top:1rem">
-    <a href="https://www.google.com/maps/d/edit?mid=1gbZG3ilKl-06BsqTUAiz9oW0dL9evjs&usp=sharing" target="_blank" rel="noopener" class="map-btn">Open Full Map</a>
+  <div class="map-actions">
+    <a href="https://maps.app.goo.gl/hjrLT1tFnSjq2p379" target="_blank" rel="noopener" class="map-btn">Open the 🦪NOLA list</a>
+    <a href="https://www.google.com/maps/d/viewer?mid=1gbZG3ilKl-06BsqTUAiz9oW0dL9evjs" target="_blank" rel="noopener" class="map-btn map-btn-alt">Open the pin map</a>
   </div>
 </section>
 
 <!-- LOOKS + INSPO -->
 <section id="looks" class="phase-3-only">
-  <div class="section-eyebrow">Dress Code &amp; Inspo</div>
+  <div class="section-eyebrow">Inspo</div>
   <div class="section-title">The Looks</div>
-  <div class="section-subhead">Three nights, three identities.</div>
+  <div class="section-subhead">A mood board, not a mandate. Take what you like.<br>Wear whatever makes you feel amazing — every color is welcome, we’re just saving bridal white for Kassie 🤍</div>
 
-  <!-- Night 1 -->
   <div class="look-night-block">
-    <div class="look-night-hd">
-      <div class="look-night-num2">01</div>
-      <div>
-        <div class="look-night-date2">Saturday, October 3</div>
-        <div class="look-night-title2">The Convoy 🕶️</div>
-      </div>
-    </div>
     <div class="look-night-bd">
-      <div class="look-buzz">All black everything · pearl jewelry · black sunglasses · dark nails · Kassie in white</div>
-      <div class="look-person lp-clan">
-        <ul>
-          <li>All black — any silhouette, your choice</li>
-          <li>Black sunglasses — mandatory for the group photo</li>
-          <li>Dark nails: black, plum, or burgundy — if you want to commit</li>
-          <li>Black for the bar crawl — Kassie in white, Clan in black · styled your way</li>
-        </ul>
-      </div>
       <div class="look-photos">
-        <img src="assets/images/night1-convoy/night1-1.jpg" alt="The Convoy inspo">
-        <img src="assets/images/night1-convoy/night1-2.jpg" alt="The Convoy inspo">
-        <img src="assets/images/night1-convoy/night1-3.jpg" alt="The Convoy inspo">
-      </div>
-    </div>
-  </div>
-
-  <!-- Night 2 -->
-  <div class="look-night-block">
-    <div class="look-night-hd">
-      <div class="look-night-num2">02</div>
-      <div>
-        <div class="look-night-date2">Sunday, October 4</div>
-        <div class="look-night-title2">The Shells 🦪</div>
-      </div>
-    </div>
-    <div class="look-night-bd">
-      <div class="look-vibe"><em>Electric. Iridescent. More is more.</em></div>
-      <div class="look-buzz">FULL GLAM · BIG HAIR · BRIGHT COLORS · BOAS · GLITTER · DRAMATIC EYE</div>
-      <div class="look-person lp-clan">
-        <ul>
-          <li>Daytime: styled your way</li>
-          <li>Night: Sequins or iridescent</li>
-          <li>Every color welcome (except bridal, duh)</li>
-          <li>Boas, glitter, rhinestones, big hair — makeup is part of the outfit</li>
-          <li>More is more. This is the only rule.</li>
-        </ul>
-      </div>
-      <div class="look-photos">
-        <img src="assets/images/night2-shells/night2-1.jpg" alt="The Shells inspo">
-        <img src="assets/images/night2-shells/night2-2.jpg" alt="The Shells glam inspo">
-        <img src="assets/images/night2-shells/night2-3.jpg" alt="The Shells inspo">
-      </div>
-    </div>
-  </div>
-
-  <!-- Night 3 -->
-  <div class="look-night-block">
-    <div class="look-night-hd">
-      <div class="look-night-num2">03</div>
-      <div>
-        <div class="look-night-date2">Monday, October 5</div>
-        <div class="look-night-title2">The Coven 🔮</div>
-      </div>
-    </div>
-    <div class="look-night-bd">
-      <div class="look-vibe"><em>Practical Magic meets The Love Witch. Think Stevie Nicks, not Halloween.</em></div>
-      <div class="look-buzz">Flowing maxis · velvet · lace · jewel tones and earthy richness · pendant jewelry · rings stacked · boots or heeled sandals · bold lip</div>
-      <div class="look-person lp-clan">
-        <ul>
-          <li>Slip dresses, lace, velvet — boho layering encouraged</li>
-          <li>Colors: deep red, forest green, plum, rust, dusty pink, cream, or black</li>
-          <li>Layer it: lace cami under a velvet slip · sheer blouse over a maxi skirt — matte and flowing</li>
-          <li>Strong eye, bold lip — the magic is in how you carry it</li>
-          <li>If you’re unsure: go richer, go more layered, add a crystal.</li>
-        </ul>
-      </div>
-      <div class="look-photos">
-        <img src="assets/images/night3-coven/night3-1.jpg" alt="The Coven inspo">
-        <img src="assets/images/night3-coven/night3-2.jpg" alt="The Coven boho inspo">
-        <img src="assets/images/night3-coven/night3-3.jpg" alt="The Coven glam inspo">
+        <img src="assets/images/night1-convoy/night1-1.jpg" alt="Look inspo">
+        <img src="assets/images/night1-convoy/night1-2.jpg" alt="Look inspo">
+        <img src="assets/images/night1-convoy/night1-3.jpg" alt="Look inspo">
+        <img src="assets/images/night2-shells/night2-1.jpg" alt="Look inspo">
+        <img src="assets/images/night2-shells/night2-2.jpg" alt="Glam look inspo">
+        <img src="assets/images/night2-shells/night2-3.jpg" alt="Look inspo">
+        <img src="assets/images/night3-coven/night3-1.jpg" alt="Lookinspo">
+        <img src="assets/images/night3-coven/night3-2.jpg" alt="Lookboho inspo">
+        <img src="assets/images/night3-coven/night3-3.jpg" alt="Lookglam inspo">
       </div>
     </div>
   </div>
@@ -1591,7 +1537,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <ul style="text-align:left;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--pearl-dim);line-height:1.6;">
         <li><strong style="color:var(--teal);font-weight:500;">Swimsuit</strong> — the Airbnb has a private pool · pool day is real</li>
         <li><strong style="color:var(--teal);font-weight:500;">Shoes</strong> — comfortable heels or wedges for cobblestone streets; pack flat backup sandals</li>
-        <li><strong style="color:var(--teal);font-weight:500;">Heat</strong> — blotting papers, mini deodorant, travel fan or cooling mist</li>
         <li><strong style="color:var(--teal);font-weight:500;">Skin</strong> — SPF 30+, sunglasses for daytime exploring</li>
         <li><strong style="color:var(--teal);font-weight:500;">Emergency kit (shared)</strong> — fashion tape, safety pins, blister pads, dry shampoo, spare earring backs</li>
       </ul>
@@ -1608,19 +1553,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <p class="playlist-intro">Add your songs. The only rule is it has to slap.</p>
   <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
-</section>
-
-
-<!-- PHOTO ALBUM -->
-<section id="album" class="phase-3-only">
-  <div class="section-eyebrow">The Archives</div>
-  <div class="section-title">Photo Album</div>
-  <div class="album-card">
-    <div class="album-icon">📸</div>
-    <p>Drop your photos, videos, and candids here as we go.<br>Everyone can upload — just needs a Google account.</p>
-    <a href="https://drive.google.com/drive/folders/1z4sNEXFJjPG7du2rk1j56uYTLGcXpKIf?usp=sharing" class="form-btn" target="_blank" rel="noopener">Open the Album →</a>
-    <div class="album-note">The good ones, the chaotic ones, the ones Kassie doesn't know were taken yet.</div>
-  </div>
 </section>
 
 
@@ -1672,7 +1604,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <a href="#map" class="phase-3-only">Map</a>
   <a href="#looks" class="phase-3-only">Looks</a>
   <a href="#pack" class="phase-3-only">Pack</a>
-  <a href="#album" class="phase-3-only">Album</a>
   <a href="#rules" class="phase-3-only">Rules</a>
   <a href="#pay">Pay</a>
   <a href="#playlist">Playlist</a>
@@ -1742,67 +1673,90 @@ function toggleNight(header) {
 // ── ITINERARY PICKS (prices woven in, big stuff already paid) ──
 var fmt = function(n){ return "$" + Math.round(n).toLocaleString(); };
 
-var satD = [
-  { lbl:"French Quarter bar crawl + street food", note:"Meet the boys · oysters at Felix's · Pat O'Brien's", pp:35, uber:10, gag:false },
-  { lbl:"Dinner + bourbon bar or cigar bar", note:"Sit-down dinner then Bourbon House or Crescent City Cigar · ~$60–80pp", pp:70, uber:10, gag:false },
+// Saturday morning — Ocho's burritos are on the MOH, we just need your protein
+var bfastSel = -1;
+// No pp key — these are provided, so mkPick renders no price column at all
+var bfastOpts = [
+  { lbl:"Bacon" },
+  { lbl:"Ham" },
+  { lbl:"Chorizo" },
+  { lbl:"Vegan breakfast burrito" },
+  { lbl:"No meat" },
 ];
-var satSel = 0;
 
+// Saturday night — locked in, no options
+var satNight = { lbl:"Mambo's · dinner + drinks, karaoke after", pp:35, uber:10 };
+
+var GMAP = "https://www.google.com/maps/search/?api=1&query=";
+
+// Sunday breakfast — something light before the 1pm drag brunch
+var sunBSel = 0;
+var sunB = [
+  { lbl:"Café Reconcile — OCH Blvd", note:"Southern · our street, a few blocks down", pp:20, uber:0, dist:"~5 min walk", url:GMAP+"Cafe+Reconcile+New+Orleans" },
+  { lbl:"Calas Cafe", note:"Creole rice fritters · the old New Orleans breakfast", pp:15, uber:6, url:GMAP+"Calas+Cafe+New+Orleans" },
+  { lbl:"Cafe Porche & Snowbar", note:"Brunch, pastries + snowballs", pp:18, uber:8, url:GMAP+"Cafe+Porche+Snowbar+New+Orleans" },
+  { lbl:"Lagniappe Bakehouse", note:"Bakery · pastries and coffee to go", pp:12, uber:6, url:GMAP+"Lagniappe+Bakehouse+New+Orleans" },
+];
+
+// Sunday brunch — booked, opt out if you're not coming
 var sunM = [
-  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Won the vote · $25pp prepaid · book via OpenTable", pp:25, uber:14 },
-  { lbl:"Spa day — The Woodhouse Spa, Canal St", note:"Massages, facials & rituals · ~$100+", pp:100, uber:8 },
-  { lbl:"Free pool day — stay home", note:"Sleep in · recover · no judgment", pp:0, uber:0 },
+  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Reserved · $25pp prepaid · Bywater", pp:25, uber:14, dist:"~15 min drive", url:GMAP+"The+Country+Club+New+Orleans" },
 ];
 var sunMSel = 0;
 
 var sunD = [
-  { lbl:"The Rum House — Magazine St", note:"Caribbean-Mexican · killer rum cocktails · walkable", pp:30, uber:0 },
-  { lbl:"Peche Seafood Grill", note:"James Beard winner · wood-fired Gulf seafood", pp:60, uber:8 },
-  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole · 15 min walk", pp:70, uber:0 },
+  { lbl:"The Rum House — Magazine St", note:"Caribbean-Mexican · killer rum cocktails", pp:30, uber:0, dist:"~25 min walk · 6 min drive", url:GMAP+"The+Rum+House+Magazine+St+New+Orleans" },
+  { lbl:"Peche Seafood Grill", note:"James Beard winner · wood-fired Gulf seafood", pp:60, uber:8, dist:"~8 min drive", url:GMAP+"Peche+Seafood+Grill+New+Orleans" },
+  { lbl:"Gris-Gris — Magazine St", note:"Upscale Southern Creole", pp:70, uber:0, dist:"~15 min walk", url:GMAP+"Gris-Gris+Magazine+St+New+Orleans" },
+  { lbl:"Atchafalaya — Uptown", note:"Creole · Louisiana Ave · price est.", pp:60, uber:8, dist:"~7 min drive", url:GMAP+"Atchafalaya+Restaurant+New+Orleans" },
 ];
 var sunDSel = 1;
 
 var showOpts = [
-  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St", note:"Bride free with 5 paid tickets", pp:40, on:false },
-  { lbl:"Women's burlesque — Fleur de Tease / Bustout Burlesque", note:"Toulouse Theater / House of Blues · check their calendars for upcoming events", pp:35, on:false },
+  { lbl:"Hunk-O-Mania Male Revue — 801 Bourbon St", note:"Bride free with 5 paid tickets", pp:40, on:false, dist:"~10 min drive", url:"https://hunkomanianola.com/" },
+  { lbl:"Women's burlesque — Fleur de Tease / Bustout Burlesque", note:"Toulouse Theater / House of Blues · check their calendars for upcoming events", pp:35, on:false, url:"https://www.fleurdetease.com/upcoming-events" },
 ];
 
 var clubOpts = [
-  { lbl:"Oz New Orleans — 800 Bourbon St", note:"Drag shows · dance floor · Bourbon St balcony", pp:20, on:false },
-  { lbl:"The Beach on Bourbon — 227 Bourbon St", note:"DJ dance floor · top 40 & throwbacks", pp:20, on:false },
-  { lbl:"Razzoo Bar & Patio — 511 Bourbon St", note:"Dance floor · daiquiris", pp:15, on:false },
-  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover", pp:20, on:false },
+  { lbl:"Oz New Orleans — 800 Bourbon St", note:"Drag shows · dance floor · Bourbon St balcony", pp:20, on:false, dist:"~10 min drive", url:GMAP+"Oz+New+Orleans+800+Bourbon+St" },
+  { lbl:"The Beach on Bourbon — 227 Bourbon St", note:"DJ dance floor · top 40 & throwbacks", pp:20, on:false, dist:"~10 min drive", url:GMAP+"The+Beach+on+Bourbon+New+Orleans" },
+  { lbl:"Razzoo Bar & Patio — 511 Bourbon St", note:"Dance floor · daiquiris", pp:15, on:false, dist:"~10 min drive", url:GMAP+"Razzoo+Bar+and+Patio+New+Orleans" },
+  { lbl:"Café Lafitte in Exile — 901 Bourbon St", note:"No cover", pp:20, on:false, dist:"~10 min drive", url:GMAP+"Cafe+Lafitte+in+Exile+New+Orleans" },
 ];
 
-var monActs = [
-  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"~90 min · departs Westwego", pp:67, uber:10, on:false },
-  { lbl:"Bottom of the Cup Tea Room + French Market stroll", note:"French Quarter · won the vote", pp:35, uber:5, on:true },
+// Sunday afternoon (after drag brunch) — opt-out
+var sunTeaOpts = [
+  { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops", pp:0, uber:5, on:true, dist:"~12 min drive", url:GMAP+"French+Market+New+Orleans" },
+];
+// Monday morning — BOOKED via Viator, prepaid to the MOH
+var monSwampOpts = [
+  { lbl:"Airboat swamp tour + gator marshmallow feeding", note:"Booked · prepay the MOH · ~90 min · departs Westwego", pp:67, uber:10, on:true, dist:"~25 min drive" },
 ];
 
 var monD = [
-  { lbl:"Muriel's Jackson Square — haunted restaurant", note:"3-course ~$95pp · steps from Jackson Square", pp:95, uber:5 },
-  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · French Quarter", pp:65, uber:5 },
-  { lbl:"Compere Lapin", note:"Michelin recognized · Caribbean Creole", pp:65, uber:8 },
+  { lbl:"Cafe Amelie — candlelit courtyard", note:"Boho-coven perfection · French Quarter", pp:65, uber:5, dist:"~10 min drive", url:GMAP+"Cafe+Amelie+New+Orleans" },
+  { lbl:"Cane and Table — French Quarter", note:"Rum + Caribbean Creole · Decatur St · price est.", pp:55, uber:5, dist:"~12 min drive", url:GMAP+"Cane+and+Table+New+Orleans" },
+  { lbl:"Compere Lapin", note:"Michelin recognized · Caribbean Creole", pp:65, uber:8, dist:"~8 min drive", url:GMAP+"Compere+Lapin+New+Orleans" },
 ];
-var monDSel = 1;
+var monDSel = 0;
 
 var ghostSel = 0;
 var ghostOpts = [
-  { lbl:"Ghost bar crawl — French Quarter", note:"8pm · voted 9 of 9 · Kassie's pick", pp:30 },
-  { lbl:"Skip — head to nightcap or call it a night", note:"No judgment after a full day", pp:0 },
+  { lbl:"Ghost bar crawl — French Quarter", note:"Booked · prepay the MOH · 8pm · Kassie's pick", pp:30, dist:"~10 min drive" },
+  { lbl:"Skip — tell the MOH so she can adjust the booking", note:"No judgment after a full day", pp:0 },
 ];
 
 var nightSel = 0;
 var nightOpts = [
-  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"7 min walk · dark, live jazz", pp:25, uber:0 },
-  { lbl:"Frenchmen Street bar hop", note:"Live jazz · no cover", pp:30, uber:8 },
+  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark, live jazz · St Charles Ave", pp:25, uber:0, dist:"~8 min walk", url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" },
+  { lbl:"Frenchmen Street bar hop", note:"Live jazz · no cover", pp:30, uber:8, dist:"~12 min drive", url:GMAP+"Frenchmen+Street+New+Orleans" },
   { lbl:"Head home — call it a night", note:"Checkout is 11am Tuesday", pp:0, uber:0 },
 ];
 
 var tueLSel = -1;
 var tueL = [
-  { lbl:"Café Du Monde — beignets + café au lait", note:"Iconic last morning · French Quarter", pp:15 },
-  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic NOLA breakfast diner · walkable", pp:18 },
+  { lbl:"Café Du Monde — beignets + café au lait", note:"Iconic last morning · French Quarter", pp:15, dist:"~11 min drive", url:GMAP+"Cafe+Du+Monde+New+Orleans" },
+  { lbl:"Slim Goodies Diner — Magazine St", note:"Classic NOLA breakfast diner", pp:18, dist:"~8 min drive", url:GMAP+"Slim+Goodies+Diner+New+Orleans" },
 ];
 
 
@@ -1822,10 +1776,19 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
     var on = isMulti ? o.on : (getSel() === i);
     var r = el("div", "pick-row" + (on ? " on" : ""));
     var left = el("div");
-    left.appendChild(el("div", "", o.lbl));
+    if (o.url) {
+      // Link out to Google Maps / the booking page without toggling the row
+      var a = el("a", "pick-link", o.lbl);
+      a.href = o.url; a.target = "_blank"; a.rel = "noopener";
+      a.addEventListener("click", function(ev){ ev.stopPropagation(); });
+      left.appendChild(a);
+    } else {
+      left.appendChild(el("div", "", o.lbl));
+    }
     if (o.note) left.appendChild(el("div", "pick-note", o.note));
-    var p = el("div", "pick-price", o.pp > 0 ? "~" + fmt(o.pp) : "free");
-    r.appendChild(left); r.appendChild(p);
+    if (o.dist) left.appendChild(el("div", "pick-dist", "📍 " + o.dist + " from the house"));
+    r.appendChild(left);
+    if (o.pp !== undefined) r.appendChild(el("div", "pick-price", o.pp > 0 ? "~" + fmt(o.pp) : "free"));
     r.addEventListener("click", function() {
       if (isMulti) { o.on = !o.on; }
       else { setSel(getSel() === i ? -1 : i); }
@@ -1837,12 +1800,14 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
 
 // Render every pick group + refresh itinerary text and the quiet estimate line
 function renderPicks() {
-  mkPick("pick-sat",     satD,      false, function(){return satSel;},  function(i){satSel=i;});
+  mkPick("pick-bfast",   bfastOpts, false, function(){return bfastSel;},function(i){bfastSel=i;});
+  mkPick("pick-sunb",    sunB,      false, function(){return sunBSel;}, function(i){sunBSel=i;});
   mkPick("pick-sunm",    sunM,      false, function(){return sunMSel;}, function(i){sunMSel=i;});
   mkPick("pick-sund",    sunD,      false, function(){return sunDSel;}, function(i){sunDSel=i;});
   mkPick("pick-show",    showOpts,  true);
   mkPick("pick-clubs",   clubOpts,  true);
-  mkPick("pick-monacts", monActs,   true);
+  mkPick("pick-suntea",   sunTeaOpts,   true);
+  mkPick("pick-monswamp", monSwampOpts, true);
   mkPick("pick-mond",    monD,      false, function(){return monDSel;}, function(i){monDSel=i;});
   mkPick("pick-ghost",   ghostOpts, false, function(){return ghostSel;},function(i){ghostSel=i;});
   mkPick("pick-night",   nightOpts, false, function(){return nightSel;},function(i){nightSel=i;});
@@ -1855,14 +1820,16 @@ function renderEstimate() {
   var e = document.getElementById("itin-estimate");
   if (!e) return;
   var ground = 0, uber = 20; // airport Ubers there + back
-  if (satSel  >= 0) { ground += satD[satSel].pp;   uber += satD[satSel].uber  || 0; }
+  ground += satNight.pp; uber += satNight.uber;
+  if (sunBSel >= 0) { ground += sunB[sunBSel].pp;  uber += sunB[sunBSel].uber || 0; }
   if (sunMSel >= 0) { ground += sunM[sunMSel].pp;  uber += sunM[sunMSel].uber || 0; }
   if (sunDSel >= 0) { ground += sunD[sunDSel].pp;  uber += sunD[sunDSel].uber || 0; }
   var nightOut = false;
   showOpts.forEach(function(o){ if (o.on) { ground += o.pp; nightOut = true; } });
   clubOpts.forEach(function(o){ if (o.on) { ground += o.pp; nightOut = true; } });
   if (nightOut) uber += 10;
-  monActs.forEach(function(o){ if (o.on) { ground += o.pp; uber += o.uber || 0; } });
+  sunTeaOpts.forEach(function(o){ if (o.on) { ground += o.pp; uber += o.uber || 0; } });
+  monSwampOpts.forEach(function(o){ if (o.on) { ground += o.pp; uber += o.uber || 0; } });
   if (monDSel >= 0) { ground += monD[monDSel].pp;  uber += monD[monDSel].uber || 0; }
   if (ghostSel === 0) { ground += ghostOpts[0].pp; uber += 4; }
   if (nightSel >= 0) { ground += nightOpts[nightSel].pp; uber += nightOpts[nightSel].uber || 0; }
@@ -1873,20 +1840,15 @@ function renderEstimate() {
   // The full picture, quietly, for the record
   var lg = document.getElementById("itin-ledger");
   if (!lg) return;
-  var airbnb = 341, tee = 30, snacks = 30, flight = 327;
-  var total = airbnb + tee + snacks + flight + ground + uber;
+  var total = ground + uber;
   function lrow(lbl, val, cls) {
     return '<div class="ledger-row' + (cls ? ' ' + cls : '') + '"><div>' + lbl + '</div><div class="lv">' + val + '</div></div>';
   }
   lg.innerHTML =
-    '<div class="ledger-hd">The Full Picture · Per Witch</div>' +
-    lrow('Airbnb share', fmt(airbnb), 'paid') +
-    lrow('Custom tee', fmt(tee), 'paid') +
-    lrow('Snacks & drinks', fmt(snacks), 'paid') +
-    lrow('Flight', fmt(flight), 'paid') +
+    '<div class="ledger-hd">Still To Spend · Per Witch</div>' +
     lrow('Your picks on the ground', '~' + fmt(ground)) +
     lrow('Shared Ubers', '~' + fmt(uber)) +
-    lrow('All-in', '≈ ' + fmt(total), 'total');
+    lrow('Total', '≈ ' + fmt(total), 'total');
 }
 
 // Expand/collapse the option lists from the little "options" tags
@@ -1908,15 +1870,12 @@ function loadFormSelections() {
     var d = JSON.parse(raw);
     if (typeof d !== 'object' || d === null) return;
 
-    var satMap   = {"French Quarter bar crawl + street food":0,"Sit-down dinner then bourbon/cigar bar":1};
-    var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Spa day — Spa Isbell, Magazine St":1,"Free pool day — stay home":2};
+    var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0};
     var sunDMap  = {"The Rum House — Magazine St":0,"Peche Seafood Grill — Warehouse District":1,"Gris-Gris — Magazine St":2};
-    var monDMap  = {"Muriel's Jackson Square":0,"Cafe Amelie — candlelit courtyard":1,"Compere Lapin — Warehouse District":2};
+    var monDMap  = {"Cafe Amelie — candlelit courtyard":0,"Compere Lapin — Warehouse District":2};
     var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1};
     var nightMap = {"Bayou Bar — Pontchartrain Hotel":0,"Frenchmen Street bar hop":1,"Head home after ghost tour":2};
-    var monActMap= {"Airboat swamp tour + gator feeding":0,"Bottom of the Cup Tea Room — tarot + tea":1,"French Market + crystal/voodoo shopping":1};
 
-    if (d.sat_dinner   != null && satMap[d.sat_dinner]    !== undefined) satSel  = satMap[d.sat_dinner];
     if (d.sun_morning  != null && sunMMap[d.sun_morning]  !== undefined) sunMSel = sunMMap[d.sun_morning];
     if (d.sun_dinner   != null && sunDMap[d.sun_dinner]   !== undefined) sunDSel = sunDMap[d.sun_dinner];
     if (d.mon_dinner   != null && monDMap[d.mon_dinner]   !== undefined) monDSel = monDMap[d.mon_dinner];
@@ -1924,10 +1883,10 @@ function loadFormSelections() {
     if (d.mon_nightcap != null && nightMap[d.mon_nightcap]!== undefined) nightSel= nightMap[d.mon_nightcap];
 
     if (Array.isArray(d.mon_morning)) {
-      monActs[0].on = false; monActs[1].on = false;
+      monSwampOpts[0].on = false; sunTeaOpts[0].on = false;
       d.mon_morning.forEach(function(val) {
-        var idx = monActMap[val];
-        if (idx !== undefined) monActs[idx].on = true;
+        if (val === "Airboat swamp tour + gator feeding") monSwampOpts[0].on = true;
+        else if (val === "French Market + crystal/voodoo shopping") sunTeaOpts[0].on = true;
       });
     }
   } catch(e) {}
@@ -1946,24 +1905,28 @@ function updateItinerary() {
     e.innerHTML = '<strong>' + strong + '</strong> · ' + sub + chip(pp || 0) + (pickId ? tog(pickId) : '');
   }
 
-  var satTexts = [
-    { s:"French Quarter",  b:"meet The Boys · bar crawl + street food · oysters at Felix's · Pat O'Brien's" },
-    { s:"Dinner",          b:"sit-down dinner · then Bourbon House or Crescent City Cigar bar" }
+  // Links land on the place itself — photos, hours, reviews
+  function gl(name, q) { return '<a href="' + GMAP + q + '" target="_blank" rel="noopener">' + name + '</a>'; }
+  var gs = gl;
+  var sunBTexts = [
+    { s:"Breakfast", b:gl('Café Reconcile', 'Cafe+Reconcile+New+Orleans') + ' · OCH Blvd · walkable from the house' },
+    { s:"Breakfast", b:gl('Calas Cafe', 'Calas+Cafe+New+Orleans') + ' · Creole rice fritters · the old New Orleans breakfast' },
+    { s:"Breakfast", b:gl('Cafe Porche &amp; Snowbar', 'Cafe+Porche+Snowbar+New+Orleans') + ' · brunch, pastries + snowballs' },
+    { s:"Breakfast", b:gl('Lagniappe Bakehouse', 'Lagniappe+Bakehouse+New+Orleans') + ' · pastries and coffee to go' }
   ];
   var sunMTexts = [
-    { s:"Drag Brunch", b:'<a href="https://thecountryclubneworleans.com/menus/drag-brunch/" target="_blank" rel="noopener">The Country Club</a> · Bywater' },
-    { s:"Spa Day",     b:'<a href="https://locations.woodhousespas.com/louisiana/new-orleans/4030-canal-st/" target="_blank" rel="noopener">The Woodhouse Spa</a> · 4030 Canal St · massages, facials & rituals' },
-    { s:"Pool Day",    b:"sleep in · recover · Airbnb backyard · no judgment" }
+    { s:"Drag Brunch", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · reserved' }
   ];
   var sunDTexts = [
-    { s:"Dinner", b:"The Rum House · Magazine St · Caribbean-Mexican · outdoor patio · walkable" },
-    { s:"Dinner", b:"Pêche Seafood Grill · James Beard winner · wood-fired Gulf seafood" },
-    { s:"Dinner", b:"Gris-Gris · Magazine St · upscale Southern Creole" }
+    { s:"Dinner", b:gl('The Rum House', 'The+Rum+House+Magazine+St+New+Orleans') + " · Magazine St · Caribbean-Mexican · outdoor patio · walkable" },
+    { s:"Dinner", b:gl('Pêche Seafood Grill', 'Peche+Seafood+Grill+New+Orleans') + " · James Beard winner · wood-fired Gulf seafood" },
+    { s:"Dinner", b:gl('Gris-Gris', 'Gris-Gris+Magazine+St+New+Orleans') + " · Magazine St · upscale Southern Creole" },
+    { s:"Dinner", b:gl('Atchafalaya', 'Atchafalaya+Restaurant+New+Orleans') + " · Uptown · Creole · Louisiana Ave" }
   ];
   var monDTexts = [
-    { s:"Farewell dinner", b:'<a href="https://www.muriels.com/" target="_blank" rel="noopener">Muriel\'s Jackson Square</a> · haunted restaurant · French Quarter' },
-    { s:"Farewell dinner", b:'<a href="https://www.cafeamelie.com/" target="_blank" rel="noopener">Café Amélie</a> · candlelit courtyard · French Quarter' },
-    { s:"Farewell dinner", b:"Compère Lapin · Caribbean Creole" }
+    { s:"Farewell dinner", b:gl('Café Amélie', 'Cafe+Amelie+New+Orleans') + ' · candlelit courtyard · French Quarter' },
+    { s:"Farewell dinner", b:gl('Cane and Table', 'Cane+and+Table+New+Orleans') + ' · rum + Caribbean Creole · Decatur St' },
+    { s:"Farewell dinner", b:gl('Compère Lapin', 'Compere+Lapin+New+Orleans') + " · Caribbean Creole" }
   ];
   var nightTexts = [
     { s:"Nightcap",      b:"Bayou Bar · Pontchartrain Hotel · 7 min walk · live jazz" },
@@ -1971,10 +1934,20 @@ function updateItinerary() {
     { s:"Heading home",  b:"checkout is 11am Tuesday · goodnight witches" }
   ];
 
-  if (satSel >= 0 && satSel < satTexts.length)   setNode('itin-sat-evening',  satTexts[satSel].s,   satTexts[satSel].b,   satD[satSel].pp,  'pick-sat');
-  else setNode('itin-sat-evening', 'Evening — your call', 'pick an option', 0, 'pick-sat');
+  // Saturday morning — burritos provided, so no price chip; just the protein pick
+  (function() {
+    var base = 'Regency Plaza · 4643 S Ulster St #950 · ' + gs('Ocho\'s', 'Ochos+Mexican+Cocina+Denver') + ' breakfast burritos &amp; mimosas provided';
+    if (bfastSel >= 0) setNode('itin-sat-bfast', 'Meet in Denver', base + ' · yours: ' + bfastOpts[bfastSel].lbl, 0, 'pick-bfast');
+    else setNode('itin-sat-bfast', 'Meet in Denver', base, 0, 'pick-bfast');
+  })();
+
+  // Saturday night — no options, but the cost still shows
+  setNode('itin-sat-evening', gl("Mambo's", "Mambos+New+Orleans"), 'French Quarter · meet The Boys · dinner + drinks · karaoke afterwards · ~10 min drive', satNight.pp);
+
+  if (sunBSel >= 0 && sunBSel < sunBTexts.length) setNode('itin-sun-bfast', sunBTexts[sunBSel].s, sunBTexts[sunBSel].b, sunB[sunBSel].pp, 'pick-sunb');
+  else setNode('itin-sun-bfast', 'Breakfast at the Airbnb', 'graze at the house · no plans 🥞', 0, 'pick-sunb');
   if (sunMSel >= 0 && sunMSel < sunMTexts.length) setNode('itin-sun-morning',  sunMTexts[sunMSel].s, sunMTexts[sunMSel].b, sunM[sunMSel].pp, 'pick-sunm');
-  else setNode('itin-sun-morning', 'Morning — your call', 'pick an option', 0, 'pick-sunm');
+  else setNode('itin-sun-morning', 'Free afternoon', "your call · pool or explore · let's meet up later!", 0, 'pick-sunm');
   if (sunDSel >= 0 && sunDSel < sunDTexts.length) setNode('itin-sun-dinner',   sunDTexts[sunDSel].s, sunDTexts[sunDSel].b, sunD[sunDSel].pp, 'pick-sund');
   else setNode('itin-sun-dinner', 'Dinner — your call', 'pick an option', 0, 'pick-sund');
   if (monDSel >= 0 && monDSel < monDTexts.length) setNode('itin-mon-dinner',   monDTexts[monDSel].s, monDTexts[monDSel].b, monD[monDSel].pp, 'pick-mond');
@@ -1982,13 +1955,20 @@ function updateItinerary() {
   if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b, nightOpts[nightSel].pp, 'pick-night');
   else setNode('itin-mon-nightcap', 'Nightcap — optional', 'Bayou Bar or Frenchmen Street', 0, 'pick-night');
 
-  // Monday morning — multi
+  // Sunday afternoon — tea room / French Market (opt-out)
   (function() {
-    var parts = [], pp = 0;
-    if (monActs[0].on) { parts.push('Airboat swamp tour + gator feeding'); pp += monActs[0].pp; }
-    if (monActs[1].on) { parts.push('Tarot + tea · <a href="https://www.bottomofthecup.com/" target="_blank" rel="noopener">Bottom of the Cup Tea Room</a> · French Market stroll'); pp += monActs[1].pp; }
-    if (parts.length === 0) setNode('itin-mon-morning', 'Free morning', 'or pick something', 0, 'pick-monacts');
-    else setNode('itin-mon-morning', 'Morning', parts.join(' · '), pp, 'pick-monacts');
+    if (sunTeaOpts[0].on)
+      setNode('itin-sun-tea', 'French Market stroll', gl('French Market', 'French+Market+New+Orleans') + ' · stalls, crystals, voodoo shops', sunTeaOpts[0].pp, 'pick-suntea');
+    else
+      setNode('itin-sun-tea', 'Skipping the Quarter', 'stay by the pool · catch us at dinner', 0, 'pick-suntea');
+  })();
+
+  // Monday morning — airboat swamp tour (opt-out)
+  (function() {
+    if (monSwampOpts[0].on)
+      setNode('itin-mon-swamp', 'Airboat swamp tour', 'gator feeding · ~90 min · departs Westwego', monSwampOpts[0].pp, 'pick-monswamp');
+    else
+      setNode('itin-mon-swamp', 'Free morning', 'your call · sleep in or explore', 0, 'pick-monswamp');
   })();
 
   // Sunday show — multi
@@ -1996,7 +1976,7 @@ function updateItinerary() {
     var parts = [], pp = 0;
     if (showOpts[0].on) { parts.push('<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania Male Revue</a> · 801 Bourbon St'); pp += showOpts[0].pp; }
     if (showOpts[1].on) { parts.push('Women’s burlesque · <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">Fleur de Tease</a> / Bustout'); pp += showOpts[1].pp; }
-    if (parts.length === 0) setNode('itin-sun-show', 'Show — optional', '<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania</a> or <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">burlesque</a>', 0, 'pick-show');
+    if (parts.length === 0) setNode('itin-sun-show', 'Show', '<a href="https://hunkomanianola.com/" target="_blank" rel="noopener">Hunk-O-Mania</a> or <a href="https://www.fleurdetease.com/upcoming-events" target="_blank" rel="noopener">burlesque</a>', 0, 'pick-show');
     else setNode('itin-sun-show', 'Show', parts.join(' · '), pp, 'pick-show');
   })();
 
@@ -2012,15 +1992,66 @@ function updateItinerary() {
 
   // Ghost crawl — single with skip
   (function() {
-    if (ghostSel === 0) setNode('itin-mon-ghost', 'Ghost Bar Crawl', 'French Quarter · haunted bars, spirits with spirits · voted 9/9 · Kassie\'s pick', ghostOpts[0].pp, 'pick-ghost');
+    if (ghostSel === 0) setNode('itin-mon-ghost', 'Ghost Bar Crawl', 'French Quarter · haunted bars, spirits with spirits', ghostOpts[0].pp, 'pick-ghost');
     else setNode('itin-mon-ghost', 'Night off', 'skipping the crawl · recover in peace', 0, 'pick-ghost');
   })();
 
   // Tuesday last bites
   (function() {
     if (tueLSel >= 0) setNode('itin-tue-bfast', 'Last bites', tueL[tueLSel].lbl, tueL[tueLSel].pp, 'pick-tue');
-    else setNode('itin-tue-bfast', 'Last bites — optional', 'Café Du Monde or Slim Goodies', 0, 'pick-tue');
+    else setNode('itin-tue-bfast', 'Last bites', 'Café Du Monde or Slim Goodies', 0, 'pick-tue');
   })();
+}
+
+// Roll the live selections into one flat object for the MOH's inbox
+function summarizePicks() {
+  function selLbl(arr, idx){ return (idx != null && idx >= 0 && arr[idx]) ? arr[idx].lbl : '— skipping —'; }
+  function multiLbl(arr){ var v = arr.filter(function(o){return o.on;}).map(function(o){return o.lbl;}); return v.length ? v.join('; ') : '— skipping —'; }
+  return {
+    'Sat AM burrito'      : selLbl(bfastOpts, bfastSel),
+    'Sat night'           : satNight.lbl + ' (set)',
+    'Sun breakfast'       : selLbl(sunB, sunBSel),
+    'Sun brunch/morning'  : selLbl(sunM, sunMSel),
+    'Sun afternoon'       : multiLbl(sunTeaOpts),
+    'Sun dinner'          : selLbl(sunD, sunDSel),
+    'Sun show'            : multiLbl(showOpts),
+    'Sun clubs'           : multiLbl(clubOpts),
+    'Mon airboat tour'    : multiLbl(monSwampOpts),
+    'Mon farewell dinner' : selLbl(monD, monDSel),
+    'Mon ghost crawl'     : selLbl(ghostOpts, ghostSel),
+    'Mon nightcap'        : selLbl(nightOpts, nightSel),
+    'Tue last bites'      : selLbl(tueL, tueLSel)
+  };
+}
+
+function submitPicks() {
+  var nameEl = document.getElementById('ps-name');
+  var statusEl = document.getElementById('ps-status');
+  var btn = document.getElementById('ps-send');
+  var name = (nameEl.value || '').trim();
+  if (!name) { statusEl.textContent = 'Add your name first 🖤'; nameEl.focus(); return; }
+
+  var picks = summarizePicks();
+  var payload = new FormData();
+  payload.append('_subject', '🦪 Itinerary picks — ' + name);
+  payload.append('Name', name);
+  Object.keys(picks).forEach(function(k){ payload.append(k, picks[k]); });
+
+  btn.disabled = true; statusEl.textContent = 'Sending…';
+  fetch('https://formspree.io/f/mqenjdwa', {
+    method: 'POST', body: payload, headers: { 'Accept': 'application/json' }
+  }).then(function(res){
+    if (res.ok) {
+      statusEl.textContent = 'Got it, ' + name + ' — your picks are in. 🖤';
+      document.getElementById('pick-submit').classList.add('sent');
+    } else {
+      btn.disabled = false;
+      statusEl.textContent = 'That didn’t send — try again or just text me.';
+    }
+  }).catch(function(){
+    btn.disabled = false;
+    statusEl.textContent = 'Network hiccup — try again or text me.';
+  });
 }
 
 // Init
@@ -2102,79 +2133,5 @@ renderPicks();
 })();
 </script>
 
-<!-- POLL RESULTS CHARTS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script>
-(function(){
-  if (typeof Chart === 'undefined') return;
-
-  var PEARL = '#f0ece4', PEARL_DIM = 'rgba(240,236,228,0.55)', BLACK = '#080608';
-  var PALETTE = ['#5ecfcf','#c9a84c','#D4537E','#f0ece4','#3e8a8a','#8a5f7a'];
-
-  Chart.defaults.font.family = "'DM Sans', sans-serif";
-  Chart.defaults.font.size = 11;
-  Chart.defaults.color = PEARL_DIM;
-
-  function pie(id, labels, data) {
-    var c = document.getElementById(id);
-    if (!c) return;
-    new Chart(c, {
-      type: 'pie',
-      data: {
-        labels: labels,
-        datasets: [{ data: data, backgroundColor: PALETTE.slice(0, data.length), borderColor: BLACK, borderWidth: 2 }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, padding: 10 } },
-          tooltip: { callbacks: { label: function(ctx){ return ' ' + ctx.parsed + ' vote' + (ctx.parsed === 1 ? '' : 's'); } } }
-        }
-      }
-    });
-  }
-
-  // Activities — horizontal bar, the full ballot
-  var ac = document.getElementById('chart-acts');
-  if (ac) {
-    new Chart(ac, {
-      type: 'bar',
-      data: {
-        labels: [
-          'Ghost Bar Crawl 🍹👻',
-          'Drag Brunch 👑',
-          'Burlesque Show 🪭',
-          'Tea Room Tarot 🔮',
-          'Spa Morning 🧖‍♀️',
-          'Swamp Tour + Gator Feeding 🐊',
-          'Spotted Cat Jazz Club 🎷',
-          'Ghost Walking Tour 🕯',
-          '“I’m down for anything” 🤷‍♀️'
-        ],
-        datasets: [{ data: [9,7,6,4,3,3,3,1,2], backgroundColor: 'rgba(94,207,207,0.55)', borderColor: '#5ecfcf', borderWidth: 1, borderRadius: 6 }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: function(ctx){ return ' ' + ctx.parsed.x + ' of 9 witches'; } } } },
-        scales: {
-          x: { min: 0, max: 9, ticks: { stepSize: 1 }, grid: { color: 'rgba(240,236,228,0.07)' } },
-          y: { grid: { display: false }, ticks: { color: PEARL } }
-        }
-      }
-    });
-  }
-
-  pie('chart-drinks',
-    ['Cocktails & chaos','Tequila (naturally)','Beer & seltzers','Bubbles 🥂','Wine — one classy lady','Mocktail witch'],
-    [7,6,5,4,1,1]);
-
-  pie('chart-vibe',
-    ['One big night, one chill night','Good food, no 4am nights','Whatever the coven decides'],
-    [4,2,3]);
-})();
-</script>
 </body>
 </html>
