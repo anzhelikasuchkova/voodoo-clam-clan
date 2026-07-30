@@ -5,13 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Voodoo Clam Clan 🦪 · New Orleans · Oct 3–6</title>
 <link rel="icon" type="image/png" href="clam_logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --black: #080608;
   --pearl: #f0ece4;
   --pearl-dim: rgba(240,236,228,0.55);
   --pearl-faint: rgba(240,236,228,0.12);
+  --heading: #f0ece4;
+  --text: #f0ece4;
+  --text-muted: rgba(240,236,228,0.55);
+  --text-soft: rgba(240,236,228,0.7);
   --teal: #5ecfcf;
   --teal-dim: rgba(94,207,207,0.2);
   --teal-faint: rgba(94,207,207,0.07);
@@ -21,6 +25,11 @@
   --pink-dim: rgba(212,83,126,0.15);
   --border: rgba(240,236,228,0.1);
   --border-teal: rgba(94,207,207,0.25);
+  --font-body: 'DM Sans', sans-serif;
+  --font-detail: 'DM Sans', sans-serif;
+  --font-display: 'Cinzel Decorative', Georgia, serif;
+  --font-heading: 'Cinzel', Georgia, serif;
+  --font-mono: 'DM Sans', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +37,9 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--black);
+  background: linear-gradient(180deg, #1a181c 0%, #0c0a0d 42%, #000000 100%);
+  background-attachment: fixed;
+  background-color: #000000;
   color: var(--pearl);
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
@@ -43,84 +54,16 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 15% 10%, rgba(94,207,207,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 90%, rgba(201,168,76,0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 10%, rgba(212,83,126,0.04) 0%, transparent 40%);
+    radial-gradient(ellipse at 50% 0%, rgba(30,58,58,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 10%, rgba(94,207,207,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 90%, rgba(201,168,76,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 10%, rgba(212,83,126,0.035) 0%, transparent 40%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* NAV */
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  position: relative;
-  z-index: 2;
-}
-
-#hero nav { margin-top: 72px; }
-@media(min-width: 900px) { #hero nav { margin-top: 116px; } }
-
-.nav-links {
-  display: flex;
-  gap: 8px;
-  list-style: none;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.nav-br { display: none; }
-
-.nav-links a {
-  font-family: 'Cinzel', serif;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--pearl-dim);
-  text-decoration: none;
-  display: inline-block;
-  padding: 7px 14px;
-  background: var(--teal-faint);
-  border: 0.5px solid var(--border-teal);
-  border-radius: 10px;
-  transition: color 0.2s, border-color 0.2s, background 0.2s;
-}
-
-.nav-links a:hover { color: var(--teal); border-color: rgba(94,207,207,0.5); background: rgba(94,207,207,0.08); }
-
-@media(max-width:640px){
-  nav:not(.bot-nav) { margin-bottom: 8px; }
-  .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-  .nav-links a {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    padding: 6px 10px;
-    text-align: center;
-  }
-  .nav-br { display: list-item; width: 100%; height: 0; margin: 0; padding: 0; list-style: none; }
-  .hero-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.03em;
-    margin-top: 32px;
-    margin-bottom: 0;
-  }
-  .eyebrow-name { font-size: 10px; letter-spacing: 0.03em; }
-  .eyebrow-sep { display: none; }
-  .eyebrow-dates { display: block; }
-  .countdown-label { font-size: 10px; letter-spacing: 0.02em; white-space: nowrap; }
-  .pay-kassie-soft { font-size: 10px; letter-spacing: 0.1em; line-height: 1.6; }
-  .footer-clam-logo { width: 80px; }
-  footer { padding: 28px 24px 48px !important; }
-  #pay { padding-bottom: 16px; }
-}
-
-/* HERO */
+/* NAV (hero + shared) */
+header.hero,
 .hero {
   position: relative;
   min-height: auto;
@@ -129,11 +72,99 @@ nav {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 48px 24px 56px;
+  padding: 48px 24px 28px;
   z-index: 1;
+  overflow: visible;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#hero nav,
+.hero-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 780px;
+  margin: 16px auto 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  background: rgba(8,6,8,0.92);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
   overflow: hidden;
 }
 
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.nav-br { display: none; }
+
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  text-decoration: none;
+  display: inline-block;
+  padding: 18px 16px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  border-right: 0.5px solid rgba(240,236,228,0.06);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-links li:last-child a { border-right: none; }
+
+.nav-links a:hover {
+  color: var(--teal);
+  background: rgba(94,207,207,0.05);
+}
+
+@media(max-width:640px){
+  #hero nav,
+  .hero-nav { margin-top: 12px; margin-bottom: 8px; }
+  .nav-links a {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    padding: 14px 8px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  .eyebrow-name { font-size: 11px; letter-spacing: 0.32em; }
+  .eyebrow-location { font-size: 10px; letter-spacing: 0.24em; }
+  .eyebrow-sep { display: none; }
+  .eyebrow-dates { display: block; letter-spacing: 0.22em; }
+  .countdown-label { font-size: 10px; letter-spacing: 0.02em; white-space: nowrap; }
+  .pay-kassie-soft { font-size: 10px; letter-spacing: 0.1em; line-height: 1.6; }
+  .footer-clam-logo { width: 80px; }
+  footer { padding: 28px 24px 48px !important; }
+  #pay { padding-bottom: 16px; }
+}
+
+/* HERO accents (shimmer / particles — decorative only) */
 .hero-shimmer {
   position: absolute;
   inset: 0;
@@ -157,25 +188,58 @@ nav {
 }
 
 .hero-eyebrow {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  letter-spacing: 0.35em;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  letter-spacing: 0.42em;
   color: var(--teal);
   text-transform: uppercase;
-  line-height: 2;
+  line-height: 1.7;
   text-align: center;
-  margin-top: 48px;
-  margin-bottom: 32px;
+  margin: 20px auto 18px;
+  max-width: 100%;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.2s;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .eyebrow-name {
-  color: var(--pearl-dim);
-  letter-spacing: 0.25em;
-  font-size: 14px;
+  color: var(--heading);
+  letter-spacing: 0.48em;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.eyebrow-meta {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 10px;
+}
+
+.eyebrow-location {
+  color: var(--teal);
+  letter-spacing: 0.38em;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.eyebrow-sep {
+  color: rgba(240,236,228,0.28);
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.eyebrow-dates {
+  color: rgba(240, 236, 228, 0.62);
+  letter-spacing: 0.32em;
+  font-size: 11px;
+  font-weight: 400;
 }
 
 .hero-clam {
@@ -189,13 +253,11 @@ nav {
 
 .hero-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(34px, 7.2vw, 72px);
+  font-size: clamp(28px, 5.8vw, 58px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.02em;
-  margin-top: -5vw;
-  margin-bottom: 16px;
-  left: 0;
+  margin: -40px auto 16px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.5s;
   position: relative;
@@ -315,7 +377,6 @@ nav {
   color: var(--pearl-dim);
   margin-top: 6px;
 }
-
 /* SECTIONS */
 section {
   position: relative;
@@ -327,6 +388,11 @@ section {
 
 section + section {
   border-top: 0.5px solid var(--border);
+}
+
+#bride-quote {
+  padding-top: 20px;
+  padding-bottom: 40px;
 }
 
 .map-btn {
@@ -362,6 +428,7 @@ section + section {
   font-weight: 400;
   line-height: 1.15;
   margin-bottom: 40px;
+  color: var(--pearl);
 }
 
 /* ITINERARY */
@@ -387,7 +454,7 @@ section + section {
 }
 
 .night-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 48px;
   font-weight: 300;
   color: var(--teal);
@@ -469,47 +536,110 @@ section + section {
   opacity: 0.6;
 }
 
-.event-text { color: rgba(240,236,228,0.75); line-height: 1.5; }
-.event-text strong { color: var(--pearl); font-weight: 500; }
+.event-text { font-family: 'Cinzel', serif; font-size: 12px; font-weight: 400; letter-spacing: 0.1em; color: var(--pearl-dim); line-height: 1.5; }
+.event-text strong { color: #f0ece4; font-weight: 500; font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: 0.02em; }
 .event-text a { color: var(--teal); text-decoration: none; border-bottom: 1px dotted rgba(94,207,207,0.5); transition: border-color 0.2s; }
 .event-text a:hover { border-bottom-color: var(--teal); }
+.pick-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.65;
+  color: var(--pearl-dim);
+  padding: 12px 14px 10px;
+  border-bottom: 0.5px solid rgba(240,236,228,0.08);
+}
 
 /* ITINERARY PICKS (inline choices with quiet prices) */
-.price-chip { font-size:11px; color:rgba(240,236,228,0.38); border:0.5px solid rgba(240,236,228,0.14); padding:1px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; white-space:nowrap; }
+.price-chip { font-size:11px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; color:rgba(240,236,228,0.38); border:0.5px solid rgba(240,236,228,0.14); padding:1px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; white-space:nowrap; }
 .pick-toggle { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); background:rgba(94,207,207,0.1); cursor:pointer; margin-left:10px; border:0.5px solid rgba(94,207,207,0.4); border-radius:12px; padding:3px 10px; white-space:nowrap; user-select:none; display:inline-block; transition:background 0.15s, border-color 0.15s; }
 .pick-toggle:hover { background:rgba(94,207,207,0.2); border-color:var(--teal); }
-.pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; }
+.pick-hide {
+  display:block; width:100%; box-sizing:border-box;
+  font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--teal); background:rgba(94,207,207,0.08); cursor:pointer;
+  border:0; border-top:0.5px solid rgba(94,207,207,0.25);
+  padding:10px 12px; text-align:center; user-select:none;
+  transition:background 0.15s;
+}
+.pick-hide:hover { background:rgba(94,207,207,0.18); }
+.pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; font-family:'DM Sans', system-ui, sans-serif; }
 .pick.open { display:block; }
-@media(max-width:640px){ .pick { margin-left:0; } }
-.pick-row { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:8px 12px; font-size:12.5px; color:var(--pearl-dim); cursor:pointer; border-bottom:0.5px solid rgba(240,236,228,0.06); transition:background 0.12s; }
+@media(max-width:640px){ .pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; font-family:'DM Sans', system-ui, sans-serif; } }
+.pick-row { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:8px 12px; font-size:12.5px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; color:rgba(240,236,228,0.55); cursor:pointer; border-bottom:0.5px solid rgba(240,236,228,0.06); transition:background 0.12s; line-height:1.4; }
 .pick-row:last-child { border-bottom:none; }
 .pick-row:hover { background:rgba(240,236,228,0.04); }
 .pick-row.on { background:rgba(94,207,207,0.08); color:var(--pearl); border-left:2px solid var(--teal); }
-.pick-note { font-size:11px; color:rgba(240,236,228,0.35); margin-top:1px; }
-.pick-dist { font-size:10.5px; color:var(--teal); opacity:0.8; margin-top:3px; letter-spacing:0.02em; }
-.itin-howto { line-height:1.75; max-width:640px; }
+.pick-note { font-size:11px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; color:rgba(240,236,228,0.35); margin-top:1px; line-height:1.4; }
+.pick-dist { font-size:10.5px; font-family:'DM Sans', system-ui, sans-serif; color:var(--teal); opacity:0.8; margin-top:3px; letter-spacing:0.02em; }
+.pick-hood {
+  font-family:'Cinzel',serif;
+  font-size:9.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--teal);
+  padding:10px 12px 5px;
+  background:rgba(94,207,207,0.06);
+  border-bottom:0.5px solid rgba(94,207,207,0.15);
+}
+.hood-guide { display:grid; gap:14px; margin:22px 0 8px; }
+@media(min-width:720px){ .hood-guide { grid-template-columns:1fr 1fr; } }
+.hood-card {
+  padding:16px 18px;
+  border:0.5px solid rgba(94,207,207,0.2);
+  border-radius:12px;
+  background:rgba(94,207,207,0.04);
+}
+.hood-card h3 {
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin:0 0 8px;
+  font-weight:500;
+}
+.hood-card p {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: rgba(240,236,228,0.78);
+  margin: 0;
+}
+.itin-howto { font-family:'DM Sans', system-ui, sans-serif; font-size:15px; font-weight:400; letter-spacing:0; line-height:1.65; max-width:640px; color:rgba(240,236,228,0.78); }
 .itin-howto strong { color:var(--pearl); font-weight:500; font-style:normal; }
+.section-subhead.itin-howto { font-style: normal; }
+.emoji-white {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-style: normal;
+  color: #fff;
+}
 .howto-chip { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); background:rgba(94,207,207,0.1); border:0.5px solid rgba(94,207,207,0.4); border-radius:12px; padding:2px 9px; white-space:nowrap; font-style:normal; display:inline-block; vertical-align:middle; }
 .pick-link { color:inherit; text-decoration:none; border-bottom:0.5px dotted rgba(94,207,207,0.55); }
 .pick-link:hover { color:var(--teal); border-bottom-color:var(--teal); }
-.pick-price { color:rgba(240,236,228,0.4); font-size:12px; white-space:nowrap; flex-shrink:0; }
+.pick-price { color:rgba(240,236,228,0.4); font-size:12px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; white-space:nowrap; flex-shrink:0; }
 .pay-card{padding:22px 24px 20px;border:0.5px solid var(--border-teal);border-radius:16px;background:var(--teal-faint)}
-.pay-lead{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--pearl-dim);line-height:1.55;margin:0 0 16px;text-align:center}
+.pay-lead{font-family:'DM Sans', system-ui, sans-serif;font-size:13px;font-weight:400;letter-spacing:0;color:rgba(240,236,228,0.78);line-height:1.45;margin:0 0 16px;text-align:center}
 .pay-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;font-size:13px;color:var(--pearl);border-top:0.5px solid rgba(240,236,228,0.08)}
-.pay-row-note{display:block;font-size:11px;color:rgba(240,236,228,0.4);margin-top:2px}
+.pay-row-note{display:block;font-size:11px;font-family:'DM Sans', system-ui, sans-serif;color:rgba(240,236,228,0.4);margin-top:2px}
 .pay-amt{color:var(--teal);white-space:nowrap;font-weight:500}
 .pay-total{border-top:0.5px solid rgba(94,207,207,0.35);margin-top:4px;padding-top:12px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--pearl-dim)}
 .pay-total .pay-amt{font-family:'DM Sans',sans-serif;font-size:14px;letter-spacing:0;text-transform:none}
 .pay-venmo{display:flex;width:fit-content;align-items:center;justify-content:center;gap:10px;margin:16px auto 0;padding:12px 22px;border:0.5px solid var(--teal);border-radius:10px;background:rgba(94,207,207,0.14);text-decoration:none;color:var(--pearl);transition:background 0.2s;font-family:'Cinzel',serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase}
 .pay-venmo:hover{background:rgba(94,207,207,0.28)}
-.pay-hint{font-size:12px;color:rgba(240,236,228,0.35);text-align:center;margin:12px 0 0;line-height:1.5}
+.pay-hint{font-size:12px;font-family:'DM Sans', system-ui, sans-serif;color:rgba(240,236,228,0.35);text-align:center;margin:12px 0 0;line-height:1.5}
 .pick-submit{margin-top:28px;padding:22px;border:.5px solid var(--border-teal);border-radius:16px;background:var(--teal-faint)}
 .ps-head{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
-.ps-sub{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--pearl-dim);margin:8px 0 14px;line-height:1.5}
+.ps-sub{font-family:'DM Sans', system-ui, sans-serif;font-size:13px;font-weight:400;letter-spacing:0;color:rgba(240,236,228,0.78);margin:8px 0 14px;line-height:1.4}
 .ps-fields{display:flex;flex-direction:column;gap:12px;width:100%}
-.ps-input{width:100%;padding:11px 14px;border:.5px solid var(--border);border-radius:10px;background:var(--black);color:var(--pearl);font-family:'DM Sans',sans-serif;font-size:14px;margin-bottom:0;box-sizing:border-box}
+.ps-input{width:100%;padding:11px 14px;border:.5px solid var(--border);border-radius:10px;background:var(--black);color:var(--pearl);font-family:'DM Sans', system-ui, sans-serif;font-size:14px;margin-bottom:0;box-sizing:border-box}
 .ps-input:focus{outline:none;border-color:var(--teal)}
-.ps-suggest{width:100%;min-height:96px;padding:11px 14px;border:.5px solid var(--border);border-radius:10px;background:var(--black);color:var(--pearl);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.5;resize:none;box-sizing:border-box}
+.ps-suggest{width:100%;min-height:96px;padding:11px 14px;border:.5px solid var(--border);border-radius:10px;background:var(--black);color:var(--pearl);font-family:'DM Sans', system-ui, sans-serif;font-size:14px;line-height:1.5;resize:none;box-sizing:border-box}
 .ps-suggest:focus{outline:none;border-color:var(--teal)}
 .ps-suggest::placeholder{color:rgba(240,236,228,0.35)}
 .ps-btn{display:inline-block;padding:11px 22px;border:.5px solid var(--teal);border-radius:10px;background:var(--teal-dim);color:var(--teal);font-family:'Cinzel',serif;font-size:14px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;align-self:flex-start}
@@ -572,7 +702,7 @@ section + section {
 .look-card.kassie .look-night { color: var(--pink); }
 
 .look-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 10px;
@@ -677,8 +807,8 @@ section + section {
 }
 
 .form-card p {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
   font-size: 18px;
   color: var(--pearl-dim);
   margin-bottom: 32px;
@@ -752,7 +882,7 @@ section + section {
 }
 
 .rule-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 32px;
   font-weight: 300;
   color: rgba(94,207,207,0.25);
@@ -760,8 +890,8 @@ section + section {
   flex-shrink: 0;
 }
 
-.rule-text { font-size: 14px; color: var(--pearl-dim); line-height: 1.6; padding-top: 4px; }
-.rule-text strong { color: var(--pearl); font-weight: 500; display: block; margin-bottom: 2px; }
+.rule-text { font-size: 14px; font-family:'DM Sans', system-ui, sans-serif; color: rgba(240,236,228,0.78); line-height: 1.6; padding-top: 4px; letter-spacing:0; }
+.rule-text strong { color: var(--teal); font-weight: 500; display: block; margin-bottom: 2px; }
 
 /* FOOTER */
 footer {
@@ -803,7 +933,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 }
 
 .booking-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 26px;
   font-weight: 300;
   color: rgba(94,207,207,0.3);
@@ -908,9 +1038,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .look-night-block { margin-bottom:24px; border:0.5px solid var(--border); border-radius:16px; overflow:hidden; transition:border-color 0.2s; }
 .look-night-block:hover { border-color:var(--border-teal); }
 .look-night-hd { display:flex; align-items:center; gap:20px; padding:20px 24px; background:var(--pearl-faint); border-bottom:0.5px solid var(--border); }
-.look-night-num2 { font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:var(--teal); opacity:0.3; line-height:1; flex-shrink:0; }
+.look-night-num2 { font-family:'DM Sans',sans-serif; font-size:42px; font-weight:300; color:var(--teal); opacity:0.3; line-height:1; flex-shrink:0; }
 .look-night-date2 { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pearl-dim); margin-bottom:4px; }
-.look-night-title2 { font-family:'Cinzel',serif; font-size:18px; font-weight:500; color:var(--pearl); }
+.look-night-title2 { font-family:'Cinzel',serif; font-size:18px; font-weight:500; color:var(--heading); }
 .look-night-bd { padding:20px 24px 24px; }
 .look-brief { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:20px; }
 @media(max-width:560px){ .look-brief { grid-template-columns:1fr; } }
@@ -941,7 +1071,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .collected-wrap { margin-bottom:24px; padding:18px 20px; background:rgba(212,83,126,0.08); border:0.5px solid rgba(212,83,126,0.25); border-radius:12px; }
 .collected-label { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--pink); margin-bottom:10px; }
 .collected-amounts { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
-.collected-val { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:500; color:var(--pearl); }
+.collected-val { font-family:'DM Sans',sans-serif; font-size:32px; font-weight:500; color:var(--heading); }
 .collected-goal-lbl { font-size:11px; color:var(--pearl-dim); }
 .collected-bar { height:6px; background:rgba(212,83,126,0.15); border-radius:3px; overflow:hidden; margin-bottom:8px; }
 .collected-fill { height:100%; background:linear-gradient(90deg,var(--pink),#e87fab); border-radius:3px; }
@@ -959,7 +1089,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .album-card:hover { border-color:var(--border-teal); }
 .album-icon { font-size:52px; margin-bottom:16px; filter:drop-shadow(0 0 20px rgba(94,207,207,0.3)); }
 .album-card p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
-.album-note { margin-top:20px; font-size:12px; color:rgba(240,236,228,0.28); line-height:1.6; font-style:italic; }
+.album-note { margin-top:20px; font-size:13px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; color:rgba(240,236,228,0.78); line-height:1.5; font-style:normal; }
 
 /* INSPO BOARD */
 .inspo-card { background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; padding:48px 32px; text-align:center; transition:border-color 0.2s; }
@@ -967,35 +1097,56 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .inspo-icon { font-size:52px; margin-bottom:16px; }
 .inspo-card p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:var(--pearl-dim); margin-bottom:28px; line-height:1.7; }
 .inspo-btn { background:var(--pink) !important; color:var(--pearl) !important; }
-.inspo-note { margin-top:20px; font-size:12px; color:rgba(240,236,228,0.28); line-height:1.6; font-style:italic; }
+.inspo-note { margin-top:20px; font-size:12px; color:var(--text-muted); line-height:1.6; font-style:normal; }
 
 /* CLAM LOGO */
-.hero-clam-logo {
+.hero-logo-wrap {
   position: relative;
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(88vw, 560px);
+  max-width: 100%;
+  margin: -32px auto -100px;
   opacity: 0;
   animation: fadeUp 0.8s ease forwards 0.4s;
+}
+.hero-logo-wrap::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(30,58,58,0.55) 0%, rgba(30,58,58,0.22) 38%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(2px);
+}
+.hero-clam-logo {
+  position: relative;
+  z-index: 1;
   filter: invert(1) sepia(0.25) saturate(1.2) drop-shadow(0 0 60px rgba(94,207,207,0.3));
   mix-blend-mode: screen;
   pointer-events: none;
   display: block;
-  /* Mobile: overlap like desktop, scaled to viewport */
-  width: 95vw;
-  margin-top: -48px;
-  margin-bottom: -47vw;
+  flex-shrink: 0;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 }
 
-/* Desktop: overlap effect */
 @media(min-width: 900px) {
-  .hero-clam-logo {
-    width: 725px;
-    margin-top: -84px;
-    margin-bottom: -300px;
+  .hero-logo-wrap {
+    width: min(70vw, 640px);
+    margin: -48px auto -140px;
   }
   .hero-title {
-    margin-top: -72px;
-    margin-bottom: 26px;
-    left: 5px;
+    margin-top: -56px;
+    margin-bottom: 12px;
   }
 }
 .footer-clam-logo {
@@ -1020,34 +1171,57 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 @media(max-width:640px){ .bot-nav { flex-wrap:wrap; overflow-x:visible; } .bot-nav a { flex:1 0 calc(100%/6); padding:11px 4px; font-size:8.5px; letter-spacing:0.1em; text-align:center; white-space:nowrap; } .bot-nav a:nth-child(6n) { border-right:none; } .bot-nav a:nth-child(-n+6) { border-bottom:0.5px solid rgba(240,236,228,0.06); } }
 
 /* STICKY MUSIC PLAYER */
-.sticky-player { position:absolute; top:24px; right:24px; z-index:200; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:8px; }
-.sp-pill { display:flex; align-items:center; gap:10px; background:rgba(8,6,8,0.92); border:0.5px solid var(--border-teal); border-radius:40px; padding:10px 18px 10px 14px; cursor:pointer; backdrop-filter:blur(12px); color:var(--pearl); transition:border-color 0.2s,background 0.2s; }
-.sp-pill:hover { border-color:var(--teal); }
+.sticky-player { position:absolute; top:24px; right:24px; z-index:200; display:flex; flex-direction:column-reverse; align-items:flex-end; gap:10px; }
+.sp-pill {
+  display:flex; align-items:center; gap:10px;
+  background:rgba(255,255,255,0.03);
+  border:0.5px solid rgba(255,255,255,0.1);
+  border-radius:999px;
+  padding:10px 18px 10px 14px;
+  cursor:pointer;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  color:var(--heading);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 8px 28px rgba(0,0,0,0.35);
+  transition:border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+.sp-pill:hover {
+  border-color:rgba(94,207,207,0.45);
+  background:rgba(255,255,255,0.06);
+  box-shadow: 0 0 20px rgba(94,207,207,0.18), 0 8px 28px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
 .sp-note { color:var(--teal); font-size:16px; animation:notePulse 2s ease-in-out infinite; }
 @keyframes notePulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 .sp-label { display:flex; flex-direction:column; gap:1px; }
-.sp-title { font-family:'Inter','Helvetica Neue',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.01em; color:var(--pearl); line-height:1.2; }
-.sp-artist { font-family:'Inter','Helvetica Neue',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.02em; color:var(--pearl-dim); line-height:1.2; }
+.sp-title { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:0.01em; color:var(--heading); line-height:1.2; }
+.sp-artist { font-family:'DM Sans',sans-serif; font-size:10px; font-weight:400; letter-spacing:0.02em; color:var(--pearl-dim); line-height:1.2; }
 .sp-arrow { font-size:11px; color:var(--teal); transition:transform 0.2s; }
-.sp-embed { width:300px; overflow:hidden; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.6); display:none; }
+.sp-embed {
+  width:300px; overflow:hidden; display:none;
+  border-radius:28px;
+  background:rgba(255,255,255,0.03);
+  border:0.5px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04);
+}
 .sp-embed.open { display:block; }
+.sp-embed iframe { border-radius:28px !important; display:block; }
 
 /* ── Weather / forecast card ───────────────────── */
 .pack-row {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
   border: 0.5px solid var(--border);
   border-radius: 16px;
   padding: 28px;
   background: var(--pearl-faint);
 }
 .pack-list {
-  flex: 1;
   min-width: 0;
 }
 @media (max-width: 600px) {
-  .pack-row { flex-direction: column; }
   .wx-panel { width: 100% !important; max-width: none; }
 }
 .wx-panel {
@@ -1059,10 +1233,9 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     radial-gradient(ellipse at 20% 0%, rgba(94,207,207,0.18), transparent 55%),
     radial-gradient(ellipse at 90% 100%, rgba(201,168,76,0.12), transparent 50%),
     rgba(0,0,0,0.45);
-  padding: 16px 14px 14px;
-  flex-shrink: 0;
-  width: 220px;
-  max-width: 100%;
+  padding: 16px 16px 14px;
+  width: 100%;
+  max-width: none;
 }
 .wx-panel-head {
   font-family: 'Cinzel', serif;
@@ -1080,8 +1253,11 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 }
 .wx-days {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
+}
+@media (max-width: 560px) {
+  .wx-days { grid-template-columns: 1fr 1fr; }
 }
 .wx-day {
   border: 0.5px solid rgba(94,207,207,0.25);
@@ -1135,6 +1311,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 /* BRIDE'S QUOTE */
 .moh-quote { padding:26px 28px; background:var(--pink-dim); border:0.5px solid rgba(212,83,126,0.3); border-radius:16px; text-align:center; }
 .moh-quote .q-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,4vw,28px); color:var(--pearl); line-height:1.4; }
+.moh-quote .q-kicker { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--pink); margin-bottom:12px; opacity:0.9; }
 .moh-quote .q-attr { font-family:'Cinzel',serif; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--pink); margin-top:10px; }
 
 .menu-list { list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px; }
@@ -1169,10 +1346,10 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 }
 
 .airbnb-cost {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 28px;
   font-weight: 500;
-  color: var(--pearl);
+  color: var(--heading);
   margin-top: 12px;
 }
 </style>
@@ -1180,22 +1357,28 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <body>
 
 <!-- HERO -->
-<div id="hero" class="hero">
-  <div class="hero-shimmer"></div>
-  <div class="hero-eyebrow"><span class="eyebrow-name">Kassie's Bachelorette</span><br><span class="eyebrow-location">New Orleans</span><span class="eyebrow-sep"> · </span><span class="eyebrow-dates">October 3–6, 2026</span></div>
-  <img src="clam_logo.png" alt="Voodoo Clam Clan" class="hero-clam-logo">
+<header id="hero" class="hero">
+  <div class="hero-shimmer" aria-hidden="true"></div>
+  <div class="hero-eyebrow">
+    <span class="eyebrow-name">Kassie's Bachelorette</span>
+    <span class="eyebrow-meta">
+      <span class="eyebrow-location">New Orleans</span><span class="eyebrow-sep"> · </span><span class="eyebrow-dates">October 3–6, 2026</span>
+    </span>
+  </div>
+  <div class="hero-logo-wrap">
+    <img src="clam_logo.png" alt="Voodoo Clam Clan" class="hero-clam-logo">
+  </div>
   <div class="hero-title">
     <div class="line-voodoo">Voodoo</div>
     <div class="line-clam">Clam Clan</div>
   </div>
-  <nav>
+  <nav class="hero-nav" aria-label="Primary">
     <ul class="nav-links">
       <li class="phase-3-only"><a href="#itinerary">Itinerary</a></li>
       <li><a href="#pay">Pay</a></li>
       <li class="phase-3-only"><a href="#map">Map</a></li>
       <li class="phase-3-only"><a href="#looks">Looks</a></li>
       <li class="phase-3-only"><a href="#pack">Forecast</a></li>
-      <li class="nav-br" aria-hidden="true"></li>
       <li><a href="#playlist">Playlist</a></li>
       <li class="phase-3-only"><a href="#rules">Code</a></li>
     </ul>
@@ -1212,7 +1395,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <!-- STICKY MUSIC PLAYER -->
   <div class="sticky-player">
     <div id="sp-embed" class="sp-embed">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6qFjrb6ZLRQJhMnAGpj0iM?utm_source=generator&theme=0&autoplay=1" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe style="border-radius:28px" src="https://open.spotify.com/embed/track/6qFjrb6ZLRQJhMnAGpj0iM?utm_source=generator&theme=0&autoplay=1" width="300" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
     <button class="sp-pill" onclick="togglePlayer()">
       <span class="sp-note">♪</span>
@@ -1220,11 +1403,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <span class="sp-arrow" id="sp-arrow">▴</span>
     </button>
   </div>
-</div>
+</header>
 
 <!-- BRIDE'S QUOTE -->
 <section id="bride-quote">
   <div class="moh-quote">
+    <div class="q-kicker">official statement for the record</div>
     <div class="q-text">“I’m so fucking excited!!!”</div>
     <div class="q-attr">— The Bride</div>
   </div>
@@ -1235,7 +1419,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Itinerary</div>
   <div class="section-subhead itin-howto">
-    This is a flexible itinerary — make it yours. Tap <span class="howto-chip">Options ▾</span> to pick one or more spots (lists stay open so you can keep tapping). Skip clears the rest. Booked items are single-choice — tap again to clear. Totals update as you go. When it looks right, add your name + email and hit <span class="howto-chip">Send →</span> 🤍
+    This is a flexible itinerary — make it yours. Tap <span class="howto-chip">Options ▾</span> to pick one or more spots (lists stay open so you can keep tapping). Skip clears the rest. Booked items are single-choice — tap again to clear. Totals update as you go. When it looks right, add your name and hit <span class="howto-chip">Send →</span> <span class="emoji-white">🤍</span>
   </div>
 
   <div class="nights">
@@ -1255,7 +1439,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:30 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sat-bfast"><strong>Meet at <a href="https://www.google.com/maps/search/?api=1&amp;query=Regency+Plaza+4643+S+Ulster+St+Denver" target="_blank" rel="noopener">Regency Plaza</a></strong> · breakfast burritos &amp; refreshments provided</div>
+            <div class="event-text" id="itin-sat-bfast"><strong>Meet at <a href="https://www.google.com/maps/search/?api=1&amp;query=Regency+Plaza+4643+S+Ulster+St+Denver" target="_blank" rel="noopener">Regency Plaza</a></strong> · breakfast burritos &amp; pick-me-ups provided</div>
           </div>
           <div class="pick" id="pick-bfast"></div>
           <div class="event-item">
@@ -1266,7 +1450,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">12:05 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Flight</strong> · Southwest · DEN→MSY nonstop · lands MSY 3:35 pm · <a href="https://www.flightaware.com/live/findflight/KDEN/KMSY" target="_blank" rel="noopener"># TBA</a> (schedules lock closer to travel)</div>
+            <div class="event-text"><strong>Flight</strong> · <a href="https://www.flightaware.com/live/flight/SWA3419" target="_blank" rel="noopener">Southwest 3419</a> · nonstop · lands MSY 3:35 pm</div>
           </div>
           <div class="event-item">
             <div class="event-time">4:00 pm</div>
@@ -1315,7 +1499,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">1:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · pick an option · or Skip so we can adjust the booking</div>
+            <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch🥂</strong> · Confirm you're coming or skip it so we can finalize the table reservation!</div>
           </div>
           <div class="pick" id="pick-sunm"></div>
           <div class="event-item">
@@ -1327,13 +1511,13 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">5:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-dinner"><strong>Dying to Dine</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-dinner"><strong>Dying to Dine 🕯️</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-sund"></div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-ghost"><strong>Lewd Spirits Haunted Pub Crawl</strong> · meet in front of <a href="https://www.google.com/maps/search/?api=1&query=Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early</div>
+            <div class="event-text" id="itin-sun-ghost"><strong>Lewd Spirits Haunted Pub Crawl👻</strong> · Booked · meet in front of <a href="https://www.google.com/maps/search/?api=1&query=Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early · Ready to get a little spirited? 🍻</div>
           </div>
           <div class="pick" id="pick-ghost"></div>
           <div class="event-item">
@@ -1361,13 +1545,13 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:00 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast🐊</strong> · pick one or more</div>
+            <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-monb"></div>
           <div class="event-item">
             <div class="event-time">10:15 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-swamp"><strong>Swamp &amp; Bayou Boat Tour</strong> · pick an option · or Skip so we can adjust the booking</div>
+            <div class="event-text" id="itin-mon-swamp"><strong>Swamp &amp; Bayou Boat Tour🐊</strong> · Confirm if you're boarding or jumping ship</div>
           </div>
           <div class="pick" id="pick-monswamp"></div>
           <div class="event-item">
@@ -1385,7 +1569,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-nightcap"><strong>Nightcap</strong> · anyone?</div>
+            <div class="event-text" id="itin-mon-nightcap"><strong>The Final Nightcap 🍻</strong> · anyone?</div>
           </div>
           <div class="pick" id="pick-night"></div>
         </div>
@@ -1418,12 +1602,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time" id="itin-tue-uber-time">~12:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-tue-uber"><strong>Uber to MSY</strong> · ~$35/car · updates with your brunch pick</div>
+            <div class="event-text" id="itin-tue-uber"><strong>Uber to MSY</strong> · ~$35/car</div>
           </div>
           <div class="event-item">
             <div class="event-time">2:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Flight</strong> · Southwest · MSY→DEN nonstop · lands DEN 4:20 pm · <a href="https://www.flightaware.com/live/findflight/KMSY/KDEN" target="_blank" rel="noopener"># TBA</a> (schedules lock closer to travel)</div>
+            <div class="event-text"><strong>Flight</strong> · <a href="https://www.flightaware.com/live/flight/SWA4083" target="_blank" rel="noopener">Southwest 4083</a> · nonstop · lands DEN 4:20 pm</div>
           </div>
         </div>
       </div>
@@ -1433,7 +1617,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <!-- SEND MY PICKS -->
   <div class="pick-submit" id="pick-submit">
     <div class="ps-head">Send your picks</div>
-    <div class="ps-sub">Your picks mean we can lock reservations now and skip the last-minute scramble 💜</div>
+    <div class="ps-sub">Your picks mean we can lock reservations now and skip the last-minute scramble 💜<br>To opt out or change your plans, just update your choices above and re-send so we can adjust the headcounts.</div>
     <div class="ps-fields">
       <input type="text" id="ps-name" class="ps-input" placeholder="Your name" autocomplete="name" />
       <textarea id="ps-suggest" class="ps-suggest" placeholder="Got an idea for the itinerary? Drop a suggestion here!" rows="3"></textarea>
@@ -1455,10 +1639,10 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     <p class="pay-lead" id="pay-lead-text">These require advance booking! Please Venmo your share.</p>
     <div class="pay-row" id="pay-drag-row" style="display:none">
       <div>
-        <strong id="pay-drag-label">Drag Brunch — The Country Club · Sunday 1:00 pm</strong>
-        <span class="pay-row-note">* $25 is your seat hold (reservation required) — food &amp; drinks are extra at the restaurant</span>
+        <strong id="pay-drag-label">Drag Brunch — The Country Club | Sunday 1:00 pm</strong>
+        <span class="pay-row-note">$25 is your reservation-required seat hold — food &amp; drinks are extra at the restaurant.</span>
       </div>
-      <div class="pay-amt" id="pay-drag-amt">~$25*</div>
+      <div class="pay-amt" id="pay-drag-amt">~$25</div>
     </div>
     <div class="pay-row" id="pay-swamp-row" style="display:none">
       <div><strong>Swamp &amp; Bayou Boat Tour · Monday 10:15 am</strong></div>
@@ -1472,7 +1656,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="pay-amt">~$37*</div>
     </div>
     <div class="pay-row pay-total">
-      <div>Total</div>
+      <div>Total Due Now</div>
       <div class="pay-amt"><span id="pay-booked-num">—</span></div>
     </div>
     <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-venmo" target="_blank" rel="noopener">Open Venmo →</a>
@@ -1489,6 +1673,24 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The City</div>
   <div class="section-title">Our NOLA</div>
   <div class="section-subhead">Every spot we’re considering, saved in one place. Open it in Google Maps to star it, add your own, and get directions on the day.</div>
+  <div class="hood-guide">
+    <div class="hood-card">
+      <h3>The French Quarter</h3>
+      <p>Historic, chaotic, and beautiful. Think candlelit courtyards, voodoo vibes, catch-all neon bars, and late-night paths down Bourbon or Pirate's Alley.</p>
+    </div>
+    <div class="hood-card">
+      <h3>Frenchmen Street &amp; Marigny</h3>
+      <p>The spot for incredible live local jazz, street musicians, local boutiques, and art markets without the Bourbon Street madness.</p>
+    </div>
+    <div class="hood-card">
+      <h3>Central City / Lower Garden District</h3>
+      <p>Home base! Cool, up-and-coming spots, easy morning-after bakeries, and high-energy warehouse dance lounges just a short walk or quick ride home.</p>
+    </div>
+    <div class="hood-card">
+      <h3>Uptown &amp; Magazine Street</h3>
+      <p>Tree-lined streets, gorgeous architecture, funky global fusion dining, and moody hotel bars. Perfect for a slightly classier escape.</p>
+    </div>
+  </div>
   <div style="margin-top:1.5rem;border-radius:12px;overflow:hidden;border:0.5px solid rgba(94,207,207,0.2)">
     <iframe src="https://www.google.com/maps/d/embed?mid=1gbZG3ilKl-06BsqTUAiz9oW0dL9evjs&ehbc=2E312F" width="100%" height="500" style="border:0;display:block" allowfullscreen loading="lazy"></iframe>
   </div>
@@ -1547,7 +1749,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         🌤 <strong>NOLA in early October: ~85°F, humid, afternoon thunderstorms likely.</strong><br>
         Brief but heavy — bring a plan, not a prayer.
       </div>
-      <ul style="text-align:left;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--pearl-dim);line-height:1.6;">
+      <ul style="font-family:'DM Sans', system-ui, sans-serif;font-size:13px;color:rgba(240,236,228,0.78);line-height:1.5;list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
         <li><strong style="color:var(--teal);font-weight:500;">Monday swamp bag</strong> — snacks & water · no glass</li>
         <li><strong style="color:var(--teal);font-weight:500;">Swimsuit</strong> — pool day is real · let's make the most of it!</li>
         <li><strong style="color:var(--teal);font-weight:500;">Shoes</strong> — comfortable heels or wedges for cobblestone streets; pack flat backup sandals</li>
@@ -1565,7 +1767,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Soundtrack</div>
   <div class="section-title">Weekend Playlist</div>
   <p class="playlist-intro">Add your songs. The only rule is it has to slap.</p>
-  <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  <iframe style="border-radius:28px" src="https://open.spotify.com/embed/playlist/7IYN9RmdrJsCGVn1qkmbV6?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
   <p class="playlist-note">Open in Spotify to add tracks · collaborative playlist · no skips allowed</p>
 </section>
 
@@ -1573,14 +1775,14 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <!-- RULES -->
 <section id="rules" class="phase-3-only">
   <div class="section-eyebrow">The Code</div>
-  <div class="section-title">Clan Code</div>
+  <div class="section-title">House Rules</div>
   <div class="rules-grid">
-    <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie goes first</strong>Every mirror, every photo op, every compliment — her name is called first.</div></div>
-    <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is mandatory</strong>Designate a hype captain each night. Unsolicited compliments, constant reinforcement.</div></div>
-    <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No body talk</strong>Zero. Not even about your own body. Good vibes only, all weekend.</div></div>
-    <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>Everyone gets photographed</strong>Rotate who's behind the camera. Every member of the Clan goes home with good photos.</div></div>
+    <div class="rule"><div class="rule-num">1</div><div class="rule-text"><strong>Kassie Goes First</strong>Every mirror, every photo op, every juicy compliment—her name is called first. She gets top billing, always.</div></div>
+    <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is Mandatory</strong>Designate a Hype Captain each night to maximize the energy. Unsolicited compliments and aggressive validation are legally required.</div></div>
+    <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No Body Dissing</strong>Zero body talk—not even about your own. Keep it locked on good vibes and high confidence all weekend.</div></div>
+    <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>No Clam Left Behind</strong>Rotate who's behind the camera. Everyone goes home looking like a bombshell with fresh content.</div></div>
     <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
-    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The theme always wins</strong>Unsure if your outfit fits? Go darker, add a crystal, add a pearl. It fits.</div></div>
+    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The Theme Always Wins</strong>If you're unsure if your outfit fits the vibe, go tighter, go darker, add a crystal, or slap on a pearl. It fits.</div></div>
   </div>
 </section>
 
@@ -1686,109 +1888,113 @@ var GMAP = "https://www.google.com/maps/search/?api=1&query=";
 
 // Saturday dinner — meet with the Boys (multi-select)
 var satD = [
-  { lbl:"Mambo's — French Quarter", short:"Mambo's (Will's pick)", note:"Will's choice · dinner + drinks", pp:35, uber:10, dist:"~10 min drive", url:GMAP+"Mambos+New+Orleans", on:true, rating:"4.4★" },
-  { lbl:"The Will & The Way — Toulouse St", note:"Cocktails + bites · courtyard · French Quarter", pp:45, uber:10, dist:"~10 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
-  { lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
+  { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's (Will's pick)", note:"Creole/Seafood · Will's pick", pp:35, uber:10, dist:"~10 min drive", url:GMAP+"Mambos+New+Orleans", on:true, rating:"4.4★" },
+  { lbl:"The Will & The Way — Toulouse St", note:"Cocktails & Small Bites · courtyard", pp:45, uber:10, dist:"~10 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
+  { hood:"Central City", lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
 ];
 
 // Saturday late — bars + clubs (multi-select)
 var satLate = [
-  { lbl:"Razzoo Bar & Patio — 511 Bourbon St", note:"Dance floor · daiquiris · patio on Bourbon", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Razzoo+Bar+and+Patio+New+Orleans", on:false },
-  { lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"One of the oldest bars in the US · candlelit · voodoo vibes · cash only", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
-  { lbl:"The Spotted Cat Music Club — Frenchmen St", note:"Live jazz · no cover · tip the band", pp:15, uber:10, url:GMAP+"The+Spotted+Cat+Music+Club+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Pirate's Alley Cafe", note:"Absinthe + rum · by St. Louis Cathedral", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"Pirates+Alley+Cafe+New+Orleans", on:false },
-  { lbl:"The Rabbit Hole — OCH Blvd", note:"House/techno + live music · dance til late · 8 min walk home", pp:20, uber:0, url:GMAP+"The+Rabbit+Hole+New+Orleans" , dist:"~8 min walk", on:false},
-  { lbl:"Tropical Isle's Bayou Club — Bourbon St", note:"Live Cajun/Zydeco · Hand Grenades", pp:25, uber:10, dist:"~10 min drive", url:GMAP+"Tropical+Isle+Bayou+Club+New+Orleans", on:false },
+  { hood:"French Quarter", lbl:"Razzoo Bar & Patio — 511 Bourbon St", note:"Dance Club / Daiquiris", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Razzoo+Bar+and+Patio+New+Orleans", on:false },
+  { lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"Historic Voodoo Bar · candlelit · cash only", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
+  { lbl:"Pirate's Alley Cafe", note:"Absinthe & Rum · by St. Louis Cathedral", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"Pirates+Alley+Cafe+New+Orleans", on:false },
+  { lbl:"Tropical Isle's Bayou Club — Bourbon St", note:"Live Cajun Music · Hand Grenades", pp:25, uber:10, dist:"~10 min drive", url:GMAP+"Tropical+Isle+Bayou+Club+New+Orleans", on:false },
+  { lbl:"The World Famous Cat's Meow — 701 Bourbon St", note:"The ultimate, multi-level karaoke institution. If you want a massive stage, a high-energy DJ host, and a legendary balcony overlooking Bourbon Street to belt out hits until the early morning, this is our spot. They even have a 24-hour livecam so the rest of the world can see you perform! 🎙️", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"Cats+Meow+701+Bourbon+St+New+Orleans", on:false },
+  { hood:"Central City", lbl:"The Rabbit Hole — OCH Blvd", note:"House/Techno Club · 8 min walk home", pp:20, uber:0, url:GMAP+"The+Rabbit+Hole+New+Orleans" , dist:"~8 min walk", on:false},
   { lbl:"Skip — Calling it early", pp:0, skip:true, on:false },
 ];
 
 // Sunday breakfast — light & nearby before 1pm drag brunch in Bywater (multi-select)
 var sunB = [
-  { lbl:"Breakfast at the Airbnb", note:"Coffee & snacks", pp:0, uber:0, on:false },
-  { lbl:"Lagniappe Bakehouse", note:"Pastries & coffee to go", pp:12, uber:6, url:GMAP+"Lagniappe+Bakehouse+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Cafe Porche & Snowbar", note:"Coffee, brunch, pastries & snowballs", pp:15, uber:8, url:GMAP+"Cafe+Porche+and+Snowbar+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Willa Jean — CBD", note:"Sit-down bakery", pp:22, uber:8, url:GMAP+"Willa+Jean+New+Orleans" , dist:"~10 min drive", on:false},
+  { hood:"Bywater", lbl:"Lagniappe Bakehouse", note:"Pastries & Coffee (grab-and-go)", pp:12, uber:6, url:GMAP+"Lagniappe+Bakehouse+New+Orleans" , dist:"~12 min drive", on:false},
+  { hood:"Central City / Lower Garden", lbl:"Cafe Porche & Snowbar", note:"Brunch & Snowballs", pp:15, uber:8, url:GMAP+"Cafe+Porche+and+Snowbar+New+Orleans" , dist:"~12 min drive", on:false},
+  { hood:"Central Business District", lbl:"Willa Jean — CBD", note:"Southern Bakery (sit-down)", pp:22, uber:8, url:GMAP+"Willa+Jean+New+Orleans" , dist:"~10 min drive", on:false},
+  { hood:"Central City", lbl:"Breakfast at the Airbnb", note:"Coffee & snacks", pp:0, uber:0, on:false },
   { lbl:"Skip — I don't need food", pp:0, skip:true, on:false },
 ];
 
 // Sunday brunch — booked, opt out if you're not coming
 var sunM = [
-  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Reservation required · $25pp prepaid · Bywater", pp:25, uber:14, url:GMAP+"The+Country+Club+New+Orleans" , dist:"~15 min drive"},
-  { lbl:"Skip — Free afternoon for me", pp:0, skip:true },
+  { hood:"Bywater", lbl:"Drag Brunch — The Country Club (1pm)", note:"Reservation required · $25pp seat hold", pp:25, uber:14, url:GMAP+"The+Country+Club+New+Orleans" , dist:"~15 min drive"},
+  { hood:"Central City", lbl:"Skip — Free afternoon for me", pp:0, skip:true },
 ];
 var sunMSel = -1;
 
 var sunD = [
-  { lbl:"Bésame — French Quarter", note:"Cocktails + Latin-Creole bites", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false, rating:"4.5★"},
-  { lbl:"Cane and Table — French Quarter", note:"Decatur St · rum + Caribbean Creole", pp:55, uber:5, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~12 min drive", on:false, rating:"4.6★"},
-  { lbl:"Cafe Amelie — Royal St", note:"French Quarter · candlelit courtyard", pp:65, uber:5, url:GMAP+"Cafe+Amelie+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.6★"},
-  { lbl:"The Court of Two Sisters — Royal St", note:"Courtyard & live jazz", pp:70, uber:5, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.4★"},
-  { lbl:"Skip — Still love y'all though ♡", pp:0, skip:true, on:false },
+  { hood:"French Quarter", lbl:"Bésame — French Quarter", note:"Latin-Creole Tapas", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false, rating:"4.5★"},
+  { lbl:"Cane and Table — French Quarter", note:"Tiki / Caribbean-Creole", pp:55, uber:5, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~12 min drive", on:false, rating:"4.6★"},
+  { lbl:"Cafe Amelie — Royal St", note:"Romantic Courtyard Dining", pp:65, uber:5, url:GMAP+"Cafe+Amelie+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.6★"},
+  { lbl:"The Court of Two Sisters — Royal St", note:"Jazz Dinner & Courtyard", pp:70, uber:5, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.4★"},
+  { hood:"Central City", lbl:"Skip — Still love y'all though ♡", pp:0, skip:true, on:false },
 ];
 
 // Sunday evening — ghost crawl (moved off Monday so swamp day can breathe)
 var ghostSel = -1;
 var ghostOpts = [
-  { lbl:"Lewd Spirits Haunted Pub Crawl", note:"Booked · pay your share via link below · meet in front of Unique NOLA Tours · check in 15 min early", pp:37, dist:"~10 min drive", url:"https://www.viator.com/account/booking/1429076869/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3Njg2OSIsInQiOjE3ODUzNzg0MDksInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.kdjU-kT-lQb71uuLzUb2uD5rpb0HF96Nyz7YVMz042HJPdDyxIQ5wGsC7jtUDV5b78TNhZwL1hLelmyc8KbNPA" },
-  { lbl:"Skip — count me out", pp:0, skip:true },
+  { lbl:"Lewd Spirits Haunted Pub Crawl", note:"Booked · meet in front of Unique NOLA Tours · check in 15 min early · Ready to get a little spirited? 🍻 · pay your share via link below", pp:37, dist:"~10 min drive", url:"https://www.viator.com/account/booking/1429076869/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3Njg2OSIsInQiOjE3ODUzNzg0MDksInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.kdjU-kT-lQb71uuLzUb2uD5rpb0HF96Nyz7YVMz042HJPdDyxIQ5wGsC7jtUDV5b78TNhZwL1hLelmyc8KbNPA" },
+  { hood:"Central City", lbl:"Skip — count me out", pp:0, skip:true },
 ];
 
 // Sunday late — after the pub crawl (multi-select)
 var sunLate = [
-  { lbl:"Oz New Orleans — 800 Bourbon St", note:"Drag shows · dance floor · Bourbon St balcony", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"Oz+New+Orleans+800+Bourbon+St", on:false },
-  { lbl:"High Grace NOLA", note:"Late-night vibes · cocktails & dance", pp:20, uber:10, dist:"~12 min drive", url:GMAP+"High+Grace+NOLA+New+Orleans", on:false },
-  { lbl:"Larry Flynt's Hustler Club — New Orleans", note:"If you wanted a naughty night out · 18+/cover varies · Bourbon St", pp:25, uber:10, dist:"~10 min drive", url:GMAP+"Larry+Flynts+Hustler+Club+New+Orleans", on:false },
-  { lbl:"Skip — calling it a night", pp:0, skip:true, on:false },
+  { hood:"French Quarter", lbl:"Oz New Orleans — 800 Bourbon St", note:"High-energy drag shows, a massive dance floor, and a legendary Bourbon Street balcony. If you want to sweat out the cocktails, watch world-class performers work it, and yell until your throat hurts, this is the coven meeting for you. 👑", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"Oz+New+Orleans+800+Bourbon+St", on:false },
+  { lbl:"Bourbon Pub & Parade — 801 Bourbon St", note:"Right across the street from Oz. Two floors of nonstop music, a great dance club atmosphere, and a high-energy balcony. Perfect if you want to rotate dance floors and hurl beads at strangers. 💃", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Bourbon+Pub+and+Parade+801+Bourbon+St+New+Orleans", on:false },
+  { lbl:"The Swamp on Bourbon Street — 516 Bourbon St", note:"Want to watch the bride or the rest of the coven make questionable life choices? This spot features a mechanical bull right in the courtyard and a massive wrap-around balcony overlooking the chaos. Let's see who can hang on the longest. 🤠", pp:20, uber:10, dist:"~10 min drive", url:GMAP+"The+Swamp+on+Bourbon+Street+New+Orleans", on:false },
+  { lbl:"The Dungeon — 738 Toulouse St", note:"A dark, gritty, and legendary vampire-vibe rock 'n' roll dive bar hidden down an alleyway. If you want to escape the pop music, sip strong drinks under gothic decor, and lean into the witchy side of the city after midnight, this is the spot. 🕸️", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"The+Dungeon+738+Toulouse+St+New+Orleans", on:false },
+  { lbl:"Larry Flynt's Hustler Club — New Orleans", note:"If you want a truly naughty night out. Leave your modesty at the door, grab a stack of ones, and let's watch some professional magic happen. It's wild, it's loud, and Kassie deserves a front-row seat. 🍾 · 18+/cover varies · Bourbon St", pp:25, uber:10, dist:"~10 min drive", url:GMAP+"Larry+Flynts+Hustler+Club+New+Orleans", on:false },
+  { hood:"Central City", lbl:"Skip — calling it a night", pp:0, skip:true, on:false },
 ];
 
 // Sunday afternoon (after drag brunch) — wander OR pool day
 var sunTeaSel = -1;
 var sunTeaOpts = [
-  { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive" },
+  { hood:"French Quarter", lbl:"French Market stroll", note:"Shopping & Voodoo Shops · stalls, crystals", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive" },
   { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~12 min drive" },
-  { lbl:"Back to the Airbnb", note:"recharge · pool party · snacks", pp:0, uber:0 },
+  { hood:"Central City", lbl:"Back to the Airbnb", note:"recharge · pool party · snacks", pp:0, uber:0 },
   { lbl:"Skip — I've got other plans", pp:0, skip:true },
 ];
 // Monday morning breakfast (multi-select)
 var monB = [
-  { lbl:"Café Beignet — Royal St", note:"French Quarter", pp:12, uber:8, dist:"~10 min drive", url:GMAP+"Cafe+Beignet+Royal+St+New+Orleans", on:false },
-  { lbl:"Avenue Cafe — St Charles Ave", note:"Coffee shop · sandwiches, pastries & juice · open 7am–2pm", pp:15, uber:0, dist:"~5 min drive", url:GMAP+"Avenue+Cafe+1907+St+Charles+New+Orleans", on:false },
-  { lbl:"Daisy Dukes — French Quarter", note:"Breakfast & brunch · classic NOLA diner", pp:18, uber:8, dist:"~10 min drive", url:GMAP+"Daisy+Dukes+French+Quarter+New+Orleans", on:false },
-  { lbl:"Ruby Slipper Café — Canal St", note:"NOLA breakfast staple", pp:20, uber:8, dist:"~10 min drive", url:GMAP+"Ruby+Slipper+Cafe+1001+Canal+St+New+Orleans", on:false },
-  { lbl:"DoorDash / grab-and-go", note:"Order to the Airbnb", pp:20, uber:0, on:false },
-  { lbl:"Skip — Breakfast? Yuck!", note:"Don't forget to pack snacks for the boat if participating", pp:0, skip:true, on:false },
+  { hood:"French Quarter", lbl:"Café Beignet — Royal St", note:"Classic Beignets & Coffee", pp:12, uber:8, dist:"~10 min drive", url:GMAP+"Cafe+Beignet+Royal+St+New+Orleans", on:false },
+  { lbl:"Daisy Dukes — French Quarter", note:"Southern Diner Staples", pp:18, uber:8, dist:"~10 min drive", url:GMAP+"Daisy+Dukes+French+Quarter+New+Orleans", on:false },
+  { hood:"Garden District / Uptown", lbl:"Avenue Cafe — St Charles Ave", note:"Sandwiches & Smoothies · open 7am–2pm", pp:15, uber:0, dist:"~5 min drive", url:GMAP+"Avenue+Cafe+1907+St+Charles+New+Orleans", on:false },
+  { lbl:"Ruby Slipper Café — Canal St", note:"Creative Brunch", pp:20, uber:8, dist:"~10 min drive", url:GMAP+"Ruby+Slipper+Cafe+1001+Canal+St+New+Orleans", on:false },
+  { hood:"Central City", lbl:"DoorDash / grab-and-go", note:"Order to the Airbnb", pp:20, uber:0, on:false },
+  { lbl:"Skip — Breakfast? Yuck!", note:"No judgment, but make sure to pack a survival lunch for the boat ride if you're joining the tour!", pp:0, skip:true, on:false },
 ];
 
 var monSwampSel = -1;
 var monSwampOpts = [
-  { lbl:"New Orleans Swamp and Bayou Boat Tour with Transportation", note:"Booked · pay your share via link below · pickup at Homewood Suites FQ · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass) · gift shop has snacks too", pp:76, uber:0, dist:"~10 min to pickup", url:"https://www.viator.com/account/booking/1429072935/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3MjkzNSIsInQiOjE3ODUzMDQyMDQsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.gJwru3INlnZc7j0y8vpkDuIHUVPN6KolkCOIp0JX_1oatAL4nf7FkxbX_QvXbN4RgidY00i-_jYtwh3J806hEw" },
-  { lbl:"Skip — not feeling it", pp:0, skip:true },
+  { hood:"French Quarter", lbl:"New Orleans Swamp and Bayou Boat Tour with Transportation", note:"Booked · Pickup @ Homewood Suites FQ · Tour @ 12:15 pm · A 2-hour boat ride through the real-deal Louisiana bayou. There is no meal on board, so pack your lunch and water (absolutely no glass inside the swamp bag!). The gift shop handles any last-minute cravings if you forget to prep. · pay your share via link below", pp:76, uber:0, dist:"~10 min to pickup", url:"https://www.viator.com/account/booking/1429072935/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3MjkzNSIsInQiOjE3ODUzMDQyMDQsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.gJwru3INlnZc7j0y8vpkDuIHUVPN6KolkCOIp0JX_1oatAL4nf7FkxbX_QvXbN4RgidY00i-_jYtwh3J806hEw" },
+  { hood:"Central City", lbl:"Skip — not feeling it", pp:0, skip:true },
 ];
 
 // Monday after swamp (multi-select)
 var monLunchOpts = [
-  { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive", on:false },
+  { hood:"French Quarter", lbl:"French Market stroll", note:"Shopping & Voodoo Shops · stalls, crystals", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive", on:false },
   { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~12 min drive", on:false },
-  { lbl:"Back to the Airbnb", note:"recharge · pool party 🌊", pp:0, uber:0, on:false },
+  { hood:"Central City", lbl:"Back to the Airbnb", note:"recharge · pool party 🌊", pp:0, uber:0, on:false },
   { lbl:"Skip — sitting this one out", pp:0, skip:true, on:false },
 ];
 
 var monD = [
-  { lbl:"Port of Call — Esplanade Ave", note:"Burgers + monsoons · near FQ / Marigny", pp:22, uber:6, url:GMAP+"Port+of+Call+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"The Rum House — Magazine St", note:"Cocktails + small plates", pp:30, uber:0, url:GMAP+"The+Rum+House+Magazine+St+New+Orleans" , dist:"~25 min walk · 6 min drive", on:false},
-  { lbl:"The Velvet Cactus — Magazine St", note:"Tex-Mex · patio vibes", pp:35, uber:0, url:GMAP+"The+Velvet+Cactus+New+Orleans" , dist:"~20 min walk · 5 min drive", on:false},
-  { lbl:"Mister Mao — Uptown", note:"Asian-Latin · funky & fun", pp:45, uber:8, url:GMAP+"Mister+Mao+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Peche Seafood Grill — Warehouse District", note:"Seafood · James Beard winner", pp:60, uber:8, url:GMAP+"Peche+Seafood+Grill+New+Orleans" , dist:"~8 min drive", on:false},
-  { lbl:"Atchafalaya — Uptown", note:"Uptown Creole", pp:60, uber:8, url:GMAP+"Atchafalaya+Restaurant+New+Orleans" , dist:"~15 min drive", on:false},
-  { lbl:"Skip — Sadly, can't make it ♡", pp:0, skip:true, on:false },
+  { hood:"French Quarter / Marigny", lbl:"Port of Call — Esplanade Ave", note:"Burgers & Charcoal Steaks · Monsoons", pp:22, uber:6, url:GMAP+"Port+of+Call+New+Orleans" , dist:"~12 min drive", on:false},
+  { hood:"Uptown / Magazine St", lbl:"The Rum House — Magazine St", note:"Caribbean Taco Joint", pp:30, uber:0, url:GMAP+"The+Rum+House+Magazine+St+New+Orleans" , dist:"~25 min walk · 6 min drive", on:false},
+  { lbl:"The Velvet Cactus — Magazine St", note:"Tex-Mex & Margaritas", pp:35, uber:0, url:GMAP+"The+Velvet+Cactus+New+Orleans" , dist:"~20 min walk · 5 min drive", on:false},
+  { lbl:"Mister Mao — Uptown", note:"Funky Global / Asian Fusion", pp:45, uber:8, url:GMAP+"Mister+Mao+New+Orleans" , dist:"~12 min drive", on:false},
+  { lbl:"Atchafalaya — Uptown", note:"Upscale Modern Creole", pp:60, uber:8, url:GMAP+"Atchafalaya+Restaurant+New+Orleans" , dist:"~15 min drive", on:false},
+  { hood:"Warehouse District", lbl:"Peche Seafood Grill — Warehouse District", note:"Coastal Wood-Fired Seafood", pp:60, uber:8, url:GMAP+"Peche+Seafood+Grill+New+Orleans" , dist:"~8 min drive", on:false},
+  { hood:"Central City", lbl:"Skip — Sadly, can't make it ♡", pp:0, skip:true, on:false },
 ];
 
 var nightSel = -1;
 var nightOpts = [
-  { lbl:"Party at the Airbnb", note:"drinks/snacks + decompress", pp:0, uber:0 },
-  { lbl:"The Avenue Pub — St Charles Ave", note:"Craft beer · late-night · walkable", pp:18, uber:0, url:GMAP+"The+Avenue+Pub+New+Orleans" , dist:"~8 min walk"},
-  { lbl:"Abita New Orleans", note:"Brewery taproom · beers & bites", pp:20, uber:8, url:GMAP+"Abita+New+Orleans" , dist:"~12 min drive"},
-  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"Optional nightcap · dark live jazz · St Charles · ~8 min walk", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk"},
+  { hood:"Uptown / Garden District", lbl:"The Avenue Pub — St Charles Ave", note:"Historic Craft Beer Hub · late-night · walkable", pp:18, uber:0, url:GMAP+"The+Avenue+Pub+New+Orleans" , dist:"~8 min walk"},
+  { lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark/Moody Live Jazz", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk"},
+  { hood:"Central Business District", lbl:"Abita New Orleans", note:"Local Craft Brewery Taproom", pp:20, uber:8, url:GMAP+"Abita+New+Orleans" , dist:"~12 min drive"},
+  { hood:"Warehouse District", lbl:"High Grace NOLA", note:"High-energy Dance Lounge", pp:20, uber:10, url:GMAP+"High+Grace+NOLA+New+Orleans", dist:"~12 min drive"},
+  { hood:"Frenchmen Street / Marigny", lbl:"The Spotted Cat Music Club — Frenchmen St", note:"Live Jazz · no cover · tip the band", pp:15, uber:10, url:GMAP+"The+Spotted+Cat+Music+Club+New+Orleans", dist:"~12 min drive"},
+  { hood:"Central City", lbl:"Party at the Airbnb", note:"drinks/snacks + decompress", pp:0, uber:0 },
   { lbl:"Skip — Catch y'all later!", pp:0, skip:true },
 ];
 
@@ -1798,7 +2004,7 @@ var tueL = [
   { lbl:"Dat Dog — Frenchmen St", note:"Gourmet hot dogs + beer · quick & fun", pp:15, uber:8, url:GMAP+"Dat+Dog+Frenchmen+St+New+Orleans", dist:"~10 min drive", on:false, leaveMin:12*60, rating:"4.5★"},
   { lbl:"Zesty Creole Cuisine — Canal St", note:"Creole breakfast · French Quarter · ~30 min to MSY", pp:18, uber:8, url:GMAP+"Zesty+Creole+Cuisine+New+Orleans" , dist:"~11 min drive", on:false, leaveMin:11*60+45, rating:"4.4★"},
   { lbl:"Turkey and the Wolf — 739 Jackson", note:"Sandwich shop · to-go", pp:18, uber:6, url:GMAP+"Turkey+and+the+Wolf+739+Jackson+New+Orleans", dist:"~12 min drive", on:false, leaveMin:12*60, rating:"4.7★"},
-  { lbl:"Skip — beignets in the terminal if needed", pp:0, skip:true, on:false, leaveMin:12*60+15 },
+  { hood:"Central City", lbl:"Skip — beignets in the terminal if needed", pp:0, skip:true, on:false, leaveMin:12*60+15 },
 ];
 
 
@@ -1872,13 +2078,31 @@ function applyMultiFromVal(arr, val, labelMap) {
   }
 }
 
+// Intros shown at the top of Options dropdowns (hidden when the list is closed / skipped)
+var PICK_INTROS = {
+  "pick-satd": "Pick your flavor. Most spots are a ~10 minute rideshare into the French Quarter!",
+  "pick-sunb": "Grab-and-go treats or a proper sit-down. Pick your hangover cure before the 1:00 PM Drag Brunch!",
+  "pick-sund": "Time for a proper feast. From casual small plates and historic courtyards to authentic Creole cuisine, check the price tags and pick your favorite neighborhood haunt!",
+  "pick-monb": "We are heading straight to the Swamp & Bayou Boat Tour right after this! Pick where we should carbo-load so the swamp puppies don't smell our fear (or hangovers).",
+  "pick-mond": "Our final dinner of the trip! We've got award-winning seafood, global fusion, tropical tacos, or classic burgers across the coolest strips of Uptown and the Warehouse District.",
+  "pick-night": "Wind down with casual craft brews or dark, moody live hotel jazz before we pack our bags."
+};
+
 // One pick block: rows with quiet prices. Single-select (getSel/setSel) or multi (opts[].on).
 function mkPick(containerId, opts, isMulti, getSel, setSel) {
   var c = document.getElementById(containerId);
   if (!c) return;
   if (!MULTI_PICK_IDS[containerId]) isMulti = false;
   c.innerHTML = "";
+  if (PICK_INTROS[containerId]) {
+    c.appendChild(el("div", "pick-intro", PICK_INTROS[containerId]));
+  }
+  var lastHood = null;
   opts.forEach(function(o, i) {
+    if (o.hood && o.hood !== lastHood) {
+      lastHood = o.hood;
+      c.appendChild(el("div", "pick-hood", o.hood));
+    }
     var on = isMulti ? !!o.on : (getSel() === i);
     var r = el("div", "pick-row" + (on ? " on" : ""));
     var left = el("div");
@@ -1904,8 +2128,7 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
           renderPicks();
           c.classList.remove("open");
           updateItinerary();
-          var togOff = document.querySelector('.pick-toggle[data-pick="' + containerId + '"]');
-          if (togOff) togOff.textContent = "Options ▾";
+          syncPickToggleLabels(containerId, false);
           return;
         }
         // Any venue clears Skip; keep list open for more picks
@@ -1915,8 +2138,7 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
         renderPicks();
         c.classList.add("open");
         updateItinerary();
-        var togBtn = document.querySelector('.pick-toggle[data-pick="' + containerId + '"]');
-        if (togBtn) togBtn.textContent = "Hide options ▴";
+        syncPickToggleLabels(containerId, true);
       } else {
         var next = getSel() === i ? -1 : i;
         setSel(next);
@@ -1927,6 +2149,17 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
       }
     });
     c.appendChild(r);
+  });
+  var hideBtn = el("button", "pick-hide", "Hide options ▴");
+  hideBtn.type = "button";
+  hideBtn.setAttribute("data-pick", containerId);
+  c.appendChild(hideBtn);
+}
+
+function syncPickToggleLabels(pickId, open) {
+  document.querySelectorAll('.pick-toggle[data-pick="' + pickId + '"]').forEach(function(btn) {
+    btn.style.display = open ? "none" : "";
+    if (!open) btn.textContent = "Options ▾";
   });
 }
 
@@ -2025,18 +2258,29 @@ function renderEstimate() {
   addPick(nightOpts, nightSel);
   addMultiAvg(tueL);
   e.innerHTML = 'Your picks come to about <strong>' + fmt(ground) + '</strong> on the ground, plus ~' + fmt(uber) +
-    ' in shared Ubers (airport + venue hops — DIA parking not included) and whatever the bars take from you.';
+    ' in shared Ubers and whatever the bars take from you.';
 
 }
 
 // Expand/collapse the option lists from the little "options" tags
 document.addEventListener("click", function(ev) {
   var t = ev.target;
-  if (t && t.classList && t.classList.contains("pick-toggle")) {
-    var p = document.getElementById(t.getAttribute("data-pick"));
+  if (!t || !t.classList) return;
+  if (t.classList.contains("pick-hide")) {
+    var hideId = t.getAttribute("data-pick");
+    var hidePanel = document.getElementById(hideId);
+    if (hidePanel) {
+      hidePanel.classList.remove("open");
+      syncPickToggleLabels(hideId, false);
+    }
+    return;
+  }
+  if (t.classList.contains("pick-toggle")) {
+    var pickId = t.getAttribute("data-pick");
+    var p = document.getElementById(pickId);
     if (p) {
       p.classList.toggle("open");
-      t.textContent = p.classList.contains("open") ? "Hide options ▴" : "Options ▾";
+      syncPickToggleLabels(pickId, p.classList.contains("open"));
     }
   }
 });
@@ -2050,50 +2294,60 @@ function loadFormSelections() {
 
     var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Skip — Free afternoon for me":1,"Skip — No judgment either way 😉":1};
     var sunDMap = {"Bésame — French Quarter":0,"Bésame":0,"Cane and Table — French Quarter":1,"Cafe Amelie — Royal St":2,"Cafe Amelie — candlelit courtyard":2,"The Court of Two Sisters — Royal St":3,"Cochon Butcher — Warehouse District":0,"Skip — Still love y'all though ♡":4,"Muriel's Jackson Square":3,"Compere Lapin — Warehouse District":1};
-    var monDMap  = {"Port of Call — Esplanade Ave":0, "The Rum House — Magazine St":1, "The Velvet Cactus — Magazine St":2, "Mister Mao — Uptown":3, "Peche Seafood Grill — Warehouse District":4, "Atchafalaya — Uptown":5, "Skip — Sadly, can't make it ♡":6, "Skip — Bye, Felicia!":6, "Skip — Sorry, can't attend":6, "Gris-Gris — Magazine St":2};
+    var monDMap  = {"Port of Call — Esplanade Ave":0, "The Rum House — Magazine St":1, "The Velvet Cactus — Magazine St":2, "Mister Mao — Uptown":3, "Atchafalaya — Uptown":4, "Peche Seafood Grill — Warehouse District":5, "Skip — Sadly, can't make it ♡":6, "Skip — Bye, Felicia!":6, "Skip — Sorry, can't attend":6, "Gris-Gris — Magazine St":2};
     var satDMap = {"Mambo's — French Quarter":0,"The Will & The Way — Toulouse St":1,"Skip — Sitting this dinner out":2};
-    var sunBMap = {"Breakfast at the Airbnb":0,"Lagniappe Bakehouse":1,"Cafe Porche & Snowbar":2,"Willa Jean — CBD":3,"Skip — I don't need food":4};
-    var monBMap = {"Café Beignet — Royal St":0,"Avenue Cafe — St Charles Ave":1,"Daisy Dukes — French Quarter":2,"Ruby Slipper Café — Canal St":3,"DoorDash / grab-and-go":4,"Skip — Breakfast? Yuck!":5};
+    var sunBMap = {"Lagniappe Bakehouse":0,"Cafe Porche & Snowbar":1,"Willa Jean — CBD":2,"Breakfast at the Airbnb":3,"Skip — I don't need food":4};
+    var monBMap = {"Café Beignet — Royal St":0,"Daisy Dukes — French Quarter":1,"Avenue Cafe — St Charles Ave":2,"Ruby Slipper Café — Canal St":3,"DoorDash / grab-and-go":4,"Skip — Breakfast? Yuck!":5};
     var tueLMap = {"Café Du Monde — beignets + café au lait":0,"Calas Cafe":1,"Dat Dog — Frenchmen St":2,"Zesty Creole Cuisine — Canal St":3,"Turkey and the Wolf — 739 Jackson":4,"Skip — beignets in the terminal if needed":5};
     var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1,"Lewd Spirits Haunted Pub Crawl":0,"Skip — count me out":1,"Skip — adjusting my booking":1};
     var nightMap = {
-      "Party at the Airbnb":0,
-      "Party at the Casa 💃💃":0,
-      "Head home — call it a night":0,
-      "Head home after ghost tour":0,
-      "The Avenue Pub — St Charles Ave":1,
+      "The Avenue Pub — St Charles Ave":0,
+      "Bayou Bar — Pontchartrain Hotel":1,
+      "Lula Restaurant Distillery — St Charles Ave":1,
+      "Verti Marte — Royal St":1,
+      "Frenchmen Street bar hop":1,
       "Abita New Orleans":2,
-      "Bayou Bar — Pontchartrain Hotel":3,
-      "Lula Restaurant Distillery — St Charles Ave":3,
-      "Verti Marte — Royal St":3,
-      "Frenchmen Street bar hop":3,
-      "Skip — Catch y'all later!":4,
-      "Skip — Next time though":4,
-      "Skip — No judgment either way 😉":4
+      "High Grace NOLA":3,
+      "The Spotted Cat Music Club — Frenchmen St":4,
+      "Party at the Airbnb":5,
+      "Party at the Casa 💃💃":5,
+      "Head home — call it a night":5,
+      "Head home after ghost tour":5,
+      "Skip — Catch y'all later!":6,
+      "Skip — Next time though":6,
+      "Skip — No judgment either way 😉":6
     };
     var satLateMap = {
       "Razzoo Bar & Patio — 511 Bourbon St": 0,
       "Lafitte's Blacksmith Shop Bar — Bourbon St": 1,
-      "The Spotted Cat Music Club — Frenchmen St": 2,
-      "Pirate's Alley Cafe": 3,
-      "The Rabbit Hole — OCH Blvd": 4,
-      "Tropical Isle's Bayou Club — Bourbon St": 5,
+      "Pirate's Alley Cafe": 2,
+      "Tropical Isle's Bayou Club — Bourbon St": 3,
+      "The World Famous Cat's Meow — 701 Bourbon St": 4,
+      "The Rabbit Hole — OCH Blvd": 5,
       "Party at the Casa 💃💃": 6,
       "Skip — Calling it early": 6,
       "Skip late — call it a night": 6
     };
     var sunLateMap = {
       "Oz New Orleans — 800 Bourbon St": 0,
-      "High Grace NOLA": 1,
-      "Larry Flynt's Hustler Club — New Orleans": 2,
-      "Skip — calling it a night": 3,
-      "Skip — Calling it early": 3
+      "Bourbon Pub & Parade — 801 Bourbon St": 1,
+      "The Swamp on Bourbon Street — 516 Bourbon St": 2,
+      "The Dungeon — 738 Toulouse St": 3,
+      "Larry Flynt's Hustler Club — New Orleans": 4,
+      "Skip — calling it a night": 5,
+      "Skip — Calling it early": 5
     };
 
     if (d.sun_morning  != null && sunMMap[d.sun_morning]  !== undefined) sunMSel = sunMMap[d.sun_morning];
     if (d.ghost_tour   != null && ghostMap[d.ghost_tour]  !== undefined) ghostSel= ghostMap[d.ghost_tour];
     if (d.mon_nightcap != null && nightMap[d.mon_nightcap]!== undefined) nightSel= nightMap[d.mon_nightcap];
-    if (d.sun_late != null) applyMultiFromVal(sunLate, d.sun_late, sunLateMap);
+    if (d.sun_late != null) {
+      applyMultiFromVal(sunLate, d.sun_late, sunLateMap);
+      var sunLateVals = Array.isArray(d.sun_late) ? d.sun_late : String(d.sun_late).split(/\s*;\s*/);
+      sunLateVals.forEach(function(val) {
+        if (val === "High Grace NOLA" && nightMap[val] !== undefined) nightSel = nightMap[val];
+      });
+    }
     if (d.sat_dinner != null) applyMultiFromVal(satD, d.sat_dinner, satDMap);
     if (d.sun_breakfast != null) applyMultiFromVal(sunB, d.sun_breakfast, sunBMap);
     if (d.sun_dinner != null) applyMultiFromVal(sunD, d.sun_dinner, sunDMap);
@@ -2104,9 +2358,13 @@ function loadFormSelections() {
       satLate.forEach(function(o){ o.on = false; });
       var lateVals = Array.isArray(d.sat_late) ? d.sat_late : String(d.sat_late).split(/\s*;\s*/);
       lateVals.forEach(function(val) {
-        // Clubs moved to Sunday late — migrate old sat picks
-        if (val === "Oz New Orleans — 800 Bourbon St" || val === "Larry Flynt's Hustler Club — New Orleans" || val === "High Grace NOLA") {
+        // Clubs moved — Oz/Hustler → Sunday late; High Grace → Monday nightcap
+        if (val === "Oz New Orleans — 800 Bourbon St" || val === "Larry Flynt's Hustler Club — New Orleans") {
           if (sunLateMap[val] !== undefined) sunLate[sunLateMap[val]].on = true;
+          return;
+        }
+        if (val === "High Grace NOLA" || val === "The Spotted Cat Music Club — Frenchmen St") {
+          if (nightMap[val] !== undefined) nightSel = nightMap[val];
           return;
         }
         if (satLateMap[val] !== undefined) satLate[satLateMap[val]].on = true;
@@ -2129,7 +2387,7 @@ function updateItinerary() {
   function tog(pickId) {
     var p = document.getElementById(pickId);
     var open = p && p.className.indexOf('open') >= 0;
-    return ' <span class="pick-toggle" data-pick="' + pickId + '">' + (open ? 'Hide options ▴' : 'Options ▾') + '</span>';
+    return ' <span class="pick-toggle" data-pick="' + pickId + '"' + (open ? ' style="display:none"' : '') + '>Options ▾</span>';
   }
   function setNode(id, strong, sub, pp, pickId) {
     var e = document.getElementById(id);
@@ -2158,20 +2416,22 @@ function updateItinerary() {
   }
 
   var sunMTexts = [
-    { s:"Drag Brunch", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · reservation required' }
+    { s:"Drag Brunch🥂", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · reservation required' }
   ];
   var nightTexts = [
+    { s:"Nightcap", b:gl("The Avenue Pub", "The+Avenue+Pub+New+Orleans") + " · St Charles · historic craft beer hub" },
+    { s:"Nightcap", b:gl("Bayou Bar", "Bayou+Bar+Pontchartrain+Hotel+New+Orleans") + " · Pontchartrain Hotel · dark/moody live jazz" },
+    { s:"Nightcap", b:gl("Abita New Orleans", "Abita+New+Orleans") + " · CBD · local craft brewery taproom" },
+    { s:"Nightcap", b:gl("High Grace NOLA", "High+Grace+NOLA+New+Orleans") + " · Warehouse District · high-energy dance lounge" },
+    { s:"Nightcap", b:gl("The Spotted Cat", "The+Spotted+Cat+Music+Club+New+Orleans") + " · Frenchmen St · live jazz" },
     { s:"Party at the Airbnb", b:"drinks/snacks + decompress" },
-    { s:"Nightcap", b:gl("The Avenue Pub", "The+Avenue+Pub+New+Orleans") + " · St Charles · craft beer · late-night" },
-    { s:"Nightcap", b:gl("Abita New Orleans", "Abita+New+Orleans") + " · brewery taproom · beers & bites" },
-    { s:"Nightcap", b:gl("Bayou Bar", "Bayou+Bar+Pontchartrain+Hotel+New+Orleans") + " · Pontchartrain Hotel · live jazz" },
   ];
 
   // Saturday morning — burritos provided, so no price chip; just the protein pick
   (function() {
     var plaza = 'Meet at <a href="' + GMAP + 'Regency+Plaza+4643+S+Ulster+St+Denver" target="_blank" rel="noopener">Regency Plaza</a>';
-    var base = gs('Ocho\'s', 'Ochos+Mexican+Cocina+Denver') + ' breakfast burritos &amp; refreshments provided';
-    if (bfastSel >= 0 && bfastOpts[bfastSel] && bfastOpts[bfastSel].skip) setNode('itin-sat-bfast', plaza, 'refreshments provided · skipping burrito', 0, 'pick-bfast');
+    var base = gs('Ocho\'s', 'Ochos+Mexican+Cocina+Denver') + ' breakfast burritos &amp; pick-me-ups provided';
+    if (bfastSel >= 0 && bfastOpts[bfastSel] && bfastOpts[bfastSel].skip) setNode('itin-sat-bfast', plaza, 'pick-me-ups provided · skipping burrito', 0, 'pick-bfast');
     else if (bfastSel >= 0) setNode('itin-sat-bfast', plaza, base + ' · yours: ' + bfastOpts[bfastSel].lbl, 0, 'pick-bfast');
     else setNode('itin-sat-bfast', plaza, base, 0, 'pick-bfast');
   })();
@@ -2190,9 +2450,9 @@ function updateItinerary() {
 
   if (sunMSel === 0) setNode('itin-sun-morning', sunMTexts[0].s, sunMTexts[0].b, sunM[0].pp, 'pick-sunm');
   else if (sunMSel >= 0 && sunM[sunMSel] && sunM[sunMSel].skip) setNode('itin-sun-morning', 'Free afternoon', "your call · pool or explore · let's meet up later!", 0, 'pick-sunm');
-  else setNode('itin-sun-morning', 'Drag Brunch', 'pick an option · or Skip so we can adjust the booking', 0, 'pick-sunm');
+  else setNode('itin-sun-morning', 'Drag Brunch🥂', 'Confirm you\'re coming or skip it so we can finalize the table reservation!', 0, 'pick-sunm');
 
-  setFoodMulti('itin-sun-dinner', 'Dying to Dine', sunD, 'pick-sund',
+  setFoodMulti('itin-sun-dinner', 'Dying to Dine 🕯️', sunD, 'pick-sund',
     'Skipping', 'Still love you, too ♡',
     'pick one or more');
 
@@ -2202,7 +2462,7 @@ function updateItinerary() {
 
   if (nightSel >= 0 && nightOpts[nightSel] && nightOpts[nightSel].skip) setNode('itin-mon-nightcap', 'Skipping', 'Next time though, right? ♡', 0, 'pick-night');
   else if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b, nightOpts[nightSel].pp, 'pick-night');
-  else setNode('itin-mon-nightcap', 'Nightcap', 'anyone?', 0, 'pick-night');
+  else setNode('itin-mon-nightcap', 'The Final Nightcap 🍻', 'anyone?', 0, 'pick-night');
 
   // Sunday afternoon (after drag brunch) — wander OR pool day
   (function() {
@@ -2218,8 +2478,8 @@ function updateItinerary() {
       setNode('itin-sun-tea', 'Afternoon — your call', 'French Market · Frenchmen Street · or back to the Airbnb', 0, 'pick-suntea');
   })();
 
-  setFoodMulti('itin-mon-bfast', 'Bait &amp; Breakfast🐊', monB, 'pick-monb',
-    'Skipping breakfast?', 'Don\'t forget to pack snacks for the boat if participating',
+  setFoodMulti('itin-mon-bfast', 'Bait &amp; Breakfast', monB, 'pick-monb',
+    'Skipping breakfast?', 'No judgment, but make sure to pack a survival lunch for the boat ride if you\'re joining the tour!',
     'pick one or more');
 
   /* Monday — swamp lunch prep (optional, usually Sun PM grab)
@@ -2234,24 +2494,24 @@ function updateItinerary() {
   // Monday morning — swamp tour
   (function() {
     if (monSwampSel === 0)
-      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Swamp & Bayou Boat Tour</a>', 'pickup at ' + gl('Homewood Suites FQ', 'Homewood+Suites+317+N+Rampart+New+Orleans') + ' · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass)', monSwampOpts[0].pp, 'pick-monswamp');
+      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Swamp & Bayou Boat Tour🐊</a>', 'Booked · Pickup @ ' + gl('Homewood Suites FQ', 'Homewood+Suites+317+N+Rampart+New+Orleans') + ' · Tour @ 12:15 pm · A 2-hour boat ride through the real-deal Louisiana bayou. No meal on board — pack lunch &amp; water (absolutely no glass!). Gift shop covers last-minute cravings.', monSwampOpts[0].pp, 'pick-monswamp');
     else if (monSwampSel >= 0 && monSwampOpts[monSwampSel] && monSwampOpts[monSwampSel].skip)
       setNode('itin-mon-swamp', 'Skipping', 'see you later, alligator', 0, 'pick-monswamp');
     else
-      setNode('itin-mon-swamp', 'Swamp & Bayou Boat Tour', 'pick an option · or Skip so we can adjust the booking', 0, 'pick-monswamp');
+      setNode('itin-mon-swamp', 'Swamp & Bayou Boat Tour🐊', 'Confirm if you\'re boarding or jumping ship', 0, 'pick-monswamp');
   })();
 
   setFoodMulti('itin-mon-lunch', 'After the swamp', monLunchOpts, 'pick-monlunch',
-    'Sitting this one out', 'see you at dinner ♡',
+    'Sitting this one out', 'see you at dinner..or not:)',
     'pick one or more');
 
   // Ghost crawl — Sunday night
   (function() {
-    if (ghostSel === 0) setNode('itin-sun-ghost', '<a href="' + ghostOpts[0].url + '" target="_blank" rel="noopener">Lewd Spirits Haunted Pub Crawl</a>', 'meet in front of <a href="' + GMAP + 'Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early', ghostOpts[0].pp, 'pick-ghost');
+    if (ghostSel === 0) setNode('itin-sun-ghost', '<a href="' + ghostOpts[0].url + '" target="_blank" rel="noopener">Lewd Spirits Haunted Pub Crawl👻</a>', 'Booked · meet in front of <a href="' + GMAP + 'Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early · Ready to get a little spirited? 🍻', ghostOpts[0].pp, 'pick-ghost');
     else if (ghostSel >= 0 && ghostOpts[ghostSel] && ghostOpts[ghostSel].skip)
       setNode('itin-sun-ghost', 'Skipping', 'Ouch! Ghosted!', 0, 'pick-ghost');
     else
-      setNode('itin-sun-ghost', 'Lewd Spirits Haunted Pub Crawl', 'pick an option · or Skip so we can adjust the booking', 0, 'pick-ghost');
+      setNode('itin-sun-ghost', 'Lewd Spirits Haunted Pub Crawl👻', 'Choose to lock in or skip so we can adjust the group booking', 0, 'pick-ghost');
   })();
 
   // Sunday late — after the crawl
@@ -2278,7 +2538,7 @@ function updateItinerary() {
     var leavePool = active.length ? active : (multiHasSkip(tueL) ? tueL.filter(function(o){ return o.on && o.skip; }) : []);
     if (!leavePool.length) {
       timeEl.textContent = '~12:00 pm';
-      textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car · updates with your brunch pick';
+      textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car';
       return;
     }
     var sum = 0;
@@ -2287,8 +2547,7 @@ function updateItinerary() {
     // snap to nearest 5 min
     avg = Math.round(avg / 5) * 5;
     timeEl.textContent = clock(avg);
-    var note = leavePool.length > 1 ? 'avg of your brunch picks' : 'based on your brunch pick';
-    textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car · ' + note;
+    textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car';
   })();
 }
 
@@ -2306,11 +2565,11 @@ function summarizePicks() {
     'Sun dinner'          : multiLbl(sunD),
     'Sun ghost crawl'     : selLbl(ghostOpts, ghostSel),
     'Sun late'            : multiLbl(sunLate),
-    'Bait & Breakfast🐊'  : multiLbl(monB),
+    'Bait & Breakfast' : multiLbl(monB),
     'Mon swamp tour'      : selLbl(monSwampOpts, monSwampSel),
     'After the swamp'     : multiLbl(monLunchOpts),
     'Mon last supper'     : multiLbl(monD),
-    'Mon nightcap'        : selLbl(nightOpts, nightSel),
+    'The Final Nightcap 🍻': selLbl(nightOpts, nightSel),
     'Tue last bites'      : multiLbl(tueL)
   };
 }
@@ -2325,14 +2584,14 @@ function validateAllPicks() {
   if (!multiHasAny(sunB)) missing.push('Caffeine & Curses');
   if (sunMSel < 0) missing.push('Drag Brunch');
   if (sunTeaSel < 0) missing.push('Sun afternoon');
-  if (!multiHasAny(sunD)) missing.push('Dying to Dine');
+  if (!multiHasAny(sunD)) missing.push('Dying to Dine 🕯️');
   if (ghostSel < 0) missing.push('Ghost crawl');
   if (!multiHasAny(sunLate)) missing.push("What's next?");
-  if (!multiHasAny(monB)) missing.push('Bait & Breakfast🐊');
+  if (!multiHasAny(monB)) missing.push('Bait & Breakfast');
   if (monSwampSel < 0) missing.push('Swamp tour');
   if (!multiHasAny(monLunchOpts)) missing.push('After the swamp');
   if (!multiHasAny(monD)) missing.push('The Last Supper');
-  if (nightSel < 0) missing.push('Nightcap');
+  if (nightSel < 0) missing.push('The Final Nightcap 🍻');
   if (!multiHasAny(tueL)) missing.push('Tue brunch');
   return missing;
 }
@@ -2370,14 +2629,14 @@ function buildPickEmailBody(name, suggest) {
   body += linesForMulti('Sun — Caffeine & Curses', sunB);
   body += lineForSingle('Sun — Drag Brunch', sunM, sunMSel);
   body += lineForSingle('Sun — Afternoon', sunTeaOpts, sunTeaSel);
-  body += linesForMulti('Sun — Dying to Dine', sunD);
+  body += linesForMulti('Sun — Dying to Dine 🕯️', sunD);
   body += lineForSingle('Sun — Ghost crawl', ghostOpts, ghostSel);
   body += linesForMulti('Sun — What\'s next?', sunLate);
-  body += linesForMulti('Mon — Bait & Breakfast🐊', monB);
+  body += linesForMulti('Mon — Bait & Breakfast', monB);
   body += lineForSingle('Mon — Swamp tour', monSwampOpts, monSwampSel);
   body += linesForMulti('Mon — After the swamp', monLunchOpts);
   body += linesForMulti('Mon — The Last Supper', monD);
-  body += lineForSingle('Mon — Nightcap', nightOpts, nightSel);
+  body += lineForSingle('Mon — The Final Nightcap 🍻', nightOpts, nightSel);
   body += linesForMulti('Tue — Brunch', tueL);
   if (suggest) body += 'Suggestions you sent:\n  ' + suggest + '\n\n';
   body += '══════════════════════════════════\nMAPS & LISTS\n══════════════════════════════════\n';
