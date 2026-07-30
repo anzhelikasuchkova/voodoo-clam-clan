@@ -730,15 +730,6 @@ input[type="range"]::-webkit-slider-thumb {
               </div>
             </label>
             <label class="f-opt">
-              <input type="checkbox" name="act_tea_room" value="yes">
-              <div class="f-opt-body">
-                <div class="f-opt-lbl">Private tea leaf reading — Bottom of the Cup
-                  <span class="kassie-stamp">🦪 Kassie's Pick</span>
-                </div>
-                <div class="f-opt-note">French Quarter · private group reading · ~$35pp</div>
-              </div>
-            </label>
-            <label class="f-opt">
               <input type="checkbox" name="act_ghost_walking" value="yes">
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Ghost Tour (walking tour)</div>
@@ -863,6 +854,50 @@ input[type="range"]::-webkit-slider-thumb {
       </div>
     </div>
 
+    <!-- SATURDAY LATE OPTIONS -->
+    <div class="f-section form-phase-3">
+      <div class="f-section-head">
+        <div class="f-section-icon">🌙</div>
+        <div class="f-section-label">Saturday Late · options</div>
+      </div>
+      <div class="f-section-body">
+        <div class="f-field">
+          <label class="f-label">Saturday Late Options <span class="f-required">*</span></label>
+          <p class="f-note">After dinner, where do you want to land for the night?</p>
+          <div class="f-options">
+            <label class="f-opt">
+              <input type="radio" name="sat_late" value="Tropical Isle's Bayou Club — Bourbon St" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Tropical Isle's Bayou Club — Bourbon St</div>
+                <div class="f-opt-note">Live Cajun/Zydeco · ~$25pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sat_late" value="Pirate's Alley Cafe" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Pirate's Alley Cafe</div>
+                <div class="f-opt-note">Absinthe + rum · ~$20pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sat_late" value="Razzoo Bar &amp; Patio — 511 Bourbon St" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Razzoo Bar &amp; Patio — 511 Bourbon St</div>
+                <div class="f-opt-note">Dance floor · daiquiris · ~$15pp</div>
+              </div>
+            </label>
+            <label class="f-opt">
+              <input type="radio" name="sat_late" value="Skip late — call it a night" required>
+              <div class="f-opt-body">
+                <div class="f-opt-lbl">Skip late — call it a night</div>
+                <div class="f-opt-note">Recover · no late stop</div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- SUNDAY MORNING -->
     <div class="f-section form-phase-3">
       <div class="f-section-head">
@@ -972,17 +1007,10 @@ input[type="range"]::-webkit-slider-thumb {
               </div>
             </label>
             <label class="f-opt">
-              <input type="checkbox" name="mon_morning" id="monday-tearoom" value="Bottom of the Cup Tea Room — tarot + tea">
-              <div class="f-opt-body">
-                <div class="f-opt-lbl">Bottom of the Cup Tea Room — tarot + tea</div>
-                <div class="f-opt-note">French Quarter · ~$35pp · Uber shared with French Market if both selected</div>
-              </div>
-            </label>
-            <label class="f-opt">
               <input type="checkbox" name="mon_morning" value="French Market + crystal/voodoo shopping">
               <div class="f-opt-body">
                 <div class="f-opt-lbl">French Market + crystal/voodoo shopping</div>
-                <div class="f-opt-note">Free to browse · budget $20–50pp for purchases · shares Uber with Tea Room</div>
+                <div class="f-opt-note">Free to browse · budget $20–50pp for purchases</div>
               </div>
             </label>
           </div>
@@ -993,10 +1021,10 @@ input[type="range"]::-webkit-slider-thumb {
           <p class="f-note">Ghost tour starts 8pm — dinner before it.</p>
           <div class="f-options">
             <label class="f-opt">
-              <input type="radio" name="mon_dinner" value="Muriel's Jackson Square" required>
+              <input type="radio" name="mon_dinner" value="Cane and Table — French Quarter" required>
               <div class="f-opt-body">
-                <div class="f-opt-lbl">Muriel's Jackson Square — haunted restaurant</div>
-                <div class="f-opt-note">3-course + drinks/tip ~$95pp · steps from ghost tour · most atmospheric</div>
+                <div class="f-opt-lbl">Cane and Table — French Quarter</div>
+                <div class="f-opt-note">Rum + Caribbean Creole · Decatur St · ~$55pp · near ghost crawl meetup</div>
               </div>
             </label>
             <label class="f-opt">
@@ -1007,10 +1035,10 @@ input[type="range"]::-webkit-slider-thumb {
               </div>
             </label>
             <label class="f-opt">
-              <input type="radio" name="mon_dinner" value="Compere Lapin — Warehouse District">
+              <input type="radio" name="mon_dinner" value="The Court of Two Sisters — Royal St">
               <div class="f-opt-body">
-                <div class="f-opt-lbl">Compère Lapin — Warehouse District</div>
-                <div class="f-opt-note">Michelin recognized · Caribbean Creole · ~$65pp · 10 min Uber to ghost tour</div>
+                <div class="f-opt-lbl">The Court of Two Sisters — Royal St</div>
+                <div class="f-opt-note">Iconic courtyard Creole & jazz · ~$70pp · French Quarter · classic sendoff</div>
               </div>
             </label>
           </div>
@@ -1148,15 +1176,10 @@ input[type="range"]::-webkit-slider-thumb {
             <span class="moh-line-name">Swamp Tour</span>
             <span class="moh-line-amount">$77</span>
           </li>
-          <li class="moh-line form-phase-3" id="line-tea" hidden>
-            <span class="moh-line-name">Tea Room (Adaire Room)</span>
-            <span class="moh-line-amount">$35 <span class="moh-line-tbd">⚠️ est.</span></span>
-          </li>
         </ul>
         <p class="moh-summary-note" id="summary-hint">More items will appear as you make selections above.</p>
         <p class="moh-summary-note" id="summary-airbnb-pending" hidden>Airbnb not included — confirm by July to lock your spot.</p>
         <p class="moh-summary-note" id="summary-spa-note" hidden>Spa Isbell: book directly in advance — not a group pre-pay.</p>
-        <p class="moh-summary-note" id="summary-tea-note" hidden>⚠️ Tea Room pricing is an estimate — we'll confirm the Adaire Room quote before the trip.</p>
         <div class="moh-summary-venmo">
           <span class="moh-venmo-label">Send to @anzhelikasuchkova on Venmo</span>
           <a href="https://venmo.com/u/anzhelikasuchkova" target="_blank" rel="noopener" class="moh-venmo-btn">Pay on Venmo →</a>
@@ -1212,7 +1235,7 @@ if (FORM_PHASE >= 3) {
   });
 }
 
-var VCC_RADIO_FIELDS = ['sat_dinner','sun_morning','sun_lunch','sun_dinner','mon_dinner','ghost_tour','mon_nightcap'];
+var VCC_RADIO_FIELDS = ['sat_dinner','sat_late','sun_morning','sun_lunch','sun_dinner','mon_dinner','ghost_tour','mon_nightcap'];
 
 function vccSaveToStorage() {
   try {
@@ -1335,10 +1358,8 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
 
 <script>
 // MOH Summary Panel
-// Update TEA_ROOM_PP once quote is confirmed from events@bottomofthecup.com / 504-875-5900
 var TEE_PP      = 30;
 var DRINKS_PP   = 30;
-var TEA_ROOM_PP = 35;
 
 function updateSummary() {
   var tshirtYes    = document.getElementById('tshirt-yes');
@@ -1349,7 +1370,6 @@ function updateSummary() {
   var spaDay       = document.querySelector('input[name="sun_morning"][value="Spa day — Spa Isbell, Magazine St"]');
   var ghostTour    = document.getElementById('ghost-tour-yes');
   var swampTour    = document.getElementById('monday-swamp');
-  var teaRoom      = document.getElementById('monday-tearoom');
 
   var showTee           = tshirtYes   && tshirtYes.checked;
   var showAirbnb        = airbnbYes   && airbnbYes.checked;
@@ -1359,7 +1379,6 @@ function updateSummary() {
   var showSpa           = spaDay      && spaDay.checked;
   var showGhost         = ghostTour   && ghostTour.checked;
   var showSwamp         = swampTour   && swampTour.checked;
-  var showTea           = teaRoom     && teaRoom.checked;
 
   var total = 0;
   if (showTee)    total += TEE_PP;
@@ -1368,7 +1387,6 @@ function updateSummary() {
   if (showDrag)   total += 79;
   if (showGhost)  total += 60;
   if (showSwamp)  total += 77;
-  if (showTea)    total += TEA_ROOM_PP;
 
   document.getElementById('line-tee').hidden           = !showTee;
   document.getElementById('line-airbnb').hidden        = !showAirbnb;
@@ -1376,15 +1394,13 @@ function updateSummary() {
   document.getElementById('line-drag').hidden          = !showDrag;
   document.getElementById('line-ghost').hidden         = !showGhost;
   document.getElementById('line-swamp').hidden         = !showSwamp;
-  document.getElementById('line-tea').hidden           = !showTea;
 
   document.getElementById('summary-total').textContent = '$' + total;
 
-  var hasAny = showTee || showAirbnb || showDrinks || showDrag || showGhost || showSwamp || showTea;
+  var hasAny = showTee || showAirbnb || showDrinks || showDrag || showGhost || showSwamp;
   document.getElementById('summary-hint').hidden           = hasAny;
   document.getElementById('summary-airbnb-pending').hidden = !showAirbnbPending;
   document.getElementById('summary-spa-note').hidden       = !showSpa;
-  document.getElementById('summary-tea-note').hidden       = !showTea;
 
   // Show/hide drinks sub-section; clear choice when airbnb is de-selected
   var drinksSection = document.getElementById('airbnb-drinks-section');
@@ -1412,7 +1428,7 @@ function updateSummary() {
     el.addEventListener('change', updateSummary);
   });
 });
-['monday-swamp', 'monday-tearoom'].forEach(function(id) {
+['monday-swamp'].forEach(function(id) {
   var el = document.getElementById(id);
   if (el) el.addEventListener('change', updateSummary);
 });

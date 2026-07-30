@@ -20,7 +20,7 @@
 
 **T-shirt count:** S ×2, M ×1, L ×3, XL ×1, 2XL ×1 (Leslie opted out)
 
-**Activity interest (votes):** Ghost crawl 9 · Drag brunch 7 · Burlesque 6 · Tea room 4 · Spa 3 · Swamp tour 3 · Spotted Cat 3 · Ghost walking tour 1 · No preference 2
+**Activity interest (votes):** Ghost crawl 9 · Drag brunch 7 · Burlesque 6 · Spa 3 · Swamp tour 3 · Spotted Cat 3 · Ghost walking tour 1 · No preference 2
 
 **MOH note:** Kassandra — "I'm so fucking excited!!!"
 

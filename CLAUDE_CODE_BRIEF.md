@@ -97,7 +97,6 @@ Options (in this order — Kassie picks first):
 | Option | Price | Kassie badge |
 |---|---|---|
 | Drag Brunch — The Country Club (Sunday 1pm) | ~$65pp | YES |
-| Private tea leaf reading — Bottom of the Cup (Monday) | ~$35pp | YES |
 | Ghost, Crime, Voodoo & Vampire Tour — VIP HELLVISION (Monday 8pm, walking tour) | ~$44pp | YES |
 | Airboat swamp tour + gator feeding (Monday morning) | ~$67pp | NO |
 | Ghost bar crawl (Monday evening — alternative to walking tour) | ~$25–40pp | NO |
