@@ -1032,7 +1032,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .sp-embed { width:300px; overflow:hidden; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.6); display:none; }
 .sp-embed.open { display:block; }
 
-/* ── Weather card ─────────────────────────────── */
+/* ── Weather / forecast card ───────────────────── */
 .pack-row {
   display: flex;
   gap: 24px;
@@ -1048,81 +1048,86 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 }
 @media (max-width: 600px) {
   .pack-row { flex-direction: column; }
-  .wx-card { width: 100% !important; }
+  .wx-panel { width: 100% !important; max-width: none; }
 }
-.wx-card {
+.wx-panel {
   position: relative;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   border: 0.5px solid var(--border-teal);
-  background: rgba(0,0,0,0.3);
-  padding: 20px 14px;
-  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(94,207,207,0.18), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(201,168,76,0.12), transparent 50%),
+    rgba(0,0,0,0.45);
+  padding: 16px 14px 14px;
   flex-shrink: 0;
-  width: 150px;
+  width: 220px;
+  max-width: 100%;
 }
-.wx-content { position: relative; z-index: 1; }
-.wx-icon { font-size: 28px; margin-bottom: 4px; }
-.wx-temp { font-family: 'Cinzel', serif; font-size: 30px; color: var(--pearl); letter-spacing: 0.04em; }
-.wx-label { font-size: 10px; color: var(--pearl-dim); margin: 4px 0 8px; text-transform: uppercase; letter-spacing: 0.1em; }
-.wx-meta { font-size: 10px; color: rgba(240,236,228,0.35); display: flex; flex-direction: column; gap: 2px; }
-.wx-bg-anim { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: 12px; }
-
-@keyframes wxSunPulse {
-  0%,100% { opacity: 0.12; transform: scale(1); }
-  50%      { opacity: 0.22; transform: scale(1.15); }
+.wx-panel-head {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 4px;
 }
-.wx-card[data-wx="clear"] .wx-bg-anim {
-  background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.5) 0%, transparent 70%);
-  animation: wxSunPulse 4s ease-in-out infinite;
+.wx-panel-sub {
+  font-size: 11px;
+  color: rgba(240,236,228,0.45);
+  margin-bottom: 12px;
+  line-height: 1.35;
 }
-
-@keyframes wxCloudDrift {
-  0%   { opacity: 0.06; transform: translateX(-5%); }
-  50%  { opacity: 0.12; transform: translateX(5%); }
-  100% { opacity: 0.06; transform: translateX(-5%); }
+.wx-days {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
-.wx-card[data-wx="cloudy"] .wx-bg-anim {
-  background: linear-gradient(135deg, var(--teal-faint) 0%, transparent 60%);
-  animation: wxCloudDrift 6s ease-in-out infinite;
+.wx-day {
+  border: 0.5px solid rgba(94,207,207,0.25);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+  background: rgba(0,0,0,0.25);
+  transition: border-color 0.2s, background 0.2s;
 }
-
-@keyframes wxRainDrop {
-  0%   { transform: translateY(-10%) translateX(0); opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.3; }
-  100% { transform: translateY(120%) translateX(-12px); opacity: 0; }
+.wx-day:hover {
+  border-color: rgba(94,207,207,0.55);
+  background: rgba(94,207,207,0.08);
 }
-.wx-drop {
-  position: absolute;
-  width: 1px;
-  height: 14px;
-  background: linear-gradient(to bottom, transparent, rgba(94,207,207,0.6));
-  border-radius: 1px;
-  animation: wxRainDrop linear infinite;
+.wx-day-name {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pearl-dim);
+  margin-bottom: 4px;
 }
-
-@keyframes wxLightning {
-  0%, 92%, 100% { opacity: 0; }
-  93%, 95%      { opacity: 0.18; }
-  94%           { opacity: 0; }
+.wx-day-icon { font-size: 20px; line-height: 1.2; margin-bottom: 2px; }
+.wx-day-temp {
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  color: var(--pearl);
+  letter-spacing: 0.02em;
 }
-.wx-card[data-wx="storm"] .wx-bg-anim::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(240,236,228,0.9);
-  animation: wxLightning 3.5s ease-in-out infinite;
-  pointer-events: none;
+.wx-day-range {
+  font-size: 10px;
+  color: rgba(240,236,228,0.4);
+  margin-top: 2px;
 }
-
-@keyframes wxFog {
-  0%,100% { opacity: 0.04; }
-  50%      { opacity: 0.12; }
+.wx-day-rain {
+  font-size: 9px;
+  color: var(--teal);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
 }
-.wx-card[data-wx="fog"] .wx-bg-anim {
-  background: var(--pearl-faint);
-  animation: wxFog 5s ease-in-out infinite;
+.wx-panel-foot {
+  margin-top: 10px;
+  font-size: 9px;
+  color: rgba(240,236,228,0.3);
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .phase-3-only { display: none; }
@@ -1230,7 +1235,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Itinerary</div>
   <div class="section-subhead itin-howto">
-    This is a flexible itinerary — make it yours. Tap <span class="howto-chip">Options ▾</span> under any line to switch picks, or tap your current one again to skip it. The total at the bottom updates as you go. When it looks right, add your name and hit <span class="howto-chip">Send →</span> 🤍
+    This is a flexible itinerary — make it yours. Tap <span class="howto-chip">Options ▾</span> to pick one or more spots (lists stay open so you can keep tapping). Skip clears the rest. Booked items are single-choice — tap again to clear. Totals update as you go. When it looks right, add your name + email and hit <span class="howto-chip">Send →</span> 🤍
   </div>
 
   <div class="nights">
@@ -1256,12 +1261,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">10:15 am</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>To the airport</strong> · convoy in 2 cars (Grace + 1 DD) · parking at DIA $33 uncovered / $72 covered per car for the whole duration of the trip</div>
+            <div class="event-text"><strong>To the airport</strong> · 2 cars (Grace + 1 DD) · <a href="https://www.flydenver.com/parking" target="_blank" rel="noopener">DIA parking</a> from ~$10/day</div>
           </div>
           <div class="event-item">
             <div class="event-time">12:05 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Flight</strong> · Southwest 3419 · nonstop · lands MSY 3:35 pm</div>
+            <div class="event-text"><strong>Flight</strong> · Southwest · DEN→MSY nonstop · lands MSY 3:35 pm · <a href="https://www.flightaware.com/live/findflight/KDEN/KMSY" target="_blank" rel="noopener"># TBA</a> (schedules lock closer to travel)</div>
           </div>
           <div class="event-item">
             <div class="event-time">4:00 pm</div>
@@ -1271,12 +1276,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">4:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Check in</strong> · <a href="https://www.google.com/maps/search/?api=1&amp;query=2012+Oretha+Castle+Haley+Blvd+New+Orleans" target="_blank" rel="noopener">2012 Oretha Castle Haley Blvd</a> · settle in · welcome drinks &amp; snacks</div>
+            <div class="event-text"><strong>Check in</strong> · <a href="https://www.google.com/maps/search/?api=1&amp;query=2012+Oretha+Castle+Haley+Blvd+New+Orleans" target="_blank" rel="noopener">2012 Oretha Castle Haley Blvd</a> · welcome drinks &amp; snacks</div>
           </div>
           <div class="event-item">
             <div class="event-time">7:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sat-evening"><strong>Meet The Boys</strong> · Mambo's · French Quarter · dinner + drinks</div>
+            <div class="event-text" id="itin-sat-evening"><strong>Meet with the Boys</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-satd"></div>
           <div class="event-item">
@@ -1304,31 +1309,31 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:00 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-bfast"><strong>Breakfast</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-bfast"><strong>Caffeine &amp; Curses</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-sunb"></div>
           <div class="event-item">
             <div class="event-time">1:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · <a href="https://thecountryclubneworleans.com/menus/drag-brunch/" target="_blank" rel="noopener">The Country Club</a> · Bywater</div>
+            <div class="event-text" id="itin-sun-morning"><strong>Drag Brunch</strong> · pick an option · or Skip so we can adjust the booking</div>
           </div>
           <div class="pick" id="pick-sunm"></div>
           <div class="event-item">
             <div class="event-time">~3:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-tea"><strong>French Market stroll</strong> · stalls, crystals, voodoo shops</div>
+            <div class="event-text" id="itin-sun-tea"><strong>Afternoon</strong> · pick an option</div>
           </div>
           <div class="pick" id="pick-suntea"></div>
           <div class="event-item">
             <div class="event-time">5:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-dinner"><strong>Dinner</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-dinner"><strong>Dying to Dine</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-sund"></div>
           <div class="event-item">
             <div class="event-time">8:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-ghost"><strong>Lewd Spirits Haunted Pub Crawl</strong> · meet inside <a href="https://www.google.com/maps/search/?api=1&query=Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a></div>
+            <div class="event-text" id="itin-sun-ghost"><strong>Lewd Spirits Haunted Pub Crawl</strong> · meet in front of <a href="https://www.google.com/maps/search/?api=1&query=Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early</div>
           </div>
           <div class="pick" id="pick-ghost"></div>
           <div class="event-item">
@@ -1356,25 +1361,25 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:00 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-bfast"><strong>Breakfast</strong> · pick one or more</div>
+            <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast🐊</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-monb"></div>
           <div class="event-item">
             <div class="event-time">10:15 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-swamp"><strong><a href="https://www.viator.com/account/booking/1429072935/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3MjkzNSIsInQiOjE3ODUzMDQyMDQsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.gJwru3INlnZc7j0y8vpkDuIHUVPN6KolkCOIp0JX_1oatAL4nf7FkxbX_QvXbN4RgidY00i-_jYtwh3J806hEw" target="_blank" rel="noopener">Swamp &amp; Bayou Boat Tour</a></strong> · pickup 10:15am · <a href="https://www.google.com/maps/search/?api=1&amp;query=Homewood+Suites+317+N+Rampart+New+Orleans" target="_blank" rel="noopener">Homewood Suites FQ</a> · 317 N Rampart · tour 12:15pm · Honey Island Swamp · ~2hr boat</div>
+            <div class="event-text" id="itin-mon-swamp"><strong>Swamp &amp; Bayou Boat Tour</strong> · pick an option · or Skip so we can adjust the booking</div>
           </div>
           <div class="pick" id="pick-monswamp"></div>
           <div class="event-item">
             <div class="event-time">~3:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-lunch"><strong>Back to the Airbnb</strong> · recharge · pool party 🌊</div>
+            <div class="event-text" id="itin-mon-lunch"><strong>After the swamp</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-monlunch"></div>
           <div class="event-item">
             <div class="event-time">7:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-dinner"><strong>Farewell dinner</strong> · pick an option</div>
+            <div class="event-text" id="itin-mon-dinner"><strong>The Last Supper</strong> · pick one or more</div>
           </div>
           <div class="pick" id="pick-mond"></div>
           <div class="event-item">
@@ -1411,14 +1416,14 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           </div>
           <div class="pick" id="pick-tue"></div>
           <div class="event-item">
-            <div class="event-time">12:30 pm</div>
+            <div class="event-time" id="itin-tue-uber-time">~12:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Uber to MSY</strong> · ~$35/car</div>
+            <div class="event-text" id="itin-tue-uber"><strong>Uber to MSY</strong> · ~$35/car · updates with your brunch pick</div>
           </div>
           <div class="event-item">
             <div class="event-time">2:30 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text"><strong>Flight</strong> · Southwest 4083 · nonstop · lands DEN 4:20 pm</div>
+            <div class="event-text"><strong>Flight</strong> · Southwest · MSY→DEN nonstop · lands DEN 4:20 pm · <a href="https://www.flightaware.com/live/findflight/KMSY/KDEN" target="_blank" rel="noopener"># TBA</a> (schedules lock closer to travel)</div>
           </div>
         </div>
       </div>
@@ -1448,15 +1453,18 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 
   <div class="pay-card" id="booked">
     <p class="pay-lead" id="pay-lead-text">These require advance booking! Please Venmo your share.</p>
-    <div class="pay-row" id="pay-drag-row">
-      <div><strong id="pay-drag-label">Drag Brunch — The Country Club · Sunday 1:00 pm</strong></div>
-      <div class="pay-amt" id="pay-drag-amt">~$25</div>
+    <div class="pay-row" id="pay-drag-row" style="display:none">
+      <div>
+        <strong id="pay-drag-label">Drag Brunch — The Country Club · Sunday 1:00 pm</strong>
+        <span class="pay-row-note">* $25 is your seat hold (reservation required) — food &amp; drinks are extra at the restaurant</span>
+      </div>
+      <div class="pay-amt" id="pay-drag-amt">~$25*</div>
     </div>
-    <div class="pay-row" id="pay-swamp-row">
+    <div class="pay-row" id="pay-swamp-row" style="display:none">
       <div><strong>Swamp &amp; Bayou Boat Tour · Monday 10:15 am</strong></div>
       <div class="pay-amt">~$76</div>
     </div>
-    <div class="pay-row" id="pay-ghost-row">
+    <div class="pay-row" id="pay-ghost-row" style="display:none">
       <div>
         <strong>Lewd Spirits Haunted Pub Crawl · Sunday 8:00 pm</strong>
         <span class="pay-row-note">* drinks not included in the price</span>
@@ -1465,7 +1473,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     </div>
     <div class="pay-row pay-total">
       <div>Total</div>
-      <div class="pay-amt"><span id="pay-booked-num">~$138</span></div>
+      <div class="pay-amt"><span id="pay-booked-num">—</span></div>
     </div>
     <a href="https://venmo.com/u/anzhelikasuchkova" class="pay-venmo" target="_blank" rel="noopener">Open Venmo →</a>
     <p class="pay-hint">Questions about your share? Text Grace. Don't ghost the group chat. 👻</p>
@@ -1502,12 +1510,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         <img src="../assets/images/night1-convoy/night1-1.jpg" alt="Look inspo">
         <img src="../assets/images/night1-convoy/night1-2.jpg" alt="Look inspo">
         <img src="../assets/images/night1-convoy/night1-3.jpg" alt="Look inspo">
-        <img src="../assets/images/night2-shells/night2-1.jpg" alt="Look inspo">
-        <img src="../assets/images/night2-shells/night2-2.jpg" alt="Glam look inspo">
-        <img src="../assets/images/night2-shells/night2-3.jpg" alt="Look inspo">
-        <img src="../assets/images/night3-coven/night3-1.jpg" alt="Lookinspo">
-        <img src="../assets/images/night3-coven/night3-2.jpg" alt="Lookboho inspo">
-        <img src="../assets/images/night3-coven/night3-3.jpg" alt="Lookglam inspo">
+        <img src="../assets/images/night2-coven/night2-1.jpg" alt="Look inspo">
+        <img src="../assets/images/night2-coven/night2-2.jpg" alt="Glam look inspo">
+        <img src="../assets/images/night2-coven/night2-3.jpg" alt="Look inspo">
+        <img src="../assets/images/night3-shells/night3-1.jpg" alt="Look inspo">
+        <img src="../assets/images/night3-shells/night3-2.jpg" alt="Look boho inspo">
+        <img src="../assets/images/night3-shells/night3-3.jpg" alt="Look glam inspo">
       </div>
     </div>
   </div>
@@ -1523,17 +1531,16 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Forecast</div>
   <div class="section-title">Pack Smart</div>
   <div class="pack-row">
-    <div id="wx-card" class="wx-card" data-wx="loading">
-      <div class="wx-bg-anim"></div>
-      <div class="wx-content">
-        <div class="wx-icon" id="wx-icon">—</div>
-        <div class="wx-temp" id="wx-temp">—°F</div>
-        <div class="wx-label" id="wx-label">Loading…</div>
-        <div class="wx-meta">
-          <span id="wx-humidity">—% humidity</span>
-          <span id="wx-rain-pct">—% rain chance</span>
-        </div>
+    <div id="wx-panel" class="wx-panel">
+      <div class="wx-panel-head">NOLA · Oct 3–6</div>
+      <div class="wx-panel-sub" id="wx-panel-sub">Loading weekend forecast…</div>
+      <div class="wx-days" id="wx-days">
+        <div class="wx-day"><div class="wx-day-name">Sat</div><div class="wx-day-icon">—</div><div class="wx-day-temp">—°</div></div>
+        <div class="wx-day"><div class="wx-day-name">Sun</div><div class="wx-day-icon">—</div><div class="wx-day-temp">—°</div></div>
+        <div class="wx-day"><div class="wx-day-name">Mon</div><div class="wx-day-icon">—</div><div class="wx-day-temp">—°</div></div>
+        <div class="wx-day"><div class="wx-day-name">Tue</div><div class="wx-day-icon">—</div><div class="wx-day-temp">—°</div></div>
       </div>
+      <div class="wx-panel-foot" id="wx-panel-foot">Open-Meteo</div>
     </div>
     <div class="pack-list">
       <div class="outfit-strip" style="text-align:left;margin-bottom:16px;">
@@ -1677,10 +1684,10 @@ var bfastOpts = [
 
 var GMAP = "https://www.google.com/maps/search/?api=1&query=";
 
-// Saturday dinner — meet The Boys (multi-select)
+// Saturday dinner — meet with the Boys (multi-select)
 var satD = [
-  { lbl:"Mambo's — French Quarter", note:"Dinner + drinks · meet The Boys", pp:35, uber:10, dist:"~10 min drive", url:GMAP+"Mambos+New+Orleans", on:true },
-  { lbl:"The Will & The Way — Toulouse St", note:"Cocktails + bites · courtyard · French Quarter", pp:45, uber:10, dist:"~10 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false },
+  { lbl:"Mambo's — French Quarter", short:"Mambo's (Will's pick)", note:"Will's choice · dinner + drinks", pp:35, uber:10, dist:"~10 min drive", url:GMAP+"Mambos+New+Orleans", on:true, rating:"4.4★" },
+  { lbl:"The Will & The Way — Toulouse St", note:"Cocktails + bites · courtyard · French Quarter", pp:45, uber:10, dist:"~10 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
   { lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
 ];
 
@@ -1706,23 +1713,23 @@ var sunB = [
 
 // Sunday brunch — booked, opt out if you're not coming
 var sunM = [
-  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Reserved · $25pp prepaid · Bywater", pp:25, uber:14, url:GMAP+"The+Country+Club+New+Orleans" , dist:"~15 min drive"},
+  { lbl:"Drag Brunch — The Country Club (1pm)", note:"Reservation required · $25pp prepaid · Bywater", pp:25, uber:14, url:GMAP+"The+Country+Club+New+Orleans" , dist:"~15 min drive"},
   { lbl:"Skip — Free afternoon for me", pp:0, skip:true },
 ];
-var sunMSel = 0;
+var sunMSel = -1;
 
 var sunD = [
-  { lbl:"Bésame — French Quarter", note:"Cocktails + Latin-Creole bites", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false},
-  { lbl:"Cane and Table — French Quarter", note:"Decatur St · rum + Caribbean Creole", pp:55, uber:5, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Cafe Amelie — Royal St", note:"French Quarter · candlelit courtyard", pp:65, uber:5, url:GMAP+"Cafe+Amelie+New+Orleans" , dist:"~10 min drive", on:false},
-  { lbl:"The Court of Two Sisters — Royal St", note:"Courtyard & live jazz", pp:70, uber:5, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~10 min drive", on:false},
+  { lbl:"Bésame — French Quarter", note:"Cocktails + Latin-Creole bites", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false, rating:"4.5★"},
+  { lbl:"Cane and Table — French Quarter", note:"Decatur St · rum + Caribbean Creole", pp:55, uber:5, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~12 min drive", on:false, rating:"4.6★"},
+  { lbl:"Cafe Amelie — Royal St", note:"French Quarter · candlelit courtyard", pp:65, uber:5, url:GMAP+"Cafe+Amelie+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.6★"},
+  { lbl:"The Court of Two Sisters — Royal St", note:"Courtyard & live jazz", pp:70, uber:5, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~10 min drive", on:false, rating:"4.4★"},
   { lbl:"Skip — Still love y'all though ♡", pp:0, skip:true, on:false },
 ];
 
 // Sunday evening — ghost crawl (moved off Monday so swamp day can breathe)
-var ghostSel = 0;
+var ghostSel = -1;
 var ghostOpts = [
-  { lbl:"Lewd Spirits Haunted Pub Crawl", note:"Booked · pay your share via link below · meet inside Unique NOLA Tours", pp:37, dist:"~10 min drive", url:"https://www.viator.com/account/booking/1429076869/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3Njg2OSIsInQiOjE3ODUzNzg0MDksInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.kdjU-kT-lQb71uuLzUb2uD5rpb0HF96Nyz7YVMz042HJPdDyxIQ5wGsC7jtUDV5b78TNhZwL1hLelmyc8KbNPA" },
+  { lbl:"Lewd Spirits Haunted Pub Crawl", note:"Booked · pay your share via link below · meet in front of Unique NOLA Tours · check in 15 min early", pp:37, dist:"~10 min drive", url:"https://www.viator.com/account/booking/1429076869/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3Njg2OSIsInQiOjE3ODUzNzg0MDksInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.kdjU-kT-lQb71uuLzUb2uD5rpb0HF96Nyz7YVMz042HJPdDyxIQ5wGsC7jtUDV5b78TNhZwL1hLelmyc8KbNPA" },
   { lbl:"Skip — count me out", pp:0, skip:true },
 ];
 
@@ -1735,7 +1742,7 @@ var sunLate = [
 ];
 
 // Sunday afternoon (after drag brunch) — wander OR pool day
-var sunTeaSel = 0;
+var sunTeaSel = -1;
 var sunTeaOpts = [
   { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive" },
   { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~12 min drive" },
@@ -1752,17 +1759,18 @@ var monB = [
   { lbl:"Skip — Breakfast? Yuck!", note:"Don't forget to pack snacks for the boat if participating", pp:0, skip:true, on:false },
 ];
 
-var monSwampSel = 0;
+var monSwampSel = -1;
 var monSwampOpts = [
-  { lbl:"New Orleans Swamp and Bayou Boat Tour with Transportation", note:"Booked · pay your share via link below · pickup 10:15am · Homewood Suites FQ · 317 N Rampart · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass) · gift shop has snacks too", pp:76, uber:0, dist:"~10 min to pickup", url:"https://www.viator.com/account/booking/1429072935/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3MjkzNSIsInQiOjE3ODUzMDQyMDQsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.gJwru3INlnZc7j0y8vpkDuIHUVPN6KolkCOIp0JX_1oatAL4nf7FkxbX_QvXbN4RgidY00i-_jYtwh3J806hEw" },
+  { lbl:"New Orleans Swamp and Bayou Boat Tour with Transportation", note:"Booked · pay your share via link below · pickup at Homewood Suites FQ · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass) · gift shop has snacks too", pp:76, uber:0, dist:"~10 min to pickup", url:"https://www.viator.com/account/booking/1429072935/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQyOTA3MjkzNSIsInQiOjE3ODUzMDQyMDQsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.gJwru3INlnZc7j0y8vpkDuIHUVPN6KolkCOIp0JX_1oatAL4nf7FkxbX_QvXbN4RgidY00i-_jYtwh3J806hEw" },
   { lbl:"Skip — not feeling it", pp:0, skip:true },
 ];
 
-// Monday lunch after swamp tour
-var monLunchSel = 0;
+// Monday after swamp (multi-select)
 var monLunchOpts = [
-  { lbl:"Back to the Airbnb", note:"recharge · pool party 🌊", pp:0 },
-  { lbl:"Skip — I've got a plane to catch ✈️", pp:0, skip:true },
+  { lbl:"French Market stroll", note:"French Quarter · stalls, crystals, voodoo shops", pp:0, uber:5, url:GMAP+"French+Market+New+Orleans", dist:"~12 min drive", on:false },
+  { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~12 min drive", on:false },
+  { lbl:"Back to the Airbnb", note:"recharge · pool party 🌊", pp:0, uber:0, on:false },
+  { lbl:"Skip — sitting this one out", pp:0, skip:true, on:false },
 ];
 
 var monD = [
@@ -1785,12 +1793,12 @@ var nightOpts = [
 ];
 
 var tueL = [
-  { lbl:"Café Du Monde — beignets + café au lait", note:"Quick to-go · ~30 min to MSY · leave by 11:45", pp:15, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~11 min drive", on:false},
-  { lbl:"Calas Cafe", note:"Creole calas (rice fritters) · quick-ish · ~12 min drive", pp:15, uber:6, url:GMAP+"Calas+Cafe+New+Orleans" , dist:"~12 min drive", on:false},
-  { lbl:"Dat Dog — Frenchmen St", note:"Gourmet hot dogs + beer · quick & fun", pp:15, uber:8, url:GMAP+"Dat+Dog+Frenchmen+St+New+Orleans", dist:"~10 min drive", on:false},
-  { lbl:"Zesty Creole Cuisine — Canal St", note:"Creole breakfast · French Quarter · ~30 min to MSY · leave by 11:45", pp:18, uber:8, url:GMAP+"Zesty+Creole+Cuisine+New+Orleans" , dist:"~11 min drive", on:false},
-  { lbl:"Turkey and the Wolf — 739 Jackson", note:"Sandwich shop · to-go", pp:18, uber:6, url:GMAP+"Turkey+and+the+Wolf+739+Jackson+New+Orleans", dist:"~12 min drive", on:false},
-  { lbl:"Skip — beignets in the terminal if needed", pp:0, skip:true, on:false },
+  { lbl:"Café Du Monde — beignets + café au lait", note:"Quick to-go · ~30 min to MSY", pp:15, uber:8, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~11 min drive", on:false, leaveMin:11*60+45, rating:"4.3★"},
+  { lbl:"Calas Cafe", note:"Creole calas (rice fritters) · quick-ish", pp:15, uber:6, url:GMAP+"Calas+Cafe+New+Orleans" , dist:"~12 min drive", on:false, leaveMin:12*60, rating:"4.5★"},
+  { lbl:"Dat Dog — Frenchmen St", note:"Gourmet hot dogs + beer · quick & fun", pp:15, uber:8, url:GMAP+"Dat+Dog+Frenchmen+St+New+Orleans", dist:"~10 min drive", on:false, leaveMin:12*60, rating:"4.5★"},
+  { lbl:"Zesty Creole Cuisine — Canal St", note:"Creole breakfast · French Quarter · ~30 min to MSY", pp:18, uber:8, url:GMAP+"Zesty+Creole+Cuisine+New+Orleans" , dist:"~11 min drive", on:false, leaveMin:11*60+45, rating:"4.4★"},
+  { lbl:"Turkey and the Wolf — 739 Jackson", note:"Sandwich shop · to-go", pp:18, uber:6, url:GMAP+"Turkey+and+the+Wolf+739+Jackson+New+Orleans", dist:"~12 min drive", on:false, leaveMin:12*60, rating:"4.7★"},
+  { lbl:"Skip — beignets in the terminal if needed", pp:0, skip:true, on:false, leaveMin:12*60+15 },
 ];
 
 
@@ -1809,6 +1817,7 @@ var MULTI_PICK_IDS = {
   "pick-sund": true,
   "pick-sunlate": true,
   "pick-monb": true,
+  "pick-monlunch": true,
   "pick-mond": true,
   "pick-tue": true
 };
@@ -1934,7 +1943,7 @@ function renderPicks() {
   mkPick("pick-suntea",  sunTeaOpts, false, function(){return sunTeaSel;},function(i){sunTeaSel=i;});
   mkPick("pick-monb",     monB,       true,  null, null);
   mkPick("pick-monswamp", monSwampOpts, false, function(){return monSwampSel;},function(i){monSwampSel=i; renderPayShare();});
-  mkPick("pick-monlunch", monLunchOpts, false, function(){return monLunchSel;}, function(i){monLunchSel=i;});
+  mkPick("pick-monlunch", monLunchOpts, true, null, null);
   mkPick("pick-mond",    monD,      true,  null, null);
   mkPick("pick-night",   nightOpts, false, function(){return nightSel;},function(i){nightSel=i;});
   mkPick("pick-tue",     tueL,      true,  null, null);
@@ -1972,7 +1981,7 @@ function renderPayShare() {
   if (leadEl) {
     leadEl.innerHTML = total > 0
       ? 'These require advance booking! Please Venmo your share. To opt out, update your choices above and <span class="ps-head">Send your picks</span> so we can adjust reservations accordingly.'
-      : 'No fun for you!';
+      : 'Pick Drag Brunch, the swamp tour, and/or the ghost crawl above to see what you owe.';
   }
 }
 
@@ -1991,28 +2000,32 @@ function renderEstimate() {
     uber += multiAvgUber(arr);
   }
   addMultiAvg(satD);
-  // Bars/clubs: no averaged estimate — sum only if they pick one stop; skip pricing when multi
+  // Bars/clubs: sum (you'll hop)
   (function() {
-    var a = multiActive(satLate);
-    if (a.length === 1) { ground += a[0].pp || 0; uber += a[0].uber || 0; }
+    multiActive(satLate).forEach(function(o) {
+      ground += o.pp || 0;
+      uber += o.uber || 0;
+    });
   })();
   addMultiAvg(sunB);
   if (sunMSel === 0) { ground += sunM[0].pp; uber += sunM[0].uber || 0; }
   addMultiAvg(sunD);
   if (ghostSel === 0) { ground += ghostOpts[0].pp; uber += 4; }
   (function() {
-    var a = multiActive(sunLate);
-    if (a.length === 1) { ground += a[0].pp || 0; uber += a[0].uber || 0; }
+    multiActive(sunLate).forEach(function(o) {
+      ground += o.pp || 0;
+      uber += o.uber || 0;
+    });
   })();
   addPick(sunTeaOpts, sunTeaSel);
   addMultiAvg(monB);
   if (monSwampSel === 0) { ground += monSwampOpts[0].pp; uber += monSwampOpts[0].uber || 0; }
-  addPick(monLunchOpts, monLunchSel);
+  addMultiAvg(monLunchOpts);
   addMultiAvg(monD);
   addPick(nightOpts, nightSel);
   addMultiAvg(tueL);
   e.innerHTML = 'Your picks come to about <strong>' + fmt(ground) + '</strong> on the ground, plus ~' + fmt(uber) +
-    ' in shared Ubers and whatever the bars take from you.';
+    ' in shared Ubers (airport + venue hops — DIA parking not included) and whatever the bars take from you.';
 
 }
 
@@ -2106,8 +2119,7 @@ function loadFormSelections() {
         if (val === "Airboat swamp tour + gator feeding" || val.indexOf("Swamp") >= 0) monSwampSel = 0;
         else if (val === "French Market + crystal/voodoo shopping") sunTeaSel = 0;
       });
-      if (monSwampSel < 0) monSwampSel = 0;
-      if (sunTeaSel < 0) sunTeaSel = 0;
+      // Don't force defaults — leave unset if neither matched
     }
   } catch(e) {}
 }
@@ -2134,16 +2146,19 @@ function updateItinerary() {
     else if (multiActive(arr).length) setNode(id, title, multiPlaceLinks(arr), multiAvgPp(arr), pickId);
     else setNode(id, title, emptySub, 0, pickId);
   }
-  // Bars/clubs: linked names when multi, but no average price chip (only show $ if one pick)
+  // Bars/clubs: linked names when multi; show sum $ when hopping (single shows that spot's $)
   function setBarMulti(id, title, arr, pickId, skipStrong, skipSub, emptySub) {
     var active = multiActive(arr);
     if (multiHasSkip(arr)) setNode(id, skipStrong, skipSub, 0, pickId);
-    else if (active.length) setNode(id, title, multiPlaceLinks(arr), active.length === 1 ? (active[0].pp || 0) : 0, pickId);
-    else setNode(id, title, emptySub, 0, pickId);
+    else if (active.length) {
+      var sum = 0;
+      active.forEach(function(o){ sum += o.pp || 0; });
+      setNode(id, title, multiPlaceLinks(arr), sum, pickId);
+    } else setNode(id, title, emptySub, 0, pickId);
   }
 
   var sunMTexts = [
-    { s:"Drag Brunch", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · reserved' }
+    { s:"Drag Brunch", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · reservation required' }
   ];
   var nightTexts = [
     { s:"Party at the Airbnb", b:"drinks/snacks + decompress" },
@@ -2161,7 +2176,7 @@ function updateItinerary() {
     else setNode('itin-sat-bfast', plaza, base, 0, 'pick-bfast');
   })();
 
-  setFoodMulti('itin-sat-evening', 'Meet The Boys', satD, 'pick-satd',
+  setFoodMulti('itin-sat-evening', 'Meet with the Boys', satD, 'pick-satd',
     'Sitting this dinner out', 'send pics of the chaos',
     'pick one or more');
 
@@ -2169,7 +2184,7 @@ function updateItinerary() {
     'Calling it early', 'Bourbon will still be there tomorrow',
     'pick one or more');
 
-  setFoodMulti('itin-sun-bfast', 'Breakfast', sunB, 'pick-sunb',
+  setFoodMulti('itin-sun-bfast', 'Caffeine &amp; Curses', sunB, 'pick-sunb',
     'Skipping', 'I see a DoorDash order in your future 🔮',
     'pick one or more');
 
@@ -2177,11 +2192,11 @@ function updateItinerary() {
   else if (sunMSel >= 0 && sunM[sunMSel] && sunM[sunMSel].skip) setNode('itin-sun-morning', 'Free afternoon', "your call · pool or explore · let's meet up later!", 0, 'pick-sunm');
   else setNode('itin-sun-morning', 'Drag Brunch', 'pick an option · or Skip so we can adjust the booking', 0, 'pick-sunm');
 
-  setFoodMulti('itin-sun-dinner', 'Dinner', sunD, 'pick-sund',
+  setFoodMulti('itin-sun-dinner', 'Dying to Dine', sunD, 'pick-sund',
     'Skipping', 'Still love you, too ♡',
     'pick one or more');
 
-  setFoodMulti('itin-mon-dinner', 'Farewell dinner', monD, 'pick-mond',
+  setFoodMulti('itin-mon-dinner', 'The Last Supper', monD, 'pick-mond',
     'Skipping', 'Bye, Felicia!',
     'pick one or more');
 
@@ -2203,7 +2218,7 @@ function updateItinerary() {
       setNode('itin-sun-tea', 'Afternoon — your call', 'French Market · Frenchmen Street · or back to the Airbnb', 0, 'pick-suntea');
   })();
 
-  setFoodMulti('itin-mon-bfast', 'Breakfast', monB, 'pick-monb',
+  setFoodMulti('itin-mon-bfast', 'Bait &amp; Breakfast🐊', monB, 'pick-monb',
     'Skipping breakfast?', 'Don\'t forget to pack snacks for the boat if participating',
     'pick one or more');
 
@@ -2219,26 +2234,20 @@ function updateItinerary() {
   // Monday morning — swamp tour
   (function() {
     if (monSwampSel === 0)
-      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Swamp & Bayou Boat Tour</a>', 'pickup 10:15am · ' + gl('Homewood Suites FQ', 'Homewood+Suites+317+N+Rampart+New+Orleans') + ' · 317 N Rampart · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass)', monSwampOpts[0].pp, 'pick-monswamp');
+      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Swamp & Bayou Boat Tour</a>', 'pickup at ' + gl('Homewood Suites FQ', 'Homewood+Suites+317+N+Rampart+New+Orleans') + ' · tour 12:15pm · ~2hr boat · no meal on board — pack sandwiches, snacks & water (no glass)', monSwampOpts[0].pp, 'pick-monswamp');
     else if (monSwampSel >= 0 && monSwampOpts[monSwampSel] && monSwampOpts[monSwampSel].skip)
       setNode('itin-mon-swamp', 'Skipping', 'see you later, alligator', 0, 'pick-monswamp');
     else
       setNode('itin-mon-swamp', 'Swamp & Bayou Boat Tour', 'pick an option · or Skip so we can adjust the booking', 0, 'pick-monswamp');
   })();
 
-  // Monday lunch after swamp tour
-  (function() {
-    if (monLunchSel >= 0 && monLunchOpts[monLunchSel] && monLunchOpts[monLunchSel].skip)
-      setNode('itin-mon-lunch', 'Have a safe flight!', 'We\'ll miss you! ♡', 0, 'pick-monlunch');
-    else if (monLunchSel === 0)
-      setNode('itin-mon-lunch', 'Back to the Airbnb', 'recharge · pool party 🌊', 0, 'pick-monlunch');
-    else
-      setNode('itin-mon-lunch', 'After the swamp', 'back to the Airbnb · or Skip', 0, 'pick-monlunch');
-  })();
+  setFoodMulti('itin-mon-lunch', 'After the swamp', monLunchOpts, 'pick-monlunch',
+    'Sitting this one out', 'see you at dinner ♡',
+    'pick one or more');
 
   // Ghost crawl — Sunday night
   (function() {
-    if (ghostSel === 0) setNode('itin-sun-ghost', '<a href="' + ghostOpts[0].url + '" target="_blank" rel="noopener">Lewd Spirits Haunted Pub Crawl</a>', 'meet inside <a href="' + GMAP + 'Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a>', ghostOpts[0].pp, 'pick-ghost');
+    if (ghostSel === 0) setNode('itin-sun-ghost', '<a href="' + ghostOpts[0].url + '" target="_blank" rel="noopener">Lewd Spirits Haunted Pub Crawl</a>', 'meet in front of <a href="' + GMAP + 'Unique+NOLA+Tours+815+Toulouse+New+Orleans" target="_blank" rel="noopener">Unique NOLA Tours</a> · check in 15 min early', ghostOpts[0].pp, 'pick-ghost');
     else if (ghostSel >= 0 && ghostOpts[ghostSel] && ghostOpts[ghostSel].skip)
       setNode('itin-sun-ghost', 'Skipping', 'Ouch! Ghosted!', 0, 'pick-ghost');
     else
@@ -2253,29 +2262,130 @@ function updateItinerary() {
   setFoodMulti('itin-tue-bfast', 'Brunch', tueL, 'pick-tue',
     'Skipping brunch', 'beignets in the terminal if needed',
     'pick one or more');
+
+  // Tuesday Uber leave time — average of selected brunch leave-bys (earliest-safe window)
+  (function() {
+    var timeEl = document.getElementById('itin-tue-uber-time');
+    var textEl = document.getElementById('itin-tue-uber');
+    if (!timeEl || !textEl) return;
+    function clock(mins) {
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var ap = h >= 12 ? 'pm' : 'am';
+      var h12 = h % 12; if (!h12) h12 = 12;
+      return '~' + h12 + ':' + (m < 10 ? '0' : '') + m + ' ' + ap;
+    }
+    var active = multiActive(tueL);
+    var leavePool = active.length ? active : (multiHasSkip(tueL) ? tueL.filter(function(o){ return o.on && o.skip; }) : []);
+    if (!leavePool.length) {
+      timeEl.textContent = '~12:00 pm';
+      textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car · updates with your brunch pick';
+      return;
+    }
+    var sum = 0;
+    leavePool.forEach(function(o){ sum += o.leaveMin || (12 * 60); });
+    var avg = Math.round(sum / leavePool.length);
+    // snap to nearest 5 min
+    avg = Math.round(avg / 5) * 5;
+    timeEl.textContent = clock(avg);
+    var note = leavePool.length > 1 ? 'avg of your brunch picks' : 'based on your brunch pick';
+    textEl.innerHTML = '<strong>Uber to MSY</strong> · ~$35/car · ' + note;
+  })();
 }
 
 // Roll the live selections into one flat object for the MOH's inbox
 function summarizePicks() {
-  function selLbl(arr, idx){ return (idx != null && idx >= 0 && arr[idx]) ? arr[idx].lbl : '— skipping —'; }
-  function multiLbl(arr){ var v = arr.filter(function(o){return o.on;}).map(function(o){return o.lbl;}); return v.length ? v.join('; ') : '— skipping —'; }
+  function selLbl(arr, idx){ return (idx != null && idx >= 0 && arr[idx]) ? arr[idx].lbl : '— no pick yet —'; }
+  function multiLbl(arr){ var v = arr.filter(function(o){return o.on;}).map(function(o){return o.lbl;}); return v.length ? v.join('; ') : '— no pick yet —'; }
   return {
     'Sat AM burrito'      : selLbl(bfastOpts, bfastSel),
     'Sat dinner'          : multiLbl(satD),
     'Sat late'            : multiLbl(satLate),
-    'Sun breakfast'       : multiLbl(sunB),
+    'Caffeine & Curses'   : multiLbl(sunB),
     'Sun brunch/morning'  : selLbl(sunM, sunMSel),
     'Sun afternoon'       : selLbl(sunTeaOpts, sunTeaSel),
     'Sun dinner'          : multiLbl(sunD),
     'Sun ghost crawl'     : selLbl(ghostOpts, ghostSel),
     'Sun late'            : multiLbl(sunLate),
-    'Mon breakfast'       : multiLbl(monB),
+    'Bait & Breakfast🐊'  : multiLbl(monB),
     'Mon swamp tour'      : selLbl(monSwampOpts, monSwampSel),
-    'Mon lunch'           : selLbl(monLunchOpts, monLunchSel),
-    'Mon farewell dinner' : multiLbl(monD),
+    'After the swamp'     : multiLbl(monLunchOpts),
+    'Mon last supper'     : multiLbl(monD),
     'Mon nightcap'        : selLbl(nightOpts, nightSel),
     'Tue last bites'      : multiLbl(tueL)
   };
+}
+
+function multiHasAny(arr) { return arr.some(function(o){ return !!o.on; }); }
+
+function validateAllPicks() {
+  var missing = [];
+  if (bfastSel < 0) missing.push('Sat AM burrito');
+  if (!multiHasAny(satD)) missing.push('Meet with the Boys');
+  if (!multiHasAny(satLate)) missing.push('Party Hardy');
+  if (!multiHasAny(sunB)) missing.push('Caffeine & Curses');
+  if (sunMSel < 0) missing.push('Drag Brunch');
+  if (sunTeaSel < 0) missing.push('Sun afternoon');
+  if (!multiHasAny(sunD)) missing.push('Dying to Dine');
+  if (ghostSel < 0) missing.push('Ghost crawl');
+  if (!multiHasAny(sunLate)) missing.push("What's next?");
+  if (!multiHasAny(monB)) missing.push('Bait & Breakfast🐊');
+  if (monSwampSel < 0) missing.push('Swamp tour');
+  if (!multiHasAny(monLunchOpts)) missing.push('After the swamp');
+  if (!multiHasAny(monD)) missing.push('The Last Supper');
+  if (nightSel < 0) missing.push('Nightcap');
+  if (!multiHasAny(tueL)) missing.push('Tue brunch');
+  return missing;
+}
+
+function buildPickEmailBody(name, suggest) {
+  function linesForMulti(title, arr) {
+    var on = arr.filter(function(o){ return o.on; });
+    if (!on.length) return title + '\n  (none)\n';
+    var out = title + '\n';
+    on.forEach(function(o) {
+      out += '  • ' + o.lbl;
+      if (o.note) out += ' — ' + o.note;
+      if (o.pp) out += ' · ~$' + o.pp + 'pp';
+      if (o.rating) out += ' · ' + o.rating;
+      if (o.url) out += '\n    ' + o.url;
+      out += '\n';
+    });
+    return out + '\n';
+  }
+  function lineForSingle(title, arr, idx) {
+    if (idx == null || idx < 0 || !arr[idx]) return title + '\n  (none)\n\n';
+    var o = arr[idx];
+    var out = title + '\n  • ' + o.lbl;
+    if (o.note) out += ' — ' + o.note;
+    if (o.pp) out += ' · ~$' + o.pp + 'pp';
+    if (o.rating) out += ' · ' + o.rating;
+    if (o.url) out += '\n    ' + o.url;
+    return out + '\n\n';
+  }
+  var body = 'Itinerary picks from ' + name + '\n\n';
+  body += '══════════════════════════════════\nPICKS\n══════════════════════════════════\n\n';
+  body += lineForSingle('Sat AM — burrito', bfastOpts, bfastSel);
+  body += linesForMulti('Sat — Meet with the Boys', satD);
+  body += linesForMulti('Sat — Party Hardy', satLate);
+  body += linesForMulti('Sun — Caffeine & Curses', sunB);
+  body += lineForSingle('Sun — Drag Brunch', sunM, sunMSel);
+  body += lineForSingle('Sun — Afternoon', sunTeaOpts, sunTeaSel);
+  body += linesForMulti('Sun — Dying to Dine', sunD);
+  body += lineForSingle('Sun — Ghost crawl', ghostOpts, ghostSel);
+  body += linesForMulti('Sun — What\'s next?', sunLate);
+  body += linesForMulti('Mon — Bait & Breakfast🐊', monB);
+  body += lineForSingle('Mon — Swamp tour', monSwampOpts, monSwampSel);
+  body += linesForMulti('Mon — After the swamp', monLunchOpts);
+  body += linesForMulti('Mon — The Last Supper', monD);
+  body += lineForSingle('Mon — Nightcap', nightOpts, nightSel);
+  body += linesForMulti('Tue — Brunch', tueL);
+  if (suggest) body += 'Suggestions you sent:\n  ' + suggest + '\n\n';
+  body += '══════════════════════════════════\nMAPS & LISTS\n══════════════════════════════════\n';
+  body += '🦪 NOLA list: https://maps.app.goo.gl/hjrLT1tFnSjq2p379\n';
+  body += 'Pin map: https://www.google.com/maps/d/viewer?mid=1gbZG3ilKl-06BsqTUAiz9oW0dL9evjs\n\n';
+  body += 'Questions? Text Grace. Don\'t ghost the group chat. 👻\n';
+  body += '— Voodoo Clam Clan · Oct 3–6, 2026\n';
+  return body;
 }
 
 function submitPicks() {
@@ -2285,20 +2395,28 @@ function submitPicks() {
   var name = (nameEl.value || '').trim();
   if (!name) { statusEl.textContent = 'Add your name first 🤍'; nameEl.focus(); return; }
 
+  var missing = validateAllPicks();
+  if (missing.length) {
+    statusEl.textContent = 'Still need a pick for: ' + missing.slice(0, 3).join(', ') + (missing.length > 3 ? '…' : '');
+    return;
+  }
+
   var picks = summarizePicks();
   var suggest = (document.getElementById('ps-suggest').value || '').trim();
+  var wrapUp = buildPickEmailBody(name, suggest);
   var payload = new FormData();
   payload.append('_subject', '🦪 Itinerary picks — ' + name);
   payload.append('Name', name);
   Object.keys(picks).forEach(function(k){ payload.append(k, picks[k]); });
   if (suggest) payload.append('Suggestions', suggest);
+  payload.append('Formatted picks', wrapUp);
 
   btn.disabled = true; statusEl.textContent = 'Sending…';
   fetch('https://formspree.io/f/mqenjdwa', {
     method: 'POST', body: payload, headers: { 'Accept': 'application/json' }
   }).then(function(res){
     if (res.ok) {
-      statusEl.textContent = 'Got it, ' + name + ' — your picks are in. 🤍';
+      statusEl.textContent = 'Got it, ' + name + ' — you\'re locked in 🤍';
       document.getElementById('pick-submit').classList.add('sent');
     } else {
       btn.disabled = false;
@@ -2338,7 +2456,7 @@ renderPicks();
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') lbClose(); });
 })();
 
-// Live weather via Open-Meteo (no API key)
+// Weekend forecast for trip dates via Open-Meteo (archive = typical early Oct pattern)
 (function(){
   var WX = {
     0:'clear',1:'clear',2:'cloudy',3:'cloudy',
@@ -2348,43 +2466,62 @@ renderPicks();
     71:'cloudy',73:'cloudy',75:'cloudy',77:'cloudy',85:'cloudy',86:'cloudy',
     95:'storm',96:'storm',99:'storm'
   };
-  var ICONS  = {clear:'☀️',cloudy:'☁️',rain:'🌧',storm:'⛈',fog:'🌫',loading:'—',error:'—'};
-  var LABELS = {clear:'Clear skies',cloudy:'Cloudy',rain:'Rain',storm:'Thunderstorms',fog:'Foggy',loading:'Loading…',error:'Unavailable'};
+  var ICONS  = {clear:'☀️',cloudy:'☁️',rain:'🌧',storm:'⛈',fog:'🌫'};
+  var DAYS = ['Sat','Sun','Mon','Tue'];
+  var START = '2025-10-03';
+  var END = '2025-10-06';
 
-  function spawnRain(card, count) {
-    var layer = card.querySelector('.wx-bg-anim');
-    for (var i = 0; i < count; i++) {
-      var d = document.createElement('span');
-      d.className = 'wx-drop';
-      d.style.cssText = [
-        'left:'+(Math.random()*100)+'%',
-        'top:'+(Math.random()*30-30)+'%',
-        'animation-duration:'+(0.5+Math.random()*0.6)+'s',
-        'animation-delay:'+(Math.random()*1.5)+'s',
-        'opacity:'+(0.3+Math.random()*0.5)
-      ].join(';');
-      layer.appendChild(d);
+  function renderDays(daily, footNote) {
+    var box = document.getElementById('wx-days');
+    var sub = document.getElementById('wx-panel-sub');
+    var foot = document.getElementById('wx-panel-foot');
+    if (!box) return;
+    var html = '';
+    for (var i = 0; i < 4; i++) {
+      var code = daily.weather_code ? daily.weather_code[i] : (daily.weathercode ? daily.weathercode[i] : 2);
+      var cond = WX[code] || 'cloudy';
+      var hi = Math.round(daily.temperature_2m_max[i]);
+      var lo = Math.round(daily.temperature_2m_min[i]);
+      var rain = daily.precipitation_probability_max ? daily.precipitation_probability_max[i] : null;
+      html += '<div class="wx-day">' +
+        '<div class="wx-day-name">' + DAYS[i] + '</div>' +
+        '<div class="wx-day-icon">' + (ICONS[cond] || '☁️') + '</div>' +
+        '<div class="wx-day-temp">' + hi + '°</div>' +
+        '<div class="wx-day-range">' + lo + '° / ' + hi + '°</div>' +
+        (rain != null ? '<div class="wx-day-rain">' + rain + '% rain</div>' : '') +
+      '</div>';
     }
+    box.innerHTML = html;
+    if (sub) sub.textContent = 'Typical early-October pattern for our weekend';
+    if (foot) foot.textContent = footNote || 'Open-Meteo archive';
   }
 
-  fetch('https://api.open-meteo.com/v1/forecast?latitude=29.9511&longitude=-90.0715&current=temperature_2m,weathercode,relative_humidity_2m,precipitation_probability&temperature_unit=fahrenheit')
-    .then(function(r){ return r.json(); })
+  // Prefer live forecast if the API covers Oct 2026; fall back to last year's same dates
+  var liveUrl = 'https://api.open-meteo.com/v1/forecast?latitude=29.9511&longitude=-90.0715&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=America%2FChicago&start_date=2026-10-03&end_date=2026-10-06';
+  var archiveUrl = 'https://archive-api.open-meteo.com/v1/archive?latitude=29.9511&longitude=-90.0715&start_date=' + START + '&end_date=' + END + '&daily=weathercode,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&timezone=America%2FChicago';
+
+  fetch(liveUrl)
+    .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
     .then(function(data){
-      var c    = data.current;
-      var cond = WX[c.weathercode] || 'cloudy';
-      var card = document.getElementById('wx-card');
-      card.dataset.wx = cond;
-      document.getElementById('wx-icon').textContent    = ICONS[cond];
-      document.getElementById('wx-temp').textContent    = Math.round(c.temperature_2m)+'°F';
-      document.getElementById('wx-label').textContent   = LABELS[cond];
-      document.getElementById('wx-humidity').textContent = c.relative_humidity_2m+'% humidity';
-      document.getElementById('wx-rain-pct').textContent = c.precipitation_probability+'% rain chance';
-      if (cond === 'rain' || cond === 'storm') spawnRain(card, 28);
+      if (!data.daily || !data.daily.temperature_2m_max || data.daily.temperature_2m_max.length < 4) throw new Error('short');
+      renderDays(data.daily, 'Open-Meteo · Oct 3–6 2026');
+      var sub = document.getElementById('wx-panel-sub');
+      if (sub) sub.textContent = 'Forecast for our NOLA weekend';
     })
     .catch(function(){
-      var card = document.getElementById('wx-card');
-      card.dataset.wx = 'error';
-      document.getElementById('wx-label').textContent = 'Weather unavailable';
+      return fetch(archiveUrl).then(function(r){ return r.json(); }).then(function(data){
+        if (!data.daily) throw new Error('no daily');
+        // archive uses weathercode; synthesize rain % from code
+        data.daily.precipitation_probability_max = (data.daily.weathercode || []).map(function(c){
+          var cond = WX[c] || 'cloudy';
+          return cond === 'storm' ? 70 : cond === 'rain' ? 55 : cond === 'cloudy' ? 25 : 10;
+        });
+        renderDays(data.daily, 'Open-Meteo · typical early Oct');
+      });
+    })
+    .catch(function(){
+      var sub = document.getElementById('wx-panel-sub');
+      if (sub) sub.textContent = 'Forecast unavailable — pack for ~85°F + pop-up storms';
     });
 })();
 </script>
