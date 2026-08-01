@@ -547,7 +547,10 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- FORM -->
   <div class="form-wrap" id="form-wrap">
-  <form action="https://formspree.io/f/mqenjdwa" method="POST" id="vcc-form">
+  <form action="https://formsubmit.co/anzhelika.y.suchkova@gmail.com" method="POST" id="vcc-form">
+    <input type="hidden" name="_subject" value="🦪 VCC form response">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
 
     <!-- ABOUT YOU -->
     <div class="f-section">
@@ -880,10 +883,10 @@ input[type="range"]::-webkit-slider-thumb {
               </div>
             </label>
             <label class="f-opt">
-              <input type="radio" name="sat_late" value="Razzoo Bar &amp; Patio — 511 Bourbon St" required>
+              <input type="radio" name="sat_late" value="The Dungeon — 738 Toulouse St" required>
               <div class="f-opt-body">
-                <div class="f-opt-lbl">Razzoo Bar &amp; Patio — 511 Bourbon St</div>
-                <div class="f-opt-note">Dance floor · daiquiris · ~$15pp</div>
+                <div class="f-opt-lbl">The Dungeon — 738 Toulouse St</div>
+                <div class="f-opt-note">Vampire-vibe rock dive · gothic · ~$15pp</div>
               </div>
             </label>
             <label class="f-opt">
@@ -1025,13 +1028,6 @@ input[type="range"]::-webkit-slider-thumb {
               <div class="f-opt-body">
                 <div class="f-opt-lbl">Cane and Table — French Quarter</div>
                 <div class="f-opt-note">Rum + Caribbean Creole · Decatur St · ~$55pp · near ghost crawl meetup</div>
-              </div>
-            </label>
-            <label class="f-opt">
-              <input type="radio" name="mon_dinner" value="Cafe Amelie — candlelit courtyard">
-              <div class="f-opt-body">
-                <div class="f-opt-lbl">Café Amélie — candlelit courtyard</div>
-                <div class="f-opt-note">Boho-coven perfection · ~$65pp · French Quarter · call ahead for group</div>
               </div>
             </label>
             <label class="f-opt">
@@ -1335,18 +1331,22 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
   var form = this;
   var data = new FormData(form);
 
-  fetch('https://formspree.io/f/mqenjdwa', {
+  var obj = {};
+  data.forEach(function(v, k){ obj[k] = v; });
+  fetch('https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com', {
     method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
+    body: JSON.stringify(obj),
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
   })
-  .then(function(res) {
-    if (res.ok) {
+  .then(function(res) { return res.json().then(function(d){ return { res: res, data: d }; }); })
+  .then(function(out) {
+    var ok = out.res.ok && out.data && out.data.success !== false && out.data.success !== 'false';
+    if (ok) {
       document.getElementById('form-wrap').classList.add('hidden');
       document.getElementById('success').classList.add('show');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      alert('Something went wrong — please try again or text us directly.');
+      alert((out.data && out.data.message) || 'Something went wrong — please try again or text us directly.');
     }
   })
   .catch(function(err) {
