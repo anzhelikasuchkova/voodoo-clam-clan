@@ -2126,16 +2126,15 @@ var GMAP = "https://www.google.com/maps/search/?api=1&query=";
 var satD = [
   { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's", tag:"Will's pick", note:"The only open-air rooftop terrace overlooking Bourbon Street! Escape the street-level chaos into a festive, multi-level oasis featuring authentic Cajun and Creole cooking—think massive blackened alligator bites, cream-sauced crawfish poutine, and legendary loaded crab cakes. 🦀", pp:35, uber:8, dist:"~8 min drive", url:GMAP+"Mambos+New+Orleans", on:false, rating:"4.4★" },
   { hood:"Irish Channel", lbl:"Tchoup Yard", note:"A ginormous outdoor oasis with a huge gravel courtyard, colorful chairs, umbrellas, and picnic tables. Permanent food trucks + a massive outdoor bar with local drafts, margaritas, and famous frozen Frosé. 🍹", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Tchoup+Yard+New+Orleans", on:false },
-  { hood:"French Quarter", lbl:"The Will & The Way — Toulouse St", note:"An upscale, moody, and dimly-lit hidden gem nestled behind a gorgeous 18th-century French Quarter courtyard, featuring a killer craft cocktail menu and elevated small plates like loaded Korean hot fries, lamb birria tacos, and their famous foie gras butter burger. 🍸", pp:45, uber:8, dist:"~8 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
   { hood:"Uptown / Garden District", lbl:"The Avenue Pub — St Charles Ave", note:"Historic craft beer hub with a killer menu · iconic wraparound streetcar-view balcony · 40+ draft taps · award-winning eats like beef-fat tater tots, smoked wings, and legendary pub burgers 🍔", pp:18, uber:0, dist:"~7 min walk", url:GMAP+"The+Avenue+Pub+New+Orleans", on:false },
   { hood:"Central City", lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
 ];
 
 // Saturday late — bars + clubs (multi-select)
 var satLate = [
-  { hood:"French Quarter", lbl:"The Dungeon — 738 Toulouse St", note:"A dark, gritty, and legendary vampire-vibe rock 'n' roll dive bar hidden down an alleyway. If you want to escape the pop music, sip strong drinks under gothic decor, and lean into the witchy side of the city after midnight, this is the spot. 🕸️", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"The+Dungeon+738+Toulouse+St+New+Orleans", on:false },
-  { lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"Historic Voodoo Bar · candlelit · cash only 🕯️", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
-  { lbl:"Pirate's Alley Cafe", note:"Absinthe & Rum · by St. Louis Cathedral", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Pirates+Alley+Cafe+New+Orleans", on:false },
+  { hood:"French Quarter", lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"Historic Voodoo Bar · candlelit · cash only 🕯️", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
+  { lbl:"Pirate's Alley Cafe", note:"A historic, atmospheric hideaway right next to St. Louis Cathedral, famous for serving exceptional absinthe, rum cocktails, and pirate-themed vibes. 🏴‍☠️", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Pirates+Alley+Cafe+New+Orleans", on:false },
+  { lbl:"Pat O'Brien's — 718 St Peter St", note:"A massive, world-famous historic complex centered around a legendary flaming fountain courtyard. Famous for inventing the Hurricane drink, plus a high-energy indoor dueling piano lounge. 🎹", pp:25, uber:8, dist:"~8 min drive", url:GMAP+"Pat+OBriens+718+St+Peter+New+Orleans", on:false },
   { lbl:"Tropical Isle's Bayou Club — Bourbon St", note:"Live Cajun Music · Hand Grenades", pp:25, uber:8, dist:"~8 min drive", url:GMAP+"Tropical+Isle+Bayou+Club+New+Orleans", on:false },
   { lbl:"The World Famous Cat's Meow — 701 Bourbon St", note:"Sing hits on a massive stage with a live DJ host and a 24-hour Bourbon Street livecam! 🎙️", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Cats+Meow+701+Bourbon+St+New+Orleans", on:false },
   { hood:"Central City", lbl:"The Rabbit Hole — OCH Blvd", note:"House/Techno Club · short walk home", pp:20, uber:0, url:GMAP+"The+Rabbit+Hole+New+Orleans" , dist:"~4 min walk", on:false},
@@ -2174,7 +2173,8 @@ var ghostOpts = [
 // Sunday late — after the pub crawl (multi-select)
 var sunLate = [
   { hood:"French Quarter", lbl:"Saddle Bar — 715 Bienville St", note:"Western-themed bar · cowboy cocktails · line dancing energy · if the coven wants boots-and-chaos vibes without full Bourbon Street chaos, this is the move. 🤠", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Saddle+Bar+715+Bienville+St+New+Orleans", on:false },
-  { hood:"Warehouse District", lbl:"High Grace NOLA", note:"High-energy Dance Lounge", pp:20, uber:6, dist:"~6 min drive", url:GMAP+"High+Grace+NOLA+New+Orleans", on:false },
+  { lbl:"The Will & The Way — Toulouse St", note:"Stop by for craft cocktails in the moody 18th-century courtyard. Killer drinks + small plates if you get hungry. 🍸", pp:25, uber:8, dist:"~8 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
+  { lbl:"The Carousel Bar & Lounge", note:"Located inside the historic Hotel Monteleone, this is a world-famous, literal rotating 25-seat bar that has been turning for decades. 🎠", pp:25, uber:8, dist:"~8 min drive", url:GMAP+"Carousel+Bar+Hotel+Monteleone+New+Orleans", on:false },
   { hood:"Frenchmen Street / Marigny", lbl:"The Spotted Cat Music Club — Frenchmen St", note:"Live Jazz · no cover · tip the band", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"The+Spotted+Cat+Music+Club+New+Orleans", on:false },
   { hood:"Central City", lbl:"Skip — calling it a night", pp:0, skip:true, on:false },
 ];
@@ -2183,8 +2183,6 @@ var sunLate = [
 var sunTeaOpts = [
   { hood:"French Quarter", lbl:"French Market stroll", note:"Shopping & Voodoo Shops · stalls, crystals", pp:0, uber:8, url:GMAP+"French+Market+New+Orleans", dist:"~10 min drive", on:false },
   { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~10 min drive", on:false },
-  { lbl:"The Carousel Bar & Lounge", note:"Located inside the historic Hotel Monteleone, this is a world-famous, literal rotating 25-seat bar that has been turning for decades. 🎠", pp:25, uber:8, url:GMAP+"Carousel+Bar+Hotel+Monteleone+New+Orleans", dist:"~8 min drive", on:false },
-  { lbl:"Jewel of the South", note:"Tucked inside a stunning, historic 1830s Creole cottage, this is officially ranked as one of the 50 Best Bars in North America. 💎", pp:25, uber:8, url:GMAP+"Jewel+of+the+South+New+Orleans", dist:"~8 min drive", on:false },
   { hood:"Central City", lbl:"Back to the Airbnb", note:"recharge · get ready · eat snacks", pp:0, uber:0, on:false, solo:true },
   { lbl:"Skip — I've got other plans", pp:0, skip:true, on:false },
 ];
@@ -2214,6 +2212,7 @@ var monD = [
 var nightOpts = [
   { hood:"Uptown / Garden District", lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark/Moody Live Jazz", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk", on:false},
   { lbl:"Hot Tin — Pontchartrain Hotel (Fl 14)", note:"Chic, 1940s artist-inspired penthouse lounge located directly upstairs from the Bayou Bar. Serves up bright craft cocktails and premium champagne paired with breathtaking, panoramic 270-degree skyline views. Perfect for a final celebratory toast! 🥂", pp:30, uber:0, url:GMAP+"Hot+Tin+Pontchartrain+Hotel+New+Orleans", dist:"Located on the 14th floor · free entry", distRaw:true, on:false },
+  { hood:"French Quarter", lbl:"High Grace NOLA", note:"Your favorite upscale dive bar tucked right into the heart of the French Quarter. Open 24/7 with bumping music, a free popcorn machine, and legendary flaming shots.🍾", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"High+Grace+NOLA+New+Orleans", on:false },
   { hood:"Marigny / St. Claude", lbl:"The AllWays Lounge & Cabaret — Naked Karaoke", note:"AllMost Naked Karaoke · Mon Oct 5 · sign-ups ~9:30pm · sing till midnight-ish · 21+", pp:15, uber:10, url:GMAP+"The+AllWays+Lounge+and+Cabaret+New+Orleans", dist:"~10 min drive", on:false},
   { hood:"Central City", lbl:"Final Party at the Airbnb", note:"Break out the leftover snacks, pour the remaining drinks, and decompress before the trip back 🔮", pp:0, uber:0, on:false },
   { lbl:"Skip — Catch y'all later!", pp:0, skip:true, on:false },
@@ -2529,7 +2528,7 @@ function loadFormSelections() {
     var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Skip — Free afternoon for me":1,"Skip — No judgment either way 😉":1};
     var sunDMap = {"Bésame — French Quarter":0,"Bésame":0,"Cane and Table — French Quarter":1,"The Court of Two Sisters — Royal St":2,"Cochon Butcher — Warehouse District":0,"Skip — Still love y'all though ♡":3,"Muriel's Jackson Square":2,"Compere Lapin — Warehouse District":1};
     var monDMap  = {"The Rum House — Magazine St":0, "Mister Mao — Uptown":1, "Peche Seafood Grill — Warehouse District":2, "Compère Lapin — Warehouse District":3, "Compere Lapin — Warehouse District":3, "Skip — Sadly, can't make it ♡":4, "Skip — Bye, Felicia!":4, "Skip — Sorry, can't attend":4};
-    var satDMap = {"Mambo's — French Quarter":0,"Mambo's":0,"Tchoup Yard":1,"The Will & The Way — Toulouse St":2,"The Avenue Pub — St Charles Ave":3,"Skip — Sitting this dinner out":4};
+    var satDMap = {"Mambo's — French Quarter":0,"Mambo's":0,"Tchoup Yard":1,"The Avenue Pub — St Charles Ave":2,"Skip — Sitting this dinner out":3};
     var sunBMap = {"Lagniappe Bakehouse":0,"Cafe Porche & Snowbar":1,"Breakfast at the Airbnb":2,"Skip — I don't need food":3};
     var monBMap = {"Café Beignet — Royal St":0,"Avenue Cafe — St Charles Ave":1,"Ruby Slipper Café — Canal St":2,"Breakfast at the Airbnb":3,"Skip — Breakfast? Yuck!":4};
     var tueLMap = {"Café Du Monde — beignets + café au lait":0,"Turkey and the Wolf — 739 Jackson":1,"Play it by ear":2,"Skip — beignets in the terminal if needed":3};
@@ -2540,20 +2539,21 @@ function loadFormSelections() {
       "Verti Marte — Royal St":0,
       "Frenchmen Street bar hop":0,
       "Hot Tin — Pontchartrain Hotel (Fl 14)":1,
-      "The AllWays Lounge & Cabaret — Naked Karaoke":2,
-      "Final Party at the Airbnb":3,
-      "Party at the Airbnb":3,
-      "Party at the Casa 💃💃":3,
-      "Head home — call it a night":3,
-      "Head home after ghost tour":3,
-      "Skip — Catch y'all later!":4,
-      "Skip — Next time though":4,
-      "Skip — No judgment either way 😉":4
+      "High Grace NOLA":2,
+      "The AllWays Lounge & Cabaret — Naked Karaoke":3,
+      "Final Party at the Airbnb":4,
+      "Party at the Airbnb":4,
+      "Party at the Casa 💃💃":4,
+      "Head home — call it a night":4,
+      "Head home after ghost tour":4,
+      "Skip — Catch y'all later!":5,
+      "Skip — Next time though":5,
+      "Skip — No judgment either way 😉":5
     };
     var satLateMap = {
-      "The Dungeon — 738 Toulouse St": 0,
-      "Lafitte's Blacksmith Shop Bar — Bourbon St": 1,
-      "Pirate's Alley Cafe": 2,
+      "Lafitte's Blacksmith Shop Bar — Bourbon St": 0,
+      "Pirate's Alley Cafe": 1,
+      "Pat O'Brien's — 718 St Peter St": 2,
       "Tropical Isle's Bayou Club — Bourbon St": 3,
       "The World Famous Cat's Meow — 701 Bourbon St": 4,
       "The Rabbit Hole — OCH Blvd": 5,
@@ -2564,10 +2564,11 @@ function loadFormSelections() {
     var sunLateMap = {
       "The Swamp on Bourbon Street — 516 Bourbon St": 0,
       "Saddle Bar — 715 Bienville St": 0,
-      "High Grace NOLA": 1,
-      "The Spotted Cat Music Club — Frenchmen St": 2,
-      "Skip — calling it a night": 3,
-      "Skip — Calling it early": 3
+      "The Will & The Way — Toulouse St": 1,
+      "The Carousel Bar & Lounge": 2,
+      "The Spotted Cat Music Club — Frenchmen St": 3,
+      "Skip — calling it a night": 4,
+      "Skip — Calling it early": 4
     };
 
     if (d.sun_morning  != null && sunMMap[d.sun_morning]  !== undefined) sunMSel = sunMMap[d.sun_morning];
@@ -2583,9 +2584,16 @@ function loadFormSelections() {
       var sunLateVals = Array.isArray(d.sun_late) ? d.sun_late : String(d.sun_late).split(/\s*;\s*/);
       sunLateVals.forEach(function(val) {
         if (val === "The AllWays Lounge & Cabaret — Naked Karaoke" && nightMap[val] !== undefined) nightOpts[nightMap[val]].on = true;
+        if (val === "High Grace NOLA" && nightMap[val] !== undefined) nightOpts[nightMap[val]].on = true;
       });
     }
-    if (d.sat_dinner != null) applyMultiFromVal(satD, d.sat_dinner, satDMap);
+    if (d.sat_dinner != null) {
+      applyMultiFromVal(satD, d.sat_dinner, satDMap);
+      var satDinnerVals = Array.isArray(d.sat_dinner) ? d.sat_dinner : String(d.sat_dinner).split(/\s*;\s*/);
+      satDinnerVals.forEach(function(val) {
+        if (val === "The Will & The Way — Toulouse St" && sunLateMap[val] !== undefined) sunLate[sunLateMap[val]].on = true;
+      });
+    }
     if (d.sun_breakfast != null) applyMultiFromVal(sunB, d.sun_breakfast, sunBMap);
     if (d.sun_dinner != null) applyMultiFromVal(sunD, d.sun_dinner, sunDMap);
     if (d.mon_breakfast != null) applyMultiFromVal(monB, d.mon_breakfast, monBMap);
@@ -2595,9 +2603,13 @@ function loadFormSelections() {
       satLate.forEach(function(o){ o.on = false; });
       var lateVals = Array.isArray(d.sat_late) ? d.sat_late : String(d.sat_late).split(/\s*;\s*/);
       lateVals.forEach(function(val) {
-        // High Grace / Spotted Cat → Sunday late; AllWays → Monday night
-        if (sunLateMap[val] !== undefined && (val === "High Grace NOLA" || val === "The Spotted Cat Music Club — Frenchmen St")) {
+        // Spotted Cat → Sunday late; High Grace / AllWays → Monday nightcap
+        if (sunLateMap[val] !== undefined && val === "The Spotted Cat Music Club — Frenchmen St") {
           sunLate[sunLateMap[val]].on = true;
+          return;
+        }
+        if (val === "High Grace NOLA" && nightMap[val] !== undefined) {
+          nightOpts[nightMap[val]].on = true;
           return;
         }
         if (val === "The AllWays Lounge & Cabaret — Naked Karaoke" && nightMap[val] !== undefined) {
@@ -2619,10 +2631,12 @@ function loadFormSelections() {
         "French Market stroll": 0,
         "French Market + crystal/voodoo shopping": 0,
         "Frenchmen Street stroll": 1,
-        "The Carousel Bar & Lounge": 2,
-        "Jewel of the South": 3,
-        "Back to the Airbnb": 4,
-        "Skip — I've got other plans": 5
+        "Back to the Airbnb": 2,
+        "Skip — I've got other plans": 3
+      });
+      var sunAftVals = Array.isArray(d.sun_afternoon) ? d.sun_afternoon : String(d.sun_afternoon).split(/\s*;\s*/);
+      sunAftVals.forEach(function(val) {
+        if (val === "The Carousel Bar & Lounge" && sunLateMap[val] !== undefined) sunLate[sunLateMap[val]].on = true;
       });
     }
   } catch(e) {}
