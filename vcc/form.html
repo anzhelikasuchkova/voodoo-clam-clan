@@ -1280,11 +1280,8 @@ document.getElementById('vcc-form').addEventListener('change', function(e) {
   if (relevant.indexOf(e.target.name) !== -1) vccSaveToStorage();
 });
 
-// ── DELIVERY ENDPOINT ───────────────────────────────────────────────────────
-// TODO: replace the address below with the FormSubmit hashed alias from the
-// activation email (https://formsubmit.co/ajax/<hash>) — the raw address is
-// readable in page source and gets scraped for spam. Same swap in index.html.
-var VCC_FORM_ENDPOINT = 'https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com';
+// FormSubmit hashed alias (activation email) — keeps the inbox out of page source
+var VCC_FORM_ENDPOINT = 'https://formsubmit.co/ajax/5477b4ceababc64370012fbdfb0f61be';
 // Mirror it onto the form as the no-JS fallback target (non-AJAX variant)
 document.getElementById('vcc-form').action = VCC_FORM_ENDPOINT.replace('/ajax/', '/');
 

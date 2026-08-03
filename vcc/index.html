@@ -139,13 +139,29 @@ header.hero,
 
 @media(max-width:640px){
   #hero nav,
-  .hero-nav { margin-top: 2px; margin-bottom: 6px; }
-  .nav-links a {
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    padding: 7px 6px;
-    text-align: center;
+  .hero-nav { margin-top: 2px; margin-bottom: 6px; width: 100%; }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
+  .nav-links li {
+    flex: 0 0 25%;
+    min-width: 0;
+  }
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 10px 4px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .nav-links li:nth-child(4n) a { border-right: none; }
+  .nav-links li:nth-child(n+5) a { border-top: 0.5px solid rgba(240,236,228,0.06); }
+  /* Last row (Looks / Playlist / Code) — no trailing divider on the rightmost of the trio */
+  .nav-links li:last-child a { border-right: none; }
   .hero {
     padding: 12px 12px 24px;
   }
@@ -173,8 +189,15 @@ header.hero,
   .countdown-label { font-size: 10px; letter-spacing: 0.02em; white-space: nowrap; }
   .pay-kassie-soft { font-size: 10px; letter-spacing: 0.1em; line-height: 1.6; }
   .footer-clam-logo { width: 80px; }
-  footer { padding: 28px 24px 48px !important; }
+  footer { padding: 28px 24px calc(130px + env(safe-area-inset-bottom, 0px)) !important; }
   #pay { padding-bottom: 16px; }
+  .pick {
+    margin: 8px 0 4px 0;
+  }
+  .pick-row { padding: 10px 12px; font-size: 13px; }
+  .pick-note { font-size: 12px; color: rgba(240,236,228,0.48); line-height: 1.45; }
+  .look-photos { grid-template-columns: repeat(3, 1fr); }
+  .look-photos img { height: 140px; }
 }
 
 /* HERO accents (shimmer / particles — decorative only) */
@@ -686,7 +709,7 @@ section + section {
   0%, 100% { box-shadow: 0 0 0 1px rgba(212,83,126,0.35); }
   50% { box-shadow: 0 0 0 2px rgba(212,83,126,0.6), 0 0 26px rgba(212,83,126,0.28); }
 }
-@media(max-width:640px){ .pick { display:none; margin:8px 0 4px 68px; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; font-family:'DM Sans', system-ui, sans-serif; } }
+@media(max-width:640px){ .pick { display:none; margin:8px 0 4px 0; border:0.5px solid var(--border); border-radius:10px; overflow:hidden; font-family:'DM Sans', system-ui, sans-serif; } }
 .pick-row { display:flex; justify-content:space-between; align-items:baseline; gap:10px; padding:8px 12px; font-size:12.5px; font-family:'DM Sans', system-ui, sans-serif; font-weight:400; letter-spacing:0; color:rgba(240,236,228,0.55); cursor:pointer; border-bottom:0.5px solid rgba(240,236,228,0.06); transition:background 0.12s; line-height:1.4; }
 .pick-row:last-child { border-bottom:none; }
 .pick-row:hover { background:rgba(240,236,228,0.04); }
@@ -1073,7 +1096,7 @@ footer {
   align-items: center;
   justify-content: flex-start;
   gap: 28px;
-  padding: 60px 32px 80px;
+  padding: 60px 32px calc(100px + env(safe-area-inset-bottom, 0px));
   border-top: 0.5px solid var(--border);
 }
 
@@ -1234,7 +1257,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .lb-overlay.open { display:flex; }
 .lb-overlay img { max-width:90vw; max-height:88vh; border-radius:12px; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8); }
 .lb-close { position:absolute; top:20px; right:28px; font-size:32px; color:var(--pearl-dim); cursor:pointer; line-height:1; background:none; border:none; }
-@media(max-width:560px){ .look-photos { grid-template-columns:1fr 1fr; } .look-photos img { height:200px; } }
+@media(max-width:560px){ .look-photos { grid-template-columns:repeat(3,1fr); } .look-photos img { height:140px; } }
 .looks-pinterest { margin-top:24px; text-align:center; }
 .looks-pinterest a { font-family:'Cinzel',serif; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pink); text-decoration:none; border:0.5px solid rgba(212,83,126,0.3); border-radius:40px; padding:10px 24px; display:inline-block; transition:background 0.2s; }
 .looks-pinterest a:hover { background:var(--pink-dim); }
@@ -1380,7 +1403,26 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 .bot-nav a { font-family:'Cinzel',serif; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; color:var(--pearl-dim); text-decoration:none; white-space:nowrap; padding:14px 14px; border-right:0.5px solid rgba(240,236,228,0.06); transition:color 0.2s,background 0.2s; flex-shrink:0; }
 .bot-nav a:hover { color:var(--teal); background:rgba(94,207,207,0.05); }
 .bot-nav a.b-top { color:var(--teal); opacity:0.7; }
-@media(max-width:640px){ .bot-nav { flex-wrap:wrap; overflow-x:visible; } .bot-nav a { flex:1 0 calc(100%/6); padding:11px 4px; font-size:8.5px; letter-spacing:0.1em; text-align:center; white-space:nowrap; } .bot-nav a:nth-child(6n) { border-right:none; } .bot-nav a:nth-child(-n+6) { border-bottom:0.5px solid rgba(240,236,228,0.06); } }
+@media(max-width:640px){
+  .bot-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    flex-wrap: unset;
+    overflow-x: visible;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .bot-nav a {
+    flex: unset;
+    padding: 12px 4px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    white-space: nowrap;
+    border-right: 0.5px solid rgba(240,236,228,0.06);
+  }
+  .bot-nav a:nth-child(4n) { border-right: none; }
+  .bot-nav a:nth-child(-n+4) { border-bottom: 0.5px solid rgba(240,236,228,0.06); }
+}
 
 /* STICKY MUSIC PLAYER — sits above the hero eyebrow divider */
 .sticky-player {
@@ -1638,7 +1680,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Plan</div>
   <div class="section-title">Itinerary</div>
   <div class="section-subhead itin-howto">
-    Make this itinerary yours! Tap <span class="howto-chip">Options ▾</span> to pick your favorite spots. For <span class="prebook-badge">pre-booked</span> events hit Skip if you need to opt out so we can solidify the headcount. Add your name and hit <span class="howto-chip">Send →</span> <span class="emoji-white">🤍</span>
+    Make this itinerary yours! Tap <span class="howto-chip">Options ▾</span> to pick one or more spots if you care — or leave a block blank if you don’t. We mainly need dinner + booked-event headcounts. For <span class="prebook-badge">pre-booked</span> events hit Skip if you need to opt out. Add your name and hit <span class="howto-chip">Send →</span> <span class="emoji-white">🤍</span>
   </div>
 
   <div class="nights">
@@ -1684,13 +1726,13 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">7:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sat-evening"><strong>Meet with the Boys</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sat-evening"><strong>Meet with the Boys</strong> · pick one or more · beer gardens = order-yourself, no deposit</div>
           </div>
           <div class="pick" id="pick-satd"></div>
           <div class="event-item">
             <div class="event-time">Late</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sat-late"><strong>Party Hardy</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sat-late"><strong>Party Hardy</strong> · optional</div>
           </div>
           <div class="pick" id="pick-satlate"></div>
         </div>
@@ -1712,7 +1754,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:00 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-bfast"><strong>Caffeine &amp; Curses</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-bfast"><strong>Caffeine &amp; Curses</strong> · optional</div>
           </div>
           <div class="pick" id="pick-sunb"></div>
           <div class="event-item">
@@ -1724,7 +1766,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">~3:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-tea"><strong>Afternoon</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-tea"><strong>Afternoon</strong> · optional</div>
           </div>
           <div class="pick" id="pick-suntea"></div>
           <div class="event-item">
@@ -1742,7 +1784,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">Late</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-sun-late"><strong>What's next?</strong> · pick one or more</div>
+            <div class="event-text" id="itin-sun-late"><strong>What's next?</strong> · optional</div>
           </div>
           <div class="pick" id="pick-sunlate"></div>
         </div>
@@ -1764,7 +1806,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">8:30 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast</strong> · pick one or more</div>
+            <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast</strong> · optional</div>
           </div>
           <div class="pick" id="pick-monb"></div>
           <div class="event-item">
@@ -1787,7 +1829,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">9:00 pm</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-mon-nightcap"><strong>The Final Nightcap 🍻</strong> · anyone?</div>
+            <div class="event-text" id="itin-mon-nightcap"><strong>The Final Nightcap 🍻</strong> · optional</div>
           </div>
           <div class="pick" id="pick-night"></div>
         </div>
@@ -1814,7 +1856,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
           <div class="event-item">
             <div class="event-time">10:20 am</div>
             <div class="event-dot"></div>
-            <div class="event-text" id="itin-tue-bfast"><strong>Brunch</strong> · pick one or more</div>
+            <div class="event-text" id="itin-tue-bfast"><strong>Brunch</strong> · optional</div>
           </div>
           <div class="pick" id="pick-tue"></div>
           <div class="event-item">
@@ -1872,7 +1914,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     <div class="pay-row" id="pay-swamp-row" style="display:none">
       <div>
         <strong>Large Airboat Swamp Tour · Monday 10:20 am pickup</strong>
-        <span class="pay-row-note">Hotel pickup · ~35 min to Barataria Preserve · 2-hour airboat. No meal on board — pack lunch &amp; water (no glass!).</span>
+        <span class="pay-row-note">Pickup @ Homewood Suites FQ · 317 N Rampart · 2-hour airboat. No meal on board — pack lunch &amp; water (no glass!).</span>
       </div>
       <div class="pay-amt">~$81</div>
     </div>
@@ -1893,24 +1935,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
 <section id="map" class="phase-3-only">
   <div class="section-eyebrow">The City</div>
   <div class="section-title">Our NOLA</div>
-  <div class="hood-guide">
-    <div class="hood-card">
-      <h3>The French Quarter</h3>
-      <p>Historic, chaotic, and beautiful. Think candlelit courtyards, voodoo vibes, catch-all neon bars, and late-night paths down Bourbon or Pirate's Alley.</p>
-    </div>
-    <div class="hood-card">
-      <h3>Frenchmen Street &amp; Marigny</h3>
-      <p>The spot for incredible live local jazz, street musicians, local boutiques, and art markets without the Bourbon Street madness.</p>
-    </div>
-    <div class="hood-card">
-      <h3>Central City / Lower Garden District</h3>
-      <p>Home base! Cool, up-and-coming spots, easy morning-after bakeries, and high-energy warehouse dance lounges just a short walk or quick ride home.</p>
-    </div>
-    <div class="hood-card">
-      <h3>Uptown &amp; Magazine Street</h3>
-      <p>Tree-lined streets, gorgeous architecture, funky global fusion dining, and moody hotel bars. Perfect for a slightly classier escape.</p>
-    </div>
-  </div>
   <a class="map-list-frame" href="https://maps.app.goo.gl/hjrLT1tFnSjq2p379" target="_blank" rel="noopener">
     <div>
       <div class="map-list-kicker">Google Maps</div>
@@ -1926,6 +1950,12 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="section-eyebrow">The Forecast</div>
   <div class="section-title">Pack Smart</div>
   <div class="pack-row">
+    <div class="pack-list">
+      <div class="outfit-strip">
+        🌤 <strong>NOLA in early October: ~85°F, humid, afternoon thunderstorms likely.</strong><br>
+        Brief but heavy — bring a plan, not a prayer.
+      </div>
+    </div>
     <div id="wx-panel" class="wx-panel">
       <div class="wx-panel-head">NOLA · Oct 3–6</div>
       <div class="wx-panel-sub" id="wx-panel-sub">Loading weekend forecast…</div>
@@ -1936,12 +1966,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
         <div class="wx-day"><div class="wx-day-name">Tue</div><div class="wx-day-icon">—</div><div class="wx-day-temp">—°</div></div>
       </div>
       <div class="wx-panel-foot" id="wx-panel-foot">Open-Meteo</div>
-    </div>
-    <div class="pack-list">
-      <div class="outfit-strip">
-        🌤 <strong>NOLA in early October: ~85°F, humid, afternoon thunderstorms likely.</strong><br>
-        Brief but heavy — bring a plan, not a prayer.
-      </div>
     </div>
   </div>
 </section>
@@ -1956,15 +1980,15 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
   <div class="look-night-block">
     <div class="look-night-bd">
       <div class="look-photos">
-        <img src="../assets/images/night1-convoy/night1-1.jpg" alt="Look inspo">
-        <img src="../assets/images/night1-convoy/night1-2.jpg" alt="Look inspo">
-        <img src="../assets/images/night1-convoy/night1-3.jpg" alt="Look inspo">
-        <img src="../assets/images/night2-coven/night2-1.jpg" alt="Look inspo">
-        <img src="../assets/images/night2-coven/night2-2.jpg" alt="Glam look inspo">
-        <img src="../assets/images/night2-coven/night2-3.jpg" alt="Look inspo">
-        <img src="../assets/images/night3-shells/night3-1.jpg" alt="Look inspo">
-        <img src="../assets/images/night3-shells/night3-2.jpg" alt="Look boho inspo">
-        <img src="../assets/images/night3-shells/night3-3.jpg" alt="Look glam inspo">
+        <img src="assets/images/night1-convoy/night1-1.jpg" alt="Look inspo">
+        <img src="assets/images/night1-convoy/night1-2.jpg" alt="Look inspo">
+        <img src="assets/images/night1-convoy/night1-3.jpg" alt="Look inspo">
+        <img src="assets/images/night2-coven/night2-1.jpg" alt="Look inspo">
+        <img src="assets/images/night2-coven/night2-2.jpg" alt="Glam look inspo">
+        <img src="assets/images/night2-coven/night2-3.jpg" alt="Look inspo">
+        <img src="assets/images/night3-shells/night3-1.jpg" alt="Look inspo">
+        <img src="assets/images/night3-shells/night3-2.jpg" alt="Look boho inspo">
+        <img src="assets/images/night3-shells/night3-3.jpg" alt="Look glam inspo">
       </div>
     </div>
   </div>
@@ -1994,8 +2018,6 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
     <div class="rule"><div class="rule-num">2</div><div class="rule-text"><strong>Hype is Mandatory</strong>Designate a Hype Captain each night to maximize the energy. Unsolicited compliments and aggressive validation are legally required.</div></div>
     <div class="rule"><div class="rule-num">3</div><div class="rule-text"><strong>No Body Dissing</strong>Zero body talk—not even about your own. Keep it locked on good vibes and high confidence all weekend.</div></div>
     <div class="rule"><div class="rule-num">4</div><div class="rule-text"><strong>No Clam Left Behind</strong>Rotate who's behind the camera. Everyone goes home looking like a bombshell with fresh content.</div></div>
-    <div class="rule"><div class="rule-num">5</div><div class="rule-text"><strong>Emergency kit is shared</strong>Pack: fashion tape, safety pins, blister pads, dry shampoo, extra earring backs.</div></div>
-    <div class="rule"><div class="rule-num">6</div><div class="rule-text"><strong>The Theme Always Wins</strong>If you're unsure if your outfit fits the vibe, go tighter, go darker, add a crystal, or slap on a pearl. It fits.</div></div>
   </div>
 </section>
 
@@ -2100,20 +2122,22 @@ var bfastOpts = [
 var GMAP = "https://www.google.com/maps/search/?api=1&query=";
 
 // Saturday dinner — meet with the Boys (multi-select)
+// Prefer beer gardens / food-truck yards for big soft-RSVP groups (order-yourself, no deposit)
 var satD = [
-  { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's", tag:"Will's pick", note:"Creole/Seafood", pp:35, uber:8, dist:"~8 min drive", url:GMAP+"Mambos+New+Orleans", on:false, rating:"4.4★" },
-  { lbl:"The Will & The Way — Toulouse St", note:"Cocktails & Small Bites · courtyard", pp:45, uber:8, dist:"~8 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
-  { hood:"Uptown / Garden District", lbl:"The Avenue Pub — St Charles Ave", note:"Historic Craft Beer Hub · late-night · walkable", pp:18, uber:0, dist:"~7 min walk", url:GMAP+"The+Avenue+Pub+New+Orleans", on:false },
+  { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's", tag:"Will's pick", note:"The only open-air rooftop terrace overlooking Bourbon Street! Escape the street-level chaos into a festive, multi-level oasis featuring authentic Cajun and Creole cooking—think massive blackened alligator bites, cream-sauced crawfish poutine, and legendary loaded crab cakes. 🦀", pp:35, uber:8, dist:"~8 min drive", url:GMAP+"Mambos+New+Orleans", on:false, rating:"4.4★" },
+  { hood:"Irish Channel", lbl:"Tchoup Yard", note:"A ginormous outdoor oasis with a huge gravel courtyard, colorful chairs, umbrellas, and picnic tables. Permanent food trucks + a massive outdoor bar with local drafts, margaritas, and famous frozen Frosé. 🍹", pp:15, uber:10, dist:"~10 min drive", url:GMAP+"Tchoup+Yard+New+Orleans", on:false },
+  { hood:"French Quarter", lbl:"The Will & The Way — Toulouse St", note:"An upscale, moody, and dimly-lit hidden gem nestled behind a gorgeous 18th-century French Quarter courtyard, featuring a killer craft cocktail menu and elevated small plates like loaded Korean hot fries, lamb birria tacos, and their famous foie gras butter burger. 🍸", pp:45, uber:8, dist:"~8 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
+  { hood:"Uptown / Garden District", lbl:"The Avenue Pub — St Charles Ave", note:"Historic craft beer hub with a killer menu · iconic wraparound streetcar-view balcony · 40+ draft taps · award-winning eats like beef-fat tater tots, smoked wings, and legendary pub burgers 🍔", pp:18, uber:0, dist:"~7 min walk", url:GMAP+"The+Avenue+Pub+New+Orleans", on:false },
   { hood:"Central City", lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
 ];
 
 // Saturday late — bars + clubs (multi-select)
 var satLate = [
   { hood:"French Quarter", lbl:"The Dungeon — 738 Toulouse St", note:"A dark, gritty, and legendary vampire-vibe rock 'n' roll dive bar hidden down an alleyway. If you want to escape the pop music, sip strong drinks under gothic decor, and lean into the witchy side of the city after midnight, this is the spot. 🕸️", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"The+Dungeon+738+Toulouse+St+New+Orleans", on:false },
-  { lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"Historic Voodoo Bar · candlelit · cash only", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
+  { lbl:"Lafitte's Blacksmith Shop Bar — Bourbon St", note:"Historic Voodoo Bar · candlelit · cash only 🕯️", pp:15, uber:8, dist:"~8 min drive", url:GMAP+"Lafittes+Blacksmith+Shop+Bar+New+Orleans", on:false },
   { lbl:"Pirate's Alley Cafe", note:"Absinthe & Rum · by St. Louis Cathedral", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Pirates+Alley+Cafe+New+Orleans", on:false },
   { lbl:"Tropical Isle's Bayou Club — Bourbon St", note:"Live Cajun Music · Hand Grenades", pp:25, uber:8, dist:"~8 min drive", url:GMAP+"Tropical+Isle+Bayou+Club+New+Orleans", on:false },
-  { lbl:"The World Famous Cat's Meow — 701 Bourbon St", note:"The ultimate, multi-level karaoke institution. If you want a massive stage, a high-energy DJ host, and a legendary balcony overlooking Bourbon Street to belt out hits until the early morning, this is our spot. They even have a 24-hour livecam so the rest of the world can see you perform! 🎙️", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Cats+Meow+701+Bourbon+St+New+Orleans", on:false },
+  { lbl:"The World Famous Cat's Meow — 701 Bourbon St", note:"Sing hits on a massive stage with a live DJ host and a 24-hour Bourbon Street livecam! 🎙️", pp:20, uber:8, dist:"~8 min drive", url:GMAP+"Cats+Meow+701+Bourbon+St+New+Orleans", on:false },
   { hood:"Central City", lbl:"The Rabbit Hole — OCH Blvd", note:"House/Techno Club · short walk home", pp:20, uber:0, url:GMAP+"The+Rabbit+Hole+New+Orleans" , dist:"~4 min walk", on:false},
   { lbl:"Skip — Calling it early", pp:0, skip:true, on:false },
 ];
@@ -2134,10 +2158,9 @@ var sunM = [
 var sunMSel = 0;
 
 var sunD = [
-  { hood:"French Quarter", lbl:"Bésame — French Quarter", note:"Latin-Creole Tapas", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false, rating:"4.5★"},
-  { lbl:"Cane and Table — French Quarter", note:"Tiki / Caribbean-Creole", pp:55, uber:8, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~8 min drive", on:false, rating:"4.6★"},
-  { lbl:"The Court of Two Sisters — Royal St", note:"Jazz Dinner & Courtyard", pp:70, uber:8, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~8 min drive", on:false, rating:"4.4★"},
-  { hood:"Uptown", lbl:"Atchafalaya — Uptown", note:"Upscale Modern Creole", pp:60, uber:8, url:GMAP+"Atchafalaya+Restaurant+New+Orleans" , dist:"~10 min drive", on:false},
+  { hood:"French Quarter", lbl:"Bésame — French Quarter", note:"Vibrant, high-energy tapas lounge featuring creative Latin-Creole fusion bites, incredible ceviche, and a killer signature cocktail menu. 🍸", pp:35, uber:8, url:GMAP+"Besame+New+Orleans", dist:"~8 min drive", on:false, rating:"4.5★"},
+  { lbl:"Cane and Table — French Quarter", note:"A sleek, James Beard-nominated Decatur Street oasis serving up heavy rum cocktails and rustic, exceptional Caribbean-Creole small plates. 🌴", pp:55, uber:8, url:GMAP+"Cane+and+Table+New+Orleans" , dist:"~8 min drive", on:false, rating:"4.6★"},
+  { lbl:"The Court of Two Sisters — Royal St", note:"An iconic New Orleans institution featuring a legendary, spacious courtyard dinner paired with a classic live jazz trio and a massive Creole buffet. 🎶", pp:70, uber:8, url:GMAP+"Court+of+Two+Sisters+New+Orleans" , dist:"~8 min drive", on:false, rating:"4.4★"},
   { hood:"Central City", lbl:"Skip — Still love y'all though ♡", pp:0, skip:true, on:false },
 ];
 
@@ -2160,43 +2183,45 @@ var sunLate = [
 var sunTeaOpts = [
   { hood:"French Quarter", lbl:"French Market stroll", note:"Shopping & Voodoo Shops · stalls, crystals", pp:0, uber:8, url:GMAP+"French+Market+New+Orleans", dist:"~10 min drive", on:false },
   { lbl:"Frenchmen Street stroll", note:"Live music / wander · boutiques · vibes", pp:0, uber:8, url:GMAP+"Frenchmen+Street+New+Orleans", dist:"~10 min drive", on:false },
+  { lbl:"The Carousel Bar & Lounge", note:"Located inside the historic Hotel Monteleone, this is a world-famous, literal rotating 25-seat bar that has been turning for decades. 🎠", pp:25, uber:8, url:GMAP+"Carousel+Bar+Hotel+Monteleone+New+Orleans", dist:"~8 min drive", on:false },
+  { lbl:"Jewel of the South", note:"Tucked inside a stunning, historic 1830s Creole cottage, this is officially ranked as one of the 50 Best Bars in North America. 💎", pp:25, uber:8, url:GMAP+"Jewel+of+the+South+New+Orleans", dist:"~8 min drive", on:false },
   { hood:"Central City", lbl:"Back to the Airbnb", note:"recharge · get ready · eat snacks", pp:0, uber:0, on:false, solo:true },
   { lbl:"Skip — I've got other plans", pp:0, skip:true, on:false },
 ];
 // Monday morning breakfast (multi-select)
 var monB = [
-  { hood:"French Quarter", lbl:"Café Beignet — Royal St", note:"Classic Beignets & Coffee", pp:12, uber:8, dist:"~8 min drive", url:GMAP+"Cafe+Beignet+Royal+St+New+Orleans", on:false },
-  { hood:"Garden District / Uptown", lbl:"Avenue Cafe — St Charles Ave", note:"Sandwiches & Smoothies · open 7am–2pm", pp:15, uber:0, dist:"~6 min walk", url:GMAP+"Avenue+Cafe+1907+St+Charles+New+Orleans", on:false },
-  { lbl:"Ruby Slipper Café — Canal St", note:"Creative Brunch", pp:20, uber:6, dist:"~6 min drive", url:GMAP+"Ruby+Slipper+Cafe+1001+Canal+St+New+Orleans", on:false },
-  { hood:"Central City", lbl:"DoorDash / grab-and-go", note:"Order to the Airbnb", pp:20, uber:0, on:false },
+  { hood:"French Quarter", lbl:"Café Beignet — Royal St", note:"Classic, pillowy beignets piled high with powdered sugar and paired with rich chicory coffee. Perfect for a quick, sweet morning fix in a vintage courtyard setting. 🥞", pp:12, uber:8, dist:"~8 min drive", url:GMAP+"Cafe+Beignet+Royal+St+New+Orleans", on:false },
+  { hood:"Garden District / Uptown", lbl:"Avenue Cafe — St Charles Ave", note:"A relaxed, friendly local favorite serving up exceptional espresso, heavy breakfast wraps, fresh-pressed juices, and classic morning sandwiches to cure any lingering hangover. 🍳", pp:15, uber:0, dist:"~6 min walk", url:GMAP+"Avenue+Cafe+1907+St+Charles+New+Orleans", on:false },
+  { lbl:"Ruby Slipper Café — Canal St", note:"An iconic NOLA staple famous for its creative, high-impact brunch spins—think decadent eye-opener cocktails, massive buttermilk biscuits, and legendary cochon de lait benedicts. 👑", pp:20, uber:6, dist:"~6 min drive", url:GMAP+"Ruby+Slipper+Cafe+1001+Canal+St+New+Orleans", on:false },
+  { hood:"Central City", lbl:"Breakfast at the Airbnb", note:"Coffee & snacks", pp:0, uber:0, on:false },
   { lbl:"Skip — Breakfast? Yuck!", note:"No judgment, but make sure to pack a survival lunch for the boat ride if you're joining the tour!", pp:0, skip:true, on:false },
 ];
 
 var monSwampSel = 0;
 var monSwampOpts = [
-  { hood:"Barataria Preserve", lbl:"Large Airboat Swamp Tour with Hotel Pickup", note:"Pickup @ 10:20 am · downtown hotel (point TBD) · ~35 min van ride · 2-hour 16-passenger airboat through the bayou · gators + flora · no meal on board — pack lunch & water (no glass!) · pay your share via link below", prebooked:true, pp:81, uber:0, dist:"hotel pickup · ~35 min to swamp", url:"https://www.viator.com/tours/New-Orleans/Large-Airboat-Swamp-Tour-with-Hotel-Pickup/d675-15200P2" },
+  { hood:"French Quarter", lbl:"Large Airboat Swamp Tour with Hotel Pickup", note:"Pickup @ Homewood Suites FQ · 317 N Rampart · 10:20 am window · 2-hour 16-passenger airboat through the bayou · gators + flora · no meal on board — pack lunch & water (no glass!) · pay your share via link below", prebooked:true, pp:81, uber:0, dist:"~8 min drive to pickup", url:"https://www.viator.com/account/booking/1431156993/travel-companion-invitation?code=eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlIjoiQlItMTQzMTE1Njk5MyIsInQiOjE3ODU3MzIwNTUsInAiOiJUUkFWRUxfQ09NUEFOSU9OIn0.8Za8IQIFDcCkhGl3ImrtnFz5lgzifUs0S2WvfHx8kiJAPLa3HW6DY6fG-3hkvQ8IKfif39hW5tiMbx0B38TXVw" },
   { hood:"Central City", lbl:"Skip — not feeling it", pp:0, skip:true },
 ];
 
 var monD = [
-  { hood:"Uptown / Magazine St", lbl:"The Rum House — Magazine St", note:"Caribbean Taco Joint", pp:30, uber:5, url:GMAP+"The+Rum+House+Magazine+St+New+Orleans" , dist:"~5 min drive · ~25 min walk", on:false},
-  { lbl:"Mister Mao — Uptown", note:"Funky Global / Asian Fusion", pp:45, uber:8, url:GMAP+"Mister+Mao+New+Orleans" , dist:"~8 min drive", on:false},
-  { hood:"Warehouse District", lbl:"Peche Seafood Grill — Warehouse District", note:"Coastal Wood-Fired Seafood", pp:60, uber:6, url:GMAP+"Peche+Seafood+Grill+New+Orleans" , dist:"~6 min drive", on:false},
+  { hood:"Uptown / Magazine St", lbl:"The Rum House — Magazine St", note:"A high-energy, tropical taco joint featuring creative Caribbean-Creole small plates, loaded jerk chicken nachos, and an incredible selection of rum cocktails. 🍹", pp:30, uber:5, url:GMAP+"The+Rum+House+Magazine+St+New+Orleans" , dist:"~5 min drive · ~25 min walk", on:false},
+  { lbl:"Mister Mao — Uptown", note:"An ultra-funky, quirky global-fusion hotspot serving up fiery, creative small plates like spicy dumplings, pork belly, and tropical cocktails in an amazing, vibrant space. 🔥", pp:45, uber:8, url:GMAP+"Mister+Mao+New+Orleans" , dist:"~8 min drive", on:false},
+  { hood:"Warehouse District", lbl:"Peche Seafood Grill — Warehouse District", note:"An award-winning, rustic-chic coastal institution serving up exceptional wood-fired whole fish, premium local oysters, and flawless, high-end Gulf seafood dishes. ⚓", pp:60, uber:6, url:GMAP+"Peche+Seafood+Grill+New+Orleans" , dist:"~6 min drive", on:false},
+  { lbl:"Compère Lapin — Warehouse District", note:"James Beard Award–winning Chef Nina Compton’s Warehouse District gem — inventive Caribbean-Creole cuisine in a rustic-chic hotel setting. Think jerk honey butter fried chicken, curried goat with sweet potato gnocchi, and a killer cocktail program. 🐰", pp:65, uber:6, url:GMAP+"Compere+Lapin+New+Orleans", dist:"~6 min drive", on:false},
   { hood:"Central City", lbl:"Skip — Sadly, can't make it ♡", pp:0, skip:true, on:false },
 ];
 
-var nightSel = -1;
 var nightOpts = [
-  { hood:"Uptown / Garden District", lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark/Moody Live Jazz", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk"},
-  { hood:"Marigny / St. Claude", lbl:"The AllWays Lounge & Cabaret — Naked Karaoke", note:"AllMost Naked Karaoke · Mon Oct 5 · sign-ups ~9:30pm · sing till midnight-ish · 21+", pp:15, uber:10, url:GMAP+"The+AllWays+Lounge+and+Cabaret+New+Orleans", dist:"~10 min drive"},
-  { hood:"Central City", lbl:"Party at the Airbnb", note:"drinks/snacks + decompress", pp:0, uber:0 },
-  { lbl:"Skip — Catch y'all later!", pp:0, skip:true },
+  { hood:"Uptown / Garden District", lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark/Moody Live Jazz", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk", on:false},
+  { lbl:"Hot Tin — Pontchartrain Hotel (Fl 14)", note:"Chic, 1940s artist-inspired penthouse lounge located directly upstairs from the Bayou Bar. Serves up bright craft cocktails and premium champagne paired with breathtaking, panoramic 270-degree skyline views. Perfect for a final celebratory toast! 🥂", pp:30, uber:0, url:GMAP+"Hot+Tin+Pontchartrain+Hotel+New+Orleans", dist:"Located on the 14th floor · free entry", distRaw:true, on:false },
+  { hood:"Marigny / St. Claude", lbl:"The AllWays Lounge & Cabaret — Naked Karaoke", note:"AllMost Naked Karaoke · Mon Oct 5 · sign-ups ~9:30pm · sing till midnight-ish · 21+", pp:15, uber:10, url:GMAP+"The+AllWays+Lounge+and+Cabaret+New+Orleans", dist:"~10 min drive", on:false},
+  { hood:"Central City", lbl:"Final Party at the Airbnb", note:"Break out the leftover snacks, pour the remaining drinks, and decompress before the trip back 🔮", pp:0, uber:0, on:false },
+  { lbl:"Skip — Catch y'all later!", pp:0, skip:true, on:false },
 ];
 
 var tueL = [
-  { lbl:"Café Du Monde — beignets + café au lait", note:"Quick to-go · ~30 min to MSY", pp:15, uber:8, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~8 min drive", on:false, leaveMin:11*60+45, rating:"4.3★"},
-  { lbl:"Dat Dog — Frenchmen St", note:"Gourmet hot dogs + beer · quick & fun", pp:15, uber:8, url:GMAP+"Dat+Dog+Frenchmen+St+New+Orleans", dist:"~10 min drive", on:false, leaveMin:12*60, rating:"4.5★"},
-  { lbl:"Turkey and the Wolf — 739 Jackson", note:"Sandwich shop · to-go", pp:18, uber:5, url:GMAP+"Turkey+and+the+Wolf+739+Jackson+New+Orleans", dist:"~5 min drive · ~17 min walk", on:false, leaveMin:12*60, rating:"4.7★"},
+  { lbl:"Café Du Monde — beignets + café au lait", note:"The ultimate NOLA farewell. Grab world-famous chicory coffee and pillowy, powdered sugar-covered beignets to end the trip on a sweet note. ☕", pp:15, uber:8, url:GMAP+"Cafe+Du+Monde+New+Orleans" , dist:"~8 min drive", on:false, leaveMin:11*60+45, rating:"4.3★"},
+  { lbl:"Turkey and the Wolf — 739 Jackson", note:"The nationally acclaimed, rule-breaking sandwich shop of your dreams. Indulge in mind-blowing fried bologna sandwiches and legendary collard green melts. 🥪", pp:18, uber:5, url:GMAP+"Turkey+and+the+Wolf+739+Jackson+New+Orleans", dist:"~5 min drive · ~17 min walk", on:false, leaveMin:12*60, rating:"4.7★"},
   { lbl:"Play it by ear", note:"Decide day-of · down for whatever the coven craves", pp:0, uber:0, on:false, leaveMin:12*60 },
   { lbl:"Skip — beignets in the terminal if needed", pp:0, skip:true, on:false, leaveMin:12*60+15 },
 ];
@@ -2219,6 +2244,7 @@ var MULTI_PICK_IDS = {
   "pick-suntea": true,
   "pick-monb": true,
   "pick-mond": true,
+  "pick-night": true,
   "pick-tue": true
 };
 
@@ -2321,7 +2347,7 @@ function mkPick(containerId, opts, isMulti, getSel, setSel) {
       }
       left.appendChild(note);
     }
-    if (o.dist) left.appendChild(el("div", "pick-dist", "📍 " + o.dist + " from the Airbnb"));
+    if (o.dist) left.appendChild(el("div", "pick-dist", "📍 " + o.dist + (o.distRaw ? "" : " from the Airbnb")));
     r.appendChild(left);
     if (o.pp !== undefined) r.appendChild(el("div", "pick-price", o.pp > 0 ? "~" + fmt(o.pp) : "free"));
     r.addEventListener("click", function() {
@@ -2382,7 +2408,7 @@ function renderPicks() {
   mkPick("pick-monb",     monB,       true,  null, null);
   mkPick("pick-monswamp", monSwampOpts, false, function(){return monSwampSel;},function(i){monSwampSel=i; renderPayShare();});
   mkPick("pick-mond",    monD,      true,  null, null);
-  mkPick("pick-night",   nightOpts, false, function(){return nightSel;},function(i){nightSel=i;});
+  mkPick("pick-night",   nightOpts, true,  null, null);
   mkPick("pick-tue",     tueL,      true,  null, null);
   updateItinerary();
   renderEstimate();
@@ -2458,7 +2484,12 @@ function renderEstimate() {
   addMultiAvg(monB);
   if (monSwampSel === 0) { ground += monSwampOpts[0].pp; uber += monSwampOpts[0].uber || 0; }
   addMultiAvg(monD);
-  addPick(nightOpts, nightSel);
+  (function() {
+    multiActive(nightOpts).forEach(function(o) {
+      ground += o.pp || 0;
+      uber += o.uber || 0;
+    });
+  })();
   addMultiAvg(tueL);
   e.innerHTML = 'Your picks come to about <strong>' + fmt(ground) + '</strong> on the ground, plus ~' + fmt(uber) +
     ' in shared Ubers and whatever the bars take from you.';
@@ -2496,26 +2527,28 @@ function loadFormSelections() {
     if (typeof d !== 'object' || d === null) return;
 
     var sunMMap  = {"Drag Brunch — The Country Club (1pm)":0,"Skip — Free afternoon for me":1,"Skip — No judgment either way 😉":1};
-    var sunDMap = {"Bésame — French Quarter":0,"Bésame":0,"Cane and Table — French Quarter":1,"The Court of Two Sisters — Royal St":2,"Atchafalaya — Uptown":3,"Cochon Butcher — Warehouse District":0,"Skip — Still love y'all though ♡":4,"Muriel's Jackson Square":2,"Compere Lapin — Warehouse District":1};
-    var monDMap  = {"The Rum House — Magazine St":0, "Mister Mao — Uptown":1, "Peche Seafood Grill — Warehouse District":2, "Skip — Sadly, can't make it ♡":3, "Skip — Bye, Felicia!":3, "Skip — Sorry, can't attend":3};
-    var satDMap = {"Mambo's — French Quarter":0,"The Will & The Way — Toulouse St":1,"The Avenue Pub — St Charles Ave":2,"Skip — Sitting this dinner out":3};
+    var sunDMap = {"Bésame — French Quarter":0,"Bésame":0,"Cane and Table — French Quarter":1,"The Court of Two Sisters — Royal St":2,"Cochon Butcher — Warehouse District":0,"Skip — Still love y'all though ♡":3,"Muriel's Jackson Square":2,"Compere Lapin — Warehouse District":1};
+    var monDMap  = {"The Rum House — Magazine St":0, "Mister Mao — Uptown":1, "Peche Seafood Grill — Warehouse District":2, "Compère Lapin — Warehouse District":3, "Compere Lapin — Warehouse District":3, "Skip — Sadly, can't make it ♡":4, "Skip — Bye, Felicia!":4, "Skip — Sorry, can't attend":4};
+    var satDMap = {"Mambo's — French Quarter":0,"Mambo's":0,"Tchoup Yard":1,"The Will & The Way — Toulouse St":2,"The Avenue Pub — St Charles Ave":3,"Skip — Sitting this dinner out":4};
     var sunBMap = {"Lagniappe Bakehouse":0,"Cafe Porche & Snowbar":1,"Breakfast at the Airbnb":2,"Skip — I don't need food":3};
-    var monBMap = {"Café Beignet — Royal St":0,"Avenue Cafe — St Charles Ave":1,"Ruby Slipper Café — Canal St":2,"DoorDash / grab-and-go":3,"Skip — Breakfast? Yuck!":4};
-    var tueLMap = {"Café Du Monde — beignets + café au lait":0,"Dat Dog — Frenchmen St":1,"Turkey and the Wolf — 739 Jackson":2,"Play it by ear":3,"Skip — beignets in the terminal if needed":4};
+    var monBMap = {"Café Beignet — Royal St":0,"Avenue Cafe — St Charles Ave":1,"Ruby Slipper Café — Canal St":2,"Breakfast at the Airbnb":3,"Skip — Breakfast? Yuck!":4};
+    var tueLMap = {"Café Du Monde — beignets + café au lait":0,"Turkey and the Wolf — 739 Jackson":1,"Play it by ear":2,"Skip — beignets in the terminal if needed":3};
     var ghostMap = {"Yes — I'm in for the ghost tour":0,"No — I'll skip the ghost tour":1,"Lewd Spirits Haunted Pub Crawl":0,"Skip — count me out":1,"Skip — adjusting my booking":1};
     var nightMap = {
       "Bayou Bar — Pontchartrain Hotel":0,
       "Lula Restaurant Distillery — St Charles Ave":0,
       "Verti Marte — Royal St":0,
       "Frenchmen Street bar hop":0,
-      "The AllWays Lounge & Cabaret — Naked Karaoke":1,
-      "Party at the Airbnb":2,
-      "Party at the Casa 💃💃":2,
-      "Head home — call it a night":2,
-      "Head home after ghost tour":2,
-      "Skip — Catch y'all later!":3,
-      "Skip — Next time though":3,
-      "Skip — No judgment either way 😉":3
+      "Hot Tin — Pontchartrain Hotel (Fl 14)":1,
+      "The AllWays Lounge & Cabaret — Naked Karaoke":2,
+      "Final Party at the Airbnb":3,
+      "Party at the Airbnb":3,
+      "Party at the Casa 💃💃":3,
+      "Head home — call it a night":3,
+      "Head home after ghost tour":3,
+      "Skip — Catch y'all later!":4,
+      "Skip — Next time though":4,
+      "Skip — No judgment either way 😉":4
     };
     var satLateMap = {
       "The Dungeon — 738 Toulouse St": 0,
@@ -2543,26 +2576,20 @@ function loadFormSelections() {
       var nightVal = d.mon_nightcap;
       if (nightVal === "The Avenue Pub — St Charles Ave" && satDMap[nightVal] !== undefined) satD[satDMap[nightVal]].on = true;
       else if (sunLateMap[nightVal] !== undefined) sunLate[sunLateMap[nightVal]].on = true;
-      else if (nightMap[nightVal] !== undefined) nightSel = nightMap[nightVal];
+      else applyMultiFromVal(nightOpts, nightVal, nightMap);
     }
     if (d.sun_late != null) {
       applyMultiFromVal(sunLate, d.sun_late, sunLateMap);
       var sunLateVals = Array.isArray(d.sun_late) ? d.sun_late : String(d.sun_late).split(/\s*;\s*/);
       sunLateVals.forEach(function(val) {
-        if (val === "The AllWays Lounge & Cabaret — Naked Karaoke" && nightMap[val] !== undefined) nightSel = nightMap[val];
+        if (val === "The AllWays Lounge & Cabaret — Naked Karaoke" && nightMap[val] !== undefined) nightOpts[nightMap[val]].on = true;
       });
     }
     if (d.sat_dinner != null) applyMultiFromVal(satD, d.sat_dinner, satDMap);
     if (d.sun_breakfast != null) applyMultiFromVal(sunB, d.sun_breakfast, sunBMap);
     if (d.sun_dinner != null) applyMultiFromVal(sunD, d.sun_dinner, sunDMap);
     if (d.mon_breakfast != null) applyMultiFromVal(monB, d.mon_breakfast, monBMap);
-    if (d.mon_dinner != null) {
-      applyMultiFromVal(monD, d.mon_dinner, monDMap);
-      var monDVals = Array.isArray(d.mon_dinner) ? d.mon_dinner : String(d.mon_dinner).split(/\s*;\s*/);
-      monDVals.forEach(function(val) {
-        if (val === "Atchafalaya — Uptown" && sunDMap[val] !== undefined) sunD[sunDMap[val]].on = true;
-      });
-    }
+    if (d.mon_dinner != null) applyMultiFromVal(monD, d.mon_dinner, monDMap);
     if (d.tue_brunch != null) applyMultiFromVal(tueL, d.tue_brunch, tueLMap);
     if (d.sat_late != null) {
       satLate.forEach(function(o){ o.on = false; });
@@ -2574,7 +2601,7 @@ function loadFormSelections() {
           return;
         }
         if (val === "The AllWays Lounge & Cabaret — Naked Karaoke" && nightMap[val] !== undefined) {
-          nightSel = nightMap[val];
+          nightOpts[nightMap[val]].on = true;
           return;
         }
         if (satLateMap[val] !== undefined) satLate[satLateMap[val]].on = true;
@@ -2592,8 +2619,10 @@ function loadFormSelections() {
         "French Market stroll": 0,
         "French Market + crystal/voodoo shopping": 0,
         "Frenchmen Street stroll": 1,
-        "Back to the Airbnb": 2,
-        "Skip — I've got other plans": 3
+        "The Carousel Bar & Lounge": 2,
+        "Jewel of the South": 3,
+        "Back to the Airbnb": 4,
+        "Skip — I've got other plans": 5
       });
     }
   } catch(e) {}
@@ -2637,11 +2666,6 @@ function updateItinerary() {
   var sunMTexts = [
     { s:"Drag Brunch🥂", b:gl('The Country Club', 'The+Country+Club+New+Orleans') + ' · Bywater · <span class="prebook-badge">Prebooked</span>' }
   ];
-  var nightTexts = [
-    { s:"Nightcap", b:gl("Bayou Bar", "Bayou+Bar+Pontchartrain+Hotel+New+Orleans") + " · Pontchartrain Hotel · dark/moody live jazz" },
-    { s:"Nightcap", b:gl("The AllWays Lounge & Cabaret", "The+AllWays+Lounge+and+Cabaret+New+Orleans") + " · St. Claude · AllMost Naked Karaoke · sign-ups ~9:30pm" },
-    { s:"Party at the Airbnb", b:"drinks/snacks + decompress" },
-  ];
 
   // Saturday morning — burritos provided, so no price chip; just the protein pick
   (function() {
@@ -2654,15 +2678,15 @@ function updateItinerary() {
 
   setFoodMulti('itin-sat-evening', 'Meet with the Boys', satD, 'pick-satd',
     'Sitting this dinner out', 'send pics of the chaos',
-    'pick one or more');
+    'pick one or more · beer gardens = order-yourself, no deposit');
 
   setBarMulti('itin-sat-late', 'Party Hardy', satLate, 'pick-satlate',
     'Calling it early', 'Bourbon will still be there tomorrow',
-    'pick one or more');
+    'optional · pick one or more if you care');
 
   setFoodMulti('itin-sun-bfast', 'Caffeine &amp; Curses', sunB, 'pick-sunb',
     'Skipping', 'I see a DoorDash order in your future 🔮',
-    'pick one or more');
+    'optional · pick one or more if you care');
 
   if (sunMSel === 0) setNode('itin-sun-morning', sunMTexts[0].s, sunMTexts[0].b, sunM[0].pp, 'pick-sunm');
   else if (sunMSel >= 0 && sunM[sunMSel] && sunM[sunMSel].skip) setNode('itin-sun-morning', 'Free afternoon', "your call · pool or explore · let's meet up later!", 0, 'pick-sunm');
@@ -2676,9 +2700,9 @@ function updateItinerary() {
     'Skipping', 'Bye, Felicia!',
     'pick one or more');
 
-  if (nightSel >= 0 && nightOpts[nightSel] && nightOpts[nightSel].skip) setNode('itin-mon-nightcap', 'Skipping', 'Next time though, right? ♡', 0, 'pick-night');
-  else if (nightSel >= 0 && nightSel < nightTexts.length) setNode('itin-mon-nightcap', nightTexts[nightSel].s, nightTexts[nightSel].b, nightOpts[nightSel].pp, 'pick-night');
-  else setNode('itin-mon-nightcap', 'The Final Nightcap 🍻', 'anyone?', 0, 'pick-night');
+  setBarMulti('itin-mon-nightcap', 'The Final Nightcap 🍻', nightOpts, 'pick-night',
+    'Skipping', 'Next time though, right? ♡',
+    'optional · pick one or more if you care');
 
   // Sunday afternoon (after drag brunch)
   (function() {
@@ -2688,13 +2712,13 @@ function updateItinerary() {
     } else {
       setFoodMulti('itin-sun-tea', 'Afternoon', sunTeaOpts, 'pick-suntea',
         'Oh, so you\'ve got plans?', 'Care to share? 🔍',
-        'pick one or more');
+        'optional · pick one or more if you care');
     }
   })();
 
   setFoodMulti('itin-mon-bfast', 'Bait &amp; Breakfast', monB, 'pick-monb',
     'Skipping breakfast?', 'No judgment, but make sure to pack a survival lunch for the boat ride if you\'re joining the tour!',
-    'pick one or more');
+    'optional · pick one or more if you care');
 
   /* Monday — swamp lunch prep (optional, usually Sun PM grab)
   (function() {
@@ -2708,7 +2732,7 @@ function updateItinerary() {
   // Monday morning — swamp tour
   (function() {
     if (monSwampSel === 0)
-      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Large Airboat Swamp Tour🐊</a>', '<span class="prebook-badge">Prebooked</span> Pickup @ 10:20 am · downtown hotel (point TBD) · ~35 min to Barataria Preserve · 2-hour airboat through the bayou. No meal on board — pack lunch &amp; water (no glass!).', monSwampOpts[0].pp, 'pick-monswamp');
+      setNode('itin-mon-swamp', '<a href="' + monSwampOpts[0].url + '" target="_blank" rel="noopener">Large Airboat Swamp Tour🐊</a>', '<span class="prebook-badge">Prebooked</span> Pickup @ ' + gl('Homewood Suites FQ', 'Homewood+Suites+317+N+Rampart+New+Orleans') + ' · 317 N Rampart · 10:20 am window · 2-hour airboat through the bayou. No meal on board — pack lunch &amp; water (no glass!).', monSwampOpts[0].pp, 'pick-monswamp');
     else if (monSwampSel >= 0 && monSwampOpts[monSwampSel] && monSwampOpts[monSwampSel].skip)
       setNode('itin-mon-swamp', 'Skipping', 'see you later, alligator', 0, 'pick-monswamp');
     else
@@ -2729,11 +2753,11 @@ function updateItinerary() {
   // Sunday late — after the crawl
   setBarMulti('itin-sun-late', 'What\'s next?', sunLate, 'pick-sunlate',
     'Calling it a night', 'ghosts + bed',
-    'pick one or more');
+    'optional · pick one or more if you care');
 
   setFoodMulti('itin-tue-bfast', 'Brunch', tueL, 'pick-tue',
     'Skipping brunch', 'beignets in the terminal if needed',
-    'pick one or more');
+    'optional · pick one or more if you care');
 
   // Tuesday Uber leave time — average of selected brunch leave-bys (earliest-safe window)
   (function() {
@@ -2780,7 +2804,7 @@ function summarizePicks() {
     'Bait & Breakfast' : multiLbl(monB),
     'Mon swamp tour'      : selLbl(monSwampOpts, monSwampSel),
     'Mon last supper'     : multiLbl(monD),
-    'The Final Nightcap 🍻': selLbl(nightOpts, nightSel),
+    'The Final Nightcap 🍻': multiLbl(nightOpts),
     'Tue last bites'      : multiLbl(tueL)
   };
 }
@@ -2788,21 +2812,15 @@ function summarizePicks() {
 function multiHasAny(arr) { return arr.some(function(o){ return !!o.on; }); }
 
 function validateAllPicks() {
+  // Required = reservation / headcount / Venmo. Breakfasts, afternoon, late-night, Tue brunch = optional.
   return [
     { ok: bfastSel >= 0, label: 'Sat AM burrito', pickId: 'pick-bfast' },
     { ok: multiHasAny(satD), label: 'Meet with the Boys', pickId: 'pick-satd' },
-    { ok: multiHasAny(satLate), label: 'Party Hardy', pickId: 'pick-satlate' },
-    { ok: multiHasAny(sunB), label: 'Caffeine & Curses', pickId: 'pick-sunb' },
     { ok: sunMSel >= 0, label: 'Drag Brunch', pickId: 'pick-sunm' },
-    { ok: multiHasAny(sunTeaOpts), label: 'Sun afternoon', pickId: 'pick-suntea' },
     { ok: multiHasAny(sunD), label: 'Dying to Dine 🕯️', pickId: 'pick-sund' },
     { ok: ghostSel >= 0, label: 'Ghost crawl', pickId: 'pick-ghost' },
-    { ok: multiHasAny(sunLate), label: "What's next?", pickId: 'pick-sunlate' },
-    { ok: multiHasAny(monB), label: 'Bait & Breakfast', pickId: 'pick-monb' },
     { ok: monSwampSel >= 0, label: 'Swamp tour', pickId: 'pick-monswamp' },
-    { ok: multiHasAny(monD), label: 'The Last Supper', pickId: 'pick-mond' },
-    { ok: nightSel >= 0, label: 'The Final Nightcap 🍻', pickId: 'pick-night' },
-    { ok: multiHasAny(tueL), label: 'Tue brunch', pickId: 'pick-tue' }
+    { ok: multiHasAny(monD), label: 'The Last Supper', pickId: 'pick-mond' }
   ].filter(function(c){ return !c.ok; });
 }
 
@@ -2879,7 +2897,7 @@ function buildPickEmailBody(name, suggest) {
   body += lineForSingle('Mon — Swamp tour', monSwampOpts, monSwampSel);
   body += 'Mon — Pool day\n  Back to the Airbnb · recharge · pool party · snacks\n\n';
   body += linesForMulti('Mon — The Last Supper', monD);
-  body += lineForSingle('Mon — The Final Nightcap 🍻', nightOpts, nightSel);
+  body += linesForMulti('Mon — The Final Nightcap 🍻', nightOpts);
   body += linesForMulti('Tue — Brunch', tueL);
   if (suggest) body += 'Suggestions you sent:\n  ' + suggest + '\n\n';
   body += '══════════════════════════════════\nMAPS & LISTS\n══════════════════════════════════\n';
@@ -2921,12 +2939,8 @@ function submitPicks() {
   var picks = summarizePicks();
   var suggest = (document.getElementById('ps-suggest').value || '').trim();
   var wrapUp = buildPickEmailBody(name, suggest);
-  // ── DELIVERY ENDPOINT ─────────────────────────────────────────────────────
-  // Formspree accepted posts but never emailed, so this goes via FormSubmit.
-  // TODO: replace the address below with the FormSubmit hashed alias from the
-  // activation email (https://formsubmit.co/ajax/<hash>) — the raw address is
-  // readable in page source and gets scraped for spam. Same swap in form.html.
-  var PICKS_ENDPOINT = 'https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com';
+  // FormSubmit hashed alias (activation email) — keeps the inbox out of page source
+  var PICKS_ENDPOINT = 'https://formsubmit.co/ajax/5477b4ceababc64370012fbdfb0f61be';
   var payload = {
     name: name,
     _subject: '🦪 Itinerary picks — ' + name,
