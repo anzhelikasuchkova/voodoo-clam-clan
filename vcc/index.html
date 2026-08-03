@@ -1762,7 +1762,7 @@ footer p { font-size: 13px; color: rgba(240,236,228,0.3); }
       <div class="night-body open">
         <div class="event-list">
           <div class="event-item">
-            <div class="event-time">9:00 am</div>
+            <div class="event-time">8:30 am</div>
             <div class="event-dot"></div>
             <div class="event-text" id="itin-mon-bfast"><strong>Bait &amp; Breakfast</strong> · pick one or more</div>
           </div>
@@ -2101,7 +2101,7 @@ var GMAP = "https://www.google.com/maps/search/?api=1&query=";
 
 // Saturday dinner — meet with the Boys (multi-select)
 var satD = [
-  { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's", tag:"Will's pick", note:"Creole/Seafood", pp:35, uber:8, dist:"~8 min drive", url:GMAP+"Mambos+New+Orleans", on:true, rating:"4.4★" },
+  { hood:"French Quarter", lbl:"Mambo's — French Quarter", short:"Mambo's", tag:"Will's pick", note:"Creole/Seafood", pp:35, uber:8, dist:"~8 min drive", url:GMAP+"Mambos+New+Orleans", on:false, rating:"4.4★" },
   { lbl:"The Will & The Way — Toulouse St", note:"Cocktails & Small Bites · courtyard", pp:45, uber:8, dist:"~8 min drive", url:GMAP+"The+Will+and+The+Way+New+Orleans", on:false, rating:"4.6★" },
   { hood:"Uptown / Garden District", lbl:"The Avenue Pub — St Charles Ave", note:"Historic Craft Beer Hub · late-night · walkable", pp:18, uber:0, dist:"~7 min walk", url:GMAP+"The+Avenue+Pub+New+Orleans", on:false },
   { hood:"Central City", lbl:"Skip — Sitting this dinner out", pp:0, skip:true, on:false },
@@ -2188,7 +2188,7 @@ var monD = [
 var nightSel = -1;
 var nightOpts = [
   { hood:"Uptown / Garden District", lbl:"Bayou Bar — Pontchartrain Hotel", note:"Dark/Moody Live Jazz", pp:25, uber:0, url:GMAP+"Bayou+Bar+Pontchartrain+Hotel+New+Orleans" , dist:"~8 min walk"},
-  { hood:"Marigny / St. Claude", lbl:"The AllWays Lounge & Cabaret — Naked Karaoke", note:"AllMost Naked Karaoke · 2nd & 4th Mondays · doors/sign-ups ~9:30pm · 21+", pp:15, uber:10, url:GMAP+"The+AllWays+Lounge+and+Cabaret+New+Orleans", dist:"~10 min drive"},
+  { hood:"Marigny / St. Claude", lbl:"The AllWays Lounge & Cabaret — Naked Karaoke", note:"AllMost Naked Karaoke · Mon Oct 5 · sign-ups ~9:30pm · sing till midnight-ish · 21+", pp:15, uber:10, url:GMAP+"The+AllWays+Lounge+and+Cabaret+New+Orleans", dist:"~10 min drive"},
   { hood:"Central City", lbl:"Party at the Airbnb", note:"drinks/snacks + decompress", pp:0, uber:0 },
   { lbl:"Skip — Catch y'all later!", pp:0, skip:true },
 ];
@@ -2639,7 +2639,7 @@ function updateItinerary() {
   ];
   var nightTexts = [
     { s:"Nightcap", b:gl("Bayou Bar", "Bayou+Bar+Pontchartrain+Hotel+New+Orleans") + " · Pontchartrain Hotel · dark/moody live jazz" },
-    { s:"Nightcap", b:gl("The AllWays Lounge & Cabaret", "The+AllWays+Lounge+and+Cabaret+New+Orleans") + " · St. Claude · AllMost Naked Karaoke" },
+    { s:"Nightcap", b:gl("The AllWays Lounge & Cabaret", "The+AllWays+Lounge+and+Cabaret+New+Orleans") + " · St. Claude · AllMost Naked Karaoke · sign-ups ~9:30pm" },
     { s:"Party at the Airbnb", b:"drinks/snacks + decompress" },
   ];
 
