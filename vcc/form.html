@@ -547,7 +547,8 @@ input[type="range"]::-webkit-slider-thumb {
 
   <!-- FORM -->
   <div class="form-wrap" id="form-wrap">
-  <form action="https://formsubmit.co/anzhelika.y.suchkova@gmail.com" method="POST" id="vcc-form">
+  <!-- action is set from VCC_FORM_ENDPOINT in JS so the inbox isn't in static markup -->
+  <form method="POST" id="vcc-form">
     <input type="hidden" name="_subject" value="🦪 VCC form response">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="false">
@@ -1279,6 +1280,14 @@ document.getElementById('vcc-form').addEventListener('change', function(e) {
   if (relevant.indexOf(e.target.name) !== -1) vccSaveToStorage();
 });
 
+// ── DELIVERY ENDPOINT ───────────────────────────────────────────────────────
+// TODO: replace the address below with the FormSubmit hashed alias from the
+// activation email (https://formsubmit.co/ajax/<hash>) — the raw address is
+// readable in page source and gets scraped for spam. Same swap in index.html.
+var VCC_FORM_ENDPOINT = 'https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com';
+// Mirror it onto the form as the no-JS fallback target (non-AJAX variant)
+document.getElementById('vcc-form').action = VCC_FORM_ENDPOINT.replace('/ajax/', '/');
+
 document.getElementById('vcc-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
@@ -1333,7 +1342,7 @@ document.getElementById('vcc-form').addEventListener('submit', function(e) {
 
   var obj = {};
   data.forEach(function(v, k){ obj[k] = v; });
-  fetch('https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com', {
+  fetch(VCC_FORM_ENDPOINT, {
     method: 'POST',
     body: JSON.stringify(obj),
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }

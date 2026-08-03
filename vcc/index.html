@@ -2921,8 +2921,12 @@ function submitPicks() {
   var picks = summarizePicks();
   var suggest = (document.getElementById('ps-suggest').value || '').trim();
   var wrapUp = buildPickEmailBody(name, suggest);
-  // Send straight to this inbox (Formspree was accepting posts but not emailing here)
-  var PICKS_INBOX = 'anzhelika.y.suchkova@gmail.com';
+  // ── DELIVERY ENDPOINT ─────────────────────────────────────────────────────
+  // Formspree accepted posts but never emailed, so this goes via FormSubmit.
+  // TODO: replace the address below with the FormSubmit hashed alias from the
+  // activation email (https://formsubmit.co/ajax/<hash>) — the raw address is
+  // readable in page source and gets scraped for spam. Same swap in form.html.
+  var PICKS_ENDPOINT = 'https://formsubmit.co/ajax/anzhelika.y.suchkova@gmail.com';
   var payload = {
     name: name,
     _subject: '🦪 Itinerary picks — ' + name,
@@ -2935,18 +2939,19 @@ function submitPicks() {
 
   function showSendFail(reason) {
     btn.disabled = false;
-    var mail = 'mailto:' + PICKS_INBOX
-      + '?subject=' + encodeURIComponent('🦪 Itinerary picks — ' + name)
-      + '&body=' + encodeURIComponent(wrapUp);
-    statusEl.innerHTML = reason
-      + ' <a href="' + mail + '" style="color:var(--teal);text-decoration:underline">Email picks instead →</a>';
+    // No mailto here on purpose — it would put the inbox address in page source
+    statusEl.textContent = reason + ' Screenshot your picks and text them to Grace.';
     try {
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(wrapUp);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(wrapUp).then(function() {
+          statusEl.textContent = reason + ' Your picks are copied — just paste them to Grace.';
+        }, function() {});
+      }
     } catch (e) {}
   }
 
   btn.disabled = true; statusEl.textContent = 'Sending…';
-  fetch('https://formsubmit.co/ajax/' + PICKS_INBOX, {
+  fetch(PICKS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
