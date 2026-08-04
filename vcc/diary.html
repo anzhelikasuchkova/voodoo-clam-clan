@@ -1152,7 +1152,11 @@ body {
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       btn.textContent = open ? 'Hide ▴' : 'Options ▾';
       if (open) {
-        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        var scroller = panel.closest('.page-content');
+        if (scroller) {
+          var delta = panel.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+          scroller.scrollTo({ top: scroller.scrollTop + delta - 12, behavior: 'smooth' });
+        }
       }
     });
   });
@@ -1181,6 +1185,7 @@ body {
   window.submitDiaryPicks = function (e) {
     e.preventDefault();
     var name = document.getElementById('ps-name').value.trim();
+    var email = document.getElementById('ps-email').value.trim();
     var status = document.getElementById('ps-status');
     if (!name) {
       status.textContent = 'Add your name so we know who summoned in.';
@@ -1194,8 +1199,9 @@ body {
     var summary = document.getElementById('summary-box');
     summary.innerHTML = '<strong>Your picks summary</strong>' +
       (picks.length ? picks.join(' · ') : 'No options selected yet — still welcome.') +
+      (email ? '<br>Email: ' + email.replace(/</g,'&lt;') : '') +
       (suggest ? '<br><em style="font-family:var(--font-body)">Suggestion: ' + suggest.replace(/</g,'&lt;') + '</em>' : '');
-    status.textContent = 'Got it, ' + name + '. Screenshot this page or text Grace your picks.';
+    status.textContent = 'Got it, ' + name + (email ? ' (' + email + ')' : '') + '. Screenshot this page or text Grace your picks.';
     return false;
   };
 })();
