@@ -301,38 +301,43 @@ html, body {
 .crew-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px 8px;
+  gap: 14px 10px;
 }
 .crew-member { text-align: center; }
 .crew-avatar {
-  width: min(64px, 18vw);
-  height: min(64px, 18vw);
-  margin: 0 auto 6px;
+  width: min(92px, 26vw);
+  height: min(92px, 26vw);
+  margin: 0 auto 8px;
   border-radius: 50%;
-  border: 1.5px solid rgba(26,22,20,0.45);
-  background:
-    radial-gradient(circle at 35% 30%, rgba(247,242,234,0.9), transparent 45%),
-    linear-gradient(145deg, var(--parchment-deep), var(--blush));
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-size: 15px;
+  border: none;
+  background: transparent;
+  display: block;
   position: relative;
+  overflow: visible;
+  box-shadow: 0 8px 18px rgba(26,22,20,0.18);
+}
+.crew-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 .crew-avatar.bride::after {
   content: '♡';
   position: absolute;
-  bottom: -2px;
-  right: 0;
+  bottom: 2px;
+  right: 2px;
   font-size: 11px;
   color: var(--gold);
   background: var(--parchment);
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(168,137,74,0.5);
+  border: 1px solid rgba(168,137,74,0.55);
+  z-index: 2;
 }
 .crew-name {
   font-family: var(--font-ui);
@@ -634,7 +639,7 @@ html, body {
             <p class="meta-line">October 3–6, 2026</p>
             <div class="tagline-row">
               <span class="tag-chip">Bewitched in the Bayou</span>
-              <span class="tag-chip">Bayou Bash</span>
+              <span class="tag-chip">A Bridal Séance</span>
             </div>
             <div class="countdown" aria-live="polite">
               <div class="countdown-unit"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
@@ -680,21 +685,22 @@ html, body {
         <div class="page-inner">
           <div class="leaf">
             <div class="ornament" aria-hidden="true"><svg viewBox="0 0 120 36" fill="none"><path d="M8 18c12-10 20-10 32 0-12 10-20 10-32 0Z" stroke="currentColor" stroke-width="1"/><path d="M48 18c12-10 20-10 32 0" stroke="currentColor" stroke-width="1"/><path d="M80 18c12-10 20-10 32 0-12 10-20 10-32 0Z" stroke="currentColor" stroke-width="1"/><circle cx="60" cy="18" r="2.2" fill="currentColor"/></svg></div>
-            <p class="eyebrow">Chapter II</p>
+            <p class="eyebrow">Chapter II · The Circle</p>
             <h2 class="script-title">Meet the Crew</h2>
+            <p class="day-sub">Nine summoned · one bride</p>
             <div class="divider"><span class="divider-star"></span></div>
             <div class="crew-grid">
-              <div class="crew-member"><div class="crew-avatar bride">K</div><div class="crew-name">Kassandra</div></div>
-              <div class="crew-member"><div class="crew-avatar">A</div><div class="crew-name">Anzhelika</div></div>
-              <div class="crew-member"><div class="crew-avatar">G</div><div class="crew-name">Grace</div></div>
-              <div class="crew-member"><div class="crew-avatar">M</div><div class="crew-name">Miranda</div></div>
-              <div class="crew-member"><div class="crew-avatar">L</div><div class="crew-name">Leslie</div></div>
-              <div class="crew-member"><div class="crew-avatar">N</div><div class="crew-name">Nicole</div></div>
-              <div class="crew-member"><div class="crew-avatar">R</div><div class="crew-name">Reilly</div></div>
-              <div class="crew-member"><div class="crew-avatar">S</div><div class="crew-name">Sarah</div></div>
-              <div class="crew-member"><div class="crew-avatar">Ke</div><div class="crew-name">Kelsie</div></div>
+              <div class="crew-member"><div class="crew-avatar bride"><img src="assets/diary/crew/kassandra.png" alt="Kassandra"></div><div class="crew-name">Kassandra</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/anzhelika.png" alt="Anzhelika"></div><div class="crew-name">Anzhelika</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/grace.png" alt="Grace"></div><div class="crew-name">Grace</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/miranda.png" alt="Miranda"></div><div class="crew-name">Miranda</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/leslie.png" alt="Leslie"></div><div class="crew-name">Leslie</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/nicole.png" alt="Nicole"></div><div class="crew-name">Nicole</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/reilly.png" alt="Reilly"></div><div class="crew-name">Reilly</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/sarah.png" alt="Sarah"></div><div class="crew-name">Sarah</div></div>
+              <div class="crew-member"><div class="crew-avatar"><img src="assets/diary/crew/kelsie.png" alt="Kelsie"></div><div class="crew-name">Kelsie</div></div>
             </div>
-            <p class="meta-line" style="margin-top:22px">The coven has been summoned</p>
+            <p class="meta-line" style="margin-top:22px">The circle is complete</p>
           </div>
         </div>
       </div>

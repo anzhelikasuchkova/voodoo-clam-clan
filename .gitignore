@@ -1,3 +1,13 @@
 .claude/
 *.xlsx
 *.docx
+vcc/assets/diary/crew-source/
+vcc/assets/diary/crew-preview/
+vcc/assets/diary/crew/*-raw.jpg
+vcc/assets/diary/crew/crew-sheet.jpg
+node_modules/
+package-lock.json
+package.json
+capture_diary.js
+screenshot_*.png
+screenshot_*.webp
