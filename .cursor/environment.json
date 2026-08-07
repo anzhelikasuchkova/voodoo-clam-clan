@@ -1,0 +1,14 @@
+{
+  "name": "Voodoo Clam Clan static site",
+  "install": "python3 --version",
+  "terminals": [
+    {
+      "name": "site",
+      "command": "python3 -m http.server 3333 --directory vcc",
+      "description": "Serves the static site (vcc/index.html and vcc/form.html) at http://localhost:3333"
+    }
+  ],
+  "ports": [
+    { "name": "site", "port": 3333 }
+  ]
+}
